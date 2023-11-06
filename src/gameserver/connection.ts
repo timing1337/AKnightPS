@@ -1,9 +1,9 @@
-import Logger from '../utils/logger';
 import net from 'net';
-import ClientPacket from './packet/client_packet';
+import Logger from '../utils/logger';
 import HandlerFactory from './handlers';
-import { ProtocolId } from './protocol_id';
+import ClientPacket from './packet/client_packet';
 import ServerPacket from './packet/server_packet';
+import { ProtocolId } from './protocol_id';
 
 export default class Connection {
     public readonly logger: Logger;
@@ -15,14 +15,14 @@ export default class Connection {
 
     private onReceived(msg: Buffer) {
         const packet = ClientPacket.decode(msg);
-        this.logger.debug(`CLIENT > Receiving ${msg.toString('hex')}`)
+        this.logger.debug(`CLIENT > Receiving ${msg.toString('hex')}`);
         HandlerFactory.handle(this, packet);
     }
 
-    public sendRawBuffer(cmd: ProtocolId, buffer: Buffer, resultCode: number = 0){
+    public sendRawBuffer(cmd: ProtocolId, buffer: Buffer, resultCode: number = 0) {
         const serverPacket = new ServerPacket(cmd, resultCode, 255, 255, buffer);
         const encoded = serverPacket.encode();
-        this.logger.debug(`SERVER < Sending ${encoded.toString('hex')}`)
+        this.logger.debug(`SERVER < Sending ${encoded.toString('hex')}`);
         this.socket.write(encoded);
     }
 }

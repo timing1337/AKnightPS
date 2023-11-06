@@ -1,5 +1,4 @@
 export default class ByteWriting {
-
     public static BYTE_SIZE = 256; //??? == var_0_1
 
     /*                  ? ? ?
@@ -38,7 +37,7 @@ export default class ByteWriting {
     public static writeString(buffer: Buffer, string: string, offset: number = 0): Buffer {
         buffer.writeUInt8(string.length / ByteWriting.BYTE_SIZE, offset);
         buffer.writeUInt8(string.length % ByteWriting.BYTE_SIZE, offset + 1);
-        (Buffer.from(string, 'utf-8')).copy(buffer, offset + 2); //ehm what the frick
+        Buffer.from(string, 'utf-8').copy(buffer, offset + 2); //ehm what the frick
         return buffer;
     }
 }

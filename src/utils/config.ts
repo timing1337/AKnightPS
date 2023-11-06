@@ -39,7 +39,7 @@ export class Config {
                     bindAddress: '127.0.0.1',
                     port: 22102
                 }
-            },
+            }
         } as ConfigType;
     }
 }
@@ -54,5 +54,5 @@ export type ConfigType = {
             bindAddress: string;
             port: number;
         };
-    }
+    };
 };

@@ -1,12 +1,11 @@
 import fastify from 'fastify';
 import { readFileSync } from 'fs';
 import path from 'path';
-import Logger from '../utils/logger';
-import gameController from './controllers/gameController';
-import { Config } from '../utils/config';
-import * as zlib from 'zlib';
 import Crypto from '../crypto/decodeutils';
+import { Config } from '../utils/config';
+import Logger from '../utils/logger';
 import accountController from './controllers/accountController';
+import gameController from './controllers/gameController';
 
 // thank you cloudyts for the http
 // i hate writing http
@@ -27,13 +26,12 @@ export class HttpServer {
         });
 
         http.addContentTypeParser('application/json', { parseAs: 'buffer' }, function (req, body, done) {
-            
             try {
                 done(JSON.parse(body.toString()));
             } catch (e) {
                 done(null, Crypto.decryptHttpsPostTraffic(body as Buffer).toString());
             }
-        })
+        });
 
         http.register(accountController);
         http.register(gameController);
