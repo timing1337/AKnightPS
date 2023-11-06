@@ -9,7 +9,7 @@ export default class ServerPacket {
         const resultCode = buffer.readUInt16BE(6); // 2 bytes
         const upTag = buffer.readUInt8(8); // 1 bytes
         const downTag = buffer.readUInt8(9); // 1 bytes
-        const data = buffer.slice(ServerPacket.PACKET_HEADER);
+        const data = buffer.subarray(ServerPacket.PACKET_HEADER);
         return new ServerPacket(cmdId, resultCode, upTag, downTag, data);
     }
 

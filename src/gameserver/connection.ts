@@ -13,10 +13,22 @@ export default class Connection {
         this.socket.on('data', this.onReceived.bind(this));
     }
 
-    private onReceived(msg: Buffer) {
-        const packet = ClientPacket.decode(msg);
-        this.logger.debug(`CLIENT > Receiving ${msg.toString('hex')}`);
-        HandlerFactory.handle(this, packet);
+    private async onReceived(msg: Buffer) {
+        try {
+            /*
+            hacky as shit
+            todo: rewrite this
+            */
+            while (msg.length > 0) {
+                const packetSize = msg.readUInt32BE();
+                const packet = ClientPacket.decode(msg.subarray(0, 4 + packetSize));
+                this.logger.debug(`SERVER < Receiving | ${packet.data.toString('hex')}`);
+                HandlerFactory.handle(this, packet);
+                msg = msg.subarray(4 + packetSize, msg.length);
+            }
+        } catch (error) {
+            this.logger.error(error);
+        }
     }
 
     public sendRawBuffer(cmd: ProtocolId, buffer: Buffer, resultCode: number = 0) {

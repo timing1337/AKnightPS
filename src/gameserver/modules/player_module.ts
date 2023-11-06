@@ -21,4 +21,16 @@ export class PlayerModule {
 
         connection.sendRawBuffer(ProtocolId.Login, response);
     }
+
+    @handles(ProtocolId.LostCmdResp)
+    public static async onLostCmdResp(connection: Connection, packet: ClientPacket) {
+        connection.sendRawBuffer(ProtocolId.LostCmdResp, Buffer.from('01', 'hex'));
+    }
+
+    /*
+    @handles(ProtocolId.GetPlayerInfo)
+    public static async onGetPlayerInfo(connection: Connection, packet: ClientPacket) {
+        console.log(packet.data.toString('hex'));
+    }
+    */
 }

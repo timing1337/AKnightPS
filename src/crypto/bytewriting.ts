@@ -19,7 +19,7 @@ export default class ByteWriting {
         const firstByte = buffer.readUInt8(offset);
         const secondByte = buffer.readUInt8(offset + 1);
         const length = firstByte * ByteWriting.BYTE_SIZE + secondByte;
-        return [length, buffer.slice(offset + 2, offset + 2 + length).toString()];
+        return [length, buffer.subarray(offset + 2, offset + 2 + length).toString()];
     }
 
     /*
