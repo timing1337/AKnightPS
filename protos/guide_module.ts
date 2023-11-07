@@ -16,31 +16,31 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface GetGuideInfoReply {
     /**
-     * @generated from protobuf field: GuideInfo guideInfos = 1;
+     * @generated from protobuf field: repeated GuideInfo guideInfos = 1;
      */
-    guideInfos?: GuideInfo;
+    guideInfos: GuideInfo[];
 }
 /**
  * @generated from protobuf message GuideInfo
  */
 export interface GuideInfo {
     /**
-     * @generated from protobuf field: repeated int32 guideId = 1;
+     * @generated from protobuf field: int32 guideId = 1;
      */
-    guideId: number[];
+    guideId: number;
     /**
-     * @generated from protobuf field: repeated int32 stepId = 2;
+     * @generated from protobuf field: int32 stepId = 2;
      */
-    stepId: number[];
+    stepId: number;
 }
 /**
  * @generated from protobuf message UpdateGuidePush
  */
 export interface UpdateGuidePush {
     /**
-     * @generated from protobuf field: GuideInfo guideInfos = 1;
+     * @generated from protobuf field: repeated GuideInfo guideInfos = 1;
      */
-    guideInfos?: GuideInfo;
+    guideInfos: GuideInfo[];
 }
 /**
  * @generated from protobuf message FinishGuideReply
@@ -52,13 +52,13 @@ export interface FinishGuideReply {
  */
 export interface FinishGuideRequest {
     /**
-     * @generated from protobuf field: repeated int32 guideId = 1;
+     * @generated from protobuf field: int32 guideId = 1;
      */
-    guideId: number[];
+    guideId: number;
     /**
-     * @generated from protobuf field: repeated int32 stepId = 2;
+     * @generated from protobuf field: int32 stepId = 2;
      */
-    stepId: number[];
+    stepId: number;
 }
 /**
  * @generated from protobuf message GetGuideInfoRequest
@@ -69,11 +69,11 @@ export interface GetGuideInfoRequest {
 class GetGuideInfoReply$Type extends MessageType<GetGuideInfoReply> {
     constructor() {
         super("GetGuideInfoReply", [
-            { no: 1, name: "guideInfos", kind: "message", T: () => GuideInfo }
+            { no: 1, name: "guideInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => GuideInfo }
         ]);
     }
     create(value?: PartialMessage<GetGuideInfoReply>): GetGuideInfoReply {
-        const message = {};
+        const message = { guideInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetGuideInfoReply>(this, message, value);
@@ -84,8 +84,8 @@ class GetGuideInfoReply$Type extends MessageType<GetGuideInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* GuideInfo guideInfos */ 1:
-                    message.guideInfos = GuideInfo.internalBinaryRead(reader, reader.uint32(), options, message.guideInfos);
+                case /* repeated GuideInfo guideInfos */ 1:
+                    message.guideInfos.push(GuideInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -99,9 +99,9 @@ class GetGuideInfoReply$Type extends MessageType<GetGuideInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetGuideInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* GuideInfo guideInfos = 1; */
-        if (message.guideInfos)
-            GuideInfo.internalBinaryWrite(message.guideInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated GuideInfo guideInfos = 1; */
+        for (let i = 0; i < message.guideInfos.length; i++)
+            GuideInfo.internalBinaryWrite(message.guideInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -116,12 +116,12 @@ export const GetGuideInfoReply = new GetGuideInfoReply$Type();
 class GuideInfo$Type extends MessageType<GuideInfo> {
     constructor() {
         super("GuideInfo", [
-            { no: 1, name: "guideId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "stepId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "guideId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "stepId", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GuideInfo>): GuideInfo {
-        const message = { guideId: [], stepId: [] };
+        const message = { guideId: 0, stepId: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GuideInfo>(this, message, value);
@@ -132,19 +132,11 @@ class GuideInfo$Type extends MessageType<GuideInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 guideId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.guideId.push(reader.int32());
-                    else
-                        message.guideId.push(reader.int32());
+                case /* int32 guideId */ 1:
+                    message.guideId = reader.int32();
                     break;
-                case /* repeated int32 stepId */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.stepId.push(reader.int32());
-                    else
-                        message.stepId.push(reader.int32());
+                case /* int32 stepId */ 2:
+                    message.stepId = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -158,12 +150,12 @@ class GuideInfo$Type extends MessageType<GuideInfo> {
         return message;
     }
     internalBinaryWrite(message: GuideInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 guideId = 1; */
-        for (let i = 0; i < message.guideId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.guideId[i]);
-        /* repeated int32 stepId = 2; */
-        for (let i = 0; i < message.stepId.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.stepId[i]);
+        /* int32 guideId = 1; */
+        if (message.guideId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.guideId);
+        /* int32 stepId = 2; */
+        if (message.stepId !== 0)
+            writer.tag(2, WireType.Varint).int32(message.stepId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -178,11 +170,11 @@ export const GuideInfo = new GuideInfo$Type();
 class UpdateGuidePush$Type extends MessageType<UpdateGuidePush> {
     constructor() {
         super("UpdateGuidePush", [
-            { no: 1, name: "guideInfos", kind: "message", T: () => GuideInfo }
+            { no: 1, name: "guideInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => GuideInfo }
         ]);
     }
     create(value?: PartialMessage<UpdateGuidePush>): UpdateGuidePush {
-        const message = {};
+        const message = { guideInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UpdateGuidePush>(this, message, value);
@@ -193,8 +185,8 @@ class UpdateGuidePush$Type extends MessageType<UpdateGuidePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* GuideInfo guideInfos */ 1:
-                    message.guideInfos = GuideInfo.internalBinaryRead(reader, reader.uint32(), options, message.guideInfos);
+                case /* repeated GuideInfo guideInfos */ 1:
+                    message.guideInfos.push(GuideInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -208,9 +200,9 @@ class UpdateGuidePush$Type extends MessageType<UpdateGuidePush> {
         return message;
     }
     internalBinaryWrite(message: UpdateGuidePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* GuideInfo guideInfos = 1; */
-        if (message.guideInfos)
-            GuideInfo.internalBinaryWrite(message.guideInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated GuideInfo guideInfos = 1; */
+        for (let i = 0; i < message.guideInfos.length; i++)
+            GuideInfo.internalBinaryWrite(message.guideInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -251,12 +243,12 @@ export const FinishGuideReply = new FinishGuideReply$Type();
 class FinishGuideRequest$Type extends MessageType<FinishGuideRequest> {
     constructor() {
         super("FinishGuideRequest", [
-            { no: 1, name: "guideId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "stepId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "guideId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "stepId", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<FinishGuideRequest>): FinishGuideRequest {
-        const message = { guideId: [], stepId: [] };
+        const message = { guideId: 0, stepId: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<FinishGuideRequest>(this, message, value);
@@ -267,19 +259,11 @@ class FinishGuideRequest$Type extends MessageType<FinishGuideRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 guideId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.guideId.push(reader.int32());
-                    else
-                        message.guideId.push(reader.int32());
+                case /* int32 guideId */ 1:
+                    message.guideId = reader.int32();
                     break;
-                case /* repeated int32 stepId */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.stepId.push(reader.int32());
-                    else
-                        message.stepId.push(reader.int32());
+                case /* int32 stepId */ 2:
+                    message.stepId = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -293,12 +277,12 @@ class FinishGuideRequest$Type extends MessageType<FinishGuideRequest> {
         return message;
     }
     internalBinaryWrite(message: FinishGuideRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 guideId = 1; */
-        for (let i = 0; i < message.guideId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.guideId[i]);
-        /* repeated int32 stepId = 2; */
-        for (let i = 0; i < message.stepId.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.stepId[i]);
+        /* int32 guideId = 1; */
+        if (message.guideId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.guideId);
+        /* int32 stepId = 2; */
+        if (message.stepId !== 0)
+            writer.tag(2, WireType.Varint).int32(message.stepId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

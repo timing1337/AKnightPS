@@ -30,9 +30,9 @@ export interface GetMonthCardBonusReply {
  */
 export interface GetChargeInfoReply {
     /**
-     * @generated from protobuf field: ChargeInfo infos = 1;
+     * @generated from protobuf field: repeated ChargeInfo infos = 1;
      */
-    infos?: ChargeInfo;
+    infos: ChargeInfo[];
     /**
      * @generated from protobuf field: optional bool sandboxEnable = 2;
      */
@@ -149,9 +149,9 @@ export interface SandboxChargeReply {
  */
 export interface ReadChargeNewRequest {
     /**
-     * @generated from protobuf field: int32 goodsIds = 1;
+     * @generated from protobuf field: repeated int32 goodsIds = 1;
      */
-    goodsIds: number;
+    goodsIds: number[];
 }
 /**
  * @generated from protobuf message GetMonthCardInfoRequest
@@ -163,18 +163,18 @@ export interface GetMonthCardInfoRequest {
  */
 export interface GetMonthCardInfoReply {
     /**
-     * @generated from protobuf field: MonthCardInfo infos = 1;
+     * @generated from protobuf field: repeated MonthCardInfo infos = 1;
      */
-    infos?: MonthCardInfo;
+    infos: MonthCardInfo[];
 }
 /**
  * @generated from protobuf message ReadChargeNewReply
  */
 export interface ReadChargeNewReply {
     /**
-     * @generated from protobuf field: int32 goodsIds = 1;
+     * @generated from protobuf field: repeated int32 goodsIds = 1;
      */
-    goodsIds: number;
+    goodsIds: number[];
 }
 /**
  * @generated from protobuf message MonthCardInfo
@@ -279,13 +279,13 @@ export const GetMonthCardBonusReply = new GetMonthCardBonusReply$Type();
 class GetChargeInfoReply$Type extends MessageType<GetChargeInfoReply> {
     constructor() {
         super("GetChargeInfoReply", [
-            { no: 1, name: "infos", kind: "message", T: () => ChargeInfo },
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ChargeInfo },
             { no: 2, name: "sandboxEnable", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 3, name: "sandboxBalance", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetChargeInfoReply>): GetChargeInfoReply {
-        const message = {};
+        const message = { infos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetChargeInfoReply>(this, message, value);
@@ -296,8 +296,8 @@ class GetChargeInfoReply$Type extends MessageType<GetChargeInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ChargeInfo infos */ 1:
-                    message.infos = ChargeInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated ChargeInfo infos */ 1:
+                    message.infos.push(ChargeInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool sandboxEnable */ 2:
                     message.sandboxEnable = reader.bool();
@@ -317,9 +317,9 @@ class GetChargeInfoReply$Type extends MessageType<GetChargeInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetChargeInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ChargeInfo infos = 1; */
-        if (message.infos)
-            ChargeInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ChargeInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            ChargeInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional bool sandboxEnable = 2; */
         if (message.sandboxEnable !== undefined)
             writer.tag(2, WireType.Varint).bool(message.sandboxEnable);
@@ -706,11 +706,11 @@ export const SandboxChargeReply = new SandboxChargeReply$Type();
 class ReadChargeNewRequest$Type extends MessageType<ReadChargeNewRequest> {
     constructor() {
         super("ReadChargeNewRequest", [
-            { no: 1, name: "goodsIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "goodsIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ReadChargeNewRequest>): ReadChargeNewRequest {
-        const message = { goodsIds: 0 };
+        const message = { goodsIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ReadChargeNewRequest>(this, message, value);
@@ -721,8 +721,12 @@ class ReadChargeNewRequest$Type extends MessageType<ReadChargeNewRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 goodsIds */ 1:
-                    message.goodsIds = reader.int32();
+                case /* repeated int32 goodsIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.goodsIds.push(reader.int32());
+                    else
+                        message.goodsIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -736,9 +740,9 @@ class ReadChargeNewRequest$Type extends MessageType<ReadChargeNewRequest> {
         return message;
     }
     internalBinaryWrite(message: ReadChargeNewRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 goodsIds = 1; */
-        if (message.goodsIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.goodsIds);
+        /* repeated int32 goodsIds = 1; */
+        for (let i = 0; i < message.goodsIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.goodsIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -779,11 +783,11 @@ export const GetMonthCardInfoRequest = new GetMonthCardInfoRequest$Type();
 class GetMonthCardInfoReply$Type extends MessageType<GetMonthCardInfoReply> {
     constructor() {
         super("GetMonthCardInfoReply", [
-            { no: 1, name: "infos", kind: "message", T: () => MonthCardInfo }
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MonthCardInfo }
         ]);
     }
     create(value?: PartialMessage<GetMonthCardInfoReply>): GetMonthCardInfoReply {
-        const message = {};
+        const message = { infos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetMonthCardInfoReply>(this, message, value);
@@ -794,8 +798,8 @@ class GetMonthCardInfoReply$Type extends MessageType<GetMonthCardInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* MonthCardInfo infos */ 1:
-                    message.infos = MonthCardInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated MonthCardInfo infos */ 1:
+                    message.infos.push(MonthCardInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -809,9 +813,9 @@ class GetMonthCardInfoReply$Type extends MessageType<GetMonthCardInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetMonthCardInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* MonthCardInfo infos = 1; */
-        if (message.infos)
-            MonthCardInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MonthCardInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            MonthCardInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -826,11 +830,11 @@ export const GetMonthCardInfoReply = new GetMonthCardInfoReply$Type();
 class ReadChargeNewReply$Type extends MessageType<ReadChargeNewReply> {
     constructor() {
         super("ReadChargeNewReply", [
-            { no: 1, name: "goodsIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "goodsIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ReadChargeNewReply>): ReadChargeNewReply {
-        const message = { goodsIds: 0 };
+        const message = { goodsIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ReadChargeNewReply>(this, message, value);
@@ -841,8 +845,12 @@ class ReadChargeNewReply$Type extends MessageType<ReadChargeNewReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 goodsIds */ 1:
-                    message.goodsIds = reader.int32();
+                case /* repeated int32 goodsIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.goodsIds.push(reader.int32());
+                    else
+                        message.goodsIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -856,9 +864,9 @@ class ReadChargeNewReply$Type extends MessageType<ReadChargeNewReply> {
         return message;
     }
     internalBinaryWrite(message: ReadChargeNewReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 goodsIds = 1; */
-        if (message.goodsIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.goodsIds);
+        /* repeated int32 goodsIds = 1; */
+        for (let i = 0; i < message.goodsIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.goodsIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

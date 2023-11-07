@@ -38,9 +38,9 @@ export interface Get101InfosRequest {
  */
 export interface Get101InfosReply {
     /**
-     * @generated from protobuf field: Act101Info infos = 1;
+     * @generated from protobuf field: repeated Act101Info infos = 1;
      */
-    infos?: Act101Info;
+    infos: Act101Info[];
     /**
      * @generated from protobuf field: optional uint32 loginCount = 2;
      */
@@ -181,13 +181,13 @@ export const Get101InfosRequest = new Get101InfosRequest$Type();
 class Get101InfosReply$Type extends MessageType<Get101InfosReply> {
     constructor() {
         super("Get101InfosReply", [
-            { no: 1, name: "infos", kind: "message", T: () => Act101Info },
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Act101Info },
             { no: 2, name: "loginCount", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ },
             { no: 3, name: "activityId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<Get101InfosReply>): Get101InfosReply {
-        const message = {};
+        const message = { infos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<Get101InfosReply>(this, message, value);
@@ -198,8 +198,8 @@ class Get101InfosReply$Type extends MessageType<Get101InfosReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Act101Info infos */ 1:
-                    message.infos = Act101Info.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated Act101Info infos */ 1:
+                    message.infos.push(Act101Info.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional uint32 loginCount */ 2:
                     message.loginCount = reader.uint32();
@@ -219,9 +219,9 @@ class Get101InfosReply$Type extends MessageType<Get101InfosReply> {
         return message;
     }
     internalBinaryWrite(message: Get101InfosReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Act101Info infos = 1; */
-        if (message.infos)
-            Act101Info.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Act101Info infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            Act101Info.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional uint32 loginCount = 2; */
         if (message.loginCount !== undefined)
             writer.tag(2, WireType.Varint).uint32(message.loginCount);

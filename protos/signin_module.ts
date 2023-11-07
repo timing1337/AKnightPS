@@ -56,42 +56,42 @@ export interface SignInReply {
      */
     day?: number;
     /**
-     * @generated from protobuf field: int32 birthdayHeroIds = 2;
+     * @generated from protobuf field: repeated int32 birthdayHeroIds = 2;
      */
-    birthdayHeroIds: number;
+    birthdayHeroIds: number[];
 }
 /**
  * @generated from protobuf message GetSignInInfoReply
  */
 export interface GetSignInInfoReply {
     /**
-     * @generated from protobuf field: int32 hasSignInDays = 1;
+     * @generated from protobuf field: repeated int32 hasSignInDays = 1;
      */
-    hasSignInDays: number;
+    hasSignInDays: number[];
     /**
      * @generated from protobuf field: optional int32 addupSignInDay = 2;
      */
     addupSignInDay?: number;
     /**
-     * @generated from protobuf field: int32 hasGetAddupBonus = 3;
+     * @generated from protobuf field: repeated int32 hasGetAddupBonus = 3;
      */
-    hasGetAddupBonus: number;
+    hasGetAddupBonus: number[];
     /**
      * @generated from protobuf field: optional int32 openFunctionTime = 4;
      */
     openFunctionTime?: number;
     /**
-     * @generated from protobuf field: int32 hasMonthCardDays = 5;
+     * @generated from protobuf field: repeated int32 hasMonthCardDays = 5;
      */
-    hasMonthCardDays: number;
+    hasMonthCardDays: number[];
     /**
-     * @generated from protobuf field: MonthCardHistory monthCardHistory = 6;
+     * @generated from protobuf field: repeated MonthCardHistory monthCardHistory = 6;
      */
-    monthCardHistory?: MonthCardHistory;
+    monthCardHistory: MonthCardHistory[];
     /**
-     * @generated from protobuf field: int32 birthdayHeroIds = 7;
+     * @generated from protobuf field: repeated int32 birthdayHeroIds = 7;
      */
-    birthdayHeroIds: number;
+    birthdayHeroIds: number[];
 }
 /**
  * @generated from protobuf message MonthCardHistory
@@ -133,17 +133,17 @@ export interface SignInHistoryReply {
      */
     month?: number;
     /**
-     * @generated from protobuf field: int32 hasSignInDays = 2;
+     * @generated from protobuf field: repeated int32 hasSignInDays = 2;
      */
-    hasSignInDays: number;
+    hasSignInDays: number[];
     /**
-     * @generated from protobuf field: int32 hasMonthCardDays = 3;
+     * @generated from protobuf field: repeated int32 hasMonthCardDays = 3;
      */
-    hasMonthCardDays: number;
+    hasMonthCardDays: number[];
     /**
-     * @generated from protobuf field: int32 birthdayHeroIds = 4;
+     * @generated from protobuf field: repeated int32 birthdayHeroIds = 4;
      */
-    birthdayHeroIds: number;
+    birthdayHeroIds: number[];
 }
 /**
  * @generated from protobuf message GetSignInInfoRequest
@@ -343,11 +343,11 @@ class SignInReply$Type extends MessageType<SignInReply> {
     constructor() {
         super("SignInReply", [
             { no: 1, name: "day", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "birthdayHeroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "birthdayHeroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<SignInReply>): SignInReply {
-        const message = { birthdayHeroIds: 0 };
+        const message = { birthdayHeroIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SignInReply>(this, message, value);
@@ -361,8 +361,12 @@ class SignInReply$Type extends MessageType<SignInReply> {
                 case /* optional int32 day */ 1:
                     message.day = reader.int32();
                     break;
-                case /* int32 birthdayHeroIds */ 2:
-                    message.birthdayHeroIds = reader.int32();
+                case /* repeated int32 birthdayHeroIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.birthdayHeroIds.push(reader.int32());
+                    else
+                        message.birthdayHeroIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -379,9 +383,9 @@ class SignInReply$Type extends MessageType<SignInReply> {
         /* optional int32 day = 1; */
         if (message.day !== undefined)
             writer.tag(1, WireType.Varint).int32(message.day);
-        /* int32 birthdayHeroIds = 2; */
-        if (message.birthdayHeroIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.birthdayHeroIds);
+        /* repeated int32 birthdayHeroIds = 2; */
+        for (let i = 0; i < message.birthdayHeroIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.birthdayHeroIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -396,17 +400,17 @@ export const SignInReply = new SignInReply$Type();
 class GetSignInInfoReply$Type extends MessageType<GetSignInInfoReply> {
     constructor() {
         super("GetSignInInfoReply", [
-            { no: 1, name: "hasSignInDays", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "hasSignInDays", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "addupSignInDay", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "hasGetAddupBonus", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "hasGetAddupBonus", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "openFunctionTime", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "hasMonthCardDays", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 6, name: "monthCardHistory", kind: "message", T: () => MonthCardHistory },
-            { no: 7, name: "birthdayHeroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 5, name: "hasMonthCardDays", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 6, name: "monthCardHistory", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MonthCardHistory },
+            { no: 7, name: "birthdayHeroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetSignInInfoReply>): GetSignInInfoReply {
-        const message = { hasSignInDays: 0, hasGetAddupBonus: 0, hasMonthCardDays: 0, birthdayHeroIds: 0 };
+        const message = { hasSignInDays: [], hasGetAddupBonus: [], hasMonthCardDays: [], monthCardHistory: [], birthdayHeroIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetSignInInfoReply>(this, message, value);
@@ -417,26 +421,42 @@ class GetSignInInfoReply$Type extends MessageType<GetSignInInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 hasSignInDays */ 1:
-                    message.hasSignInDays = reader.int32();
+                case /* repeated int32 hasSignInDays */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.hasSignInDays.push(reader.int32());
+                    else
+                        message.hasSignInDays.push(reader.int32());
                     break;
                 case /* optional int32 addupSignInDay */ 2:
                     message.addupSignInDay = reader.int32();
                     break;
-                case /* int32 hasGetAddupBonus */ 3:
-                    message.hasGetAddupBonus = reader.int32();
+                case /* repeated int32 hasGetAddupBonus */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.hasGetAddupBonus.push(reader.int32());
+                    else
+                        message.hasGetAddupBonus.push(reader.int32());
                     break;
                 case /* optional int32 openFunctionTime */ 4:
                     message.openFunctionTime = reader.int32();
                     break;
-                case /* int32 hasMonthCardDays */ 5:
-                    message.hasMonthCardDays = reader.int32();
+                case /* repeated int32 hasMonthCardDays */ 5:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.hasMonthCardDays.push(reader.int32());
+                    else
+                        message.hasMonthCardDays.push(reader.int32());
                     break;
-                case /* MonthCardHistory monthCardHistory */ 6:
-                    message.monthCardHistory = MonthCardHistory.internalBinaryRead(reader, reader.uint32(), options, message.monthCardHistory);
+                case /* repeated MonthCardHistory monthCardHistory */ 6:
+                    message.monthCardHistory.push(MonthCardHistory.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* int32 birthdayHeroIds */ 7:
-                    message.birthdayHeroIds = reader.int32();
+                case /* repeated int32 birthdayHeroIds */ 7:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.birthdayHeroIds.push(reader.int32());
+                    else
+                        message.birthdayHeroIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -450,27 +470,27 @@ class GetSignInInfoReply$Type extends MessageType<GetSignInInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetSignInInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 hasSignInDays = 1; */
-        if (message.hasSignInDays !== 0)
-            writer.tag(1, WireType.Varint).int32(message.hasSignInDays);
+        /* repeated int32 hasSignInDays = 1; */
+        for (let i = 0; i < message.hasSignInDays.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.hasSignInDays[i]);
         /* optional int32 addupSignInDay = 2; */
         if (message.addupSignInDay !== undefined)
             writer.tag(2, WireType.Varint).int32(message.addupSignInDay);
-        /* int32 hasGetAddupBonus = 3; */
-        if (message.hasGetAddupBonus !== 0)
-            writer.tag(3, WireType.Varint).int32(message.hasGetAddupBonus);
+        /* repeated int32 hasGetAddupBonus = 3; */
+        for (let i = 0; i < message.hasGetAddupBonus.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.hasGetAddupBonus[i]);
         /* optional int32 openFunctionTime = 4; */
         if (message.openFunctionTime !== undefined)
             writer.tag(4, WireType.Varint).int32(message.openFunctionTime);
-        /* int32 hasMonthCardDays = 5; */
-        if (message.hasMonthCardDays !== 0)
-            writer.tag(5, WireType.Varint).int32(message.hasMonthCardDays);
-        /* MonthCardHistory monthCardHistory = 6; */
-        if (message.monthCardHistory)
-            MonthCardHistory.internalBinaryWrite(message.monthCardHistory, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
-        /* int32 birthdayHeroIds = 7; */
-        if (message.birthdayHeroIds !== 0)
-            writer.tag(7, WireType.Varint).int32(message.birthdayHeroIds);
+        /* repeated int32 hasMonthCardDays = 5; */
+        for (let i = 0; i < message.hasMonthCardDays.length; i++)
+            writer.tag(5, WireType.Varint).int32(message.hasMonthCardDays[i]);
+        /* repeated MonthCardHistory monthCardHistory = 6; */
+        for (let i = 0; i < message.monthCardHistory.length; i++)
+            MonthCardHistory.internalBinaryWrite(message.monthCardHistory[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 birthdayHeroIds = 7; */
+        for (let i = 0; i < message.birthdayHeroIds.length; i++)
+            writer.tag(7, WireType.Varint).int32(message.birthdayHeroIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -620,13 +640,13 @@ class SignInHistoryReply$Type extends MessageType<SignInHistoryReply> {
     constructor() {
         super("SignInHistoryReply", [
             { no: 1, name: "month", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "hasSignInDays", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "hasMonthCardDays", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "birthdayHeroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "hasSignInDays", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "hasMonthCardDays", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 4, name: "birthdayHeroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<SignInHistoryReply>): SignInHistoryReply {
-        const message = { hasSignInDays: 0, hasMonthCardDays: 0, birthdayHeroIds: 0 };
+        const message = { hasSignInDays: [], hasMonthCardDays: [], birthdayHeroIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SignInHistoryReply>(this, message, value);
@@ -640,14 +660,26 @@ class SignInHistoryReply$Type extends MessageType<SignInHistoryReply> {
                 case /* optional int32 month */ 1:
                     message.month = reader.int32();
                     break;
-                case /* int32 hasSignInDays */ 2:
-                    message.hasSignInDays = reader.int32();
+                case /* repeated int32 hasSignInDays */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.hasSignInDays.push(reader.int32());
+                    else
+                        message.hasSignInDays.push(reader.int32());
                     break;
-                case /* int32 hasMonthCardDays */ 3:
-                    message.hasMonthCardDays = reader.int32();
+                case /* repeated int32 hasMonthCardDays */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.hasMonthCardDays.push(reader.int32());
+                    else
+                        message.hasMonthCardDays.push(reader.int32());
                     break;
-                case /* int32 birthdayHeroIds */ 4:
-                    message.birthdayHeroIds = reader.int32();
+                case /* repeated int32 birthdayHeroIds */ 4:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.birthdayHeroIds.push(reader.int32());
+                    else
+                        message.birthdayHeroIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -664,15 +696,15 @@ class SignInHistoryReply$Type extends MessageType<SignInHistoryReply> {
         /* optional int32 month = 1; */
         if (message.month !== undefined)
             writer.tag(1, WireType.Varint).int32(message.month);
-        /* int32 hasSignInDays = 2; */
-        if (message.hasSignInDays !== 0)
-            writer.tag(2, WireType.Varint).int32(message.hasSignInDays);
-        /* int32 hasMonthCardDays = 3; */
-        if (message.hasMonthCardDays !== 0)
-            writer.tag(3, WireType.Varint).int32(message.hasMonthCardDays);
-        /* int32 birthdayHeroIds = 4; */
-        if (message.birthdayHeroIds !== 0)
-            writer.tag(4, WireType.Varint).int32(message.birthdayHeroIds);
+        /* repeated int32 hasSignInDays = 2; */
+        for (let i = 0; i < message.hasSignInDays.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.hasSignInDays[i]);
+        /* repeated int32 hasMonthCardDays = 3; */
+        for (let i = 0; i < message.hasMonthCardDays.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.hasMonthCardDays[i]);
+        /* repeated int32 birthdayHeroIds = 4; */
+        for (let i = 0; i < message.birthdayHeroIds.length; i++)
+            writer.tag(4, WireType.Varint).int32(message.birthdayHeroIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

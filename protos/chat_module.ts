@@ -26,9 +26,9 @@ export interface DeleteOfflineMsgReply {
  */
 export interface ChatMsgPush {
     /**
-     * @generated from protobuf field: ChatMsg msg = 1;
+     * @generated from protobuf field: repeated ChatMsg msg = 1;
      */
-    msg?: ChatMsg;
+    msg: ChatMsg[];
 }
 /**
  * @generated from protobuf message ReportRequest
@@ -52,9 +52,9 @@ export interface ReportRequest {
  */
 export interface GetReportTypeReply {
     /**
-     * @generated from protobuf field: ReportType reportTypes = 1;
+     * @generated from protobuf field: repeated ReportType reportTypes = 1;
      */
-    reportTypes?: ReportType;
+    reportTypes: ReportType[];
 }
 /**
  * @generated from protobuf message SendMsgReply
@@ -210,11 +210,11 @@ export const DeleteOfflineMsgReply = new DeleteOfflineMsgReply$Type();
 class ChatMsgPush$Type extends MessageType<ChatMsgPush> {
     constructor() {
         super("ChatMsgPush", [
-            { no: 1, name: "msg", kind: "message", T: () => ChatMsg }
+            { no: 1, name: "msg", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ChatMsg }
         ]);
     }
     create(value?: PartialMessage<ChatMsgPush>): ChatMsgPush {
-        const message = {};
+        const message = { msg: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ChatMsgPush>(this, message, value);
@@ -225,8 +225,8 @@ class ChatMsgPush$Type extends MessageType<ChatMsgPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ChatMsg msg */ 1:
-                    message.msg = ChatMsg.internalBinaryRead(reader, reader.uint32(), options, message.msg);
+                case /* repeated ChatMsg msg */ 1:
+                    message.msg.push(ChatMsg.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -240,9 +240,9 @@ class ChatMsgPush$Type extends MessageType<ChatMsgPush> {
         return message;
     }
     internalBinaryWrite(message: ChatMsgPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ChatMsg msg = 1; */
-        if (message.msg)
-            ChatMsg.internalBinaryWrite(message.msg, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ChatMsg msg = 1; */
+        for (let i = 0; i < message.msg.length; i++)
+            ChatMsg.internalBinaryWrite(message.msg[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -318,11 +318,11 @@ export const ReportRequest = new ReportRequest$Type();
 class GetReportTypeReply$Type extends MessageType<GetReportTypeReply> {
     constructor() {
         super("GetReportTypeReply", [
-            { no: 1, name: "reportTypes", kind: "message", T: () => ReportType }
+            { no: 1, name: "reportTypes", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ReportType }
         ]);
     }
     create(value?: PartialMessage<GetReportTypeReply>): GetReportTypeReply {
-        const message = {};
+        const message = { reportTypes: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetReportTypeReply>(this, message, value);
@@ -333,8 +333,8 @@ class GetReportTypeReply$Type extends MessageType<GetReportTypeReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ReportType reportTypes */ 1:
-                    message.reportTypes = ReportType.internalBinaryRead(reader, reader.uint32(), options, message.reportTypes);
+                case /* repeated ReportType reportTypes */ 1:
+                    message.reportTypes.push(ReportType.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -348,9 +348,9 @@ class GetReportTypeReply$Type extends MessageType<GetReportTypeReply> {
         return message;
     }
     internalBinaryWrite(message: GetReportTypeReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ReportType reportTypes = 1; */
-        if (message.reportTypes)
-            ReportType.internalBinaryWrite(message.reportTypes, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ReportType reportTypes = 1; */
+        for (let i = 0; i < message.reportTypes.length; i++)
+            ReportType.internalBinaryWrite(message.reportTypes[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

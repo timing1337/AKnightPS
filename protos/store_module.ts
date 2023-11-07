@@ -16,35 +16,35 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface GetStoreInfosReply {
     /**
-     * @generated from protobuf field: StoreInfo storeInfos = 1;
+     * @generated from protobuf field: repeated StoreInfo storeInfos = 1;
      */
-    storeInfos?: StoreInfo;
+    storeInfos: StoreInfo[];
 }
 /**
  * @generated from protobuf message GetStoreInfosRequest
  */
 export interface GetStoreInfosRequest {
     /**
-     * @generated from protobuf field: int32 storeIds = 1;
+     * @generated from protobuf field: repeated int32 storeIds = 1;
      */
-    storeIds: number;
+    storeIds: number[];
 }
 /**
  * @generated from protobuf message BuyGoodsRequest
  */
 export interface BuyGoodsRequest {
     /**
-     * @generated from protobuf field: repeated int32 storeId = 1;
+     * @generated from protobuf field: int32 storeId = 1;
      */
-    storeId: number[];
+    storeId: number;
     /**
-     * @generated from protobuf field: repeated int32 goodsId = 2;
+     * @generated from protobuf field: int32 goodsId = 2;
      */
-    goodsId: number[];
+    goodsId: number;
     /**
-     * @generated from protobuf field: repeated int32 num = 3;
+     * @generated from protobuf field: int32 num = 3;
      */
-    num: number[];
+    num: number;
     /**
      * @generated from protobuf field: optional int32 selectCost = 4;
      */
@@ -55,17 +55,17 @@ export interface BuyGoodsRequest {
  */
 export interface BuyGoodsReply {
     /**
-     * @generated from protobuf field: repeated int32 storeId = 1;
+     * @generated from protobuf field: int32 storeId = 1;
      */
-    storeId: number[];
+    storeId: number;
     /**
-     * @generated from protobuf field: repeated int32 goodsId = 2;
+     * @generated from protobuf field: int32 goodsId = 2;
      */
-    goodsId: number[];
+    goodsId: number;
     /**
-     * @generated from protobuf field: repeated int32 num = 3;
+     * @generated from protobuf field: int32 num = 3;
      */
-    num: number[];
+    num: number;
     /**
      * @generated from protobuf field: optional int32 selectCost = 4;
      */
@@ -76,13 +76,13 @@ export interface BuyGoodsReply {
  */
 export interface GoodsInfo {
     /**
-     * @generated from protobuf field: repeated int32 goodsId = 1;
+     * @generated from protobuf field: int32 goodsId = 1;
      */
-    goodsId: number[];
+    goodsId: number;
     /**
-     * @generated from protobuf field: repeated int32 buyCount = 2;
+     * @generated from protobuf field: int32 buyCount = 2;
      */
-    buyCount: number[];
+    buyCount: number;
     /**
      * @generated from protobuf field: optional int64 offlineTime = 3;
      */
@@ -93,17 +93,17 @@ export interface GoodsInfo {
  */
 export interface StoreInfo {
     /**
-     * @generated from protobuf field: repeated int32 id = 1;
+     * @generated from protobuf field: int32 id = 1;
      */
-    id: number[];
+    id: number;
     /**
-     * @generated from protobuf field: repeated int64 nextRefreshTime = 2;
+     * @generated from protobuf field: int64 nextRefreshTime = 2;
      */
-    nextRefreshTime: bigint[];
+    nextRefreshTime: bigint;
     /**
-     * @generated from protobuf field: GoodsInfo goodsInfos = 3;
+     * @generated from protobuf field: repeated GoodsInfo goodsInfos = 3;
      */
-    goodsInfos?: GoodsInfo;
+    goodsInfos: GoodsInfo[];
     /**
      * @generated from protobuf field: optional int64 offlineTime = 4;
      */
@@ -114,28 +114,28 @@ export interface StoreInfo {
  */
 export interface ReadStoreNewReply {
     /**
-     * @generated from protobuf field: int32 goodsIds = 1;
+     * @generated from protobuf field: repeated int32 goodsIds = 1;
      */
-    goodsIds: number;
+    goodsIds: number[];
 }
 /**
  * @generated from protobuf message ReadStoreNewRequest
  */
 export interface ReadStoreNewRequest {
     /**
-     * @generated from protobuf field: int32 goodsIds = 1;
+     * @generated from protobuf field: repeated int32 goodsIds = 1;
      */
-    goodsIds: number;
+    goodsIds: number[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class GetStoreInfosReply$Type extends MessageType<GetStoreInfosReply> {
     constructor() {
         super("GetStoreInfosReply", [
-            { no: 1, name: "storeInfos", kind: "message", T: () => StoreInfo }
+            { no: 1, name: "storeInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => StoreInfo }
         ]);
     }
     create(value?: PartialMessage<GetStoreInfosReply>): GetStoreInfosReply {
-        const message = {};
+        const message = { storeInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetStoreInfosReply>(this, message, value);
@@ -146,8 +146,8 @@ class GetStoreInfosReply$Type extends MessageType<GetStoreInfosReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* StoreInfo storeInfos */ 1:
-                    message.storeInfos = StoreInfo.internalBinaryRead(reader, reader.uint32(), options, message.storeInfos);
+                case /* repeated StoreInfo storeInfos */ 1:
+                    message.storeInfos.push(StoreInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -161,9 +161,9 @@ class GetStoreInfosReply$Type extends MessageType<GetStoreInfosReply> {
         return message;
     }
     internalBinaryWrite(message: GetStoreInfosReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* StoreInfo storeInfos = 1; */
-        if (message.storeInfos)
-            StoreInfo.internalBinaryWrite(message.storeInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated StoreInfo storeInfos = 1; */
+        for (let i = 0; i < message.storeInfos.length; i++)
+            StoreInfo.internalBinaryWrite(message.storeInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -178,11 +178,11 @@ export const GetStoreInfosReply = new GetStoreInfosReply$Type();
 class GetStoreInfosRequest$Type extends MessageType<GetStoreInfosRequest> {
     constructor() {
         super("GetStoreInfosRequest", [
-            { no: 1, name: "storeIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "storeIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetStoreInfosRequest>): GetStoreInfosRequest {
-        const message = { storeIds: 0 };
+        const message = { storeIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetStoreInfosRequest>(this, message, value);
@@ -193,8 +193,12 @@ class GetStoreInfosRequest$Type extends MessageType<GetStoreInfosRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 storeIds */ 1:
-                    message.storeIds = reader.int32();
+                case /* repeated int32 storeIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.storeIds.push(reader.int32());
+                    else
+                        message.storeIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -208,9 +212,9 @@ class GetStoreInfosRequest$Type extends MessageType<GetStoreInfosRequest> {
         return message;
     }
     internalBinaryWrite(message: GetStoreInfosRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 storeIds = 1; */
-        if (message.storeIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.storeIds);
+        /* repeated int32 storeIds = 1; */
+        for (let i = 0; i < message.storeIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.storeIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -225,14 +229,14 @@ export const GetStoreInfosRequest = new GetStoreInfosRequest$Type();
 class BuyGoodsRequest$Type extends MessageType<BuyGoodsRequest> {
     constructor() {
         super("BuyGoodsRequest", [
-            { no: 1, name: "storeId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "goodsId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "num", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "storeId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "goodsId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "num", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "selectCost", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<BuyGoodsRequest>): BuyGoodsRequest {
-        const message = { storeId: [], goodsId: [], num: [] };
+        const message = { storeId: 0, goodsId: 0, num: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<BuyGoodsRequest>(this, message, value);
@@ -243,26 +247,14 @@ class BuyGoodsRequest$Type extends MessageType<BuyGoodsRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 storeId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.storeId.push(reader.int32());
-                    else
-                        message.storeId.push(reader.int32());
+                case /* int32 storeId */ 1:
+                    message.storeId = reader.int32();
                     break;
-                case /* repeated int32 goodsId */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.goodsId.push(reader.int32());
-                    else
-                        message.goodsId.push(reader.int32());
+                case /* int32 goodsId */ 2:
+                    message.goodsId = reader.int32();
                     break;
-                case /* repeated int32 num */ 3:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.num.push(reader.int32());
-                    else
-                        message.num.push(reader.int32());
+                case /* int32 num */ 3:
+                    message.num = reader.int32();
                     break;
                 case /* optional int32 selectCost */ 4:
                     message.selectCost = reader.int32();
@@ -279,15 +271,15 @@ class BuyGoodsRequest$Type extends MessageType<BuyGoodsRequest> {
         return message;
     }
     internalBinaryWrite(message: BuyGoodsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 storeId = 1; */
-        for (let i = 0; i < message.storeId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.storeId[i]);
-        /* repeated int32 goodsId = 2; */
-        for (let i = 0; i < message.goodsId.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.goodsId[i]);
-        /* repeated int32 num = 3; */
-        for (let i = 0; i < message.num.length; i++)
-            writer.tag(3, WireType.Varint).int32(message.num[i]);
+        /* int32 storeId = 1; */
+        if (message.storeId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.storeId);
+        /* int32 goodsId = 2; */
+        if (message.goodsId !== 0)
+            writer.tag(2, WireType.Varint).int32(message.goodsId);
+        /* int32 num = 3; */
+        if (message.num !== 0)
+            writer.tag(3, WireType.Varint).int32(message.num);
         /* optional int32 selectCost = 4; */
         if (message.selectCost !== undefined)
             writer.tag(4, WireType.Varint).int32(message.selectCost);
@@ -305,14 +297,14 @@ export const BuyGoodsRequest = new BuyGoodsRequest$Type();
 class BuyGoodsReply$Type extends MessageType<BuyGoodsReply> {
     constructor() {
         super("BuyGoodsReply", [
-            { no: 1, name: "storeId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "goodsId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "num", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "storeId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "goodsId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "num", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "selectCost", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<BuyGoodsReply>): BuyGoodsReply {
-        const message = { storeId: [], goodsId: [], num: [] };
+        const message = { storeId: 0, goodsId: 0, num: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<BuyGoodsReply>(this, message, value);
@@ -323,26 +315,14 @@ class BuyGoodsReply$Type extends MessageType<BuyGoodsReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 storeId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.storeId.push(reader.int32());
-                    else
-                        message.storeId.push(reader.int32());
+                case /* int32 storeId */ 1:
+                    message.storeId = reader.int32();
                     break;
-                case /* repeated int32 goodsId */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.goodsId.push(reader.int32());
-                    else
-                        message.goodsId.push(reader.int32());
+                case /* int32 goodsId */ 2:
+                    message.goodsId = reader.int32();
                     break;
-                case /* repeated int32 num */ 3:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.num.push(reader.int32());
-                    else
-                        message.num.push(reader.int32());
+                case /* int32 num */ 3:
+                    message.num = reader.int32();
                     break;
                 case /* optional int32 selectCost */ 4:
                     message.selectCost = reader.int32();
@@ -359,15 +339,15 @@ class BuyGoodsReply$Type extends MessageType<BuyGoodsReply> {
         return message;
     }
     internalBinaryWrite(message: BuyGoodsReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 storeId = 1; */
-        for (let i = 0; i < message.storeId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.storeId[i]);
-        /* repeated int32 goodsId = 2; */
-        for (let i = 0; i < message.goodsId.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.goodsId[i]);
-        /* repeated int32 num = 3; */
-        for (let i = 0; i < message.num.length; i++)
-            writer.tag(3, WireType.Varint).int32(message.num[i]);
+        /* int32 storeId = 1; */
+        if (message.storeId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.storeId);
+        /* int32 goodsId = 2; */
+        if (message.goodsId !== 0)
+            writer.tag(2, WireType.Varint).int32(message.goodsId);
+        /* int32 num = 3; */
+        if (message.num !== 0)
+            writer.tag(3, WireType.Varint).int32(message.num);
         /* optional int32 selectCost = 4; */
         if (message.selectCost !== undefined)
             writer.tag(4, WireType.Varint).int32(message.selectCost);
@@ -385,13 +365,13 @@ export const BuyGoodsReply = new BuyGoodsReply$Type();
 class GoodsInfo$Type extends MessageType<GoodsInfo> {
     constructor() {
         super("GoodsInfo", [
-            { no: 1, name: "goodsId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "buyCount", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "goodsId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "buyCount", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "offlineTime", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<GoodsInfo>): GoodsInfo {
-        const message = { goodsId: [], buyCount: [] };
+        const message = { goodsId: 0, buyCount: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GoodsInfo>(this, message, value);
@@ -402,19 +382,11 @@ class GoodsInfo$Type extends MessageType<GoodsInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 goodsId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.goodsId.push(reader.int32());
-                    else
-                        message.goodsId.push(reader.int32());
+                case /* int32 goodsId */ 1:
+                    message.goodsId = reader.int32();
                     break;
-                case /* repeated int32 buyCount */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.buyCount.push(reader.int32());
-                    else
-                        message.buyCount.push(reader.int32());
+                case /* int32 buyCount */ 2:
+                    message.buyCount = reader.int32();
                     break;
                 case /* optional int64 offlineTime */ 3:
                     message.offlineTime = reader.int64().toBigInt();
@@ -431,12 +403,12 @@ class GoodsInfo$Type extends MessageType<GoodsInfo> {
         return message;
     }
     internalBinaryWrite(message: GoodsInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 goodsId = 1; */
-        for (let i = 0; i < message.goodsId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.goodsId[i]);
-        /* repeated int32 buyCount = 2; */
-        for (let i = 0; i < message.buyCount.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.buyCount[i]);
+        /* int32 goodsId = 1; */
+        if (message.goodsId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.goodsId);
+        /* int32 buyCount = 2; */
+        if (message.buyCount !== 0)
+            writer.tag(2, WireType.Varint).int32(message.buyCount);
         /* optional int64 offlineTime = 3; */
         if (message.offlineTime !== undefined)
             writer.tag(3, WireType.Varint).int64(message.offlineTime);
@@ -454,14 +426,14 @@ export const GoodsInfo = new GoodsInfo$Type();
 class StoreInfo$Type extends MessageType<StoreInfo> {
     constructor() {
         super("StoreInfo", [
-            { no: 1, name: "id", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "nextRefreshTime", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 3, name: "goodsInfos", kind: "message", T: () => GoodsInfo },
+            { no: 1, name: "id", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "nextRefreshTime", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 3, name: "goodsInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => GoodsInfo },
             { no: 4, name: "offlineTime", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<StoreInfo>): StoreInfo {
-        const message = { id: [], nextRefreshTime: [] };
+        const message = { id: 0, nextRefreshTime: 0n, goodsInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<StoreInfo>(this, message, value);
@@ -472,22 +444,14 @@ class StoreInfo$Type extends MessageType<StoreInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 id */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.id.push(reader.int32());
-                    else
-                        message.id.push(reader.int32());
+                case /* int32 id */ 1:
+                    message.id = reader.int32();
                     break;
-                case /* repeated int64 nextRefreshTime */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.nextRefreshTime.push(reader.int64().toBigInt());
-                    else
-                        message.nextRefreshTime.push(reader.int64().toBigInt());
+                case /* int64 nextRefreshTime */ 2:
+                    message.nextRefreshTime = reader.int64().toBigInt();
                     break;
-                case /* GoodsInfo goodsInfos */ 3:
-                    message.goodsInfos = GoodsInfo.internalBinaryRead(reader, reader.uint32(), options, message.goodsInfos);
+                case /* repeated GoodsInfo goodsInfos */ 3:
+                    message.goodsInfos.push(GoodsInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int64 offlineTime */ 4:
                     message.offlineTime = reader.int64().toBigInt();
@@ -504,15 +468,15 @@ class StoreInfo$Type extends MessageType<StoreInfo> {
         return message;
     }
     internalBinaryWrite(message: StoreInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 id = 1; */
-        for (let i = 0; i < message.id.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.id[i]);
-        /* repeated int64 nextRefreshTime = 2; */
-        for (let i = 0; i < message.nextRefreshTime.length; i++)
-            writer.tag(2, WireType.Varint).int64(message.nextRefreshTime[i]);
-        /* GoodsInfo goodsInfos = 3; */
-        if (message.goodsInfos)
-            GoodsInfo.internalBinaryWrite(message.goodsInfos, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* int32 id = 1; */
+        if (message.id !== 0)
+            writer.tag(1, WireType.Varint).int32(message.id);
+        /* int64 nextRefreshTime = 2; */
+        if (message.nextRefreshTime !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.nextRefreshTime);
+        /* repeated GoodsInfo goodsInfos = 3; */
+        for (let i = 0; i < message.goodsInfos.length; i++)
+            GoodsInfo.internalBinaryWrite(message.goodsInfos[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* optional int64 offlineTime = 4; */
         if (message.offlineTime !== undefined)
             writer.tag(4, WireType.Varint).int64(message.offlineTime);
@@ -530,11 +494,11 @@ export const StoreInfo = new StoreInfo$Type();
 class ReadStoreNewReply$Type extends MessageType<ReadStoreNewReply> {
     constructor() {
         super("ReadStoreNewReply", [
-            { no: 1, name: "goodsIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "goodsIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ReadStoreNewReply>): ReadStoreNewReply {
-        const message = { goodsIds: 0 };
+        const message = { goodsIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ReadStoreNewReply>(this, message, value);
@@ -545,8 +509,12 @@ class ReadStoreNewReply$Type extends MessageType<ReadStoreNewReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 goodsIds */ 1:
-                    message.goodsIds = reader.int32();
+                case /* repeated int32 goodsIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.goodsIds.push(reader.int32());
+                    else
+                        message.goodsIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -560,9 +528,9 @@ class ReadStoreNewReply$Type extends MessageType<ReadStoreNewReply> {
         return message;
     }
     internalBinaryWrite(message: ReadStoreNewReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 goodsIds = 1; */
-        if (message.goodsIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.goodsIds);
+        /* repeated int32 goodsIds = 1; */
+        for (let i = 0; i < message.goodsIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.goodsIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -577,11 +545,11 @@ export const ReadStoreNewReply = new ReadStoreNewReply$Type();
 class ReadStoreNewRequest$Type extends MessageType<ReadStoreNewRequest> {
     constructor() {
         super("ReadStoreNewRequest", [
-            { no: 1, name: "goodsIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "goodsIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ReadStoreNewRequest>): ReadStoreNewRequest {
-        const message = { goodsIds: 0 };
+        const message = { goodsIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ReadStoreNewRequest>(this, message, value);
@@ -592,8 +560,12 @@ class ReadStoreNewRequest$Type extends MessageType<ReadStoreNewRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 goodsIds */ 1:
-                    message.goodsIds = reader.int32();
+                case /* repeated int32 goodsIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.goodsIds.push(reader.int32());
+                    else
+                        message.goodsIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -607,9 +579,9 @@ class ReadStoreNewRequest$Type extends MessageType<ReadStoreNewRequest> {
         return message;
     }
     internalBinaryWrite(message: ReadStoreNewRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 goodsIds = 1; */
-        if (message.goodsIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.goodsIds);
+        /* repeated int32 goodsIds = 1; */
+        for (let i = 0; i < message.goodsIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.goodsIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

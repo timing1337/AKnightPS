@@ -3,10 +3,10 @@
 // tslint:disable
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { IBinaryWriter } from "@protobuf-ts/runtime";
+import { WireType } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
 import type { IBinaryReader } from "@protobuf-ts/runtime";
 import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
@@ -16,13 +16,13 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface RedDotInfo {
     /**
-     * @generated from protobuf field: repeated int64 id = 1;
+     * @generated from protobuf field: int64 id = 1;
      */
-    id: bigint[];
+    id: bigint;
     /**
-     * @generated from protobuf field: repeated int32 value = 2;
+     * @generated from protobuf field: int32 value = 2;
      */
-    value: number[];
+    value: number;
     /**
      * @generated from protobuf field: optional int32 time = 3;
      */
@@ -42,9 +42,9 @@ export interface ShowRedDotReply {
  */
 export interface GetRedDotInfosRequest {
     /**
-     * @generated from protobuf field: int32 ids = 1;
+     * @generated from protobuf field: repeated int32 ids = 1;
      */
-    ids: number;
+    ids: number[];
 }
 /**
  * @generated from protobuf message ShowRedDotRequest
@@ -64,22 +64,22 @@ export interface ShowRedDotRequest {
  */
 export interface GetRedDotInfosReply {
     /**
-     * @generated from protobuf field: RedDotGroup redDotInfos = 1;
+     * @generated from protobuf field: repeated RedDotGroup redDotInfos = 1;
      */
-    redDotInfos?: RedDotGroup;
+    redDotInfos: RedDotGroup[];
 }
 /**
  * @generated from protobuf message RedDotGroup
  */
 export interface RedDotGroup {
     /**
-     * @generated from protobuf field: repeated int32 defineId = 1;
+     * @generated from protobuf field: int32 defineId = 1;
      */
-    defineId: number[];
+    defineId: number;
     /**
-     * @generated from protobuf field: RedDotInfo infos = 2;
+     * @generated from protobuf field: repeated RedDotInfo infos = 2;
      */
-    infos?: RedDotInfo;
+    infos: RedDotInfo[];
     /**
      * @generated from protobuf field: optional bool replaceAll = 3;
      */
@@ -90,9 +90,9 @@ export interface RedDotGroup {
  */
 export interface UpdateRedDotPush {
     /**
-     * @generated from protobuf field: RedDotGroup redDotInfos = 1;
+     * @generated from protobuf field: repeated RedDotGroup redDotInfos = 1;
      */
-    redDotInfos?: RedDotGroup;
+    redDotInfos: RedDotGroup[];
     /**
      * @generated from protobuf field: optional bool replaceAll = 2;
      */
@@ -102,14 +102,14 @@ export interface UpdateRedDotPush {
 class RedDotInfo$Type extends MessageType<RedDotInfo> {
     constructor() {
         super("RedDotInfo", [
-            { no: 1, name: "id", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "value", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "id", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "value", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "time", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "ext", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<RedDotInfo>): RedDotInfo {
-        const message = { id: [], value: [] };
+        const message = { id: 0n, value: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<RedDotInfo>(this, message, value);
@@ -120,19 +120,11 @@ class RedDotInfo$Type extends MessageType<RedDotInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int64 id */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.id.push(reader.int64().toBigInt());
-                    else
-                        message.id.push(reader.int64().toBigInt());
+                case /* int64 id */ 1:
+                    message.id = reader.int64().toBigInt();
                     break;
-                case /* repeated int32 value */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.value.push(reader.int32());
-                    else
-                        message.value.push(reader.int32());
+                case /* int32 value */ 2:
+                    message.value = reader.int32();
                     break;
                 case /* optional int32 time */ 3:
                     message.time = reader.int32();
@@ -152,12 +144,12 @@ class RedDotInfo$Type extends MessageType<RedDotInfo> {
         return message;
     }
     internalBinaryWrite(message: RedDotInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int64 id = 1; */
-        for (let i = 0; i < message.id.length; i++)
-            writer.tag(1, WireType.Varint).int64(message.id[i]);
-        /* repeated int32 value = 2; */
-        for (let i = 0; i < message.value.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.value[i]);
+        /* int64 id = 1; */
+        if (message.id !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.id);
+        /* int32 value = 2; */
+        if (message.value !== 0)
+            writer.tag(2, WireType.Varint).int32(message.value);
         /* optional int32 time = 3; */
         if (message.time !== undefined)
             writer.tag(3, WireType.Varint).int32(message.time);
@@ -204,11 +196,11 @@ export const ShowRedDotReply = new ShowRedDotReply$Type();
 class GetRedDotInfosRequest$Type extends MessageType<GetRedDotInfosRequest> {
     constructor() {
         super("GetRedDotInfosRequest", [
-            { no: 1, name: "ids", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetRedDotInfosRequest>): GetRedDotInfosRequest {
-        const message = { ids: 0 };
+        const message = { ids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetRedDotInfosRequest>(this, message, value);
@@ -219,8 +211,12 @@ class GetRedDotInfosRequest$Type extends MessageType<GetRedDotInfosRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 ids */ 1:
-                    message.ids = reader.int32();
+                case /* repeated int32 ids */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.ids.push(reader.int32());
+                    else
+                        message.ids.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -234,9 +230,9 @@ class GetRedDotInfosRequest$Type extends MessageType<GetRedDotInfosRequest> {
         return message;
     }
     internalBinaryWrite(message: GetRedDotInfosRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 ids = 1; */
-        if (message.ids !== 0)
-            writer.tag(1, WireType.Varint).int32(message.ids);
+        /* repeated int32 ids = 1; */
+        for (let i = 0; i < message.ids.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.ids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -305,11 +301,11 @@ export const ShowRedDotRequest = new ShowRedDotRequest$Type();
 class GetRedDotInfosReply$Type extends MessageType<GetRedDotInfosReply> {
     constructor() {
         super("GetRedDotInfosReply", [
-            { no: 1, name: "redDotInfos", kind: "message", T: () => RedDotGroup }
+            { no: 1, name: "redDotInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RedDotGroup }
         ]);
     }
     create(value?: PartialMessage<GetRedDotInfosReply>): GetRedDotInfosReply {
-        const message = {};
+        const message = { redDotInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetRedDotInfosReply>(this, message, value);
@@ -320,8 +316,8 @@ class GetRedDotInfosReply$Type extends MessageType<GetRedDotInfosReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* RedDotGroup redDotInfos */ 1:
-                    message.redDotInfos = RedDotGroup.internalBinaryRead(reader, reader.uint32(), options, message.redDotInfos);
+                case /* repeated RedDotGroup redDotInfos */ 1:
+                    message.redDotInfos.push(RedDotGroup.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -335,9 +331,9 @@ class GetRedDotInfosReply$Type extends MessageType<GetRedDotInfosReply> {
         return message;
     }
     internalBinaryWrite(message: GetRedDotInfosReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* RedDotGroup redDotInfos = 1; */
-        if (message.redDotInfos)
-            RedDotGroup.internalBinaryWrite(message.redDotInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RedDotGroup redDotInfos = 1; */
+        for (let i = 0; i < message.redDotInfos.length; i++)
+            RedDotGroup.internalBinaryWrite(message.redDotInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -352,13 +348,13 @@ export const GetRedDotInfosReply = new GetRedDotInfosReply$Type();
 class RedDotGroup$Type extends MessageType<RedDotGroup> {
     constructor() {
         super("RedDotGroup", [
-            { no: 1, name: "defineId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "infos", kind: "message", T: () => RedDotInfo },
+            { no: 1, name: "defineId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RedDotInfo },
             { no: 3, name: "replaceAll", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
     create(value?: PartialMessage<RedDotGroup>): RedDotGroup {
-        const message = { defineId: [] };
+        const message = { defineId: 0, infos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<RedDotGroup>(this, message, value);
@@ -369,15 +365,11 @@ class RedDotGroup$Type extends MessageType<RedDotGroup> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 defineId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.defineId.push(reader.int32());
-                    else
-                        message.defineId.push(reader.int32());
+                case /* int32 defineId */ 1:
+                    message.defineId = reader.int32();
                     break;
-                case /* RedDotInfo infos */ 2:
-                    message.infos = RedDotInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated RedDotInfo infos */ 2:
+                    message.infos.push(RedDotInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool replaceAll */ 3:
                     message.replaceAll = reader.bool();
@@ -394,12 +386,12 @@ class RedDotGroup$Type extends MessageType<RedDotGroup> {
         return message;
     }
     internalBinaryWrite(message: RedDotGroup, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 defineId = 1; */
-        for (let i = 0; i < message.defineId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.defineId[i]);
-        /* RedDotInfo infos = 2; */
-        if (message.infos)
-            RedDotInfo.internalBinaryWrite(message.infos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* int32 defineId = 1; */
+        if (message.defineId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.defineId);
+        /* repeated RedDotInfo infos = 2; */
+        for (let i = 0; i < message.infos.length; i++)
+            RedDotInfo.internalBinaryWrite(message.infos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* optional bool replaceAll = 3; */
         if (message.replaceAll !== undefined)
             writer.tag(3, WireType.Varint).bool(message.replaceAll);
@@ -417,12 +409,12 @@ export const RedDotGroup = new RedDotGroup$Type();
 class UpdateRedDotPush$Type extends MessageType<UpdateRedDotPush> {
     constructor() {
         super("UpdateRedDotPush", [
-            { no: 1, name: "redDotInfos", kind: "message", T: () => RedDotGroup },
+            { no: 1, name: "redDotInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RedDotGroup },
             { no: 2, name: "replaceAll", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
     create(value?: PartialMessage<UpdateRedDotPush>): UpdateRedDotPush {
-        const message = {};
+        const message = { redDotInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UpdateRedDotPush>(this, message, value);
@@ -433,8 +425,8 @@ class UpdateRedDotPush$Type extends MessageType<UpdateRedDotPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* RedDotGroup redDotInfos */ 1:
-                    message.redDotInfos = RedDotGroup.internalBinaryRead(reader, reader.uint32(), options, message.redDotInfos);
+                case /* repeated RedDotGroup redDotInfos */ 1:
+                    message.redDotInfos.push(RedDotGroup.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool replaceAll */ 2:
                     message.replaceAll = reader.bool();
@@ -451,9 +443,9 @@ class UpdateRedDotPush$Type extends MessageType<UpdateRedDotPush> {
         return message;
     }
     internalBinaryWrite(message: UpdateRedDotPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* RedDotGroup redDotInfos = 1; */
-        if (message.redDotInfos)
-            RedDotGroup.internalBinaryWrite(message.redDotInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RedDotGroup redDotInfos = 1; */
+        for (let i = 0; i < message.redDotInfos.length; i++)
+            RedDotGroup.internalBinaryWrite(message.redDotInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional bool replaceAll = 2; */
         if (message.replaceAll !== undefined)
             writer.tag(2, WireType.Varint).bool(message.replaceAll);

@@ -16,9 +16,9 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface MaterialChangePush {
     /**
-     * @generated from protobuf field: MaterialData dataList = 1;
+     * @generated from protobuf field: repeated MaterialData dataList = 1;
      */
-    dataList?: MaterialData;
+    dataList: MaterialData[];
     /**
      * @generated from protobuf field: optional uint32 getApproach = 2;
      */
@@ -58,12 +58,12 @@ export interface M2QEntry {
 class MaterialChangePush$Type extends MessageType<MaterialChangePush> {
     constructor() {
         super("MaterialChangePush", [
-            { no: 1, name: "dataList", kind: "message", T: () => MaterialData },
+            { no: 1, name: "dataList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData },
             { no: 2, name: "getApproach", kind: "scalar", opt: true, T: 13 /*ScalarType.UINT32*/ }
         ]);
     }
     create(value?: PartialMessage<MaterialChangePush>): MaterialChangePush {
-        const message = {};
+        const message = { dataList: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<MaterialChangePush>(this, message, value);
@@ -74,8 +74,8 @@ class MaterialChangePush$Type extends MessageType<MaterialChangePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* MaterialData dataList */ 1:
-                    message.dataList = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.dataList);
+                case /* repeated MaterialData dataList */ 1:
+                    message.dataList.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional uint32 getApproach */ 2:
                     message.getApproach = reader.uint32();
@@ -92,9 +92,9 @@ class MaterialChangePush$Type extends MessageType<MaterialChangePush> {
         return message;
     }
     internalBinaryWrite(message: MaterialChangePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* MaterialData dataList = 1; */
-        if (message.dataList)
-            MaterialData.internalBinaryWrite(message.dataList, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData dataList = 1; */
+        for (let i = 0; i < message.dataList.length; i++)
+            MaterialData.internalBinaryWrite(message.dataList[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional uint32 getApproach = 2; */
         if (message.getApproach !== undefined)
             writer.tag(2, WireType.Varint).uint32(message.getApproach);

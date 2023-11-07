@@ -35,21 +35,21 @@ export interface EndDungeonPush {
      */
     playerExp?: number;
     /**
-     * @generated from protobuf field: MaterialData firstBonus = 4;
+     * @generated from protobuf field: repeated MaterialData firstBonus = 4;
      */
-    firstBonus?: MaterialData;
+    firstBonus: MaterialData[];
     /**
-     * @generated from protobuf field: MaterialData normalBonus = 5;
+     * @generated from protobuf field: repeated MaterialData normalBonus = 5;
      */
-    normalBonus?: MaterialData;
+    normalBonus: MaterialData[];
     /**
      * @generated from protobuf field: optional int32 star = 6;
      */
     star?: number;
     /**
-     * @generated from protobuf field: MaterialData advencedBonus = 7;
+     * @generated from protobuf field: repeated MaterialData advencedBonus = 7;
      */
-    advencedBonus?: MaterialData;
+    advencedBonus: MaterialData[];
     /**
      * @generated from protobuf field: optional bool updateDungeonRecord = 8;
      */
@@ -107,9 +107,9 @@ export interface DungeonUpdatePush {
      */
     dungeonInfo?: UserDungeon;
     /**
-     * @generated from protobuf field: UserChapterTypeNum chapterTypeNums = 2;
+     * @generated from protobuf field: repeated UserChapterTypeNum chapterTypeNums = 2;
      */
-    chapterTypeNums?: UserChapterTypeNum;
+    chapterTypeNums: UserChapterTypeNum[];
 }
 /**
  * @generated from protobuf message InstructionDungeonFinalRewardReply
@@ -121,9 +121,9 @@ export interface InstructionDungeonFinalRewardReply {
  */
 export interface InstructionDungeonOpenRequest {
     /**
-     * @generated from protobuf field: int32 openId = 1;
+     * @generated from protobuf field: repeated int32 openId = 1;
      */
-    openId: number;
+    openId: number[];
 }
 /**
  * @generated from protobuf message EquipSpDungeonUpdatePush
@@ -156,9 +156,9 @@ export interface MapElementReply {
      */
     elementId?: number;
     /**
-     * @generated from protobuf field: int32 dialogIds = 2;
+     * @generated from protobuf field: repeated int32 dialogIds = 2;
      */
-    dialogIds: number;
+    dialogIds: number[];
 }
 /**
  * @generated from protobuf message EndDungeonReply
@@ -179,9 +179,9 @@ export interface CoverDungeonRecordReply {
  */
 export interface ChapterMapUpdatePush {
     /**
-     * @generated from protobuf field: int32 mapIds = 1;
+     * @generated from protobuf field: repeated int32 mapIds = 1;
      */
-    mapIds: number;
+    mapIds: number[];
 }
 /**
  * @generated from protobuf message InstructionDungeonFinalRewardRequest
@@ -193,21 +193,21 @@ export interface InstructionDungeonFinalRewardRequest {
  */
 export interface InstructionDungeonInfoPush {
     /**
-     * @generated from protobuf field: int32 unlockIds = 1;
+     * @generated from protobuf field: repeated int32 unlockIds = 1;
      */
-    unlockIds: number;
+    unlockIds: number[];
     /**
-     * @generated from protobuf field: int32 getRewardIds = 2;
+     * @generated from protobuf field: repeated int32 getRewardIds = 2;
      */
-    getRewardIds: number;
+    getRewardIds: number[];
     /**
      * @generated from protobuf field: optional bool getFinalReward = 3;
      */
     getFinalReward?: boolean;
     /**
-     * @generated from protobuf field: int32 openIds = 4;
+     * @generated from protobuf field: repeated int32 openIds = 4;
      */
-    openIds: number;
+    openIds: number[];
 }
 /**
  * @generated from protobuf message MapElementRequest
@@ -218,18 +218,18 @@ export interface MapElementRequest {
      */
     elementId?: number;
     /**
-     * @generated from protobuf field: int32 dialogIds = 2;
+     * @generated from protobuf field: repeated int32 dialogIds = 2;
      */
-    dialogIds: number;
+    dialogIds: number[];
 }
 /**
  * @generated from protobuf message GetPointRewardReply
  */
 export interface GetPointRewardReply {
     /**
-     * @generated from protobuf field: int32 id = 1;
+     * @generated from protobuf field: repeated int32 id = 1;
      */
-    id: number;
+    id: number[];
 }
 /**
  * @generated from protobuf message CoverDungeonRecordRequest
@@ -267,9 +267,9 @@ export interface EpisodeHeroRecommendInfo {
      */
     heroId?: number;
     /**
-     * @generated from protobuf field: HeroRecommendInfo infos = 2;
+     * @generated from protobuf field: repeated HeroRecommendInfo infos = 2;
      */
-    infos?: HeroRecommendInfo;
+    infos: HeroRecommendInfo[];
     /**
      * @generated from protobuf field: optional float rate = 3;
      */
@@ -293,13 +293,13 @@ export interface RewardPointUpdatePush {
  */
 export interface HeroRecommendInfo {
     /**
-     * @generated from protobuf field: int32 heroIds = 1;
+     * @generated from protobuf field: repeated int32 heroIds = 1;
      */
-    heroIds: number;
+    heroIds: number[];
     /**
-     * @generated from protobuf field: int32 subHeroIds = 2;
+     * @generated from protobuf field: repeated int32 subHeroIds = 2;
      */
-    subHeroIds: number;
+    subHeroIds: number[];
     /**
      * @generated from protobuf field: optional int32 cloth = 3;
      */
@@ -309,9 +309,9 @@ export interface HeroRecommendInfo {
      */
     rate?: number;
     /**
-     * @generated from protobuf field: int32 levels = 5;
+     * @generated from protobuf field: repeated int32 levels = 5;
      */
-    levels: number;
+    levels: number[];
 }
 /**
  * @generated from protobuf message EndDungeonRequest
@@ -344,9 +344,9 @@ export interface RewardPointInfo {
      */
     rewardPoint?: number;
     /**
-     * @generated from protobuf field: int32 hasGetPointRewardIds = 3;
+     * @generated from protobuf field: repeated int32 hasGetPointRewardIds = 3;
      */
-    hasGetPointRewardIds: number;
+    hasGetPointRewardIds: number[];
 }
 /**
  * @generated from protobuf message InstructionDungeonInfoRequest
@@ -367,18 +367,18 @@ export interface PuzzleFinishReply {
  */
 export interface ChapterMapElementUpdatePush {
     /**
-     * @generated from protobuf field: int32 elements = 1;
+     * @generated from protobuf field: repeated int32 elements = 1;
      */
-    elements: number;
+    elements: number[];
 }
 /**
  * @generated from protobuf message GetPointRewardRequest
  */
 export interface GetPointRewardRequest {
     /**
-     * @generated from protobuf field: int32 id = 1;
+     * @generated from protobuf field: repeated int32 id = 1;
      */
-    id: number;
+    id: number[];
 }
 /**
  * @generated from protobuf message InstructionDungeonRewardReply
@@ -390,9 +390,9 @@ export interface InstructionDungeonRewardReply {
  */
 export interface GetEpisodeHeroRecommendReply {
     /**
-     * @generated from protobuf field: EpisodeHeroRecommendInfo racommends = 1;
+     * @generated from protobuf field: repeated EpisodeHeroRecommendInfo racommends = 1;
      */
-    racommends?: EpisodeHeroRecommendInfo;
+    racommends: EpisodeHeroRecommendInfo[];
 }
 /**
  * @generated from protobuf message StartDungeonRequest
@@ -428,62 +428,62 @@ export interface StartDungeonRequest {
  */
 export interface InstructionDungeonInfoReply {
     /**
-     * @generated from protobuf field: int32 unlockIds = 1;
+     * @generated from protobuf field: repeated int32 unlockIds = 1;
      */
-    unlockIds: number;
+    unlockIds: number[];
     /**
-     * @generated from protobuf field: int32 getRewardIds = 2;
+     * @generated from protobuf field: repeated int32 getRewardIds = 2;
      */
-    getRewardIds: number;
+    getRewardIds: number[];
     /**
      * @generated from protobuf field: optional bool getFinalReward = 3;
      */
     getFinalReward?: boolean;
     /**
-     * @generated from protobuf field: int32 openIds = 4;
+     * @generated from protobuf field: repeated int32 openIds = 4;
      */
-    openIds: number;
+    openIds: number[];
 }
 /**
  * @generated from protobuf message GetDungeonReply
  */
 export interface GetDungeonReply {
     /**
-     * @generated from protobuf field: UserDungeon dungeonInfoList = 1;
+     * @generated from protobuf field: repeated UserDungeon dungeonInfoList = 1;
      */
-    dungeonInfoList?: UserDungeon;
+    dungeonInfoList: UserDungeon[];
     /**
-     * @generated from protobuf field: DungeonLastHeroGroup lastHeroGroup = 2;
+     * @generated from protobuf field: repeated DungeonLastHeroGroup lastHeroGroup = 2;
      */
-    lastHeroGroup?: DungeonLastHeroGroup;
+    lastHeroGroup: DungeonLastHeroGroup[];
     /**
-     * @generated from protobuf field: int32 mapIds = 3;
+     * @generated from protobuf field: repeated int32 mapIds = 3;
      */
-    mapIds: number;
+    mapIds: number[];
     /**
-     * @generated from protobuf field: int32 elements = 4;
+     * @generated from protobuf field: repeated int32 elements = 4;
      */
-    elements: number;
+    elements: number[];
     /**
-     * @generated from protobuf field: RewardPointInfo rewardPointInfo = 5;
+     * @generated from protobuf field: repeated RewardPointInfo rewardPointInfo = 5;
      */
-    rewardPointInfo?: RewardPointInfo;
+    rewardPointInfo: RewardPointInfo[];
     /**
-     * @generated from protobuf field: int32 equipSpChapters = 6;
+     * @generated from protobuf field: repeated int32 equipSpChapters = 6;
      */
-    equipSpChapters: number;
+    equipSpChapters: number[];
     /**
-     * @generated from protobuf field: UserChapterTypeNum chapterTypeNums = 7;
+     * @generated from protobuf field: repeated UserChapterTypeNum chapterTypeNums = 7;
      */
-    chapterTypeNums?: UserChapterTypeNum;
+    chapterTypeNums: UserChapterTypeNum[];
     /**
-     * @generated from protobuf field: int32 finishElements = 8;
+     * @generated from protobuf field: repeated int32 finishElements = 8;
      */
-    finishElements: number;
+    finishElements: number[];
     /**
-     * @generated from protobuf field: int32 finishPuzzles = 9;
+     * @generated from protobuf field: repeated int32 finishPuzzles = 9;
      */
-    finishPuzzles: number;
+    finishPuzzles: number[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class EndDungeonPush$Type extends MessageType<EndDungeonPush> {
@@ -492,10 +492,10 @@ class EndDungeonPush$Type extends MessageType<EndDungeonPush> {
             { no: 1, name: "chapterId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "episodeId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "playerExp", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "firstBonus", kind: "message", T: () => MaterialData },
-            { no: 5, name: "normalBonus", kind: "message", T: () => MaterialData },
+            { no: 4, name: "firstBonus", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData },
+            { no: 5, name: "normalBonus", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData },
             { no: 6, name: "star", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 7, name: "advencedBonus", kind: "message", T: () => MaterialData },
+            { no: 7, name: "advencedBonus", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData },
             { no: 8, name: "updateDungeonRecord", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 9, name: "canUpdateDungeonRecord", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 10, name: "oldRecordRound", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
@@ -504,7 +504,7 @@ class EndDungeonPush$Type extends MessageType<EndDungeonPush> {
         ]);
     }
     create(value?: PartialMessage<EndDungeonPush>): EndDungeonPush {
-        const message = {};
+        const message = { firstBonus: [], normalBonus: [], advencedBonus: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EndDungeonPush>(this, message, value);
@@ -524,17 +524,17 @@ class EndDungeonPush$Type extends MessageType<EndDungeonPush> {
                 case /* optional int32 playerExp */ 3:
                     message.playerExp = reader.int32();
                     break;
-                case /* MaterialData firstBonus */ 4:
-                    message.firstBonus = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.firstBonus);
+                case /* repeated MaterialData firstBonus */ 4:
+                    message.firstBonus.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* MaterialData normalBonus */ 5:
-                    message.normalBonus = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.normalBonus);
+                case /* repeated MaterialData normalBonus */ 5:
+                    message.normalBonus.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 star */ 6:
                     message.star = reader.int32();
                     break;
-                case /* MaterialData advencedBonus */ 7:
-                    message.advencedBonus = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.advencedBonus);
+                case /* repeated MaterialData advencedBonus */ 7:
+                    message.advencedBonus.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool updateDungeonRecord */ 8:
                     message.updateDungeonRecord = reader.bool();
@@ -572,18 +572,18 @@ class EndDungeonPush$Type extends MessageType<EndDungeonPush> {
         /* optional int32 playerExp = 3; */
         if (message.playerExp !== undefined)
             writer.tag(3, WireType.Varint).int32(message.playerExp);
-        /* MaterialData firstBonus = 4; */
-        if (message.firstBonus)
-            MaterialData.internalBinaryWrite(message.firstBonus, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
-        /* MaterialData normalBonus = 5; */
-        if (message.normalBonus)
-            MaterialData.internalBinaryWrite(message.normalBonus, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData firstBonus = 4; */
+        for (let i = 0; i < message.firstBonus.length; i++)
+            MaterialData.internalBinaryWrite(message.firstBonus[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData normalBonus = 5; */
+        for (let i = 0; i < message.normalBonus.length; i++)
+            MaterialData.internalBinaryWrite(message.normalBonus[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 star = 6; */
         if (message.star !== undefined)
             writer.tag(6, WireType.Varint).int32(message.star);
-        /* MaterialData advencedBonus = 7; */
-        if (message.advencedBonus)
-            MaterialData.internalBinaryWrite(message.advencedBonus, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData advencedBonus = 7; */
+        for (let i = 0; i < message.advencedBonus.length; i++)
+            MaterialData.internalBinaryWrite(message.advencedBonus[i], writer.tag(7, WireType.LengthDelimited).fork(), options).join();
         /* optional bool updateDungeonRecord = 8; */
         if (message.updateDungeonRecord !== undefined)
             writer.tag(8, WireType.Varint).bool(message.updateDungeonRecord);
@@ -741,11 +741,11 @@ class DungeonUpdatePush$Type extends MessageType<DungeonUpdatePush> {
     constructor() {
         super("DungeonUpdatePush", [
             { no: 1, name: "dungeonInfo", kind: "message", T: () => UserDungeon },
-            { no: 2, name: "chapterTypeNums", kind: "message", T: () => UserChapterTypeNum }
+            { no: 2, name: "chapterTypeNums", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => UserChapterTypeNum }
         ]);
     }
     create(value?: PartialMessage<DungeonUpdatePush>): DungeonUpdatePush {
-        const message = {};
+        const message = { chapterTypeNums: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DungeonUpdatePush>(this, message, value);
@@ -759,8 +759,8 @@ class DungeonUpdatePush$Type extends MessageType<DungeonUpdatePush> {
                 case /* optional UserDungeon dungeonInfo */ 1:
                     message.dungeonInfo = UserDungeon.internalBinaryRead(reader, reader.uint32(), options, message.dungeonInfo);
                     break;
-                case /* UserChapterTypeNum chapterTypeNums */ 2:
-                    message.chapterTypeNums = UserChapterTypeNum.internalBinaryRead(reader, reader.uint32(), options, message.chapterTypeNums);
+                case /* repeated UserChapterTypeNum chapterTypeNums */ 2:
+                    message.chapterTypeNums.push(UserChapterTypeNum.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -777,9 +777,9 @@ class DungeonUpdatePush$Type extends MessageType<DungeonUpdatePush> {
         /* optional UserDungeon dungeonInfo = 1; */
         if (message.dungeonInfo)
             UserDungeon.internalBinaryWrite(message.dungeonInfo, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* UserChapterTypeNum chapterTypeNums = 2; */
-        if (message.chapterTypeNums)
-            UserChapterTypeNum.internalBinaryWrite(message.chapterTypeNums, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated UserChapterTypeNum chapterTypeNums = 2; */
+        for (let i = 0; i < message.chapterTypeNums.length; i++)
+            UserChapterTypeNum.internalBinaryWrite(message.chapterTypeNums[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -820,11 +820,11 @@ export const InstructionDungeonFinalRewardReply = new InstructionDungeonFinalRew
 class InstructionDungeonOpenRequest$Type extends MessageType<InstructionDungeonOpenRequest> {
     constructor() {
         super("InstructionDungeonOpenRequest", [
-            { no: 1, name: "openId", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "openId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<InstructionDungeonOpenRequest>): InstructionDungeonOpenRequest {
-        const message = { openId: 0 };
+        const message = { openId: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<InstructionDungeonOpenRequest>(this, message, value);
@@ -835,8 +835,12 @@ class InstructionDungeonOpenRequest$Type extends MessageType<InstructionDungeonO
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 openId */ 1:
-                    message.openId = reader.int32();
+                case /* repeated int32 openId */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.openId.push(reader.int32());
+                    else
+                        message.openId.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -850,9 +854,9 @@ class InstructionDungeonOpenRequest$Type extends MessageType<InstructionDungeonO
         return message;
     }
     internalBinaryWrite(message: InstructionDungeonOpenRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 openId = 1; */
-        if (message.openId !== 0)
-            writer.tag(1, WireType.Varint).int32(message.openId);
+        /* repeated int32 openId = 1; */
+        for (let i = 0; i < message.openId.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.openId[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -969,11 +973,11 @@ class MapElementReply$Type extends MessageType<MapElementReply> {
     constructor() {
         super("MapElementReply", [
             { no: 1, name: "elementId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "dialogIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "dialogIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<MapElementReply>): MapElementReply {
-        const message = { dialogIds: 0 };
+        const message = { dialogIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<MapElementReply>(this, message, value);
@@ -987,8 +991,12 @@ class MapElementReply$Type extends MessageType<MapElementReply> {
                 case /* optional int32 elementId */ 1:
                     message.elementId = reader.int32();
                     break;
-                case /* int32 dialogIds */ 2:
-                    message.dialogIds = reader.int32();
+                case /* repeated int32 dialogIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.dialogIds.push(reader.int32());
+                    else
+                        message.dialogIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1005,9 +1013,9 @@ class MapElementReply$Type extends MessageType<MapElementReply> {
         /* optional int32 elementId = 1; */
         if (message.elementId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.elementId);
-        /* int32 dialogIds = 2; */
-        if (message.dialogIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.dialogIds);
+        /* repeated int32 dialogIds = 2; */
+        for (let i = 0; i < message.dialogIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.dialogIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1095,11 +1103,11 @@ export const CoverDungeonRecordReply = new CoverDungeonRecordReply$Type();
 class ChapterMapUpdatePush$Type extends MessageType<ChapterMapUpdatePush> {
     constructor() {
         super("ChapterMapUpdatePush", [
-            { no: 1, name: "mapIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "mapIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ChapterMapUpdatePush>): ChapterMapUpdatePush {
-        const message = { mapIds: 0 };
+        const message = { mapIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ChapterMapUpdatePush>(this, message, value);
@@ -1110,8 +1118,12 @@ class ChapterMapUpdatePush$Type extends MessageType<ChapterMapUpdatePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 mapIds */ 1:
-                    message.mapIds = reader.int32();
+                case /* repeated int32 mapIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.mapIds.push(reader.int32());
+                    else
+                        message.mapIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1125,9 +1137,9 @@ class ChapterMapUpdatePush$Type extends MessageType<ChapterMapUpdatePush> {
         return message;
     }
     internalBinaryWrite(message: ChapterMapUpdatePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 mapIds = 1; */
-        if (message.mapIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.mapIds);
+        /* repeated int32 mapIds = 1; */
+        for (let i = 0; i < message.mapIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.mapIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1168,14 +1180,14 @@ export const InstructionDungeonFinalRewardRequest = new InstructionDungeonFinalR
 class InstructionDungeonInfoPush$Type extends MessageType<InstructionDungeonInfoPush> {
     constructor() {
         super("InstructionDungeonInfoPush", [
-            { no: 1, name: "unlockIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "getRewardIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "unlockIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "getRewardIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "getFinalReward", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 4, name: "openIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 4, name: "openIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<InstructionDungeonInfoPush>): InstructionDungeonInfoPush {
-        const message = { unlockIds: 0, getRewardIds: 0, openIds: 0 };
+        const message = { unlockIds: [], getRewardIds: [], openIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<InstructionDungeonInfoPush>(this, message, value);
@@ -1186,17 +1198,29 @@ class InstructionDungeonInfoPush$Type extends MessageType<InstructionDungeonInfo
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 unlockIds */ 1:
-                    message.unlockIds = reader.int32();
+                case /* repeated int32 unlockIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.unlockIds.push(reader.int32());
+                    else
+                        message.unlockIds.push(reader.int32());
                     break;
-                case /* int32 getRewardIds */ 2:
-                    message.getRewardIds = reader.int32();
+                case /* repeated int32 getRewardIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.getRewardIds.push(reader.int32());
+                    else
+                        message.getRewardIds.push(reader.int32());
                     break;
                 case /* optional bool getFinalReward */ 3:
                     message.getFinalReward = reader.bool();
                     break;
-                case /* int32 openIds */ 4:
-                    message.openIds = reader.int32();
+                case /* repeated int32 openIds */ 4:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.openIds.push(reader.int32());
+                    else
+                        message.openIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1210,18 +1234,18 @@ class InstructionDungeonInfoPush$Type extends MessageType<InstructionDungeonInfo
         return message;
     }
     internalBinaryWrite(message: InstructionDungeonInfoPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 unlockIds = 1; */
-        if (message.unlockIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.unlockIds);
-        /* int32 getRewardIds = 2; */
-        if (message.getRewardIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.getRewardIds);
+        /* repeated int32 unlockIds = 1; */
+        for (let i = 0; i < message.unlockIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.unlockIds[i]);
+        /* repeated int32 getRewardIds = 2; */
+        for (let i = 0; i < message.getRewardIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.getRewardIds[i]);
         /* optional bool getFinalReward = 3; */
         if (message.getFinalReward !== undefined)
             writer.tag(3, WireType.Varint).bool(message.getFinalReward);
-        /* int32 openIds = 4; */
-        if (message.openIds !== 0)
-            writer.tag(4, WireType.Varint).int32(message.openIds);
+        /* repeated int32 openIds = 4; */
+        for (let i = 0; i < message.openIds.length; i++)
+            writer.tag(4, WireType.Varint).int32(message.openIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1237,11 +1261,11 @@ class MapElementRequest$Type extends MessageType<MapElementRequest> {
     constructor() {
         super("MapElementRequest", [
             { no: 1, name: "elementId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "dialogIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "dialogIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<MapElementRequest>): MapElementRequest {
-        const message = { dialogIds: 0 };
+        const message = { dialogIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<MapElementRequest>(this, message, value);
@@ -1255,8 +1279,12 @@ class MapElementRequest$Type extends MessageType<MapElementRequest> {
                 case /* optional int32 elementId */ 1:
                     message.elementId = reader.int32();
                     break;
-                case /* int32 dialogIds */ 2:
-                    message.dialogIds = reader.int32();
+                case /* repeated int32 dialogIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.dialogIds.push(reader.int32());
+                    else
+                        message.dialogIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1273,9 +1301,9 @@ class MapElementRequest$Type extends MessageType<MapElementRequest> {
         /* optional int32 elementId = 1; */
         if (message.elementId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.elementId);
-        /* int32 dialogIds = 2; */
-        if (message.dialogIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.dialogIds);
+        /* repeated int32 dialogIds = 2; */
+        for (let i = 0; i < message.dialogIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.dialogIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1290,11 +1318,11 @@ export const MapElementRequest = new MapElementRequest$Type();
 class GetPointRewardReply$Type extends MessageType<GetPointRewardReply> {
     constructor() {
         super("GetPointRewardReply", [
-            { no: 1, name: "id", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "id", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetPointRewardReply>): GetPointRewardReply {
-        const message = { id: 0 };
+        const message = { id: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetPointRewardReply>(this, message, value);
@@ -1305,8 +1333,12 @@ class GetPointRewardReply$Type extends MessageType<GetPointRewardReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 id */ 1:
-                    message.id = reader.int32();
+                case /* repeated int32 id */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.id.push(reader.int32());
+                    else
+                        message.id.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1320,9 +1352,9 @@ class GetPointRewardReply$Type extends MessageType<GetPointRewardReply> {
         return message;
     }
     internalBinaryWrite(message: GetPointRewardReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 id = 1; */
-        if (message.id !== 0)
-            writer.tag(1, WireType.Varint).int32(message.id);
+        /* repeated int32 id = 1; */
+        for (let i = 0; i < message.id.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.id[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1465,12 +1497,12 @@ class EpisodeHeroRecommendInfo$Type extends MessageType<EpisodeHeroRecommendInfo
     constructor() {
         super("EpisodeHeroRecommendInfo", [
             { no: 1, name: "heroId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "infos", kind: "message", T: () => HeroRecommendInfo },
+            { no: 2, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroRecommendInfo },
             { no: 3, name: "rate", kind: "scalar", opt: true, T: 2 /*ScalarType.FLOAT*/ }
         ]);
     }
     create(value?: PartialMessage<EpisodeHeroRecommendInfo>): EpisodeHeroRecommendInfo {
-        const message = {};
+        const message = { infos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EpisodeHeroRecommendInfo>(this, message, value);
@@ -1484,8 +1516,8 @@ class EpisodeHeroRecommendInfo$Type extends MessageType<EpisodeHeroRecommendInfo
                 case /* optional int32 heroId */ 1:
                     message.heroId = reader.int32();
                     break;
-                case /* HeroRecommendInfo infos */ 2:
-                    message.infos = HeroRecommendInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated HeroRecommendInfo infos */ 2:
+                    message.infos.push(HeroRecommendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional float rate */ 3:
                     message.rate = reader.float();
@@ -1505,9 +1537,9 @@ class EpisodeHeroRecommendInfo$Type extends MessageType<EpisodeHeroRecommendInfo
         /* optional int32 heroId = 1; */
         if (message.heroId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.heroId);
-        /* HeroRecommendInfo infos = 2; */
-        if (message.infos)
-            HeroRecommendInfo.internalBinaryWrite(message.infos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroRecommendInfo infos = 2; */
+        for (let i = 0; i < message.infos.length; i++)
+            HeroRecommendInfo.internalBinaryWrite(message.infos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* optional float rate = 3; */
         if (message.rate !== undefined)
             writer.tag(3, WireType.Bit32).float(message.rate);
@@ -1579,15 +1611,15 @@ export const RewardPointUpdatePush = new RewardPointUpdatePush$Type();
 class HeroRecommendInfo$Type extends MessageType<HeroRecommendInfo> {
     constructor() {
         super("HeroRecommendInfo", [
-            { no: 1, name: "heroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "subHeroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "heroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "subHeroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "cloth", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "rate", kind: "scalar", opt: true, T: 2 /*ScalarType.FLOAT*/ },
-            { no: 5, name: "levels", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 5, name: "levels", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<HeroRecommendInfo>): HeroRecommendInfo {
-        const message = { heroIds: 0, subHeroIds: 0, levels: 0 };
+        const message = { heroIds: [], subHeroIds: [], levels: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroRecommendInfo>(this, message, value);
@@ -1598,11 +1630,19 @@ class HeroRecommendInfo$Type extends MessageType<HeroRecommendInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 heroIds */ 1:
-                    message.heroIds = reader.int32();
+                case /* repeated int32 heroIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.heroIds.push(reader.int32());
+                    else
+                        message.heroIds.push(reader.int32());
                     break;
-                case /* int32 subHeroIds */ 2:
-                    message.subHeroIds = reader.int32();
+                case /* repeated int32 subHeroIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.subHeroIds.push(reader.int32());
+                    else
+                        message.subHeroIds.push(reader.int32());
                     break;
                 case /* optional int32 cloth */ 3:
                     message.cloth = reader.int32();
@@ -1610,8 +1650,12 @@ class HeroRecommendInfo$Type extends MessageType<HeroRecommendInfo> {
                 case /* optional float rate */ 4:
                     message.rate = reader.float();
                     break;
-                case /* int32 levels */ 5:
-                    message.levels = reader.int32();
+                case /* repeated int32 levels */ 5:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.levels.push(reader.int32());
+                    else
+                        message.levels.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1625,21 +1669,21 @@ class HeroRecommendInfo$Type extends MessageType<HeroRecommendInfo> {
         return message;
     }
     internalBinaryWrite(message: HeroRecommendInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 heroIds = 1; */
-        if (message.heroIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.heroIds);
-        /* int32 subHeroIds = 2; */
-        if (message.subHeroIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.subHeroIds);
+        /* repeated int32 heroIds = 1; */
+        for (let i = 0; i < message.heroIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.heroIds[i]);
+        /* repeated int32 subHeroIds = 2; */
+        for (let i = 0; i < message.subHeroIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.subHeroIds[i]);
         /* optional int32 cloth = 3; */
         if (message.cloth !== undefined)
             writer.tag(3, WireType.Varint).int32(message.cloth);
         /* optional float rate = 4; */
         if (message.rate !== undefined)
             writer.tag(4, WireType.Bit32).float(message.rate);
-        /* int32 levels = 5; */
-        if (message.levels !== 0)
-            writer.tag(5, WireType.Varint).int32(message.levels);
+        /* repeated int32 levels = 5; */
+        for (let i = 0; i < message.levels.length; i++)
+            writer.tag(5, WireType.Varint).int32(message.levels[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1750,11 +1794,11 @@ class RewardPointInfo$Type extends MessageType<RewardPointInfo> {
         super("RewardPointInfo", [
             { no: 1, name: "chapterId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "rewardPoint", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "hasGetPointRewardIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 3, name: "hasGetPointRewardIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<RewardPointInfo>): RewardPointInfo {
-        const message = { hasGetPointRewardIds: 0 };
+        const message = { hasGetPointRewardIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<RewardPointInfo>(this, message, value);
@@ -1771,8 +1815,12 @@ class RewardPointInfo$Type extends MessageType<RewardPointInfo> {
                 case /* optional int32 rewardPoint */ 2:
                     message.rewardPoint = reader.int32();
                     break;
-                case /* int32 hasGetPointRewardIds */ 3:
-                    message.hasGetPointRewardIds = reader.int32();
+                case /* repeated int32 hasGetPointRewardIds */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.hasGetPointRewardIds.push(reader.int32());
+                    else
+                        message.hasGetPointRewardIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1792,9 +1840,9 @@ class RewardPointInfo$Type extends MessageType<RewardPointInfo> {
         /* optional int32 rewardPoint = 2; */
         if (message.rewardPoint !== undefined)
             writer.tag(2, WireType.Varint).int32(message.rewardPoint);
-        /* int32 hasGetPointRewardIds = 3; */
-        if (message.hasGetPointRewardIds !== 0)
-            writer.tag(3, WireType.Varint).int32(message.hasGetPointRewardIds);
+        /* repeated int32 hasGetPointRewardIds = 3; */
+        for (let i = 0; i < message.hasGetPointRewardIds.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.hasGetPointRewardIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1882,11 +1930,11 @@ export const PuzzleFinishReply = new PuzzleFinishReply$Type();
 class ChapterMapElementUpdatePush$Type extends MessageType<ChapterMapElementUpdatePush> {
     constructor() {
         super("ChapterMapElementUpdatePush", [
-            { no: 1, name: "elements", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "elements", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ChapterMapElementUpdatePush>): ChapterMapElementUpdatePush {
-        const message = { elements: 0 };
+        const message = { elements: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ChapterMapElementUpdatePush>(this, message, value);
@@ -1897,8 +1945,12 @@ class ChapterMapElementUpdatePush$Type extends MessageType<ChapterMapElementUpda
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 elements */ 1:
-                    message.elements = reader.int32();
+                case /* repeated int32 elements */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.elements.push(reader.int32());
+                    else
+                        message.elements.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1912,9 +1964,9 @@ class ChapterMapElementUpdatePush$Type extends MessageType<ChapterMapElementUpda
         return message;
     }
     internalBinaryWrite(message: ChapterMapElementUpdatePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 elements = 1; */
-        if (message.elements !== 0)
-            writer.tag(1, WireType.Varint).int32(message.elements);
+        /* repeated int32 elements = 1; */
+        for (let i = 0; i < message.elements.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.elements[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1929,11 +1981,11 @@ export const ChapterMapElementUpdatePush = new ChapterMapElementUpdatePush$Type(
 class GetPointRewardRequest$Type extends MessageType<GetPointRewardRequest> {
     constructor() {
         super("GetPointRewardRequest", [
-            { no: 1, name: "id", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "id", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetPointRewardRequest>): GetPointRewardRequest {
-        const message = { id: 0 };
+        const message = { id: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetPointRewardRequest>(this, message, value);
@@ -1944,8 +1996,12 @@ class GetPointRewardRequest$Type extends MessageType<GetPointRewardRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 id */ 1:
-                    message.id = reader.int32();
+                case /* repeated int32 id */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.id.push(reader.int32());
+                    else
+                        message.id.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1959,9 +2015,9 @@ class GetPointRewardRequest$Type extends MessageType<GetPointRewardRequest> {
         return message;
     }
     internalBinaryWrite(message: GetPointRewardRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 id = 1; */
-        if (message.id !== 0)
-            writer.tag(1, WireType.Varint).int32(message.id);
+        /* repeated int32 id = 1; */
+        for (let i = 0; i < message.id.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.id[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2002,11 +2058,11 @@ export const InstructionDungeonRewardReply = new InstructionDungeonRewardReply$T
 class GetEpisodeHeroRecommendReply$Type extends MessageType<GetEpisodeHeroRecommendReply> {
     constructor() {
         super("GetEpisodeHeroRecommendReply", [
-            { no: 1, name: "racommends", kind: "message", T: () => EpisodeHeroRecommendInfo }
+            { no: 1, name: "racommends", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => EpisodeHeroRecommendInfo }
         ]);
     }
     create(value?: PartialMessage<GetEpisodeHeroRecommendReply>): GetEpisodeHeroRecommendReply {
-        const message = {};
+        const message = { racommends: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetEpisodeHeroRecommendReply>(this, message, value);
@@ -2017,8 +2073,8 @@ class GetEpisodeHeroRecommendReply$Type extends MessageType<GetEpisodeHeroRecomm
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* EpisodeHeroRecommendInfo racommends */ 1:
-                    message.racommends = EpisodeHeroRecommendInfo.internalBinaryRead(reader, reader.uint32(), options, message.racommends);
+                case /* repeated EpisodeHeroRecommendInfo racommends */ 1:
+                    message.racommends.push(EpisodeHeroRecommendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2032,9 +2088,9 @@ class GetEpisodeHeroRecommendReply$Type extends MessageType<GetEpisodeHeroRecomm
         return message;
     }
     internalBinaryWrite(message: GetEpisodeHeroRecommendReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* EpisodeHeroRecommendInfo racommends = 1; */
-        if (message.racommends)
-            EpisodeHeroRecommendInfo.internalBinaryWrite(message.racommends, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated EpisodeHeroRecommendInfo racommends = 1; */
+        for (let i = 0; i < message.racommends.length; i++)
+            EpisodeHeroRecommendInfo.internalBinaryWrite(message.racommends[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2131,14 +2187,14 @@ export const StartDungeonRequest = new StartDungeonRequest$Type();
 class InstructionDungeonInfoReply$Type extends MessageType<InstructionDungeonInfoReply> {
     constructor() {
         super("InstructionDungeonInfoReply", [
-            { no: 1, name: "unlockIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "getRewardIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "unlockIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "getRewardIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "getFinalReward", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 4, name: "openIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 4, name: "openIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<InstructionDungeonInfoReply>): InstructionDungeonInfoReply {
-        const message = { unlockIds: 0, getRewardIds: 0, openIds: 0 };
+        const message = { unlockIds: [], getRewardIds: [], openIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<InstructionDungeonInfoReply>(this, message, value);
@@ -2149,17 +2205,29 @@ class InstructionDungeonInfoReply$Type extends MessageType<InstructionDungeonInf
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 unlockIds */ 1:
-                    message.unlockIds = reader.int32();
+                case /* repeated int32 unlockIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.unlockIds.push(reader.int32());
+                    else
+                        message.unlockIds.push(reader.int32());
                     break;
-                case /* int32 getRewardIds */ 2:
-                    message.getRewardIds = reader.int32();
+                case /* repeated int32 getRewardIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.getRewardIds.push(reader.int32());
+                    else
+                        message.getRewardIds.push(reader.int32());
                     break;
                 case /* optional bool getFinalReward */ 3:
                     message.getFinalReward = reader.bool();
                     break;
-                case /* int32 openIds */ 4:
-                    message.openIds = reader.int32();
+                case /* repeated int32 openIds */ 4:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.openIds.push(reader.int32());
+                    else
+                        message.openIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2173,18 +2241,18 @@ class InstructionDungeonInfoReply$Type extends MessageType<InstructionDungeonInf
         return message;
     }
     internalBinaryWrite(message: InstructionDungeonInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 unlockIds = 1; */
-        if (message.unlockIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.unlockIds);
-        /* int32 getRewardIds = 2; */
-        if (message.getRewardIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.getRewardIds);
+        /* repeated int32 unlockIds = 1; */
+        for (let i = 0; i < message.unlockIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.unlockIds[i]);
+        /* repeated int32 getRewardIds = 2; */
+        for (let i = 0; i < message.getRewardIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.getRewardIds[i]);
         /* optional bool getFinalReward = 3; */
         if (message.getFinalReward !== undefined)
             writer.tag(3, WireType.Varint).bool(message.getFinalReward);
-        /* int32 openIds = 4; */
-        if (message.openIds !== 0)
-            writer.tag(4, WireType.Varint).int32(message.openIds);
+        /* repeated int32 openIds = 4; */
+        for (let i = 0; i < message.openIds.length; i++)
+            writer.tag(4, WireType.Varint).int32(message.openIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2199,19 +2267,19 @@ export const InstructionDungeonInfoReply = new InstructionDungeonInfoReply$Type(
 class GetDungeonReply$Type extends MessageType<GetDungeonReply> {
     constructor() {
         super("GetDungeonReply", [
-            { no: 1, name: "dungeonInfoList", kind: "message", T: () => UserDungeon },
-            { no: 2, name: "lastHeroGroup", kind: "message", T: () => DungeonLastHeroGroup },
-            { no: 3, name: "mapIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "elements", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "rewardPointInfo", kind: "message", T: () => RewardPointInfo },
-            { no: 6, name: "equipSpChapters", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 7, name: "chapterTypeNums", kind: "message", T: () => UserChapterTypeNum },
-            { no: 8, name: "finishElements", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 9, name: "finishPuzzles", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "dungeonInfoList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => UserDungeon },
+            { no: 2, name: "lastHeroGroup", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => DungeonLastHeroGroup },
+            { no: 3, name: "mapIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 4, name: "elements", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 5, name: "rewardPointInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RewardPointInfo },
+            { no: 6, name: "equipSpChapters", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 7, name: "chapterTypeNums", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => UserChapterTypeNum },
+            { no: 8, name: "finishElements", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 9, name: "finishPuzzles", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetDungeonReply>): GetDungeonReply {
-        const message = { mapIds: 0, elements: 0, equipSpChapters: 0, finishElements: 0, finishPuzzles: 0 };
+        const message = { dungeonInfoList: [], lastHeroGroup: [], mapIds: [], elements: [], rewardPointInfo: [], equipSpChapters: [], chapterTypeNums: [], finishElements: [], finishPuzzles: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetDungeonReply>(this, message, value);
@@ -2222,32 +2290,52 @@ class GetDungeonReply$Type extends MessageType<GetDungeonReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* UserDungeon dungeonInfoList */ 1:
-                    message.dungeonInfoList = UserDungeon.internalBinaryRead(reader, reader.uint32(), options, message.dungeonInfoList);
+                case /* repeated UserDungeon dungeonInfoList */ 1:
+                    message.dungeonInfoList.push(UserDungeon.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* DungeonLastHeroGroup lastHeroGroup */ 2:
-                    message.lastHeroGroup = DungeonLastHeroGroup.internalBinaryRead(reader, reader.uint32(), options, message.lastHeroGroup);
+                case /* repeated DungeonLastHeroGroup lastHeroGroup */ 2:
+                    message.lastHeroGroup.push(DungeonLastHeroGroup.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* int32 mapIds */ 3:
-                    message.mapIds = reader.int32();
+                case /* repeated int32 mapIds */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.mapIds.push(reader.int32());
+                    else
+                        message.mapIds.push(reader.int32());
                     break;
-                case /* int32 elements */ 4:
-                    message.elements = reader.int32();
+                case /* repeated int32 elements */ 4:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.elements.push(reader.int32());
+                    else
+                        message.elements.push(reader.int32());
                     break;
-                case /* RewardPointInfo rewardPointInfo */ 5:
-                    message.rewardPointInfo = RewardPointInfo.internalBinaryRead(reader, reader.uint32(), options, message.rewardPointInfo);
+                case /* repeated RewardPointInfo rewardPointInfo */ 5:
+                    message.rewardPointInfo.push(RewardPointInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* int32 equipSpChapters */ 6:
-                    message.equipSpChapters = reader.int32();
+                case /* repeated int32 equipSpChapters */ 6:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.equipSpChapters.push(reader.int32());
+                    else
+                        message.equipSpChapters.push(reader.int32());
                     break;
-                case /* UserChapterTypeNum chapterTypeNums */ 7:
-                    message.chapterTypeNums = UserChapterTypeNum.internalBinaryRead(reader, reader.uint32(), options, message.chapterTypeNums);
+                case /* repeated UserChapterTypeNum chapterTypeNums */ 7:
+                    message.chapterTypeNums.push(UserChapterTypeNum.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* int32 finishElements */ 8:
-                    message.finishElements = reader.int32();
+                case /* repeated int32 finishElements */ 8:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.finishElements.push(reader.int32());
+                    else
+                        message.finishElements.push(reader.int32());
                     break;
-                case /* int32 finishPuzzles */ 9:
-                    message.finishPuzzles = reader.int32();
+                case /* repeated int32 finishPuzzles */ 9:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.finishPuzzles.push(reader.int32());
+                    else
+                        message.finishPuzzles.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2261,33 +2349,33 @@ class GetDungeonReply$Type extends MessageType<GetDungeonReply> {
         return message;
     }
     internalBinaryWrite(message: GetDungeonReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* UserDungeon dungeonInfoList = 1; */
-        if (message.dungeonInfoList)
-            UserDungeon.internalBinaryWrite(message.dungeonInfoList, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* DungeonLastHeroGroup lastHeroGroup = 2; */
-        if (message.lastHeroGroup)
-            DungeonLastHeroGroup.internalBinaryWrite(message.lastHeroGroup, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* int32 mapIds = 3; */
-        if (message.mapIds !== 0)
-            writer.tag(3, WireType.Varint).int32(message.mapIds);
-        /* int32 elements = 4; */
-        if (message.elements !== 0)
-            writer.tag(4, WireType.Varint).int32(message.elements);
-        /* RewardPointInfo rewardPointInfo = 5; */
-        if (message.rewardPointInfo)
-            RewardPointInfo.internalBinaryWrite(message.rewardPointInfo, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* int32 equipSpChapters = 6; */
-        if (message.equipSpChapters !== 0)
-            writer.tag(6, WireType.Varint).int32(message.equipSpChapters);
-        /* UserChapterTypeNum chapterTypeNums = 7; */
-        if (message.chapterTypeNums)
-            UserChapterTypeNum.internalBinaryWrite(message.chapterTypeNums, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
-        /* int32 finishElements = 8; */
-        if (message.finishElements !== 0)
-            writer.tag(8, WireType.Varint).int32(message.finishElements);
-        /* int32 finishPuzzles = 9; */
-        if (message.finishPuzzles !== 0)
-            writer.tag(9, WireType.Varint).int32(message.finishPuzzles);
+        /* repeated UserDungeon dungeonInfoList = 1; */
+        for (let i = 0; i < message.dungeonInfoList.length; i++)
+            UserDungeon.internalBinaryWrite(message.dungeonInfoList[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated DungeonLastHeroGroup lastHeroGroup = 2; */
+        for (let i = 0; i < message.lastHeroGroup.length; i++)
+            DungeonLastHeroGroup.internalBinaryWrite(message.lastHeroGroup[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 mapIds = 3; */
+        for (let i = 0; i < message.mapIds.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.mapIds[i]);
+        /* repeated int32 elements = 4; */
+        for (let i = 0; i < message.elements.length; i++)
+            writer.tag(4, WireType.Varint).int32(message.elements[i]);
+        /* repeated RewardPointInfo rewardPointInfo = 5; */
+        for (let i = 0; i < message.rewardPointInfo.length; i++)
+            RewardPointInfo.internalBinaryWrite(message.rewardPointInfo[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 equipSpChapters = 6; */
+        for (let i = 0; i < message.equipSpChapters.length; i++)
+            writer.tag(6, WireType.Varint).int32(message.equipSpChapters[i]);
+        /* repeated UserChapterTypeNum chapterTypeNums = 7; */
+        for (let i = 0; i < message.chapterTypeNums.length; i++)
+            UserChapterTypeNum.internalBinaryWrite(message.chapterTypeNums[i], writer.tag(7, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 finishElements = 8; */
+        for (let i = 0; i < message.finishElements.length; i++)
+            writer.tag(8, WireType.Varint).int32(message.finishElements[i]);
+        /* repeated int32 finishPuzzles = 9; */
+        for (let i = 0; i < message.finishPuzzles.length; i++)
+            writer.tag(9, WireType.Varint).int32(message.finishPuzzles[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

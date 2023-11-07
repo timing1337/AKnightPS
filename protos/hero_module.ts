@@ -101,13 +101,13 @@ export interface HeroRankUpRequest {
  */
 export interface HeroUpgradeSkillRequest {
     /**
-     * @generated from protobuf field: repeated int32 heroId = 1;
+     * @generated from protobuf field: int32 heroId = 1;
      */
-    heroId: number[];
+    heroId: number;
     /**
-     * @generated from protobuf field: repeated int32 type = 2;
+     * @generated from protobuf field: int32 type = 2;
      */
-    type: number[];
+    type: number;
     /**
      * @generated from protobuf field: optional int32 consume = 3;
      */
@@ -218,9 +218,9 @@ export interface PutTalentSchemeReply {
      */
     heroId?: number;
     /**
-     * @generated from protobuf field: TalentCubeInfo cubeInfos = 2;
+     * @generated from protobuf field: repeated TalentCubeInfo cubeInfos = 2;
      */
-    cubeInfos?: TalentCubeInfo;
+    cubeInfos: TalentCubeInfo[];
 }
 /**
  * @generated from protobuf message PutTalentSchemeRequest
@@ -340,9 +340,9 @@ export interface PutTalentCubeRequest {
  */
 export interface HeroUpdatePush {
     /**
-     * @generated from protobuf field: HeroInfo heroUpdates = 1;
+     * @generated from protobuf field: repeated HeroInfo heroUpdates = 1;
      */
-    heroUpdates?: HeroInfo;
+    heroUpdates: HeroInfo[];
 }
 /**
  * @generated from protobuf message HeroRankUpReply
@@ -371,21 +371,21 @@ export interface HeroTalentUpRequest {
  */
 export interface HeroInfoListReply {
     /**
-     * @generated from protobuf field: HeroInfo heros = 1;
+     * @generated from protobuf field: repeated HeroInfo heros = 1;
      */
-    heros?: HeroInfo;
+    heros: HeroInfo[];
     /**
      * @generated from protobuf field: optional int32 touchCountLeft = 2;
      */
     touchCountLeft?: number;
     /**
-     * @generated from protobuf field: int32 allHeroSkin = 3;
+     * @generated from protobuf field: repeated int32 allHeroSkin = 3;
      */
-    allHeroSkin: number;
+    allHeroSkin: number[];
     /**
-     * @generated from protobuf field: HeroBirthdayInfo birthdayInfos = 4;
+     * @generated from protobuf field: repeated HeroBirthdayInfo birthdayInfos = 4;
      */
-    birthdayInfos?: HeroBirthdayInfo;
+    birthdayInfos: HeroBirthdayInfo[];
 }
 /**
  * @generated from protobuf message PutTalentCubeReply
@@ -396,9 +396,9 @@ export interface PutTalentCubeReply {
      */
     heroId?: number;
     /**
-     * @generated from protobuf field: TalentCubeInfo cubeInfos = 2;
+     * @generated from protobuf field: repeated TalentCubeInfo cubeInfos = 2;
      */
-    cubeInfos?: TalentCubeInfo;
+    cubeInfos: TalentCubeInfo[];
 }
 /**
  * @generated from protobuf message HeroDefaultEquipReply
@@ -767,13 +767,13 @@ export const HeroRankUpRequest = new HeroRankUpRequest$Type();
 class HeroUpgradeSkillRequest$Type extends MessageType<HeroUpgradeSkillRequest> {
     constructor() {
         super("HeroUpgradeSkillRequest", [
-            { no: 1, name: "heroId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "type", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "heroId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "type", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "consume", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<HeroUpgradeSkillRequest>): HeroUpgradeSkillRequest {
-        const message = { heroId: [], type: [] };
+        const message = { heroId: 0, type: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroUpgradeSkillRequest>(this, message, value);
@@ -784,19 +784,11 @@ class HeroUpgradeSkillRequest$Type extends MessageType<HeroUpgradeSkillRequest> 
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 heroId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.heroId.push(reader.int32());
-                    else
-                        message.heroId.push(reader.int32());
+                case /* int32 heroId */ 1:
+                    message.heroId = reader.int32();
                     break;
-                case /* repeated int32 type */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.type.push(reader.int32());
-                    else
-                        message.type.push(reader.int32());
+                case /* int32 type */ 2:
+                    message.type = reader.int32();
                     break;
                 case /* optional int32 consume */ 3:
                     message.consume = reader.int32();
@@ -813,12 +805,12 @@ class HeroUpgradeSkillRequest$Type extends MessageType<HeroUpgradeSkillRequest> 
         return message;
     }
     internalBinaryWrite(message: HeroUpgradeSkillRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 heroId = 1; */
-        for (let i = 0; i < message.heroId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.heroId[i]);
-        /* repeated int32 type = 2; */
-        for (let i = 0; i < message.type.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.type[i]);
+        /* int32 heroId = 1; */
+        if (message.heroId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.heroId);
+        /* int32 type = 2; */
+        if (message.type !== 0)
+            writer.tag(2, WireType.Varint).int32(message.type);
         /* optional int32 consume = 3; */
         if (message.consume !== undefined)
             writer.tag(3, WireType.Varint).int32(message.consume);
@@ -1255,11 +1247,11 @@ class PutTalentSchemeReply$Type extends MessageType<PutTalentSchemeReply> {
     constructor() {
         super("PutTalentSchemeReply", [
             { no: 1, name: "heroId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "cubeInfos", kind: "message", T: () => TalentCubeInfo }
+            { no: 2, name: "cubeInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TalentCubeInfo }
         ]);
     }
     create(value?: PartialMessage<PutTalentSchemeReply>): PutTalentSchemeReply {
-        const message = {};
+        const message = { cubeInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<PutTalentSchemeReply>(this, message, value);
@@ -1273,8 +1265,8 @@ class PutTalentSchemeReply$Type extends MessageType<PutTalentSchemeReply> {
                 case /* optional int32 heroId */ 1:
                     message.heroId = reader.int32();
                     break;
-                case /* TalentCubeInfo cubeInfos */ 2:
-                    message.cubeInfos = TalentCubeInfo.internalBinaryRead(reader, reader.uint32(), options, message.cubeInfos);
+                case /* repeated TalentCubeInfo cubeInfos */ 2:
+                    message.cubeInfos.push(TalentCubeInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1291,9 +1283,9 @@ class PutTalentSchemeReply$Type extends MessageType<PutTalentSchemeReply> {
         /* optional int32 heroId = 1; */
         if (message.heroId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.heroId);
-        /* TalentCubeInfo cubeInfos = 2; */
-        if (message.cubeInfos)
-            TalentCubeInfo.internalBinaryWrite(message.cubeInfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated TalentCubeInfo cubeInfos = 2; */
+        for (let i = 0; i < message.cubeInfos.length; i++)
+            TalentCubeInfo.internalBinaryWrite(message.cubeInfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1773,11 +1765,11 @@ export const PutTalentCubeRequest = new PutTalentCubeRequest$Type();
 class HeroUpdatePush$Type extends MessageType<HeroUpdatePush> {
     constructor() {
         super("HeroUpdatePush", [
-            { no: 1, name: "heroUpdates", kind: "message", T: () => HeroInfo }
+            { no: 1, name: "heroUpdates", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroInfo }
         ]);
     }
     create(value?: PartialMessage<HeroUpdatePush>): HeroUpdatePush {
-        const message = {};
+        const message = { heroUpdates: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroUpdatePush>(this, message, value);
@@ -1788,8 +1780,8 @@ class HeroUpdatePush$Type extends MessageType<HeroUpdatePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* HeroInfo heroUpdates */ 1:
-                    message.heroUpdates = HeroInfo.internalBinaryRead(reader, reader.uint32(), options, message.heroUpdates);
+                case /* repeated HeroInfo heroUpdates */ 1:
+                    message.heroUpdates.push(HeroInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1803,9 +1795,9 @@ class HeroUpdatePush$Type extends MessageType<HeroUpdatePush> {
         return message;
     }
     internalBinaryWrite(message: HeroUpdatePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* HeroInfo heroUpdates = 1; */
-        if (message.heroUpdates)
-            HeroInfo.internalBinaryWrite(message.heroUpdates, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroInfo heroUpdates = 1; */
+        for (let i = 0; i < message.heroUpdates.length; i++)
+            HeroInfo.internalBinaryWrite(message.heroUpdates[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1921,14 +1913,14 @@ export const HeroTalentUpRequest = new HeroTalentUpRequest$Type();
 class HeroInfoListReply$Type extends MessageType<HeroInfoListReply> {
     constructor() {
         super("HeroInfoListReply", [
-            { no: 1, name: "heros", kind: "message", T: () => HeroInfo },
+            { no: 1, name: "heros", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroInfo },
             { no: 2, name: "touchCountLeft", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "allHeroSkin", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "birthdayInfos", kind: "message", T: () => HeroBirthdayInfo }
+            { no: 3, name: "allHeroSkin", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 4, name: "birthdayInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroBirthdayInfo }
         ]);
     }
     create(value?: PartialMessage<HeroInfoListReply>): HeroInfoListReply {
-        const message = { allHeroSkin: 0 };
+        const message = { heros: [], allHeroSkin: [], birthdayInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroInfoListReply>(this, message, value);
@@ -1939,17 +1931,21 @@ class HeroInfoListReply$Type extends MessageType<HeroInfoListReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* HeroInfo heros */ 1:
-                    message.heros = HeroInfo.internalBinaryRead(reader, reader.uint32(), options, message.heros);
+                case /* repeated HeroInfo heros */ 1:
+                    message.heros.push(HeroInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 touchCountLeft */ 2:
                     message.touchCountLeft = reader.int32();
                     break;
-                case /* int32 allHeroSkin */ 3:
-                    message.allHeroSkin = reader.int32();
+                case /* repeated int32 allHeroSkin */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.allHeroSkin.push(reader.int32());
+                    else
+                        message.allHeroSkin.push(reader.int32());
                     break;
-                case /* HeroBirthdayInfo birthdayInfos */ 4:
-                    message.birthdayInfos = HeroBirthdayInfo.internalBinaryRead(reader, reader.uint32(), options, message.birthdayInfos);
+                case /* repeated HeroBirthdayInfo birthdayInfos */ 4:
+                    message.birthdayInfos.push(HeroBirthdayInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1963,18 +1959,18 @@ class HeroInfoListReply$Type extends MessageType<HeroInfoListReply> {
         return message;
     }
     internalBinaryWrite(message: HeroInfoListReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* HeroInfo heros = 1; */
-        if (message.heros)
-            HeroInfo.internalBinaryWrite(message.heros, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroInfo heros = 1; */
+        for (let i = 0; i < message.heros.length; i++)
+            HeroInfo.internalBinaryWrite(message.heros[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 touchCountLeft = 2; */
         if (message.touchCountLeft !== undefined)
             writer.tag(2, WireType.Varint).int32(message.touchCountLeft);
-        /* int32 allHeroSkin = 3; */
-        if (message.allHeroSkin !== 0)
-            writer.tag(3, WireType.Varint).int32(message.allHeroSkin);
-        /* HeroBirthdayInfo birthdayInfos = 4; */
-        if (message.birthdayInfos)
-            HeroBirthdayInfo.internalBinaryWrite(message.birthdayInfos, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 allHeroSkin = 3; */
+        for (let i = 0; i < message.allHeroSkin.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.allHeroSkin[i]);
+        /* repeated HeroBirthdayInfo birthdayInfos = 4; */
+        for (let i = 0; i < message.birthdayInfos.length; i++)
+            HeroBirthdayInfo.internalBinaryWrite(message.birthdayInfos[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1990,11 +1986,11 @@ class PutTalentCubeReply$Type extends MessageType<PutTalentCubeReply> {
     constructor() {
         super("PutTalentCubeReply", [
             { no: 1, name: "heroId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "cubeInfos", kind: "message", T: () => TalentCubeInfo }
+            { no: 2, name: "cubeInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TalentCubeInfo }
         ]);
     }
     create(value?: PartialMessage<PutTalentCubeReply>): PutTalentCubeReply {
-        const message = {};
+        const message = { cubeInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<PutTalentCubeReply>(this, message, value);
@@ -2008,8 +2004,8 @@ class PutTalentCubeReply$Type extends MessageType<PutTalentCubeReply> {
                 case /* optional int32 heroId */ 1:
                     message.heroId = reader.int32();
                     break;
-                case /* TalentCubeInfo cubeInfos */ 2:
-                    message.cubeInfos = TalentCubeInfo.internalBinaryRead(reader, reader.uint32(), options, message.cubeInfos);
+                case /* repeated TalentCubeInfo cubeInfos */ 2:
+                    message.cubeInfos.push(TalentCubeInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2026,9 +2022,9 @@ class PutTalentCubeReply$Type extends MessageType<PutTalentCubeReply> {
         /* optional int32 heroId = 1; */
         if (message.heroId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.heroId);
-        /* TalentCubeInfo cubeInfos = 2; */
-        if (message.cubeInfos)
-            TalentCubeInfo.internalBinaryWrite(message.cubeInfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated TalentCubeInfo cubeInfos = 2; */
+        for (let i = 0; i < message.cubeInfos.length; i++)
+            TalentCubeInfo.internalBinaryWrite(message.cubeInfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

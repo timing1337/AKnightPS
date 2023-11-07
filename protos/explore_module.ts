@@ -27,13 +27,13 @@ export interface StartExplorePush {
  */
 export interface GetExploreSimpleInfoReply {
     /**
-     * @generated from protobuf field: int32 chapterIds = 1;
+     * @generated from protobuf field: repeated int32 chapterIds = 1;
      */
-    chapterIds: number;
+    chapterIds: number[];
     /**
-     * @generated from protobuf field: int32 interactNum = 2;
+     * @generated from protobuf field: repeated int32 interactNum = 2;
      */
-    interactNum: number;
+    interactNum: number[];
 }
 /**
  * @generated from protobuf message ExploreInteractSetStepRequest
@@ -104,13 +104,13 @@ export interface ExploreItemInteractReply {
      */
     params?: string;
     /**
-     * @generated from protobuf field: ExploreInteractNO interacts = 3;
+     * @generated from protobuf field: repeated ExploreInteractNO interacts = 3;
      */
-    interacts?: ExploreInteractNO;
+    interacts: ExploreInteractNO[];
     /**
-     * @generated from protobuf field: ExploreInteractNO deleteInteracts = 4;
+     * @generated from protobuf field: repeated ExploreInteractNO deleteInteracts = 4;
      */
-    deleteInteracts?: ExploreInteractNO;
+    deleteInteracts: ExploreInteractNO[];
 }
 /**
  * @generated from protobuf message EnterChapterRequest
@@ -138,17 +138,17 @@ export interface ExploreInteractReply {
      */
     params?: string;
     /**
-     * @generated from protobuf field: MaterialData dataList = 4;
+     * @generated from protobuf field: repeated MaterialData dataList = 4;
      */
-    dataList?: MaterialData;
+    dataList: MaterialData[];
     /**
-     * @generated from protobuf field: ExploreInteractNO interacts = 5;
+     * @generated from protobuf field: repeated ExploreInteractNO interacts = 5;
      */
-    interacts?: ExploreInteractNO;
+    interacts: ExploreInteractNO[];
     /**
-     * @generated from protobuf field: ExploreInteractNO deleteInteracts = 6;
+     * @generated from protobuf field: repeated ExploreInteractNO deleteInteracts = 6;
      */
-    deleteInteracts?: ExploreInteractNO;
+    deleteInteracts: ExploreInteractNO[];
 }
 /**
  * @generated from protobuf message ExploreInteractSetStatusRequest
@@ -172,9 +172,9 @@ export interface ExploreInteractSetStatusRequest {
  */
 export interface ExploreItemChangePush {
     /**
-     * @generated from protobuf field: ExploreItemNO exploreItems = 1;
+     * @generated from protobuf field: repeated ExploreItemNO exploreItems = 1;
      */
-    exploreItems?: ExploreItemNO;
+    exploreItems: ExploreItemNO[];
 }
 /**
  * @generated from protobuf message ExploreInteractSetStatus2Reply
@@ -279,13 +279,13 @@ export interface ExploreMapNO {
      */
     posy?: number;
     /**
-     * @generated from protobuf field: ExploreInteractNO interacts = 4;
+     * @generated from protobuf field: repeated ExploreInteractNO interacts = 4;
      */
-    interacts?: ExploreInteractNO;
+    interacts: ExploreInteractNO[];
     /**
-     * @generated from protobuf field: ExploreAreaSightNO areaSights = 5;
+     * @generated from protobuf field: repeated ExploreAreaSightNO areaSights = 5;
      */
-    areaSights?: ExploreAreaSightNO;
+    areaSights: ExploreAreaSightNO[];
     /**
      * @generated from protobuf field: optional int32 lastInteractType = 6;
      */
@@ -316,9 +316,9 @@ export interface GetExploreInfoReply {
      */
     exploreInfo?: ExploreInfoNO;
     /**
-     * @generated from protobuf field: ExploreForeverInfoNO foreverInfos = 2;
+     * @generated from protobuf field: repeated ExploreForeverInfoNO foreverInfos = 2;
      */
-    foreverInfos?: ExploreForeverInfoNO;
+    foreverInfos: ExploreForeverInfoNO[];
 }
 /**
  * @generated from protobuf message ExploreInteractSetStatusReply
@@ -413,13 +413,13 @@ export interface ChangeMapRequest {
  */
 export interface ExploreUseItemReply {
     /**
-     * @generated from protobuf field: ExploreInteractNO interacts = 1;
+     * @generated from protobuf field: repeated ExploreInteractNO interacts = 1;
      */
-    interacts?: ExploreInteractNO;
+    interacts: ExploreInteractNO[];
     /**
-     * @generated from protobuf field: ExploreInteractNO deleteInteracts = 2;
+     * @generated from protobuf field: repeated ExploreInteractNO deleteInteracts = 2;
      */
-    deleteInteracts?: ExploreInteractNO;
+    deleteInteracts: ExploreInteractNO[];
     /**
      * @generated from protobuf field: optional int64 useItemUid = 3;
      */
@@ -514,9 +514,9 @@ export interface ExploreMoveRequest {
      */
     posy?: number;
     /**
-     * @generated from protobuf field: ExploreSeatNO sightChange = 3;
+     * @generated from protobuf field: repeated ExploreSeatNO sightChange = 3;
      */
-    sightChange?: ExploreSeatNO;
+    sightChange: ExploreSeatNO[];
     /**
      * @generated from protobuf field: optional int32 interactId = 4;
      */
@@ -548,9 +548,9 @@ export interface ExploreInfoNO {
      */
     heroGroupSnapshot?: HeroGroupInfo;
     /**
-     * @generated from protobuf field: ExploreItemNO exploreItems = 3;
+     * @generated from protobuf field: repeated ExploreItemNO exploreItems = 3;
      */
-    exploreItems?: ExploreItemNO;
+    exploreItems: ExploreItemNO[];
     /**
      * @generated from protobuf field: optional int64 useItemUid = 4;
      */
@@ -641,12 +641,12 @@ export const StartExplorePush = new StartExplorePush$Type();
 class GetExploreSimpleInfoReply$Type extends MessageType<GetExploreSimpleInfoReply> {
     constructor() {
         super("GetExploreSimpleInfoReply", [
-            { no: 1, name: "chapterIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "interactNum", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "chapterIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "interactNum", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetExploreSimpleInfoReply>): GetExploreSimpleInfoReply {
-        const message = { chapterIds: 0, interactNum: 0 };
+        const message = { chapterIds: [], interactNum: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetExploreSimpleInfoReply>(this, message, value);
@@ -657,11 +657,19 @@ class GetExploreSimpleInfoReply$Type extends MessageType<GetExploreSimpleInfoRep
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 chapterIds */ 1:
-                    message.chapterIds = reader.int32();
+                case /* repeated int32 chapterIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.chapterIds.push(reader.int32());
+                    else
+                        message.chapterIds.push(reader.int32());
                     break;
-                case /* int32 interactNum */ 2:
-                    message.interactNum = reader.int32();
+                case /* repeated int32 interactNum */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.interactNum.push(reader.int32());
+                    else
+                        message.interactNum.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -675,12 +683,12 @@ class GetExploreSimpleInfoReply$Type extends MessageType<GetExploreSimpleInfoRep
         return message;
     }
     internalBinaryWrite(message: GetExploreSimpleInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 chapterIds = 1; */
-        if (message.chapterIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.chapterIds);
-        /* int32 interactNum = 2; */
-        if (message.interactNum !== 0)
-            writer.tag(2, WireType.Varint).int32(message.interactNum);
+        /* repeated int32 chapterIds = 1; */
+        for (let i = 0; i < message.chapterIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.chapterIds[i]);
+        /* repeated int32 interactNum = 2; */
+        for (let i = 0; i < message.interactNum.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.interactNum[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -906,12 +914,12 @@ class ExploreItemInteractReply$Type extends MessageType<ExploreItemInteractReply
         super("ExploreItemInteractReply", [
             { no: 1, name: "id", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "params", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 3, name: "interacts", kind: "message", T: () => ExploreInteractNO },
-            { no: 4, name: "deleteInteracts", kind: "message", T: () => ExploreInteractNO }
+            { no: 3, name: "interacts", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreInteractNO },
+            { no: 4, name: "deleteInteracts", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreInteractNO }
         ]);
     }
     create(value?: PartialMessage<ExploreItemInteractReply>): ExploreItemInteractReply {
-        const message = {};
+        const message = { interacts: [], deleteInteracts: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ExploreItemInteractReply>(this, message, value);
@@ -928,11 +936,11 @@ class ExploreItemInteractReply$Type extends MessageType<ExploreItemInteractReply
                 case /* optional string params */ 2:
                     message.params = reader.string();
                     break;
-                case /* ExploreInteractNO interacts */ 3:
-                    message.interacts = ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options, message.interacts);
+                case /* repeated ExploreInteractNO interacts */ 3:
+                    message.interacts.push(ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ExploreInteractNO deleteInteracts */ 4:
-                    message.deleteInteracts = ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options, message.deleteInteracts);
+                case /* repeated ExploreInteractNO deleteInteracts */ 4:
+                    message.deleteInteracts.push(ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -952,12 +960,12 @@ class ExploreItemInteractReply$Type extends MessageType<ExploreItemInteractReply
         /* optional string params = 2; */
         if (message.params !== undefined)
             writer.tag(2, WireType.LengthDelimited).string(message.params);
-        /* ExploreInteractNO interacts = 3; */
-        if (message.interacts)
-            ExploreInteractNO.internalBinaryWrite(message.interacts, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
-        /* ExploreInteractNO deleteInteracts = 4; */
-        if (message.deleteInteracts)
-            ExploreInteractNO.internalBinaryWrite(message.deleteInteracts, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreInteractNO interacts = 3; */
+        for (let i = 0; i < message.interacts.length; i++)
+            ExploreInteractNO.internalBinaryWrite(message.interacts[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreInteractNO deleteInteracts = 4; */
+        for (let i = 0; i < message.deleteInteracts.length; i++)
+            ExploreInteractNO.internalBinaryWrite(message.deleteInteracts[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1022,13 +1030,13 @@ class ExploreInteractReply$Type extends MessageType<ExploreInteractReply> {
             { no: 1, name: "mapId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "id", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "params", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 4, name: "dataList", kind: "message", T: () => MaterialData },
-            { no: 5, name: "interacts", kind: "message", T: () => ExploreInteractNO },
-            { no: 6, name: "deleteInteracts", kind: "message", T: () => ExploreInteractNO }
+            { no: 4, name: "dataList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData },
+            { no: 5, name: "interacts", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreInteractNO },
+            { no: 6, name: "deleteInteracts", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreInteractNO }
         ]);
     }
     create(value?: PartialMessage<ExploreInteractReply>): ExploreInteractReply {
-        const message = {};
+        const message = { dataList: [], interacts: [], deleteInteracts: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ExploreInteractReply>(this, message, value);
@@ -1048,14 +1056,14 @@ class ExploreInteractReply$Type extends MessageType<ExploreInteractReply> {
                 case /* optional string params */ 3:
                     message.params = reader.string();
                     break;
-                case /* MaterialData dataList */ 4:
-                    message.dataList = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.dataList);
+                case /* repeated MaterialData dataList */ 4:
+                    message.dataList.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ExploreInteractNO interacts */ 5:
-                    message.interacts = ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options, message.interacts);
+                case /* repeated ExploreInteractNO interacts */ 5:
+                    message.interacts.push(ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ExploreInteractNO deleteInteracts */ 6:
-                    message.deleteInteracts = ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options, message.deleteInteracts);
+                case /* repeated ExploreInteractNO deleteInteracts */ 6:
+                    message.deleteInteracts.push(ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1078,15 +1086,15 @@ class ExploreInteractReply$Type extends MessageType<ExploreInteractReply> {
         /* optional string params = 3; */
         if (message.params !== undefined)
             writer.tag(3, WireType.LengthDelimited).string(message.params);
-        /* MaterialData dataList = 4; */
-        if (message.dataList)
-            MaterialData.internalBinaryWrite(message.dataList, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
-        /* ExploreInteractNO interacts = 5; */
-        if (message.interacts)
-            ExploreInteractNO.internalBinaryWrite(message.interacts, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* ExploreInteractNO deleteInteracts = 6; */
-        if (message.deleteInteracts)
-            ExploreInteractNO.internalBinaryWrite(message.deleteInteracts, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData dataList = 4; */
+        for (let i = 0; i < message.dataList.length; i++)
+            MaterialData.internalBinaryWrite(message.dataList[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreInteractNO interacts = 5; */
+        for (let i = 0; i < message.interacts.length; i++)
+            ExploreInteractNO.internalBinaryWrite(message.interacts[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreInteractNO deleteInteracts = 6; */
+        for (let i = 0; i < message.deleteInteracts.length; i++)
+            ExploreInteractNO.internalBinaryWrite(message.deleteInteracts[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1162,11 +1170,11 @@ export const ExploreInteractSetStatusRequest = new ExploreInteractSetStatusReque
 class ExploreItemChangePush$Type extends MessageType<ExploreItemChangePush> {
     constructor() {
         super("ExploreItemChangePush", [
-            { no: 1, name: "exploreItems", kind: "message", T: () => ExploreItemNO }
+            { no: 1, name: "exploreItems", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreItemNO }
         ]);
     }
     create(value?: PartialMessage<ExploreItemChangePush>): ExploreItemChangePush {
-        const message = {};
+        const message = { exploreItems: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ExploreItemChangePush>(this, message, value);
@@ -1177,8 +1185,8 @@ class ExploreItemChangePush$Type extends MessageType<ExploreItemChangePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ExploreItemNO exploreItems */ 1:
-                    message.exploreItems = ExploreItemNO.internalBinaryRead(reader, reader.uint32(), options, message.exploreItems);
+                case /* repeated ExploreItemNO exploreItems */ 1:
+                    message.exploreItems.push(ExploreItemNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1192,9 +1200,9 @@ class ExploreItemChangePush$Type extends MessageType<ExploreItemChangePush> {
         return message;
     }
     internalBinaryWrite(message: ExploreItemChangePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ExploreItemNO exploreItems = 1; */
-        if (message.exploreItems)
-            ExploreItemNO.internalBinaryWrite(message.exploreItems, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreItemNO exploreItems = 1; */
+        for (let i = 0; i < message.exploreItems.length; i++)
+            ExploreItemNO.internalBinaryWrite(message.exploreItems[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1522,8 +1530,8 @@ class ExploreMapNO$Type extends MessageType<ExploreMapNO> {
             { no: 1, name: "mapId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "posx", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "posy", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "interacts", kind: "message", T: () => ExploreInteractNO },
-            { no: 5, name: "areaSights", kind: "message", T: () => ExploreAreaSightNO },
+            { no: 4, name: "interacts", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreInteractNO },
+            { no: 5, name: "areaSights", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreAreaSightNO },
             { no: 6, name: "lastInteractType", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 7, name: "lastInteract", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 8, name: "bonusNum", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
@@ -1532,7 +1540,7 @@ class ExploreMapNO$Type extends MessageType<ExploreMapNO> {
         ]);
     }
     create(value?: PartialMessage<ExploreMapNO>): ExploreMapNO {
-        const message = {};
+        const message = { interacts: [], areaSights: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ExploreMapNO>(this, message, value);
@@ -1552,11 +1560,11 @@ class ExploreMapNO$Type extends MessageType<ExploreMapNO> {
                 case /* optional int32 posy */ 3:
                     message.posy = reader.int32();
                     break;
-                case /* ExploreInteractNO interacts */ 4:
-                    message.interacts = ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options, message.interacts);
+                case /* repeated ExploreInteractNO interacts */ 4:
+                    message.interacts.push(ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ExploreAreaSightNO areaSights */ 5:
-                    message.areaSights = ExploreAreaSightNO.internalBinaryRead(reader, reader.uint32(), options, message.areaSights);
+                case /* repeated ExploreAreaSightNO areaSights */ 5:
+                    message.areaSights.push(ExploreAreaSightNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 lastInteractType */ 6:
                     message.lastInteractType = reader.int32();
@@ -1594,12 +1602,12 @@ class ExploreMapNO$Type extends MessageType<ExploreMapNO> {
         /* optional int32 posy = 3; */
         if (message.posy !== undefined)
             writer.tag(3, WireType.Varint).int32(message.posy);
-        /* ExploreInteractNO interacts = 4; */
-        if (message.interacts)
-            ExploreInteractNO.internalBinaryWrite(message.interacts, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
-        /* ExploreAreaSightNO areaSights = 5; */
-        if (message.areaSights)
-            ExploreAreaSightNO.internalBinaryWrite(message.areaSights, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreInteractNO interacts = 4; */
+        for (let i = 0; i < message.interacts.length; i++)
+            ExploreInteractNO.internalBinaryWrite(message.interacts[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreAreaSightNO areaSights = 5; */
+        for (let i = 0; i < message.areaSights.length; i++)
+            ExploreAreaSightNO.internalBinaryWrite(message.areaSights[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 lastInteractType = 6; */
         if (message.lastInteractType !== undefined)
             writer.tag(6, WireType.Varint).int32(message.lastInteractType);
@@ -1630,11 +1638,11 @@ class GetExploreInfoReply$Type extends MessageType<GetExploreInfoReply> {
     constructor() {
         super("GetExploreInfoReply", [
             { no: 1, name: "exploreInfo", kind: "message", T: () => ExploreInfoNO },
-            { no: 2, name: "foreverInfos", kind: "message", T: () => ExploreForeverInfoNO }
+            { no: 2, name: "foreverInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreForeverInfoNO }
         ]);
     }
     create(value?: PartialMessage<GetExploreInfoReply>): GetExploreInfoReply {
-        const message = {};
+        const message = { foreverInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetExploreInfoReply>(this, message, value);
@@ -1648,8 +1656,8 @@ class GetExploreInfoReply$Type extends MessageType<GetExploreInfoReply> {
                 case /* optional ExploreInfoNO exploreInfo */ 1:
                     message.exploreInfo = ExploreInfoNO.internalBinaryRead(reader, reader.uint32(), options, message.exploreInfo);
                     break;
-                case /* ExploreForeverInfoNO foreverInfos */ 2:
-                    message.foreverInfos = ExploreForeverInfoNO.internalBinaryRead(reader, reader.uint32(), options, message.foreverInfos);
+                case /* repeated ExploreForeverInfoNO foreverInfos */ 2:
+                    message.foreverInfos.push(ExploreForeverInfoNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1666,9 +1674,9 @@ class GetExploreInfoReply$Type extends MessageType<GetExploreInfoReply> {
         /* optional ExploreInfoNO exploreInfo = 1; */
         if (message.exploreInfo)
             ExploreInfoNO.internalBinaryWrite(message.exploreInfo, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* ExploreForeverInfoNO foreverInfos = 2; */
-        if (message.foreverInfos)
-            ExploreForeverInfoNO.internalBinaryWrite(message.foreverInfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreForeverInfoNO foreverInfos = 2; */
+        for (let i = 0; i < message.foreverInfos.length; i++)
+            ExploreForeverInfoNO.internalBinaryWrite(message.foreverInfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1962,13 +1970,13 @@ export const ChangeMapRequest = new ChangeMapRequest$Type();
 class ExploreUseItemReply$Type extends MessageType<ExploreUseItemReply> {
     constructor() {
         super("ExploreUseItemReply", [
-            { no: 1, name: "interacts", kind: "message", T: () => ExploreInteractNO },
-            { no: 2, name: "deleteInteracts", kind: "message", T: () => ExploreInteractNO },
+            { no: 1, name: "interacts", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreInteractNO },
+            { no: 2, name: "deleteInteracts", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreInteractNO },
             { no: 3, name: "useItemUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ExploreUseItemReply>): ExploreUseItemReply {
-        const message = {};
+        const message = { interacts: [], deleteInteracts: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ExploreUseItemReply>(this, message, value);
@@ -1979,11 +1987,11 @@ class ExploreUseItemReply$Type extends MessageType<ExploreUseItemReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ExploreInteractNO interacts */ 1:
-                    message.interacts = ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options, message.interacts);
+                case /* repeated ExploreInteractNO interacts */ 1:
+                    message.interacts.push(ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ExploreInteractNO deleteInteracts */ 2:
-                    message.deleteInteracts = ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options, message.deleteInteracts);
+                case /* repeated ExploreInteractNO deleteInteracts */ 2:
+                    message.deleteInteracts.push(ExploreInteractNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int64 useItemUid */ 3:
                     message.useItemUid = reader.int64().toBigInt();
@@ -2000,12 +2008,12 @@ class ExploreUseItemReply$Type extends MessageType<ExploreUseItemReply> {
         return message;
     }
     internalBinaryWrite(message: ExploreUseItemReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ExploreInteractNO interacts = 1; */
-        if (message.interacts)
-            ExploreInteractNO.internalBinaryWrite(message.interacts, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* ExploreInteractNO deleteInteracts = 2; */
-        if (message.deleteInteracts)
-            ExploreInteractNO.internalBinaryWrite(message.deleteInteracts, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreInteractNO interacts = 1; */
+        for (let i = 0; i < message.interacts.length; i++)
+            ExploreInteractNO.internalBinaryWrite(message.interacts[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreInteractNO deleteInteracts = 2; */
+        for (let i = 0; i < message.deleteInteracts.length; i++)
+            ExploreInteractNO.internalBinaryWrite(message.deleteInteracts[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* optional int64 useItemUid = 3; */
         if (message.useItemUid !== undefined)
             writer.tag(3, WireType.Varint).int64(message.useItemUid);
@@ -2283,12 +2291,12 @@ class ExploreMoveRequest$Type extends MessageType<ExploreMoveRequest> {
         super("ExploreMoveRequest", [
             { no: 1, name: "posx", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "posy", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "sightChange", kind: "message", T: () => ExploreSeatNO },
+            { no: 3, name: "sightChange", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreSeatNO },
             { no: 4, name: "interactId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ExploreMoveRequest>): ExploreMoveRequest {
-        const message = {};
+        const message = { sightChange: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ExploreMoveRequest>(this, message, value);
@@ -2305,8 +2313,8 @@ class ExploreMoveRequest$Type extends MessageType<ExploreMoveRequest> {
                 case /* optional int32 posy */ 2:
                     message.posy = reader.int32();
                     break;
-                case /* ExploreSeatNO sightChange */ 3:
-                    message.sightChange = ExploreSeatNO.internalBinaryRead(reader, reader.uint32(), options, message.sightChange);
+                case /* repeated ExploreSeatNO sightChange */ 3:
+                    message.sightChange.push(ExploreSeatNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 interactId */ 4:
                     message.interactId = reader.int32();
@@ -2329,9 +2337,9 @@ class ExploreMoveRequest$Type extends MessageType<ExploreMoveRequest> {
         /* optional int32 posy = 2; */
         if (message.posy !== undefined)
             writer.tag(2, WireType.Varint).int32(message.posy);
-        /* ExploreSeatNO sightChange = 3; */
-        if (message.sightChange)
-            ExploreSeatNO.internalBinaryWrite(message.sightChange, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreSeatNO sightChange = 3; */
+        for (let i = 0; i < message.sightChange.length; i++)
+            ExploreSeatNO.internalBinaryWrite(message.sightChange[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 interactId = 4; */
         if (message.interactId !== undefined)
             writer.tag(4, WireType.Varint).int32(message.interactId);
@@ -2405,12 +2413,12 @@ class ExploreInfoNO$Type extends MessageType<ExploreInfoNO> {
         super("ExploreInfoNO", [
             { no: 1, name: "exploreMap", kind: "message", T: () => ExploreMapNO },
             { no: 2, name: "heroGroupSnapshot", kind: "message", T: () => HeroGroupInfo },
-            { no: 3, name: "exploreItems", kind: "message", T: () => ExploreItemNO },
+            { no: 3, name: "exploreItems", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ExploreItemNO },
             { no: 4, name: "useItemUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ExploreInfoNO>): ExploreInfoNO {
-        const message = {};
+        const message = { exploreItems: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ExploreInfoNO>(this, message, value);
@@ -2427,8 +2435,8 @@ class ExploreInfoNO$Type extends MessageType<ExploreInfoNO> {
                 case /* optional HeroGroupInfo heroGroupSnapshot */ 2:
                     message.heroGroupSnapshot = HeroGroupInfo.internalBinaryRead(reader, reader.uint32(), options, message.heroGroupSnapshot);
                     break;
-                case /* ExploreItemNO exploreItems */ 3:
-                    message.exploreItems = ExploreItemNO.internalBinaryRead(reader, reader.uint32(), options, message.exploreItems);
+                case /* repeated ExploreItemNO exploreItems */ 3:
+                    message.exploreItems.push(ExploreItemNO.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int64 useItemUid */ 4:
                     message.useItemUid = reader.int64().toBigInt();
@@ -2451,9 +2459,9 @@ class ExploreInfoNO$Type extends MessageType<ExploreInfoNO> {
         /* optional HeroGroupInfo heroGroupSnapshot = 2; */
         if (message.heroGroupSnapshot)
             HeroGroupInfo.internalBinaryWrite(message.heroGroupSnapshot, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* ExploreItemNO exploreItems = 3; */
-        if (message.exploreItems)
-            ExploreItemNO.internalBinaryWrite(message.exploreItems, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ExploreItemNO exploreItems = 3; */
+        for (let i = 0; i < message.exploreItems.length; i++)
+            ExploreItemNO.internalBinaryWrite(message.exploreItems[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* optional int64 useItemUid = 4; */
         if (message.useItemUid !== undefined)
             writer.tag(4, WireType.Varint).int64(message.useItemUid);

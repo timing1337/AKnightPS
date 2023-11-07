@@ -37,13 +37,13 @@ export interface GetBpInfoReply {
      */
     endTime?: number;
     /**
-     * @generated from protobuf field: Task taskInfo = 6;
+     * @generated from protobuf field: repeated Task taskInfo = 6;
      */
-    taskInfo?: Task;
+    taskInfo: Task[];
     /**
-     * @generated from protobuf field: BpScoreBonusInfo scoreBonusInfo = 7;
+     * @generated from protobuf field: repeated BpScoreBonusInfo scoreBonusInfo = 7;
      */
-    scoreBonusInfo?: BpScoreBonusInfo;
+    scoreBonusInfo: BpScoreBonusInfo[];
     /**
      * @generated from protobuf field: optional int32 weeklyScore = 8;
      */
@@ -135,9 +135,9 @@ export interface GetBpBonusReply {
      */
     id?: number;
     /**
-     * @generated from protobuf field: BpScoreBonusInfo scoreBonusInfo = 2;
+     * @generated from protobuf field: repeated BpScoreBonusInfo scoreBonusInfo = 2;
      */
-    scoreBonusInfo?: BpScoreBonusInfo;
+    scoreBonusInfo: BpScoreBonusInfo[];
 }
 /**
  * @generated from protobuf message BpBuyLevelReply
@@ -192,14 +192,14 @@ class GetBpInfoReply$Type extends MessageType<GetBpInfoReply> {
             { no: 3, name: "payStatus", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "startTime", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 5, name: "endTime", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 6, name: "taskInfo", kind: "message", T: () => Task },
-            { no: 7, name: "scoreBonusInfo", kind: "message", T: () => BpScoreBonusInfo },
+            { no: 6, name: "taskInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Task },
+            { no: 7, name: "scoreBonusInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BpScoreBonusInfo },
             { no: 8, name: "weeklyScore", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 9, name: "firstShow", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
     create(value?: PartialMessage<GetBpInfoReply>): GetBpInfoReply {
-        const message = {};
+        const message = { taskInfo: [], scoreBonusInfo: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetBpInfoReply>(this, message, value);
@@ -225,11 +225,11 @@ class GetBpInfoReply$Type extends MessageType<GetBpInfoReply> {
                 case /* optional int32 endTime */ 5:
                     message.endTime = reader.int32();
                     break;
-                case /* Task taskInfo */ 6:
-                    message.taskInfo = Task.internalBinaryRead(reader, reader.uint32(), options, message.taskInfo);
+                case /* repeated Task taskInfo */ 6:
+                    message.taskInfo.push(Task.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BpScoreBonusInfo scoreBonusInfo */ 7:
-                    message.scoreBonusInfo = BpScoreBonusInfo.internalBinaryRead(reader, reader.uint32(), options, message.scoreBonusInfo);
+                case /* repeated BpScoreBonusInfo scoreBonusInfo */ 7:
+                    message.scoreBonusInfo.push(BpScoreBonusInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 weeklyScore */ 8:
                     message.weeklyScore = reader.int32();
@@ -264,12 +264,12 @@ class GetBpInfoReply$Type extends MessageType<GetBpInfoReply> {
         /* optional int32 endTime = 5; */
         if (message.endTime !== undefined)
             writer.tag(5, WireType.Varint).int32(message.endTime);
-        /* Task taskInfo = 6; */
-        if (message.taskInfo)
-            Task.internalBinaryWrite(message.taskInfo, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
-        /* BpScoreBonusInfo scoreBonusInfo = 7; */
-        if (message.scoreBonusInfo)
-            BpScoreBonusInfo.internalBinaryWrite(message.scoreBonusInfo, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Task taskInfo = 6; */
+        for (let i = 0; i < message.taskInfo.length; i++)
+            Task.internalBinaryWrite(message.taskInfo[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BpScoreBonusInfo scoreBonusInfo = 7; */
+        for (let i = 0; i < message.scoreBonusInfo.length; i++)
+            BpScoreBonusInfo.internalBinaryWrite(message.scoreBonusInfo[i], writer.tag(7, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 weeklyScore = 8; */
         if (message.weeklyScore !== undefined)
             writer.tag(8, WireType.Varint).int32(message.weeklyScore);
@@ -575,11 +575,11 @@ class GetBpBonusReply$Type extends MessageType<GetBpBonusReply> {
     constructor() {
         super("GetBpBonusReply", [
             { no: 1, name: "id", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "scoreBonusInfo", kind: "message", T: () => BpScoreBonusInfo }
+            { no: 2, name: "scoreBonusInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BpScoreBonusInfo }
         ]);
     }
     create(value?: PartialMessage<GetBpBonusReply>): GetBpBonusReply {
-        const message = {};
+        const message = { scoreBonusInfo: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetBpBonusReply>(this, message, value);
@@ -593,8 +593,8 @@ class GetBpBonusReply$Type extends MessageType<GetBpBonusReply> {
                 case /* optional int32 id */ 1:
                     message.id = reader.int32();
                     break;
-                case /* BpScoreBonusInfo scoreBonusInfo */ 2:
-                    message.scoreBonusInfo = BpScoreBonusInfo.internalBinaryRead(reader, reader.uint32(), options, message.scoreBonusInfo);
+                case /* repeated BpScoreBonusInfo scoreBonusInfo */ 2:
+                    message.scoreBonusInfo.push(BpScoreBonusInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -611,9 +611,9 @@ class GetBpBonusReply$Type extends MessageType<GetBpBonusReply> {
         /* optional int32 id = 1; */
         if (message.id !== undefined)
             writer.tag(1, WireType.Varint).int32(message.id);
-        /* BpScoreBonusInfo scoreBonusInfo = 2; */
-        if (message.scoreBonusInfo)
-            BpScoreBonusInfo.internalBinaryWrite(message.scoreBonusInfo, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BpScoreBonusInfo scoreBonusInfo = 2; */
+        for (let i = 0; i < message.scoreBonusInfo.length; i++)
+            BpScoreBonusInfo.internalBinaryWrite(message.scoreBonusInfo[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

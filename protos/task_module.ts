@@ -3,10 +3,10 @@
 // tslint:disable
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { IBinaryWriter } from "@protobuf-ts/runtime";
+import { WireType } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
 import type { IBinaryReader } from "@protobuf-ts/runtime";
 import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
@@ -16,17 +16,17 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface Task {
     /**
-     * @generated from protobuf field: repeated int32 id = 1;
+     * @generated from protobuf field: int32 id = 1;
      */
-    id: number[];
+    id: number;
     /**
-     * @generated from protobuf field: repeated int32 progress = 2;
+     * @generated from protobuf field: int32 progress = 2;
      */
-    progress: number[];
+    progress: number;
     /**
-     * @generated from protobuf field: repeated bool hasFinished = 3;
+     * @generated from protobuf field: bool hasFinished = 3;
      */
-    hasFinished: boolean[];
+    hasFinished: boolean;
     /**
      * @generated from protobuf field: optional int32 finishCount = 4;
      */
@@ -45,34 +45,34 @@ export interface Task {
  */
 export interface TaskActivityInfo {
     /**
-     * @generated from protobuf field: repeated int32 typeId = 1;
+     * @generated from protobuf field: int32 typeId = 1;
      */
-    typeId: number[];
+    typeId: number;
     /**
-     * @generated from protobuf field: repeated int32 defineId = 2;
+     * @generated from protobuf field: int32 defineId = 2;
      */
-    defineId: number[];
+    defineId: number;
     /**
-     * @generated from protobuf field: repeated int32 value = 3;
+     * @generated from protobuf field: int32 value = 3;
      */
-    value: number[];
+    value: number;
     /**
      * @generated from protobuf field: optional int32 gainValue = 4;
      */
     gainValue?: number;
     /**
-     * @generated from protobuf field: repeated int32 expiryTime = 5;
+     * @generated from protobuf field: int32 expiryTime = 5;
      */
-    expiryTime: number[];
+    expiryTime: number;
 }
 /**
  * @generated from protobuf message GetTaskInfoRequest
  */
 export interface GetTaskInfoRequest {
     /**
-     * @generated from protobuf field: uint32 typeIds = 1;
+     * @generated from protobuf field: repeated uint32 typeIds = 1;
      */
-    typeIds: number;
+    typeIds: number[];
 }
 /**
  * @generated from protobuf message FinishAllTaskRequest
@@ -87,9 +87,9 @@ export interface FinishAllTaskRequest {
      */
     minTypeId?: number;
     /**
-     * @generated from protobuf field: int32 taskIds = 3;
+     * @generated from protobuf field: repeated int32 taskIds = 3;
      */
-    taskIds: number;
+    taskIds: number[];
 }
 /**
  * @generated from protobuf message GetTaskActivityBonusReply
@@ -117,9 +117,9 @@ export interface FinishAllTaskReply {
      */
     minTypeId?: number;
     /**
-     * @generated from protobuf field: int32 taskIds = 3;
+     * @generated from protobuf field: repeated int32 taskIds = 3;
      */
-    taskIds: number;
+    taskIds: number[];
 }
 /**
  * @generated from protobuf message GetTaskActivityBonusRequest
@@ -139,22 +139,22 @@ export interface GetTaskActivityBonusRequest {
  */
 export interface UpdateTaskPush {
     /**
-     * @generated from protobuf field: Task taskInfo = 1;
+     * @generated from protobuf field: repeated Task taskInfo = 1;
      */
-    taskInfo?: Task;
+    taskInfo: Task[];
     /**
-     * @generated from protobuf field: TaskActivityInfo activityInfo = 2;
+     * @generated from protobuf field: repeated TaskActivityInfo activityInfo = 2;
      */
-    activityInfo?: TaskActivityInfo;
+    activityInfo: TaskActivityInfo[];
 }
 /**
  * @generated from protobuf message FinishTaskRequest
  */
 export interface FinishTaskRequest {
     /**
-     * @generated from protobuf field: repeated int32 id = 1;
+     * @generated from protobuf field: int32 id = 1;
      */
-    id: number[];
+    id: number;
 }
 /**
  * @generated from protobuf message FinishTaskReply
@@ -174,41 +174,41 @@ export interface FinishTaskReply {
  */
 export interface DeleteTaskPush {
     /**
-     * @generated from protobuf field: int32 taskIds = 1;
+     * @generated from protobuf field: repeated int32 taskIds = 1;
      */
-    taskIds: number;
+    taskIds: number[];
 }
 /**
  * @generated from protobuf message GetTaskInfoReply
  */
 export interface GetTaskInfoReply {
     /**
-     * @generated from protobuf field: Task taskInfo = 1;
+     * @generated from protobuf field: repeated Task taskInfo = 1;
      */
-    taskInfo?: Task;
+    taskInfo: Task[];
     /**
-     * @generated from protobuf field: TaskActivityInfo activityInfo = 2;
+     * @generated from protobuf field: repeated TaskActivityInfo activityInfo = 2;
      */
-    activityInfo?: TaskActivityInfo;
+    activityInfo: TaskActivityInfo[];
     /**
-     * @generated from protobuf field: uint32 typeIds = 3;
+     * @generated from protobuf field: repeated uint32 typeIds = 3;
      */
-    typeIds: number;
+    typeIds: number[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class Task$Type extends MessageType<Task> {
     constructor() {
         super("Task", [
-            { no: 1, name: "id", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "progress", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "hasFinished", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 8 /*ScalarType.BOOL*/ },
+            { no: 1, name: "id", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "progress", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "hasFinished", kind: "scalar", T: 8 /*ScalarType.BOOL*/ },
             { no: 4, name: "finishCount", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 5, name: "type", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 6, name: "expiryTime", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<Task>): Task {
-        const message = { id: [], progress: [], hasFinished: [] };
+        const message = { id: 0, progress: 0, hasFinished: false };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<Task>(this, message, value);
@@ -219,26 +219,14 @@ class Task$Type extends MessageType<Task> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 id */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.id.push(reader.int32());
-                    else
-                        message.id.push(reader.int32());
+                case /* int32 id */ 1:
+                    message.id = reader.int32();
                     break;
-                case /* repeated int32 progress */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.progress.push(reader.int32());
-                    else
-                        message.progress.push(reader.int32());
+                case /* int32 progress */ 2:
+                    message.progress = reader.int32();
                     break;
-                case /* repeated bool hasFinished */ 3:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.hasFinished.push(reader.bool());
-                    else
-                        message.hasFinished.push(reader.bool());
+                case /* bool hasFinished */ 3:
+                    message.hasFinished = reader.bool();
                     break;
                 case /* optional int32 finishCount */ 4:
                     message.finishCount = reader.int32();
@@ -261,15 +249,15 @@ class Task$Type extends MessageType<Task> {
         return message;
     }
     internalBinaryWrite(message: Task, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 id = 1; */
-        for (let i = 0; i < message.id.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.id[i]);
-        /* repeated int32 progress = 2; */
-        for (let i = 0; i < message.progress.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.progress[i]);
-        /* repeated bool hasFinished = 3; */
-        for (let i = 0; i < message.hasFinished.length; i++)
-            writer.tag(3, WireType.Varint).bool(message.hasFinished[i]);
+        /* int32 id = 1; */
+        if (message.id !== 0)
+            writer.tag(1, WireType.Varint).int32(message.id);
+        /* int32 progress = 2; */
+        if (message.progress !== 0)
+            writer.tag(2, WireType.Varint).int32(message.progress);
+        /* bool hasFinished = 3; */
+        if (message.hasFinished !== false)
+            writer.tag(3, WireType.Varint).bool(message.hasFinished);
         /* optional int32 finishCount = 4; */
         if (message.finishCount !== undefined)
             writer.tag(4, WireType.Varint).int32(message.finishCount);
@@ -293,15 +281,15 @@ export const Task = new Task$Type();
 class TaskActivityInfo$Type extends MessageType<TaskActivityInfo> {
     constructor() {
         super("TaskActivityInfo", [
-            { no: 1, name: "typeId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "defineId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "value", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "typeId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "defineId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "value", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "gainValue", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "expiryTime", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
+            { no: 5, name: "expiryTime", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<TaskActivityInfo>): TaskActivityInfo {
-        const message = { typeId: [], defineId: [], value: [], expiryTime: [] };
+        const message = { typeId: 0, defineId: 0, value: 0, expiryTime: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<TaskActivityInfo>(this, message, value);
@@ -312,36 +300,20 @@ class TaskActivityInfo$Type extends MessageType<TaskActivityInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 typeId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.typeId.push(reader.int32());
-                    else
-                        message.typeId.push(reader.int32());
+                case /* int32 typeId */ 1:
+                    message.typeId = reader.int32();
                     break;
-                case /* repeated int32 defineId */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.defineId.push(reader.int32());
-                    else
-                        message.defineId.push(reader.int32());
+                case /* int32 defineId */ 2:
+                    message.defineId = reader.int32();
                     break;
-                case /* repeated int32 value */ 3:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.value.push(reader.int32());
-                    else
-                        message.value.push(reader.int32());
+                case /* int32 value */ 3:
+                    message.value = reader.int32();
                     break;
                 case /* optional int32 gainValue */ 4:
                     message.gainValue = reader.int32();
                     break;
-                case /* repeated int32 expiryTime */ 5:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.expiryTime.push(reader.int32());
-                    else
-                        message.expiryTime.push(reader.int32());
+                case /* int32 expiryTime */ 5:
+                    message.expiryTime = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -355,21 +327,21 @@ class TaskActivityInfo$Type extends MessageType<TaskActivityInfo> {
         return message;
     }
     internalBinaryWrite(message: TaskActivityInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 typeId = 1; */
-        for (let i = 0; i < message.typeId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.typeId[i]);
-        /* repeated int32 defineId = 2; */
-        for (let i = 0; i < message.defineId.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.defineId[i]);
-        /* repeated int32 value = 3; */
-        for (let i = 0; i < message.value.length; i++)
-            writer.tag(3, WireType.Varint).int32(message.value[i]);
+        /* int32 typeId = 1; */
+        if (message.typeId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.typeId);
+        /* int32 defineId = 2; */
+        if (message.defineId !== 0)
+            writer.tag(2, WireType.Varint).int32(message.defineId);
+        /* int32 value = 3; */
+        if (message.value !== 0)
+            writer.tag(3, WireType.Varint).int32(message.value);
         /* optional int32 gainValue = 4; */
         if (message.gainValue !== undefined)
             writer.tag(4, WireType.Varint).int32(message.gainValue);
-        /* repeated int32 expiryTime = 5; */
-        for (let i = 0; i < message.expiryTime.length; i++)
-            writer.tag(5, WireType.Varint).int32(message.expiryTime[i]);
+        /* int32 expiryTime = 5; */
+        if (message.expiryTime !== 0)
+            writer.tag(5, WireType.Varint).int32(message.expiryTime);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -384,11 +356,11 @@ export const TaskActivityInfo = new TaskActivityInfo$Type();
 class GetTaskInfoRequest$Type extends MessageType<GetTaskInfoRequest> {
     constructor() {
         super("GetTaskInfoRequest", [
-            { no: 1, name: "typeIds", kind: "scalar", T: 13 /*ScalarType.UINT32*/ }
+            { no: 1, name: "typeIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 13 /*ScalarType.UINT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetTaskInfoRequest>): GetTaskInfoRequest {
-        const message = { typeIds: 0 };
+        const message = { typeIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetTaskInfoRequest>(this, message, value);
@@ -399,8 +371,12 @@ class GetTaskInfoRequest$Type extends MessageType<GetTaskInfoRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* uint32 typeIds */ 1:
-                    message.typeIds = reader.uint32();
+                case /* repeated uint32 typeIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.typeIds.push(reader.uint32());
+                    else
+                        message.typeIds.push(reader.uint32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -414,9 +390,9 @@ class GetTaskInfoRequest$Type extends MessageType<GetTaskInfoRequest> {
         return message;
     }
     internalBinaryWrite(message: GetTaskInfoRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* uint32 typeIds = 1; */
-        if (message.typeIds !== 0)
-            writer.tag(1, WireType.Varint).uint32(message.typeIds);
+        /* repeated uint32 typeIds = 1; */
+        for (let i = 0; i < message.typeIds.length; i++)
+            writer.tag(1, WireType.Varint).uint32(message.typeIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -433,11 +409,11 @@ class FinishAllTaskRequest$Type extends MessageType<FinishAllTaskRequest> {
         super("FinishAllTaskRequest", [
             { no: 1, name: "typeId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "minTypeId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "taskIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 3, name: "taskIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<FinishAllTaskRequest>): FinishAllTaskRequest {
-        const message = { taskIds: 0 };
+        const message = { taskIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<FinishAllTaskRequest>(this, message, value);
@@ -454,8 +430,12 @@ class FinishAllTaskRequest$Type extends MessageType<FinishAllTaskRequest> {
                 case /* optional int32 minTypeId */ 2:
                     message.minTypeId = reader.int32();
                     break;
-                case /* int32 taskIds */ 3:
-                    message.taskIds = reader.int32();
+                case /* repeated int32 taskIds */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.taskIds.push(reader.int32());
+                    else
+                        message.taskIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -475,9 +455,9 @@ class FinishAllTaskRequest$Type extends MessageType<FinishAllTaskRequest> {
         /* optional int32 minTypeId = 2; */
         if (message.minTypeId !== undefined)
             writer.tag(2, WireType.Varint).int32(message.minTypeId);
-        /* int32 taskIds = 3; */
-        if (message.taskIds !== 0)
-            writer.tag(3, WireType.Varint).int32(message.taskIds);
+        /* repeated int32 taskIds = 3; */
+        for (let i = 0; i < message.taskIds.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.taskIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -548,11 +528,11 @@ class FinishAllTaskReply$Type extends MessageType<FinishAllTaskReply> {
         super("FinishAllTaskReply", [
             { no: 1, name: "typeId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "minTypeId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "taskIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 3, name: "taskIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<FinishAllTaskReply>): FinishAllTaskReply {
-        const message = { taskIds: 0 };
+        const message = { taskIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<FinishAllTaskReply>(this, message, value);
@@ -569,8 +549,12 @@ class FinishAllTaskReply$Type extends MessageType<FinishAllTaskReply> {
                 case /* optional int32 minTypeId */ 2:
                     message.minTypeId = reader.int32();
                     break;
-                case /* int32 taskIds */ 3:
-                    message.taskIds = reader.int32();
+                case /* repeated int32 taskIds */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.taskIds.push(reader.int32());
+                    else
+                        message.taskIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -590,9 +574,9 @@ class FinishAllTaskReply$Type extends MessageType<FinishAllTaskReply> {
         /* optional int32 minTypeId = 2; */
         if (message.minTypeId !== undefined)
             writer.tag(2, WireType.Varint).int32(message.minTypeId);
-        /* int32 taskIds = 3; */
-        if (message.taskIds !== 0)
-            writer.tag(3, WireType.Varint).int32(message.taskIds);
+        /* repeated int32 taskIds = 3; */
+        for (let i = 0; i < message.taskIds.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.taskIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -661,12 +645,12 @@ export const GetTaskActivityBonusRequest = new GetTaskActivityBonusRequest$Type(
 class UpdateTaskPush$Type extends MessageType<UpdateTaskPush> {
     constructor() {
         super("UpdateTaskPush", [
-            { no: 1, name: "taskInfo", kind: "message", T: () => Task },
-            { no: 2, name: "activityInfo", kind: "message", T: () => TaskActivityInfo }
+            { no: 1, name: "taskInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Task },
+            { no: 2, name: "activityInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TaskActivityInfo }
         ]);
     }
     create(value?: PartialMessage<UpdateTaskPush>): UpdateTaskPush {
-        const message = {};
+        const message = { taskInfo: [], activityInfo: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UpdateTaskPush>(this, message, value);
@@ -677,11 +661,11 @@ class UpdateTaskPush$Type extends MessageType<UpdateTaskPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Task taskInfo */ 1:
-                    message.taskInfo = Task.internalBinaryRead(reader, reader.uint32(), options, message.taskInfo);
+                case /* repeated Task taskInfo */ 1:
+                    message.taskInfo.push(Task.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* TaskActivityInfo activityInfo */ 2:
-                    message.activityInfo = TaskActivityInfo.internalBinaryRead(reader, reader.uint32(), options, message.activityInfo);
+                case /* repeated TaskActivityInfo activityInfo */ 2:
+                    message.activityInfo.push(TaskActivityInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -695,12 +679,12 @@ class UpdateTaskPush$Type extends MessageType<UpdateTaskPush> {
         return message;
     }
     internalBinaryWrite(message: UpdateTaskPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Task taskInfo = 1; */
-        if (message.taskInfo)
-            Task.internalBinaryWrite(message.taskInfo, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* TaskActivityInfo activityInfo = 2; */
-        if (message.activityInfo)
-            TaskActivityInfo.internalBinaryWrite(message.activityInfo, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Task taskInfo = 1; */
+        for (let i = 0; i < message.taskInfo.length; i++)
+            Task.internalBinaryWrite(message.taskInfo[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated TaskActivityInfo activityInfo = 2; */
+        for (let i = 0; i < message.activityInfo.length; i++)
+            TaskActivityInfo.internalBinaryWrite(message.activityInfo[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -715,11 +699,11 @@ export const UpdateTaskPush = new UpdateTaskPush$Type();
 class FinishTaskRequest$Type extends MessageType<FinishTaskRequest> {
     constructor() {
         super("FinishTaskRequest", [
-            { no: 1, name: "id", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "id", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<FinishTaskRequest>): FinishTaskRequest {
-        const message = { id: [] };
+        const message = { id: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<FinishTaskRequest>(this, message, value);
@@ -730,12 +714,8 @@ class FinishTaskRequest$Type extends MessageType<FinishTaskRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 id */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.id.push(reader.int32());
-                    else
-                        message.id.push(reader.int32());
+                case /* int32 id */ 1:
+                    message.id = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -749,9 +729,9 @@ class FinishTaskRequest$Type extends MessageType<FinishTaskRequest> {
         return message;
     }
     internalBinaryWrite(message: FinishTaskRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 id = 1; */
-        for (let i = 0; i < message.id.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.id[i]);
+        /* int32 id = 1; */
+        if (message.id !== 0)
+            writer.tag(1, WireType.Varint).int32(message.id);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -820,11 +800,11 @@ export const FinishTaskReply = new FinishTaskReply$Type();
 class DeleteTaskPush$Type extends MessageType<DeleteTaskPush> {
     constructor() {
         super("DeleteTaskPush", [
-            { no: 1, name: "taskIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "taskIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<DeleteTaskPush>): DeleteTaskPush {
-        const message = { taskIds: 0 };
+        const message = { taskIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeleteTaskPush>(this, message, value);
@@ -835,8 +815,12 @@ class DeleteTaskPush$Type extends MessageType<DeleteTaskPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 taskIds */ 1:
-                    message.taskIds = reader.int32();
+                case /* repeated int32 taskIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.taskIds.push(reader.int32());
+                    else
+                        message.taskIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -850,9 +834,9 @@ class DeleteTaskPush$Type extends MessageType<DeleteTaskPush> {
         return message;
     }
     internalBinaryWrite(message: DeleteTaskPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 taskIds = 1; */
-        if (message.taskIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.taskIds);
+        /* repeated int32 taskIds = 1; */
+        for (let i = 0; i < message.taskIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.taskIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -867,13 +851,13 @@ export const DeleteTaskPush = new DeleteTaskPush$Type();
 class GetTaskInfoReply$Type extends MessageType<GetTaskInfoReply> {
     constructor() {
         super("GetTaskInfoReply", [
-            { no: 1, name: "taskInfo", kind: "message", T: () => Task },
-            { no: 2, name: "activityInfo", kind: "message", T: () => TaskActivityInfo },
-            { no: 3, name: "typeIds", kind: "scalar", T: 13 /*ScalarType.UINT32*/ }
+            { no: 1, name: "taskInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Task },
+            { no: 2, name: "activityInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TaskActivityInfo },
+            { no: 3, name: "typeIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 13 /*ScalarType.UINT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetTaskInfoReply>): GetTaskInfoReply {
-        const message = { typeIds: 0 };
+        const message = { taskInfo: [], activityInfo: [], typeIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetTaskInfoReply>(this, message, value);
@@ -884,14 +868,18 @@ class GetTaskInfoReply$Type extends MessageType<GetTaskInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Task taskInfo */ 1:
-                    message.taskInfo = Task.internalBinaryRead(reader, reader.uint32(), options, message.taskInfo);
+                case /* repeated Task taskInfo */ 1:
+                    message.taskInfo.push(Task.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* TaskActivityInfo activityInfo */ 2:
-                    message.activityInfo = TaskActivityInfo.internalBinaryRead(reader, reader.uint32(), options, message.activityInfo);
+                case /* repeated TaskActivityInfo activityInfo */ 2:
+                    message.activityInfo.push(TaskActivityInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* uint32 typeIds */ 3:
-                    message.typeIds = reader.uint32();
+                case /* repeated uint32 typeIds */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.typeIds.push(reader.uint32());
+                    else
+                        message.typeIds.push(reader.uint32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -905,15 +893,15 @@ class GetTaskInfoReply$Type extends MessageType<GetTaskInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetTaskInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Task taskInfo = 1; */
-        if (message.taskInfo)
-            Task.internalBinaryWrite(message.taskInfo, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* TaskActivityInfo activityInfo = 2; */
-        if (message.activityInfo)
-            TaskActivityInfo.internalBinaryWrite(message.activityInfo, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* uint32 typeIds = 3; */
-        if (message.typeIds !== 0)
-            writer.tag(3, WireType.Varint).uint32(message.typeIds);
+        /* repeated Task taskInfo = 1; */
+        for (let i = 0; i < message.taskInfo.length; i++)
+            Task.internalBinaryWrite(message.taskInfo[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated TaskActivityInfo activityInfo = 2; */
+        for (let i = 0; i < message.activityInfo.length; i++)
+            TaskActivityInfo.internalBinaryWrite(message.activityInfo[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated uint32 typeIds = 3; */
+        for (let i = 0; i < message.typeIds.length; i++)
+            writer.tag(3, WireType.Varint).uint32(message.typeIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

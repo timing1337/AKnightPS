@@ -3,10 +3,10 @@
 // tslint:disable
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
 import type { IBinaryReader } from "@protobuf-ts/runtime";
 import { UnknownFieldHandler } from "@protobuf-ts/runtime";
+import { WireType } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
@@ -20,9 +20,9 @@ export interface ChatperElementInfo {
      */
     element?: number;
     /**
-     * @generated from protobuf field: int32 dialogIds = 2;
+     * @generated from protobuf field: repeated int32 dialogIds = 2;
      */
-    dialogIds: number;
+    dialogIds: number[];
 }
 /**
  * @generated from protobuf message GetHandbookInfoRequest
@@ -77,24 +77,24 @@ export interface Handbook {
  */
 export interface GetHandbookInfoReply {
     /**
-     * @generated from protobuf field: Handbook infos = 1;
+     * @generated from protobuf field: repeated Handbook infos = 1;
      */
-    infos?: Handbook;
+    infos: Handbook[];
     /**
-     * @generated from protobuf field: ChatperElementInfo elementInfo = 2;
+     * @generated from protobuf field: repeated ChatperElementInfo elementInfo = 2;
      */
-    elementInfo?: ChatperElementInfo;
+    elementInfo: ChatperElementInfo[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class ChatperElementInfo$Type extends MessageType<ChatperElementInfo> {
     constructor() {
         super("ChatperElementInfo", [
             { no: 1, name: "element", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "dialogIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "dialogIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ChatperElementInfo>): ChatperElementInfo {
-        const message = { dialogIds: 0 };
+        const message = { dialogIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ChatperElementInfo>(this, message, value);
@@ -108,8 +108,12 @@ class ChatperElementInfo$Type extends MessageType<ChatperElementInfo> {
                 case /* optional int32 element */ 1:
                     message.element = reader.int32();
                     break;
-                case /* int32 dialogIds */ 2:
-                    message.dialogIds = reader.int32();
+                case /* repeated int32 dialogIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.dialogIds.push(reader.int32());
+                    else
+                        message.dialogIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -126,9 +130,9 @@ class ChatperElementInfo$Type extends MessageType<ChatperElementInfo> {
         /* optional int32 element = 1; */
         if (message.element !== undefined)
             writer.tag(1, WireType.Varint).int32(message.element);
-        /* int32 dialogIds = 2; */
-        if (message.dialogIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.dialogIds);
+        /* repeated int32 dialogIds = 2; */
+        for (let i = 0; i < message.dialogIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.dialogIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -338,12 +342,12 @@ export const Handbook = new Handbook$Type();
 class GetHandbookInfoReply$Type extends MessageType<GetHandbookInfoReply> {
     constructor() {
         super("GetHandbookInfoReply", [
-            { no: 1, name: "infos", kind: "message", T: () => Handbook },
-            { no: 2, name: "elementInfo", kind: "message", T: () => ChatperElementInfo }
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Handbook },
+            { no: 2, name: "elementInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ChatperElementInfo }
         ]);
     }
     create(value?: PartialMessage<GetHandbookInfoReply>): GetHandbookInfoReply {
-        const message = {};
+        const message = { infos: [], elementInfo: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetHandbookInfoReply>(this, message, value);
@@ -354,11 +358,11 @@ class GetHandbookInfoReply$Type extends MessageType<GetHandbookInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Handbook infos */ 1:
-                    message.infos = Handbook.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated Handbook infos */ 1:
+                    message.infos.push(Handbook.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ChatperElementInfo elementInfo */ 2:
-                    message.elementInfo = ChatperElementInfo.internalBinaryRead(reader, reader.uint32(), options, message.elementInfo);
+                case /* repeated ChatperElementInfo elementInfo */ 2:
+                    message.elementInfo.push(ChatperElementInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -372,12 +376,12 @@ class GetHandbookInfoReply$Type extends MessageType<GetHandbookInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetHandbookInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Handbook infos = 1; */
-        if (message.infos)
-            Handbook.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* ChatperElementInfo elementInfo = 2; */
-        if (message.elementInfo)
-            ChatperElementInfo.internalBinaryWrite(message.elementInfo, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Handbook infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            Handbook.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ChatperElementInfo elementInfo = 2; */
+        for (let i = 0; i < message.elementInfo.length; i++)
+            ChatperElementInfo.internalBinaryWrite(message.elementInfo[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

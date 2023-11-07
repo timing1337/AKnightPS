@@ -24,9 +24,9 @@ export interface SetBirthdayReply {
  */
 export interface GetSimplePropertyReply {
     /**
-     * @generated from protobuf field: SimpleProperty simpleProperties = 1;
+     * @generated from protobuf field: repeated SimpleProperty simpleProperties = 1;
      */
-    simpleProperties?: SimpleProperty;
+    simpleProperties: SimpleProperty[];
 }
 /**
  * @generated from protobuf message GetPlayerInfoRequest
@@ -38,9 +38,9 @@ export interface GetPlayerInfoRequest {
  */
 export interface SetShowHeroUniqueIdsRequest {
     /**
-     * @generated from protobuf field: int64 showHeroUniqueIds = 1;
+     * @generated from protobuf field: repeated int64 showHeroUniqueIds = 1;
      */
-    showHeroUniqueIds: bigint;
+    showHeroUniqueIds: bigint[];
 }
 /**
  * @generated from protobuf message MarkMainThumbnailRequest
@@ -52,9 +52,9 @@ export interface MarkMainThumbnailRequest {
  */
 export interface SetCharacterAgeRequest {
     /**
-     * @generated from protobuf field: int32 characterAge = 1;
+     * @generated from protobuf field: repeated int32 characterAge = 1;
      */
-    characterAge: number;
+    characterAge: number[];
 }
 /**
  * @generated from protobuf message SetSimplePropertyReply
@@ -125,9 +125,9 @@ export interface MarkMainThumbnailReply {
  */
 export interface SetCharacterAgeReply {
     /**
-     * @generated from protobuf field: int32 characterAge = 1;
+     * @generated from protobuf field: repeated int32 characterAge = 1;
      */
-    characterAge: number;
+    characterAge: number[];
 }
 /**
  * @generated from protobuf message RenameReply
@@ -251,9 +251,9 @@ export interface GetPlayerInfoReply {
      */
     playerInfo?: PlayerInfo;
     /**
-     * @generated from protobuf field: OpenInfo openinfos = 2;
+     * @generated from protobuf field: repeated OpenInfo openinfos = 2;
      */
-    openinfos?: OpenInfo;
+    openinfos: OpenInfo[];
     /**
      * @generated from protobuf field: optional bool canRename = 3;
      */
@@ -333,11 +333,11 @@ export const SetBirthdayReply = new SetBirthdayReply$Type();
 class GetSimplePropertyReply$Type extends MessageType<GetSimplePropertyReply> {
     constructor() {
         super("GetSimplePropertyReply", [
-            { no: 1, name: "simpleProperties", kind: "message", T: () => SimpleProperty }
+            { no: 1, name: "simpleProperties", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => SimpleProperty }
         ]);
     }
     create(value?: PartialMessage<GetSimplePropertyReply>): GetSimplePropertyReply {
-        const message = {};
+        const message = { simpleProperties: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetSimplePropertyReply>(this, message, value);
@@ -348,8 +348,8 @@ class GetSimplePropertyReply$Type extends MessageType<GetSimplePropertyReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* SimpleProperty simpleProperties */ 1:
-                    message.simpleProperties = SimpleProperty.internalBinaryRead(reader, reader.uint32(), options, message.simpleProperties);
+                case /* repeated SimpleProperty simpleProperties */ 1:
+                    message.simpleProperties.push(SimpleProperty.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -363,9 +363,9 @@ class GetSimplePropertyReply$Type extends MessageType<GetSimplePropertyReply> {
         return message;
     }
     internalBinaryWrite(message: GetSimplePropertyReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* SimpleProperty simpleProperties = 1; */
-        if (message.simpleProperties)
-            SimpleProperty.internalBinaryWrite(message.simpleProperties, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated SimpleProperty simpleProperties = 1; */
+        for (let i = 0; i < message.simpleProperties.length; i++)
+            SimpleProperty.internalBinaryWrite(message.simpleProperties[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -406,11 +406,11 @@ export const GetPlayerInfoRequest = new GetPlayerInfoRequest$Type();
 class SetShowHeroUniqueIdsRequest$Type extends MessageType<SetShowHeroUniqueIdsRequest> {
     constructor() {
         super("SetShowHeroUniqueIdsRequest", [
-            { no: 1, name: "showHeroUniqueIds", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "showHeroUniqueIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<SetShowHeroUniqueIdsRequest>): SetShowHeroUniqueIdsRequest {
-        const message = { showHeroUniqueIds: 0n };
+        const message = { showHeroUniqueIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SetShowHeroUniqueIdsRequest>(this, message, value);
@@ -421,8 +421,12 @@ class SetShowHeroUniqueIdsRequest$Type extends MessageType<SetShowHeroUniqueIdsR
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 showHeroUniqueIds */ 1:
-                    message.showHeroUniqueIds = reader.int64().toBigInt();
+                case /* repeated int64 showHeroUniqueIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.showHeroUniqueIds.push(reader.int64().toBigInt());
+                    else
+                        message.showHeroUniqueIds.push(reader.int64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -436,9 +440,9 @@ class SetShowHeroUniqueIdsRequest$Type extends MessageType<SetShowHeroUniqueIdsR
         return message;
     }
     internalBinaryWrite(message: SetShowHeroUniqueIdsRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 showHeroUniqueIds = 1; */
-        if (message.showHeroUniqueIds !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.showHeroUniqueIds);
+        /* repeated int64 showHeroUniqueIds = 1; */
+        for (let i = 0; i < message.showHeroUniqueIds.length; i++)
+            writer.tag(1, WireType.Varint).int64(message.showHeroUniqueIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -479,11 +483,11 @@ export const MarkMainThumbnailRequest = new MarkMainThumbnailRequest$Type();
 class SetCharacterAgeRequest$Type extends MessageType<SetCharacterAgeRequest> {
     constructor() {
         super("SetCharacterAgeRequest", [
-            { no: 1, name: "characterAge", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "characterAge", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<SetCharacterAgeRequest>): SetCharacterAgeRequest {
-        const message = { characterAge: 0 };
+        const message = { characterAge: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SetCharacterAgeRequest>(this, message, value);
@@ -494,8 +498,12 @@ class SetCharacterAgeRequest$Type extends MessageType<SetCharacterAgeRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 characterAge */ 1:
-                    message.characterAge = reader.int32();
+                case /* repeated int32 characterAge */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.characterAge.push(reader.int32());
+                    else
+                        message.characterAge.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -509,9 +517,9 @@ class SetCharacterAgeRequest$Type extends MessageType<SetCharacterAgeRequest> {
         return message;
     }
     internalBinaryWrite(message: SetCharacterAgeRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 characterAge = 1; */
-        if (message.characterAge !== 0)
-            writer.tag(1, WireType.Varint).int32(message.characterAge);
+        /* repeated int32 characterAge = 1; */
+        for (let i = 0; i < message.characterAge.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.characterAge[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -860,11 +868,11 @@ export const MarkMainThumbnailReply = new MarkMainThumbnailReply$Type();
 class SetCharacterAgeReply$Type extends MessageType<SetCharacterAgeReply> {
     constructor() {
         super("SetCharacterAgeReply", [
-            { no: 1, name: "characterAge", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "characterAge", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<SetCharacterAgeReply>): SetCharacterAgeReply {
-        const message = { characterAge: 0 };
+        const message = { characterAge: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SetCharacterAgeReply>(this, message, value);
@@ -875,8 +883,12 @@ class SetCharacterAgeReply$Type extends MessageType<SetCharacterAgeReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 characterAge */ 1:
-                    message.characterAge = reader.int32();
+                case /* repeated int32 characterAge */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.characterAge.push(reader.int32());
+                    else
+                        message.characterAge.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -890,9 +902,9 @@ class SetCharacterAgeReply$Type extends MessageType<SetCharacterAgeReply> {
         return message;
     }
     internalBinaryWrite(message: SetCharacterAgeReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 characterAge = 1; */
-        if (message.characterAge !== 0)
-            writer.tag(1, WireType.Varint).int32(message.characterAge);
+        /* repeated int32 characterAge = 1; */
+        for (let i = 0; i < message.characterAge.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.characterAge[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1442,14 +1454,14 @@ class GetPlayerInfoReply$Type extends MessageType<GetPlayerInfoReply> {
     constructor() {
         super("GetPlayerInfoReply", [
             { no: 1, name: "playerInfo", kind: "message", T: () => PlayerInfo },
-            { no: 2, name: "openinfos", kind: "message", T: () => OpenInfo },
+            { no: 2, name: "openinfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => OpenInfo },
             { no: 3, name: "canRename", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 4, name: "mainThumbnail", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 5, name: "extRename", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetPlayerInfoReply>): GetPlayerInfoReply {
-        const message = {};
+        const message = { openinfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetPlayerInfoReply>(this, message, value);
@@ -1463,8 +1475,8 @@ class GetPlayerInfoReply$Type extends MessageType<GetPlayerInfoReply> {
                 case /* optional PlayerInfo playerInfo */ 1:
                     message.playerInfo = PlayerInfo.internalBinaryRead(reader, reader.uint32(), options, message.playerInfo);
                     break;
-                case /* OpenInfo openinfos */ 2:
-                    message.openinfos = OpenInfo.internalBinaryRead(reader, reader.uint32(), options, message.openinfos);
+                case /* repeated OpenInfo openinfos */ 2:
+                    message.openinfos.push(OpenInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool canRename */ 3:
                     message.canRename = reader.bool();
@@ -1490,9 +1502,9 @@ class GetPlayerInfoReply$Type extends MessageType<GetPlayerInfoReply> {
         /* optional PlayerInfo playerInfo = 1; */
         if (message.playerInfo)
             PlayerInfo.internalBinaryWrite(message.playerInfo, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* OpenInfo openinfos = 2; */
-        if (message.openinfos)
-            OpenInfo.internalBinaryWrite(message.openinfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated OpenInfo openinfos = 2; */
+        for (let i = 0; i < message.openinfos.length; i++)
+            OpenInfo.internalBinaryWrite(message.openinfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* optional bool canRename = 3; */
         if (message.canRename !== undefined)
             writer.tag(3, WireType.Varint).bool(message.canRename);

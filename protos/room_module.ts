@@ -25,13 +25,13 @@ export interface UnUseBuildingReply {
  */
 export interface GetBlockPackageInfoReply {
     /**
-     * @generated from protobuf field: int32 blockPackageIds = 1;
+     * @generated from protobuf field: repeated int32 blockPackageIds = 1;
      */
-    blockPackageIds: number;
+    blockPackageIds: number[];
     /**
-     * @generated from protobuf field: SpecialBlockInfo specialBlocks = 2;
+     * @generated from protobuf field: repeated SpecialBlockInfo specialBlocks = 2;
      */
-    specialBlocks?: SpecialBlockInfo;
+    specialBlocks: SpecialBlockInfo[];
 }
 /**
  * @generated from protobuf message GetCharacterInteractionBonusReply
@@ -42,9 +42,9 @@ export interface GetCharacterInteractionBonusReply {
      */
     id?: number;
     /**
-     * @generated from protobuf field: int32 selectIds = 2;
+     * @generated from protobuf field: repeated int32 selectIds = 2;
      */
-    selectIds: number;
+    selectIds: number[];
 }
 /**
  * @generated from protobuf message GetCharacterInteractionBonusRequest
@@ -55,18 +55,18 @@ export interface GetCharacterInteractionBonusRequest {
      */
     id?: number;
     /**
-     * @generated from protobuf field: int32 selectIds = 2;
+     * @generated from protobuf field: repeated int32 selectIds = 2;
      */
-    selectIds: number;
+    selectIds: number[];
 }
 /**
  * @generated from protobuf message UnUseBlockRequest
  */
 export interface UnUseBlockRequest {
     /**
-     * @generated from protobuf field: int32 blockIds = 1;
+     * @generated from protobuf field: repeated int32 blockIds = 1;
      */
-    blockIds: number;
+    blockIds: number[];
 }
 /**
  * @generated from protobuf message HideBuildingReddotReply
@@ -120,29 +120,29 @@ export interface BuildingInfo {
  */
 export interface GetRoomObInfoReply {
     /**
-     * @generated from protobuf field: BlockInfo infos = 1;
+     * @generated from protobuf field: repeated BlockInfo infos = 1;
      */
-    infos?: BlockInfo;
+    infos: BlockInfo[];
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 2;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 2;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
     /**
-     * @generated from protobuf field: FormulaInfo formulaInfos = 3;
+     * @generated from protobuf field: repeated FormulaInfo formulaInfos = 3;
      */
-    formulaInfos?: FormulaInfo;
+    formulaInfos: FormulaInfo[];
     /**
      * @generated from protobuf field: optional int32 roomLevel = 4;
      */
     roomLevel?: number;
     /**
-     * @generated from protobuf field: RoomHeroData roomHeroDatas = 5;
+     * @generated from protobuf field: repeated RoomHeroData roomHeroDatas = 5;
      */
-    roomHeroDatas?: RoomHeroData;
+    roomHeroDatas: RoomHeroData[];
     /**
-     * @generated from protobuf field: ProductionLineInfo productionLines = 6;
+     * @generated from protobuf field: repeated ProductionLineInfo productionLines = 6;
      */
-    productionLines?: ProductionLineInfo;
+    productionLines: ProductionLineInfo[];
 }
 /**
  * @generated from protobuf message UseBlockRequest
@@ -174,9 +174,9 @@ export interface UseBlockRequest {
  */
 export interface GainRoomHeroFaithRequest {
     /**
-     * @generated from protobuf field: int32 heroIds = 1;
+     * @generated from protobuf field: repeated int32 heroIds = 1;
      */
-    heroIds: number;
+    heroIds: number[];
 }
 /**
  * @generated from protobuf message SpecialBlockInfo
@@ -196,21 +196,21 @@ export interface SpecialBlockInfo {
  */
 export interface GetRoomInfoReply {
     /**
-     * @generated from protobuf field: BlockInfo infos = 1;
+     * @generated from protobuf field: repeated BlockInfo infos = 1;
      */
-    infos?: BlockInfo;
+    infos: BlockInfo[];
     /**
      * @generated from protobuf field: optional bool isReset = 2;
      */
     isReset?: boolean;
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 3;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 3;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
     /**
-     * @generated from protobuf field: BlockPackageInfo blockPackages = 4;
+     * @generated from protobuf field: repeated BlockPackageInfo blockPackages = 4;
      */
-    blockPackages?: BlockPackageInfo;
+    blockPackages: BlockPackageInfo[];
 }
 /**
  * @generated from protobuf message ProductionLineAccelerateReply
@@ -265,9 +265,9 @@ export interface GetBuildingInfoRequest {
  */
 export interface UpdateRoomHeroDataRequest {
     /**
-     * @generated from protobuf field: int32 roomHeroIds = 1;
+     * @generated from protobuf field: repeated int32 roomHeroIds = 1;
      */
-    roomHeroIds: number;
+    roomHeroIds: number[];
 }
 /**
  * @generated from protobuf message HideBuildingReddotRequset
@@ -283,9 +283,9 @@ export interface HideBuildingReddotRequset {
  */
 export interface UpdateRoomHeroDataReply {
     /**
-     * @generated from protobuf field: RoomHeroData roomHeroDatas = 1;
+     * @generated from protobuf field: repeated RoomHeroData roomHeroDatas = 1;
      */
-    roomHeroDatas?: RoomHeroData;
+    roomHeroDatas: RoomHeroData[];
 }
 /**
  * @generated from protobuf message UseBuildingRequest
@@ -317,22 +317,22 @@ export interface BlockPackageInfo {
      */
     blockPackageId?: number;
     /**
-     * @generated from protobuf field: int32 unUseBlockIds = 2;
+     * @generated from protobuf field: repeated int32 unUseBlockIds = 2;
      */
-    unUseBlockIds: number;
+    unUseBlockIds: number[];
     /**
-     * @generated from protobuf field: int32 useBlockIds = 3;
+     * @generated from protobuf field: repeated int32 useBlockIds = 3;
      */
-    useBlockIds: number;
+    useBlockIds: number[];
 }
 /**
  * @generated from protobuf message FormulaGainPush
  */
 export interface FormulaGainPush {
     /**
-     * @generated from protobuf field: FormulaInfo formulaInfos = 1;
+     * @generated from protobuf field: repeated FormulaInfo formulaInfos = 1;
      */
-    formulaInfos?: FormulaInfo;
+    formulaInfos: FormulaInfo[];
 }
 /**
  * @generated from protobuf message ProductionLineLvUpRequest
@@ -366,18 +366,18 @@ export interface GetRoomInfoRequest {
  */
 export interface BlockPackageGainPush {
     /**
-     * @generated from protobuf field: BlockPackageInfo blockPackages = 1;
+     * @generated from protobuf field: repeated BlockPackageInfo blockPackages = 1;
      */
-    blockPackages?: BlockPackageInfo;
+    blockPackages: BlockPackageInfo[];
 }
 /**
  * @generated from protobuf message GainRoomHeroFaithReply
  */
 export interface GainRoomHeroFaithReply {
     /**
-     * @generated from protobuf field: RoomHeroData roomHeroDatas = 1;
+     * @generated from protobuf field: repeated RoomHeroData roomHeroDatas = 1;
      */
-    roomHeroDatas?: RoomHeroData;
+    roomHeroDatas: RoomHeroData[];
 }
 /**
  * @generated from protobuf message CharacterInteractionInfo
@@ -392,40 +392,40 @@ export interface CharacterInteractionInfo {
      */
     finish?: boolean;
     /**
-     * @generated from protobuf field: int32 selectIds = 3;
+     * @generated from protobuf field: repeated int32 selectIds = 3;
      */
-    selectIds: number;
+    selectIds: number[];
 }
 /**
  * @generated from protobuf message ResetRoomReply
  */
 export interface ResetRoomReply {
     /**
-     * @generated from protobuf field: BlockInfo infos = 1;
+     * @generated from protobuf field: repeated BlockInfo infos = 1;
      */
-    infos?: BlockInfo;
+    infos: BlockInfo[];
     /**
-     * @generated from protobuf field: BlockPackageInfo blockPackages = 2;
+     * @generated from protobuf field: repeated BlockPackageInfo blockPackages = 2;
      */
-    blockPackages?: BlockPackageInfo;
+    blockPackages: BlockPackageInfo[];
 }
 /**
  * @generated from protobuf message GainProductionLineRequest
  */
 export interface GainProductionLineRequest {
     /**
-     * @generated from protobuf field: int32 ids = 1;
+     * @generated from protobuf field: repeated int32 ids = 1;
      */
-    ids: number;
+    ids: number[];
 }
 /**
  * @generated from protobuf message ProductionLineInfoRequest
  */
 export interface ProductionLineInfoRequest {
     /**
-     * @generated from protobuf field: int32 ids = 1;
+     * @generated from protobuf field: repeated int32 ids = 1;
      */
-    ids: number;
+    ids: number[];
 }
 /**
  * @generated from protobuf message StartCharacterInteractionReply
@@ -441,46 +441,46 @@ export interface StartCharacterInteractionReply {
  */
 export interface RoomConfirmReply {
     /**
-     * @generated from protobuf field: BlockInfo infos = 1;
+     * @generated from protobuf field: repeated BlockInfo infos = 1;
      */
-    infos?: BlockInfo;
+    infos: BlockInfo[];
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 2;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 2;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
     /**
-     * @generated from protobuf field: FormulaInfo formulaInfos = 3;
+     * @generated from protobuf field: repeated FormulaInfo formulaInfos = 3;
      */
-    formulaInfos?: FormulaInfo;
+    formulaInfos: FormulaInfo[];
     /**
      * @generated from protobuf field: optional int32 roomLevel = 4;
      */
     roomLevel?: number;
     /**
-     * @generated from protobuf field: RoomHeroData roomHeroDatas = 5;
+     * @generated from protobuf field: repeated RoomHeroData roomHeroDatas = 5;
      */
-    roomHeroDatas?: RoomHeroData;
+    roomHeroDatas: RoomHeroData[];
     /**
-     * @generated from protobuf field: ProductionLineInfo productionLines = 6;
+     * @generated from protobuf field: repeated ProductionLineInfo productionLines = 6;
      */
-    productionLines?: ProductionLineInfo;
+    productionLines: ProductionLineInfo[];
 }
 /**
  * @generated from protobuf message RoomRevertReply
  */
 export interface RoomRevertReply {
     /**
-     * @generated from protobuf field: BlockInfo infos = 1;
+     * @generated from protobuf field: repeated BlockInfo infos = 1;
      */
-    infos?: BlockInfo;
+    infos: BlockInfo[];
     /**
-     * @generated from protobuf field: BlockPackageInfo blockPackages = 2;
+     * @generated from protobuf field: repeated BlockPackageInfo blockPackages = 2;
      */
-    blockPackages?: BlockPackageInfo;
+    blockPackages: BlockPackageInfo[];
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 3;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 3;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
 }
 /**
  * @generated from protobuf message ProductionLineLvUpReply
@@ -496,9 +496,9 @@ export interface ProductionLineLvUpReply {
  */
 export interface GetBuildingInfoReply {
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 1;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 1;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
 }
 /**
  * @generated from protobuf message ProductionLineInfo
@@ -539,9 +539,9 @@ export interface ResetRoomRequest {
  */
 export interface GainProductionLineReply {
     /**
-     * @generated from protobuf field: ProductionLineInfo productionLines = 1;
+     * @generated from protobuf field: repeated ProductionLineInfo productionLines = 1;
      */
-    productionLines?: ProductionLineInfo;
+    productionLines: ProductionLineInfo[];
 }
 /**
  * @generated from protobuf message UseBuildingReply
@@ -557,9 +557,9 @@ export interface UseBuildingReply {
  */
 export interface ProductionLineInfoReply {
     /**
-     * @generated from protobuf field: ProductionLineInfo productionLines = 1;
+     * @generated from protobuf field: repeated ProductionLineInfo productionLines = 1;
      */
-    productionLines?: ProductionLineInfo;
+    productionLines: ProductionLineInfo[];
 }
 /**
  * @generated from protobuf message HideBlockPackageReddotRequest
@@ -596,9 +596,9 @@ export interface BlockInfo {
  */
 export interface BuildingGainPush {
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 1;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 1;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
 }
 /**
  * @generated from protobuf message RoomConfirmRequest
@@ -649,9 +649,9 @@ export interface RoomLevelUpReply {
      */
     roomLevel?: number;
     /**
-     * @generated from protobuf field: ProductionLineInfo productionLines = 2;
+     * @generated from protobuf field: repeated ProductionLineInfo productionLines = 2;
      */
-    productionLines?: ProductionLineInfo;
+    productionLines: ProductionLineInfo[];
 }
 /**
  * @generated from protobuf message RoomRevertRequest
@@ -672,9 +672,9 @@ export interface GetOtherRoomObInfoRequest {
  */
 export interface GainSpecialBlockPush {
     /**
-     * @generated from protobuf field: int32 specialBlocks = 1;
+     * @generated from protobuf field: repeated int32 specialBlocks = 1;
      */
-    specialBlocks: number;
+    specialBlocks: number[];
 }
 /**
  * @generated from protobuf message UseBlockReply
@@ -720,9 +720,9 @@ export interface GetRoomObInfoRequest {
  */
 export interface GetCharacterInteractionInfoReply {
     /**
-     * @generated from protobuf field: CharacterInteractionInfo infos = 1;
+     * @generated from protobuf field: repeated CharacterInteractionInfo infos = 1;
      */
-    infos?: CharacterInteractionInfo;
+    infos: CharacterInteractionInfo[];
     /**
      * @generated from protobuf field: optional int32 interactionCount = 2;
      */
@@ -752,26 +752,26 @@ export interface StartCharacterInteractionRequest {
  */
 export interface UnUseBlockReply {
     /**
-     * @generated from protobuf field: int32 blockIds = 1;
+     * @generated from protobuf field: repeated int32 blockIds = 1;
      */
-    blockIds: number;
+    blockIds: number[];
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 2;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 2;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
 }
 /**
  * @generated from protobuf message GetOtherRoomObInfoReply
  */
 export interface GetOtherRoomObInfoReply {
     /**
-     * @generated from protobuf field: BlockInfo infos = 1;
+     * @generated from protobuf field: repeated BlockInfo infos = 1;
      */
-    infos?: BlockInfo;
+    infos: BlockInfo[];
     /**
-     * @generated from protobuf field: BuildingInfo buildingInfos = 2;
+     * @generated from protobuf field: repeated BuildingInfo buildingInfos = 2;
      */
-    buildingInfos?: BuildingInfo;
+    buildingInfos: BuildingInfo[];
     /**
      * @generated from protobuf field: optional int64 targetUid = 3;
      */
@@ -781,13 +781,13 @@ export interface GetOtherRoomObInfoReply {
      */
     roomLevel?: number;
     /**
-     * @generated from protobuf field: RoomHeroData roomHeroDatas = 5;
+     * @generated from protobuf field: repeated RoomHeroData roomHeroDatas = 5;
      */
-    roomHeroDatas?: RoomHeroData;
+    roomHeroDatas: RoomHeroData[];
     /**
-     * @generated from protobuf field: ProductionLineInfo productionLines = 6;
+     * @generated from protobuf field: repeated ProductionLineInfo productionLines = 6;
      */
-    productionLines?: ProductionLineInfo;
+    productionLines: ProductionLineInfo[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class UnUseBuildingReply$Type extends MessageType<UnUseBuildingReply> {
@@ -840,12 +840,12 @@ export const UnUseBuildingReply = new UnUseBuildingReply$Type();
 class GetBlockPackageInfoReply$Type extends MessageType<GetBlockPackageInfoReply> {
     constructor() {
         super("GetBlockPackageInfoReply", [
-            { no: 1, name: "blockPackageIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "specialBlocks", kind: "message", T: () => SpecialBlockInfo }
+            { no: 1, name: "blockPackageIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "specialBlocks", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => SpecialBlockInfo }
         ]);
     }
     create(value?: PartialMessage<GetBlockPackageInfoReply>): GetBlockPackageInfoReply {
-        const message = { blockPackageIds: 0 };
+        const message = { blockPackageIds: [], specialBlocks: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetBlockPackageInfoReply>(this, message, value);
@@ -856,11 +856,15 @@ class GetBlockPackageInfoReply$Type extends MessageType<GetBlockPackageInfoReply
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 blockPackageIds */ 1:
-                    message.blockPackageIds = reader.int32();
+                case /* repeated int32 blockPackageIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.blockPackageIds.push(reader.int32());
+                    else
+                        message.blockPackageIds.push(reader.int32());
                     break;
-                case /* SpecialBlockInfo specialBlocks */ 2:
-                    message.specialBlocks = SpecialBlockInfo.internalBinaryRead(reader, reader.uint32(), options, message.specialBlocks);
+                case /* repeated SpecialBlockInfo specialBlocks */ 2:
+                    message.specialBlocks.push(SpecialBlockInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -874,12 +878,12 @@ class GetBlockPackageInfoReply$Type extends MessageType<GetBlockPackageInfoReply
         return message;
     }
     internalBinaryWrite(message: GetBlockPackageInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 blockPackageIds = 1; */
-        if (message.blockPackageIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.blockPackageIds);
-        /* SpecialBlockInfo specialBlocks = 2; */
-        if (message.specialBlocks)
-            SpecialBlockInfo.internalBinaryWrite(message.specialBlocks, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 blockPackageIds = 1; */
+        for (let i = 0; i < message.blockPackageIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.blockPackageIds[i]);
+        /* repeated SpecialBlockInfo specialBlocks = 2; */
+        for (let i = 0; i < message.specialBlocks.length; i++)
+            SpecialBlockInfo.internalBinaryWrite(message.specialBlocks[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -895,11 +899,11 @@ class GetCharacterInteractionBonusReply$Type extends MessageType<GetCharacterInt
     constructor() {
         super("GetCharacterInteractionBonusReply", [
             { no: 1, name: "id", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "selectIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "selectIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetCharacterInteractionBonusReply>): GetCharacterInteractionBonusReply {
-        const message = { selectIds: 0 };
+        const message = { selectIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetCharacterInteractionBonusReply>(this, message, value);
@@ -913,8 +917,12 @@ class GetCharacterInteractionBonusReply$Type extends MessageType<GetCharacterInt
                 case /* optional int32 id */ 1:
                     message.id = reader.int32();
                     break;
-                case /* int32 selectIds */ 2:
-                    message.selectIds = reader.int32();
+                case /* repeated int32 selectIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.selectIds.push(reader.int32());
+                    else
+                        message.selectIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -931,9 +939,9 @@ class GetCharacterInteractionBonusReply$Type extends MessageType<GetCharacterInt
         /* optional int32 id = 1; */
         if (message.id !== undefined)
             writer.tag(1, WireType.Varint).int32(message.id);
-        /* int32 selectIds = 2; */
-        if (message.selectIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.selectIds);
+        /* repeated int32 selectIds = 2; */
+        for (let i = 0; i < message.selectIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.selectIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -949,11 +957,11 @@ class GetCharacterInteractionBonusRequest$Type extends MessageType<GetCharacterI
     constructor() {
         super("GetCharacterInteractionBonusRequest", [
             { no: 1, name: "id", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "selectIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "selectIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetCharacterInteractionBonusRequest>): GetCharacterInteractionBonusRequest {
-        const message = { selectIds: 0 };
+        const message = { selectIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetCharacterInteractionBonusRequest>(this, message, value);
@@ -967,8 +975,12 @@ class GetCharacterInteractionBonusRequest$Type extends MessageType<GetCharacterI
                 case /* optional int32 id */ 1:
                     message.id = reader.int32();
                     break;
-                case /* int32 selectIds */ 2:
-                    message.selectIds = reader.int32();
+                case /* repeated int32 selectIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.selectIds.push(reader.int32());
+                    else
+                        message.selectIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -985,9 +997,9 @@ class GetCharacterInteractionBonusRequest$Type extends MessageType<GetCharacterI
         /* optional int32 id = 1; */
         if (message.id !== undefined)
             writer.tag(1, WireType.Varint).int32(message.id);
-        /* int32 selectIds = 2; */
-        if (message.selectIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.selectIds);
+        /* repeated int32 selectIds = 2; */
+        for (let i = 0; i < message.selectIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.selectIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1002,11 +1014,11 @@ export const GetCharacterInteractionBonusRequest = new GetCharacterInteractionBo
 class UnUseBlockRequest$Type extends MessageType<UnUseBlockRequest> {
     constructor() {
         super("UnUseBlockRequest", [
-            { no: 1, name: "blockIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "blockIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<UnUseBlockRequest>): UnUseBlockRequest {
-        const message = { blockIds: 0 };
+        const message = { blockIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UnUseBlockRequest>(this, message, value);
@@ -1017,8 +1029,12 @@ class UnUseBlockRequest$Type extends MessageType<UnUseBlockRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 blockIds */ 1:
-                    message.blockIds = reader.int32();
+                case /* repeated int32 blockIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.blockIds.push(reader.int32());
+                    else
+                        message.blockIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1032,9 +1048,9 @@ class UnUseBlockRequest$Type extends MessageType<UnUseBlockRequest> {
         return message;
     }
     internalBinaryWrite(message: UnUseBlockRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 blockIds = 1; */
-        if (message.blockIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.blockIds);
+        /* repeated int32 blockIds = 1; */
+        for (let i = 0; i < message.blockIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.blockIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1225,16 +1241,16 @@ export const BuildingInfo = new BuildingInfo$Type();
 class GetRoomObInfoReply$Type extends MessageType<GetRoomObInfoReply> {
     constructor() {
         super("GetRoomObInfoReply", [
-            { no: 1, name: "infos", kind: "message", T: () => BlockInfo },
-            { no: 2, name: "buildingInfos", kind: "message", T: () => BuildingInfo },
-            { no: 3, name: "formulaInfos", kind: "message", T: () => FormulaInfo },
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockInfo },
+            { no: 2, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo },
+            { no: 3, name: "formulaInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FormulaInfo },
             { no: 4, name: "roomLevel", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "roomHeroDatas", kind: "message", T: () => RoomHeroData },
-            { no: 6, name: "productionLines", kind: "message", T: () => ProductionLineInfo }
+            { no: 5, name: "roomHeroDatas", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RoomHeroData },
+            { no: 6, name: "productionLines", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ProductionLineInfo }
         ]);
     }
     create(value?: PartialMessage<GetRoomObInfoReply>): GetRoomObInfoReply {
-        const message = {};
+        const message = { infos: [], buildingInfos: [], formulaInfos: [], roomHeroDatas: [], productionLines: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetRoomObInfoReply>(this, message, value);
@@ -1245,23 +1261,23 @@ class GetRoomObInfoReply$Type extends MessageType<GetRoomObInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BlockInfo infos */ 1:
-                    message.infos = BlockInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated BlockInfo infos */ 1:
+                    message.infos.push(BlockInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BuildingInfo buildingInfos */ 2:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 2:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* FormulaInfo formulaInfos */ 3:
-                    message.formulaInfos = FormulaInfo.internalBinaryRead(reader, reader.uint32(), options, message.formulaInfos);
+                case /* repeated FormulaInfo formulaInfos */ 3:
+                    message.formulaInfos.push(FormulaInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 roomLevel */ 4:
                     message.roomLevel = reader.int32();
                     break;
-                case /* RoomHeroData roomHeroDatas */ 5:
-                    message.roomHeroDatas = RoomHeroData.internalBinaryRead(reader, reader.uint32(), options, message.roomHeroDatas);
+                case /* repeated RoomHeroData roomHeroDatas */ 5:
+                    message.roomHeroDatas.push(RoomHeroData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ProductionLineInfo productionLines */ 6:
-                    message.productionLines = ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options, message.productionLines);
+                case /* repeated ProductionLineInfo productionLines */ 6:
+                    message.productionLines.push(ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1275,24 +1291,24 @@ class GetRoomObInfoReply$Type extends MessageType<GetRoomObInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetRoomObInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BlockInfo infos = 1; */
-        if (message.infos)
-            BlockInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* BuildingInfo buildingInfos = 2; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* FormulaInfo formulaInfos = 3; */
-        if (message.formulaInfos)
-            FormulaInfo.internalBinaryWrite(message.formulaInfos, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            BlockInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BuildingInfo buildingInfos = 2; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FormulaInfo formulaInfos = 3; */
+        for (let i = 0; i < message.formulaInfos.length; i++)
+            FormulaInfo.internalBinaryWrite(message.formulaInfos[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 roomLevel = 4; */
         if (message.roomLevel !== undefined)
             writer.tag(4, WireType.Varint).int32(message.roomLevel);
-        /* RoomHeroData roomHeroDatas = 5; */
-        if (message.roomHeroDatas)
-            RoomHeroData.internalBinaryWrite(message.roomHeroDatas, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* ProductionLineInfo productionLines = 6; */
-        if (message.productionLines)
-            ProductionLineInfo.internalBinaryWrite(message.productionLines, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RoomHeroData roomHeroDatas = 5; */
+        for (let i = 0; i < message.roomHeroDatas.length; i++)
+            RoomHeroData.internalBinaryWrite(message.roomHeroDatas[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ProductionLineInfo productionLines = 6; */
+        for (let i = 0; i < message.productionLines.length; i++)
+            ProductionLineInfo.internalBinaryWrite(message.productionLines[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1382,11 +1398,11 @@ export const UseBlockRequest = new UseBlockRequest$Type();
 class GainRoomHeroFaithRequest$Type extends MessageType<GainRoomHeroFaithRequest> {
     constructor() {
         super("GainRoomHeroFaithRequest", [
-            { no: 1, name: "heroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "heroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GainRoomHeroFaithRequest>): GainRoomHeroFaithRequest {
-        const message = { heroIds: 0 };
+        const message = { heroIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GainRoomHeroFaithRequest>(this, message, value);
@@ -1397,8 +1413,12 @@ class GainRoomHeroFaithRequest$Type extends MessageType<GainRoomHeroFaithRequest
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 heroIds */ 1:
-                    message.heroIds = reader.int32();
+                case /* repeated int32 heroIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.heroIds.push(reader.int32());
+                    else
+                        message.heroIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1412,9 +1432,9 @@ class GainRoomHeroFaithRequest$Type extends MessageType<GainRoomHeroFaithRequest
         return message;
     }
     internalBinaryWrite(message: GainRoomHeroFaithRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 heroIds = 1; */
-        if (message.heroIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.heroIds);
+        /* repeated int32 heroIds = 1; */
+        for (let i = 0; i < message.heroIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.heroIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1483,14 +1503,14 @@ export const SpecialBlockInfo = new SpecialBlockInfo$Type();
 class GetRoomInfoReply$Type extends MessageType<GetRoomInfoReply> {
     constructor() {
         super("GetRoomInfoReply", [
-            { no: 1, name: "infos", kind: "message", T: () => BlockInfo },
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockInfo },
             { no: 2, name: "isReset", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 3, name: "buildingInfos", kind: "message", T: () => BuildingInfo },
-            { no: 4, name: "blockPackages", kind: "message", T: () => BlockPackageInfo }
+            { no: 3, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo },
+            { no: 4, name: "blockPackages", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockPackageInfo }
         ]);
     }
     create(value?: PartialMessage<GetRoomInfoReply>): GetRoomInfoReply {
-        const message = {};
+        const message = { infos: [], buildingInfos: [], blockPackages: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetRoomInfoReply>(this, message, value);
@@ -1501,17 +1521,17 @@ class GetRoomInfoReply$Type extends MessageType<GetRoomInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BlockInfo infos */ 1:
-                    message.infos = BlockInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated BlockInfo infos */ 1:
+                    message.infos.push(BlockInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool isReset */ 2:
                     message.isReset = reader.bool();
                     break;
-                case /* BuildingInfo buildingInfos */ 3:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 3:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BlockPackageInfo blockPackages */ 4:
-                    message.blockPackages = BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options, message.blockPackages);
+                case /* repeated BlockPackageInfo blockPackages */ 4:
+                    message.blockPackages.push(BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1525,18 +1545,18 @@ class GetRoomInfoReply$Type extends MessageType<GetRoomInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetRoomInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BlockInfo infos = 1; */
-        if (message.infos)
-            BlockInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            BlockInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional bool isReset = 2; */
         if (message.isReset !== undefined)
             writer.tag(2, WireType.Varint).bool(message.isReset);
-        /* BuildingInfo buildingInfos = 3; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
-        /* BlockPackageInfo blockPackages = 4; */
-        if (message.blockPackages)
-            BlockPackageInfo.internalBinaryWrite(message.blockPackages, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BuildingInfo buildingInfos = 3; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockPackageInfo blockPackages = 4; */
+        for (let i = 0; i < message.blockPackages.length; i++)
+            BlockPackageInfo.internalBinaryWrite(message.blockPackages[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1746,11 +1766,11 @@ export const GetBuildingInfoRequest = new GetBuildingInfoRequest$Type();
 class UpdateRoomHeroDataRequest$Type extends MessageType<UpdateRoomHeroDataRequest> {
     constructor() {
         super("UpdateRoomHeroDataRequest", [
-            { no: 1, name: "roomHeroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "roomHeroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<UpdateRoomHeroDataRequest>): UpdateRoomHeroDataRequest {
-        const message = { roomHeroIds: 0 };
+        const message = { roomHeroIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UpdateRoomHeroDataRequest>(this, message, value);
@@ -1761,8 +1781,12 @@ class UpdateRoomHeroDataRequest$Type extends MessageType<UpdateRoomHeroDataReque
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 roomHeroIds */ 1:
-                    message.roomHeroIds = reader.int32();
+                case /* repeated int32 roomHeroIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.roomHeroIds.push(reader.int32());
+                    else
+                        message.roomHeroIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1776,9 +1800,9 @@ class UpdateRoomHeroDataRequest$Type extends MessageType<UpdateRoomHeroDataReque
         return message;
     }
     internalBinaryWrite(message: UpdateRoomHeroDataRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 roomHeroIds = 1; */
-        if (message.roomHeroIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.roomHeroIds);
+        /* repeated int32 roomHeroIds = 1; */
+        for (let i = 0; i < message.roomHeroIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.roomHeroIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1840,11 +1864,11 @@ export const HideBuildingReddotRequset = new HideBuildingReddotRequset$Type();
 class UpdateRoomHeroDataReply$Type extends MessageType<UpdateRoomHeroDataReply> {
     constructor() {
         super("UpdateRoomHeroDataReply", [
-            { no: 1, name: "roomHeroDatas", kind: "message", T: () => RoomHeroData }
+            { no: 1, name: "roomHeroDatas", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RoomHeroData }
         ]);
     }
     create(value?: PartialMessage<UpdateRoomHeroDataReply>): UpdateRoomHeroDataReply {
-        const message = {};
+        const message = { roomHeroDatas: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UpdateRoomHeroDataReply>(this, message, value);
@@ -1855,8 +1879,8 @@ class UpdateRoomHeroDataReply$Type extends MessageType<UpdateRoomHeroDataReply> 
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* RoomHeroData roomHeroDatas */ 1:
-                    message.roomHeroDatas = RoomHeroData.internalBinaryRead(reader, reader.uint32(), options, message.roomHeroDatas);
+                case /* repeated RoomHeroData roomHeroDatas */ 1:
+                    message.roomHeroDatas.push(RoomHeroData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1870,9 +1894,9 @@ class UpdateRoomHeroDataReply$Type extends MessageType<UpdateRoomHeroDataReply> 
         return message;
     }
     internalBinaryWrite(message: UpdateRoomHeroDataReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* RoomHeroData roomHeroDatas = 1; */
-        if (message.roomHeroDatas)
-            RoomHeroData.internalBinaryWrite(message.roomHeroDatas, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RoomHeroData roomHeroDatas = 1; */
+        for (let i = 0; i < message.roomHeroDatas.length; i++)
+            RoomHeroData.internalBinaryWrite(message.roomHeroDatas[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1956,12 +1980,12 @@ class BlockPackageInfo$Type extends MessageType<BlockPackageInfo> {
     constructor() {
         super("BlockPackageInfo", [
             { no: 1, name: "blockPackageId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "unUseBlockIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "useBlockIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "unUseBlockIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "useBlockIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<BlockPackageInfo>): BlockPackageInfo {
-        const message = { unUseBlockIds: 0, useBlockIds: 0 };
+        const message = { unUseBlockIds: [], useBlockIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<BlockPackageInfo>(this, message, value);
@@ -1975,11 +1999,19 @@ class BlockPackageInfo$Type extends MessageType<BlockPackageInfo> {
                 case /* optional int32 blockPackageId */ 1:
                     message.blockPackageId = reader.int32();
                     break;
-                case /* int32 unUseBlockIds */ 2:
-                    message.unUseBlockIds = reader.int32();
+                case /* repeated int32 unUseBlockIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.unUseBlockIds.push(reader.int32());
+                    else
+                        message.unUseBlockIds.push(reader.int32());
                     break;
-                case /* int32 useBlockIds */ 3:
-                    message.useBlockIds = reader.int32();
+                case /* repeated int32 useBlockIds */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.useBlockIds.push(reader.int32());
+                    else
+                        message.useBlockIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1996,12 +2028,12 @@ class BlockPackageInfo$Type extends MessageType<BlockPackageInfo> {
         /* optional int32 blockPackageId = 1; */
         if (message.blockPackageId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.blockPackageId);
-        /* int32 unUseBlockIds = 2; */
-        if (message.unUseBlockIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.unUseBlockIds);
-        /* int32 useBlockIds = 3; */
-        if (message.useBlockIds !== 0)
-            writer.tag(3, WireType.Varint).int32(message.useBlockIds);
+        /* repeated int32 unUseBlockIds = 2; */
+        for (let i = 0; i < message.unUseBlockIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.unUseBlockIds[i]);
+        /* repeated int32 useBlockIds = 3; */
+        for (let i = 0; i < message.useBlockIds.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.useBlockIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2016,11 +2048,11 @@ export const BlockPackageInfo = new BlockPackageInfo$Type();
 class FormulaGainPush$Type extends MessageType<FormulaGainPush> {
     constructor() {
         super("FormulaGainPush", [
-            { no: 1, name: "formulaInfos", kind: "message", T: () => FormulaInfo }
+            { no: 1, name: "formulaInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FormulaInfo }
         ]);
     }
     create(value?: PartialMessage<FormulaGainPush>): FormulaGainPush {
-        const message = {};
+        const message = { formulaInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<FormulaGainPush>(this, message, value);
@@ -2031,8 +2063,8 @@ class FormulaGainPush$Type extends MessageType<FormulaGainPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* FormulaInfo formulaInfos */ 1:
-                    message.formulaInfos = FormulaInfo.internalBinaryRead(reader, reader.uint32(), options, message.formulaInfos);
+                case /* repeated FormulaInfo formulaInfos */ 1:
+                    message.formulaInfos.push(FormulaInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2046,9 +2078,9 @@ class FormulaGainPush$Type extends MessageType<FormulaGainPush> {
         return message;
     }
     internalBinaryWrite(message: FormulaGainPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* FormulaInfo formulaInfos = 1; */
-        if (message.formulaInfos)
-            FormulaInfo.internalBinaryWrite(message.formulaInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FormulaInfo formulaInfos = 1; */
+        for (let i = 0; i < message.formulaInfos.length; i++)
+            FormulaInfo.internalBinaryWrite(message.formulaInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2190,11 +2222,11 @@ export const GetRoomInfoRequest = new GetRoomInfoRequest$Type();
 class BlockPackageGainPush$Type extends MessageType<BlockPackageGainPush> {
     constructor() {
         super("BlockPackageGainPush", [
-            { no: 1, name: "blockPackages", kind: "message", T: () => BlockPackageInfo }
+            { no: 1, name: "blockPackages", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockPackageInfo }
         ]);
     }
     create(value?: PartialMessage<BlockPackageGainPush>): BlockPackageGainPush {
-        const message = {};
+        const message = { blockPackages: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<BlockPackageGainPush>(this, message, value);
@@ -2205,8 +2237,8 @@ class BlockPackageGainPush$Type extends MessageType<BlockPackageGainPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BlockPackageInfo blockPackages */ 1:
-                    message.blockPackages = BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options, message.blockPackages);
+                case /* repeated BlockPackageInfo blockPackages */ 1:
+                    message.blockPackages.push(BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2220,9 +2252,9 @@ class BlockPackageGainPush$Type extends MessageType<BlockPackageGainPush> {
         return message;
     }
     internalBinaryWrite(message: BlockPackageGainPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BlockPackageInfo blockPackages = 1; */
-        if (message.blockPackages)
-            BlockPackageInfo.internalBinaryWrite(message.blockPackages, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockPackageInfo blockPackages = 1; */
+        for (let i = 0; i < message.blockPackages.length; i++)
+            BlockPackageInfo.internalBinaryWrite(message.blockPackages[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2237,11 +2269,11 @@ export const BlockPackageGainPush = new BlockPackageGainPush$Type();
 class GainRoomHeroFaithReply$Type extends MessageType<GainRoomHeroFaithReply> {
     constructor() {
         super("GainRoomHeroFaithReply", [
-            { no: 1, name: "roomHeroDatas", kind: "message", T: () => RoomHeroData }
+            { no: 1, name: "roomHeroDatas", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RoomHeroData }
         ]);
     }
     create(value?: PartialMessage<GainRoomHeroFaithReply>): GainRoomHeroFaithReply {
-        const message = {};
+        const message = { roomHeroDatas: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GainRoomHeroFaithReply>(this, message, value);
@@ -2252,8 +2284,8 @@ class GainRoomHeroFaithReply$Type extends MessageType<GainRoomHeroFaithReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* RoomHeroData roomHeroDatas */ 1:
-                    message.roomHeroDatas = RoomHeroData.internalBinaryRead(reader, reader.uint32(), options, message.roomHeroDatas);
+                case /* repeated RoomHeroData roomHeroDatas */ 1:
+                    message.roomHeroDatas.push(RoomHeroData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2267,9 +2299,9 @@ class GainRoomHeroFaithReply$Type extends MessageType<GainRoomHeroFaithReply> {
         return message;
     }
     internalBinaryWrite(message: GainRoomHeroFaithReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* RoomHeroData roomHeroDatas = 1; */
-        if (message.roomHeroDatas)
-            RoomHeroData.internalBinaryWrite(message.roomHeroDatas, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RoomHeroData roomHeroDatas = 1; */
+        for (let i = 0; i < message.roomHeroDatas.length; i++)
+            RoomHeroData.internalBinaryWrite(message.roomHeroDatas[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2286,11 +2318,11 @@ class CharacterInteractionInfo$Type extends MessageType<CharacterInteractionInfo
         super("CharacterInteractionInfo", [
             { no: 1, name: "id", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "finish", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 3, name: "selectIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 3, name: "selectIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<CharacterInteractionInfo>): CharacterInteractionInfo {
-        const message = { selectIds: 0 };
+        const message = { selectIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<CharacterInteractionInfo>(this, message, value);
@@ -2307,8 +2339,12 @@ class CharacterInteractionInfo$Type extends MessageType<CharacterInteractionInfo
                 case /* optional bool finish */ 2:
                     message.finish = reader.bool();
                     break;
-                case /* int32 selectIds */ 3:
-                    message.selectIds = reader.int32();
+                case /* repeated int32 selectIds */ 3:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.selectIds.push(reader.int32());
+                    else
+                        message.selectIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2328,9 +2364,9 @@ class CharacterInteractionInfo$Type extends MessageType<CharacterInteractionInfo
         /* optional bool finish = 2; */
         if (message.finish !== undefined)
             writer.tag(2, WireType.Varint).bool(message.finish);
-        /* int32 selectIds = 3; */
-        if (message.selectIds !== 0)
-            writer.tag(3, WireType.Varint).int32(message.selectIds);
+        /* repeated int32 selectIds = 3; */
+        for (let i = 0; i < message.selectIds.length; i++)
+            writer.tag(3, WireType.Varint).int32(message.selectIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2345,12 +2381,12 @@ export const CharacterInteractionInfo = new CharacterInteractionInfo$Type();
 class ResetRoomReply$Type extends MessageType<ResetRoomReply> {
     constructor() {
         super("ResetRoomReply", [
-            { no: 1, name: "infos", kind: "message", T: () => BlockInfo },
-            { no: 2, name: "blockPackages", kind: "message", T: () => BlockPackageInfo }
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockInfo },
+            { no: 2, name: "blockPackages", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockPackageInfo }
         ]);
     }
     create(value?: PartialMessage<ResetRoomReply>): ResetRoomReply {
-        const message = {};
+        const message = { infos: [], blockPackages: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ResetRoomReply>(this, message, value);
@@ -2361,11 +2397,11 @@ class ResetRoomReply$Type extends MessageType<ResetRoomReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BlockInfo infos */ 1:
-                    message.infos = BlockInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated BlockInfo infos */ 1:
+                    message.infos.push(BlockInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BlockPackageInfo blockPackages */ 2:
-                    message.blockPackages = BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options, message.blockPackages);
+                case /* repeated BlockPackageInfo blockPackages */ 2:
+                    message.blockPackages.push(BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2379,12 +2415,12 @@ class ResetRoomReply$Type extends MessageType<ResetRoomReply> {
         return message;
     }
     internalBinaryWrite(message: ResetRoomReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BlockInfo infos = 1; */
-        if (message.infos)
-            BlockInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* BlockPackageInfo blockPackages = 2; */
-        if (message.blockPackages)
-            BlockPackageInfo.internalBinaryWrite(message.blockPackages, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            BlockInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockPackageInfo blockPackages = 2; */
+        for (let i = 0; i < message.blockPackages.length; i++)
+            BlockPackageInfo.internalBinaryWrite(message.blockPackages[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2399,11 +2435,11 @@ export const ResetRoomReply = new ResetRoomReply$Type();
 class GainProductionLineRequest$Type extends MessageType<GainProductionLineRequest> {
     constructor() {
         super("GainProductionLineRequest", [
-            { no: 1, name: "ids", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GainProductionLineRequest>): GainProductionLineRequest {
-        const message = { ids: 0 };
+        const message = { ids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GainProductionLineRequest>(this, message, value);
@@ -2414,8 +2450,12 @@ class GainProductionLineRequest$Type extends MessageType<GainProductionLineReque
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 ids */ 1:
-                    message.ids = reader.int32();
+                case /* repeated int32 ids */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.ids.push(reader.int32());
+                    else
+                        message.ids.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2429,9 +2469,9 @@ class GainProductionLineRequest$Type extends MessageType<GainProductionLineReque
         return message;
     }
     internalBinaryWrite(message: GainProductionLineRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 ids = 1; */
-        if (message.ids !== 0)
-            writer.tag(1, WireType.Varint).int32(message.ids);
+        /* repeated int32 ids = 1; */
+        for (let i = 0; i < message.ids.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.ids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2446,11 +2486,11 @@ export const GainProductionLineRequest = new GainProductionLineRequest$Type();
 class ProductionLineInfoRequest$Type extends MessageType<ProductionLineInfoRequest> {
     constructor() {
         super("ProductionLineInfoRequest", [
-            { no: 1, name: "ids", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "ids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<ProductionLineInfoRequest>): ProductionLineInfoRequest {
-        const message = { ids: 0 };
+        const message = { ids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ProductionLineInfoRequest>(this, message, value);
@@ -2461,8 +2501,12 @@ class ProductionLineInfoRequest$Type extends MessageType<ProductionLineInfoReque
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 ids */ 1:
-                    message.ids = reader.int32();
+                case /* repeated int32 ids */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.ids.push(reader.int32());
+                    else
+                        message.ids.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2476,9 +2520,9 @@ class ProductionLineInfoRequest$Type extends MessageType<ProductionLineInfoReque
         return message;
     }
     internalBinaryWrite(message: ProductionLineInfoRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 ids = 1; */
-        if (message.ids !== 0)
-            writer.tag(1, WireType.Varint).int32(message.ids);
+        /* repeated int32 ids = 1; */
+        for (let i = 0; i < message.ids.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.ids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2540,16 +2584,16 @@ export const StartCharacterInteractionReply = new StartCharacterInteractionReply
 class RoomConfirmReply$Type extends MessageType<RoomConfirmReply> {
     constructor() {
         super("RoomConfirmReply", [
-            { no: 1, name: "infos", kind: "message", T: () => BlockInfo },
-            { no: 2, name: "buildingInfos", kind: "message", T: () => BuildingInfo },
-            { no: 3, name: "formulaInfos", kind: "message", T: () => FormulaInfo },
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockInfo },
+            { no: 2, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo },
+            { no: 3, name: "formulaInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FormulaInfo },
             { no: 4, name: "roomLevel", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "roomHeroDatas", kind: "message", T: () => RoomHeroData },
-            { no: 6, name: "productionLines", kind: "message", T: () => ProductionLineInfo }
+            { no: 5, name: "roomHeroDatas", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RoomHeroData },
+            { no: 6, name: "productionLines", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ProductionLineInfo }
         ]);
     }
     create(value?: PartialMessage<RoomConfirmReply>): RoomConfirmReply {
-        const message = {};
+        const message = { infos: [], buildingInfos: [], formulaInfos: [], roomHeroDatas: [], productionLines: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<RoomConfirmReply>(this, message, value);
@@ -2560,23 +2604,23 @@ class RoomConfirmReply$Type extends MessageType<RoomConfirmReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BlockInfo infos */ 1:
-                    message.infos = BlockInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated BlockInfo infos */ 1:
+                    message.infos.push(BlockInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BuildingInfo buildingInfos */ 2:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 2:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* FormulaInfo formulaInfos */ 3:
-                    message.formulaInfos = FormulaInfo.internalBinaryRead(reader, reader.uint32(), options, message.formulaInfos);
+                case /* repeated FormulaInfo formulaInfos */ 3:
+                    message.formulaInfos.push(FormulaInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 roomLevel */ 4:
                     message.roomLevel = reader.int32();
                     break;
-                case /* RoomHeroData roomHeroDatas */ 5:
-                    message.roomHeroDatas = RoomHeroData.internalBinaryRead(reader, reader.uint32(), options, message.roomHeroDatas);
+                case /* repeated RoomHeroData roomHeroDatas */ 5:
+                    message.roomHeroDatas.push(RoomHeroData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ProductionLineInfo productionLines */ 6:
-                    message.productionLines = ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options, message.productionLines);
+                case /* repeated ProductionLineInfo productionLines */ 6:
+                    message.productionLines.push(ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2590,24 +2634,24 @@ class RoomConfirmReply$Type extends MessageType<RoomConfirmReply> {
         return message;
     }
     internalBinaryWrite(message: RoomConfirmReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BlockInfo infos = 1; */
-        if (message.infos)
-            BlockInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* BuildingInfo buildingInfos = 2; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* FormulaInfo formulaInfos = 3; */
-        if (message.formulaInfos)
-            FormulaInfo.internalBinaryWrite(message.formulaInfos, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            BlockInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BuildingInfo buildingInfos = 2; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FormulaInfo formulaInfos = 3; */
+        for (let i = 0; i < message.formulaInfos.length; i++)
+            FormulaInfo.internalBinaryWrite(message.formulaInfos[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 roomLevel = 4; */
         if (message.roomLevel !== undefined)
             writer.tag(4, WireType.Varint).int32(message.roomLevel);
-        /* RoomHeroData roomHeroDatas = 5; */
-        if (message.roomHeroDatas)
-            RoomHeroData.internalBinaryWrite(message.roomHeroDatas, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* ProductionLineInfo productionLines = 6; */
-        if (message.productionLines)
-            ProductionLineInfo.internalBinaryWrite(message.productionLines, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RoomHeroData roomHeroDatas = 5; */
+        for (let i = 0; i < message.roomHeroDatas.length; i++)
+            RoomHeroData.internalBinaryWrite(message.roomHeroDatas[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ProductionLineInfo productionLines = 6; */
+        for (let i = 0; i < message.productionLines.length; i++)
+            ProductionLineInfo.internalBinaryWrite(message.productionLines[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2622,13 +2666,13 @@ export const RoomConfirmReply = new RoomConfirmReply$Type();
 class RoomRevertReply$Type extends MessageType<RoomRevertReply> {
     constructor() {
         super("RoomRevertReply", [
-            { no: 1, name: "infos", kind: "message", T: () => BlockInfo },
-            { no: 2, name: "blockPackages", kind: "message", T: () => BlockPackageInfo },
-            { no: 3, name: "buildingInfos", kind: "message", T: () => BuildingInfo }
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockInfo },
+            { no: 2, name: "blockPackages", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockPackageInfo },
+            { no: 3, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo }
         ]);
     }
     create(value?: PartialMessage<RoomRevertReply>): RoomRevertReply {
-        const message = {};
+        const message = { infos: [], blockPackages: [], buildingInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<RoomRevertReply>(this, message, value);
@@ -2639,14 +2683,14 @@ class RoomRevertReply$Type extends MessageType<RoomRevertReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BlockInfo infos */ 1:
-                    message.infos = BlockInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated BlockInfo infos */ 1:
+                    message.infos.push(BlockInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BlockPackageInfo blockPackages */ 2:
-                    message.blockPackages = BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options, message.blockPackages);
+                case /* repeated BlockPackageInfo blockPackages */ 2:
+                    message.blockPackages.push(BlockPackageInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BuildingInfo buildingInfos */ 3:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 3:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2660,15 +2704,15 @@ class RoomRevertReply$Type extends MessageType<RoomRevertReply> {
         return message;
     }
     internalBinaryWrite(message: RoomRevertReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BlockInfo infos = 1; */
-        if (message.infos)
-            BlockInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* BlockPackageInfo blockPackages = 2; */
-        if (message.blockPackages)
-            BlockPackageInfo.internalBinaryWrite(message.blockPackages, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* BuildingInfo buildingInfos = 3; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            BlockInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockPackageInfo blockPackages = 2; */
+        for (let i = 0; i < message.blockPackages.length; i++)
+            BlockPackageInfo.internalBinaryWrite(message.blockPackages[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BuildingInfo buildingInfos = 3; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2730,11 +2774,11 @@ export const ProductionLineLvUpReply = new ProductionLineLvUpReply$Type();
 class GetBuildingInfoReply$Type extends MessageType<GetBuildingInfoReply> {
     constructor() {
         super("GetBuildingInfoReply", [
-            { no: 1, name: "buildingInfos", kind: "message", T: () => BuildingInfo }
+            { no: 1, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo }
         ]);
     }
     create(value?: PartialMessage<GetBuildingInfoReply>): GetBuildingInfoReply {
-        const message = {};
+        const message = { buildingInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetBuildingInfoReply>(this, message, value);
@@ -2745,8 +2789,8 @@ class GetBuildingInfoReply$Type extends MessageType<GetBuildingInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BuildingInfo buildingInfos */ 1:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 1:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2760,9 +2804,9 @@ class GetBuildingInfoReply$Type extends MessageType<GetBuildingInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetBuildingInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BuildingInfo buildingInfos = 1; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BuildingInfo buildingInfos = 1; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2885,11 +2929,11 @@ export const ResetRoomRequest = new ResetRoomRequest$Type();
 class GainProductionLineReply$Type extends MessageType<GainProductionLineReply> {
     constructor() {
         super("GainProductionLineReply", [
-            { no: 1, name: "productionLines", kind: "message", T: () => ProductionLineInfo }
+            { no: 1, name: "productionLines", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ProductionLineInfo }
         ]);
     }
     create(value?: PartialMessage<GainProductionLineReply>): GainProductionLineReply {
-        const message = {};
+        const message = { productionLines: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GainProductionLineReply>(this, message, value);
@@ -2900,8 +2944,8 @@ class GainProductionLineReply$Type extends MessageType<GainProductionLineReply> 
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ProductionLineInfo productionLines */ 1:
-                    message.productionLines = ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options, message.productionLines);
+                case /* repeated ProductionLineInfo productionLines */ 1:
+                    message.productionLines.push(ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2915,9 +2959,9 @@ class GainProductionLineReply$Type extends MessageType<GainProductionLineReply> 
         return message;
     }
     internalBinaryWrite(message: GainProductionLineReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ProductionLineInfo productionLines = 1; */
-        if (message.productionLines)
-            ProductionLineInfo.internalBinaryWrite(message.productionLines, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ProductionLineInfo productionLines = 1; */
+        for (let i = 0; i < message.productionLines.length; i++)
+            ProductionLineInfo.internalBinaryWrite(message.productionLines[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2979,11 +3023,11 @@ export const UseBuildingReply = new UseBuildingReply$Type();
 class ProductionLineInfoReply$Type extends MessageType<ProductionLineInfoReply> {
     constructor() {
         super("ProductionLineInfoReply", [
-            { no: 1, name: "productionLines", kind: "message", T: () => ProductionLineInfo }
+            { no: 1, name: "productionLines", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ProductionLineInfo }
         ]);
     }
     create(value?: PartialMessage<ProductionLineInfoReply>): ProductionLineInfoReply {
-        const message = {};
+        const message = { productionLines: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ProductionLineInfoReply>(this, message, value);
@@ -2994,8 +3038,8 @@ class ProductionLineInfoReply$Type extends MessageType<ProductionLineInfoReply> 
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ProductionLineInfo productionLines */ 1:
-                    message.productionLines = ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options, message.productionLines);
+                case /* repeated ProductionLineInfo productionLines */ 1:
+                    message.productionLines.push(ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3009,9 +3053,9 @@ class ProductionLineInfoReply$Type extends MessageType<ProductionLineInfoReply> 
         return message;
     }
     internalBinaryWrite(message: ProductionLineInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ProductionLineInfo productionLines = 1; */
-        if (message.productionLines)
-            ProductionLineInfo.internalBinaryWrite(message.productionLines, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ProductionLineInfo productionLines = 1; */
+        for (let i = 0; i < message.productionLines.length; i++)
+            ProductionLineInfo.internalBinaryWrite(message.productionLines[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3141,11 +3185,11 @@ export const BlockInfo = new BlockInfo$Type();
 class BuildingGainPush$Type extends MessageType<BuildingGainPush> {
     constructor() {
         super("BuildingGainPush", [
-            { no: 1, name: "buildingInfos", kind: "message", T: () => BuildingInfo }
+            { no: 1, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo }
         ]);
     }
     create(value?: PartialMessage<BuildingGainPush>): BuildingGainPush {
-        const message = {};
+        const message = { buildingInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<BuildingGainPush>(this, message, value);
@@ -3156,8 +3200,8 @@ class BuildingGainPush$Type extends MessageType<BuildingGainPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BuildingInfo buildingInfos */ 1:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 1:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3171,9 +3215,9 @@ class BuildingGainPush$Type extends MessageType<BuildingGainPush> {
         return message;
     }
     internalBinaryWrite(message: BuildingGainPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BuildingInfo buildingInfos = 1; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BuildingInfo buildingInfos = 1; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3356,11 +3400,11 @@ class RoomLevelUpReply$Type extends MessageType<RoomLevelUpReply> {
     constructor() {
         super("RoomLevelUpReply", [
             { no: 1, name: "roomLevel", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "productionLines", kind: "message", T: () => ProductionLineInfo }
+            { no: 2, name: "productionLines", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ProductionLineInfo }
         ]);
     }
     create(value?: PartialMessage<RoomLevelUpReply>): RoomLevelUpReply {
-        const message = {};
+        const message = { productionLines: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<RoomLevelUpReply>(this, message, value);
@@ -3374,8 +3418,8 @@ class RoomLevelUpReply$Type extends MessageType<RoomLevelUpReply> {
                 case /* optional int32 roomLevel */ 1:
                     message.roomLevel = reader.int32();
                     break;
-                case /* ProductionLineInfo productionLines */ 2:
-                    message.productionLines = ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options, message.productionLines);
+                case /* repeated ProductionLineInfo productionLines */ 2:
+                    message.productionLines.push(ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3392,9 +3436,9 @@ class RoomLevelUpReply$Type extends MessageType<RoomLevelUpReply> {
         /* optional int32 roomLevel = 1; */
         if (message.roomLevel !== undefined)
             writer.tag(1, WireType.Varint).int32(message.roomLevel);
-        /* ProductionLineInfo productionLines = 2; */
-        if (message.productionLines)
-            ProductionLineInfo.internalBinaryWrite(message.productionLines, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ProductionLineInfo productionLines = 2; */
+        for (let i = 0; i < message.productionLines.length; i++)
+            ProductionLineInfo.internalBinaryWrite(message.productionLines[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3482,11 +3526,11 @@ export const GetOtherRoomObInfoRequest = new GetOtherRoomObInfoRequest$Type();
 class GainSpecialBlockPush$Type extends MessageType<GainSpecialBlockPush> {
     constructor() {
         super("GainSpecialBlockPush", [
-            { no: 1, name: "specialBlocks", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "specialBlocks", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GainSpecialBlockPush>): GainSpecialBlockPush {
-        const message = { specialBlocks: 0 };
+        const message = { specialBlocks: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GainSpecialBlockPush>(this, message, value);
@@ -3497,8 +3541,12 @@ class GainSpecialBlockPush$Type extends MessageType<GainSpecialBlockPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 specialBlocks */ 1:
-                    message.specialBlocks = reader.int32();
+                case /* repeated int32 specialBlocks */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.specialBlocks.push(reader.int32());
+                    else
+                        message.specialBlocks.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3512,9 +3560,9 @@ class GainSpecialBlockPush$Type extends MessageType<GainSpecialBlockPush> {
         return message;
     }
     internalBinaryWrite(message: GainSpecialBlockPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 specialBlocks = 1; */
-        if (message.specialBlocks !== 0)
-            writer.tag(1, WireType.Varint).int32(message.specialBlocks);
+        /* repeated int32 specialBlocks = 1; */
+        for (let i = 0; i < message.specialBlocks.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.specialBlocks[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3691,12 +3739,12 @@ export const GetRoomObInfoRequest = new GetRoomObInfoRequest$Type();
 class GetCharacterInteractionInfoReply$Type extends MessageType<GetCharacterInteractionInfoReply> {
     constructor() {
         super("GetCharacterInteractionInfoReply", [
-            { no: 1, name: "infos", kind: "message", T: () => CharacterInteractionInfo },
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => CharacterInteractionInfo },
             { no: 2, name: "interactionCount", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetCharacterInteractionInfoReply>): GetCharacterInteractionInfoReply {
-        const message = {};
+        const message = { infos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetCharacterInteractionInfoReply>(this, message, value);
@@ -3707,8 +3755,8 @@ class GetCharacterInteractionInfoReply$Type extends MessageType<GetCharacterInte
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* CharacterInteractionInfo infos */ 1:
-                    message.infos = CharacterInteractionInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated CharacterInteractionInfo infos */ 1:
+                    message.infos.push(CharacterInteractionInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 interactionCount */ 2:
                     message.interactionCount = reader.int32();
@@ -3725,9 +3773,9 @@ class GetCharacterInteractionInfoReply$Type extends MessageType<GetCharacterInte
         return message;
     }
     internalBinaryWrite(message: GetCharacterInteractionInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* CharacterInteractionInfo infos = 1; */
-        if (message.infos)
-            CharacterInteractionInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated CharacterInteractionInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            CharacterInteractionInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 interactionCount = 2; */
         if (message.interactionCount !== undefined)
             writer.tag(2, WireType.Varint).int32(message.interactionCount);
@@ -3844,12 +3892,12 @@ export const StartCharacterInteractionRequest = new StartCharacterInteractionReq
 class UnUseBlockReply$Type extends MessageType<UnUseBlockReply> {
     constructor() {
         super("UnUseBlockReply", [
-            { no: 1, name: "blockIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "buildingInfos", kind: "message", T: () => BuildingInfo }
+            { no: 1, name: "blockIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo }
         ]);
     }
     create(value?: PartialMessage<UnUseBlockReply>): UnUseBlockReply {
-        const message = { blockIds: 0 };
+        const message = { blockIds: [], buildingInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UnUseBlockReply>(this, message, value);
@@ -3860,11 +3908,15 @@ class UnUseBlockReply$Type extends MessageType<UnUseBlockReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 blockIds */ 1:
-                    message.blockIds = reader.int32();
+                case /* repeated int32 blockIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.blockIds.push(reader.int32());
+                    else
+                        message.blockIds.push(reader.int32());
                     break;
-                case /* BuildingInfo buildingInfos */ 2:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 2:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3878,12 +3930,12 @@ class UnUseBlockReply$Type extends MessageType<UnUseBlockReply> {
         return message;
     }
     internalBinaryWrite(message: UnUseBlockReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 blockIds = 1; */
-        if (message.blockIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.blockIds);
-        /* BuildingInfo buildingInfos = 2; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 blockIds = 1; */
+        for (let i = 0; i < message.blockIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.blockIds[i]);
+        /* repeated BuildingInfo buildingInfos = 2; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -3898,16 +3950,16 @@ export const UnUseBlockReply = new UnUseBlockReply$Type();
 class GetOtherRoomObInfoReply$Type extends MessageType<GetOtherRoomObInfoReply> {
     constructor() {
         super("GetOtherRoomObInfoReply", [
-            { no: 1, name: "infos", kind: "message", T: () => BlockInfo },
-            { no: 2, name: "buildingInfos", kind: "message", T: () => BuildingInfo },
+            { no: 1, name: "infos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BlockInfo },
+            { no: 2, name: "buildingInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BuildingInfo },
             { no: 3, name: "targetUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 4, name: "roomLevel", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "roomHeroDatas", kind: "message", T: () => RoomHeroData },
-            { no: 6, name: "productionLines", kind: "message", T: () => ProductionLineInfo }
+            { no: 5, name: "roomHeroDatas", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RoomHeroData },
+            { no: 6, name: "productionLines", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ProductionLineInfo }
         ]);
     }
     create(value?: PartialMessage<GetOtherRoomObInfoReply>): GetOtherRoomObInfoReply {
-        const message = {};
+        const message = { infos: [], buildingInfos: [], roomHeroDatas: [], productionLines: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetOtherRoomObInfoReply>(this, message, value);
@@ -3918,11 +3970,11 @@ class GetOtherRoomObInfoReply$Type extends MessageType<GetOtherRoomObInfoReply> 
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BlockInfo infos */ 1:
-                    message.infos = BlockInfo.internalBinaryRead(reader, reader.uint32(), options, message.infos);
+                case /* repeated BlockInfo infos */ 1:
+                    message.infos.push(BlockInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BuildingInfo buildingInfos */ 2:
-                    message.buildingInfos = BuildingInfo.internalBinaryRead(reader, reader.uint32(), options, message.buildingInfos);
+                case /* repeated BuildingInfo buildingInfos */ 2:
+                    message.buildingInfos.push(BuildingInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int64 targetUid */ 3:
                     message.targetUid = reader.int64().toBigInt();
@@ -3930,11 +3982,11 @@ class GetOtherRoomObInfoReply$Type extends MessageType<GetOtherRoomObInfoReply> 
                 case /* optional int32 roomLevel */ 4:
                     message.roomLevel = reader.int32();
                     break;
-                case /* RoomHeroData roomHeroDatas */ 5:
-                    message.roomHeroDatas = RoomHeroData.internalBinaryRead(reader, reader.uint32(), options, message.roomHeroDatas);
+                case /* repeated RoomHeroData roomHeroDatas */ 5:
+                    message.roomHeroDatas.push(RoomHeroData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* ProductionLineInfo productionLines */ 6:
-                    message.productionLines = ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options, message.productionLines);
+                case /* repeated ProductionLineInfo productionLines */ 6:
+                    message.productionLines.push(ProductionLineInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -3948,24 +4000,24 @@ class GetOtherRoomObInfoReply$Type extends MessageType<GetOtherRoomObInfoReply> 
         return message;
     }
     internalBinaryWrite(message: GetOtherRoomObInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BlockInfo infos = 1; */
-        if (message.infos)
-            BlockInfo.internalBinaryWrite(message.infos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* BuildingInfo buildingInfos = 2; */
-        if (message.buildingInfos)
-            BuildingInfo.internalBinaryWrite(message.buildingInfos, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BlockInfo infos = 1; */
+        for (let i = 0; i < message.infos.length; i++)
+            BlockInfo.internalBinaryWrite(message.infos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BuildingInfo buildingInfos = 2; */
+        for (let i = 0; i < message.buildingInfos.length; i++)
+            BuildingInfo.internalBinaryWrite(message.buildingInfos[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         /* optional int64 targetUid = 3; */
         if (message.targetUid !== undefined)
             writer.tag(3, WireType.Varint).int64(message.targetUid);
         /* optional int32 roomLevel = 4; */
         if (message.roomLevel !== undefined)
             writer.tag(4, WireType.Varint).int32(message.roomLevel);
-        /* RoomHeroData roomHeroDatas = 5; */
-        if (message.roomHeroDatas)
-            RoomHeroData.internalBinaryWrite(message.roomHeroDatas, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* ProductionLineInfo productionLines = 6; */
-        if (message.productionLines)
-            ProductionLineInfo.internalBinaryWrite(message.productionLines, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RoomHeroData roomHeroDatas = 5; */
+        for (let i = 0; i < message.roomHeroDatas.length; i++)
+            RoomHeroData.internalBinaryWrite(message.roomHeroDatas[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ProductionLineInfo productionLines = 6; */
+        for (let i = 0; i < message.productionLines.length; i++)
+            ProductionLineInfo.internalBinaryWrite(message.productionLines[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

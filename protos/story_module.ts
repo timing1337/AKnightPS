@@ -87,13 +87,13 @@ export interface StoryFinishPush {
  */
 export interface GetStoryReply {
     /**
-     * @generated from protobuf field: int32 finishList = 1;
+     * @generated from protobuf field: repeated int32 finishList = 1;
      */
-    finishList: number;
+    finishList: number[];
     /**
-     * @generated from protobuf field: ProcessingStoryInfo processingList = 2;
+     * @generated from protobuf field: repeated ProcessingStoryInfo processingList = 2;
      */
-    processingList?: ProcessingStoryInfo;
+    processingList: ProcessingStoryInfo[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class GetStoryFinishRequest$Type extends MessageType<GetStoryFinishRequest> {
@@ -414,12 +414,12 @@ export const StoryFinishPush = new StoryFinishPush$Type();
 class GetStoryReply$Type extends MessageType<GetStoryReply> {
     constructor() {
         super("GetStoryReply", [
-            { no: 1, name: "finishList", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "processingList", kind: "message", T: () => ProcessingStoryInfo }
+            { no: 1, name: "finishList", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "processingList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ProcessingStoryInfo }
         ]);
     }
     create(value?: PartialMessage<GetStoryReply>): GetStoryReply {
-        const message = { finishList: 0 };
+        const message = { finishList: [], processingList: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetStoryReply>(this, message, value);
@@ -430,11 +430,15 @@ class GetStoryReply$Type extends MessageType<GetStoryReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 finishList */ 1:
-                    message.finishList = reader.int32();
+                case /* repeated int32 finishList */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.finishList.push(reader.int32());
+                    else
+                        message.finishList.push(reader.int32());
                     break;
-                case /* ProcessingStoryInfo processingList */ 2:
-                    message.processingList = ProcessingStoryInfo.internalBinaryRead(reader, reader.uint32(), options, message.processingList);
+                case /* repeated ProcessingStoryInfo processingList */ 2:
+                    message.processingList.push(ProcessingStoryInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -448,12 +452,12 @@ class GetStoryReply$Type extends MessageType<GetStoryReply> {
         return message;
     }
     internalBinaryWrite(message: GetStoryReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 finishList = 1; */
-        if (message.finishList !== 0)
-            writer.tag(1, WireType.Varint).int32(message.finishList);
-        /* ProcessingStoryInfo processingList = 2; */
-        if (message.processingList)
-            ProcessingStoryInfo.internalBinaryWrite(message.processingList, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 finishList = 1; */
+        for (let i = 0; i < message.finishList.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.finishList[i]);
+        /* repeated ProcessingStoryInfo processingList = 2; */
+        for (let i = 0; i < message.processingList.length; i++)
+            ProcessingStoryInfo.internalBinaryWrite(message.processingList[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

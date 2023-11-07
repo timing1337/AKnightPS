@@ -42,9 +42,9 @@ export interface EndFightPush {
  */
 export interface TestFightRequest {
     /**
-     * @generated from protobuf field: int32 groupIds = 1;
+     * @generated from protobuf field: repeated int32 groupIds = 1;
      */
-    groupIds: number;
+    groupIds: number[];
     /**
      * @generated from protobuf field: optional FightGroup fightGroup = 2;
      */
@@ -94,13 +94,13 @@ export interface EndRoundReply {
  */
 export interface FightRoundOperRecord {
     /**
-     * @generated from protobuf field: UseClothSkillOperRecord clothSkillOpers = 1;
+     * @generated from protobuf field: repeated UseClothSkillOperRecord clothSkillOpers = 1;
      */
-    clothSkillOpers?: UseClothSkillOperRecord;
+    clothSkillOpers: UseClothSkillOperRecord[];
     /**
-     * @generated from protobuf field: BeginRoundOper opers = 2;
+     * @generated from protobuf field: repeated BeginRoundOper opers = 2;
      */
-    opers?: BeginRoundOper;
+    opers: BeginRoundOper[];
 }
 /**
  * @generated from protobuf message ReconnectFightRequest
@@ -112,9 +112,9 @@ export interface ReconnectFightRequest {
  */
 export interface AutoRoundReply {
     /**
-     * @generated from protobuf field: BeginRoundOper opers = 1;
+     * @generated from protobuf field: repeated BeginRoundOper opers = 1;
      */
-    opers?: BeginRoundOper;
+    opers: BeginRoundOper[];
 }
 /**
  * @generated from protobuf message EndFightRequest
@@ -130,26 +130,26 @@ export interface EndFightRequest {
  */
 export interface RedealCardInfoPush {
     /**
-     * @generated from protobuf field: CardInfo cardGroup = 1;
+     * @generated from protobuf field: repeated CardInfo cardGroup = 1;
      */
-    cardGroup?: CardInfo;
+    cardGroup: CardInfo[];
     /**
-     * @generated from protobuf field: CardInfo dealCardGroup = 2;
+     * @generated from protobuf field: repeated CardInfo dealCardGroup = 2;
      */
-    dealCardGroup?: CardInfo;
+    dealCardGroup: CardInfo[];
 }
 /**
  * @generated from protobuf message ChangeSubHeroRequest
  */
 export interface ChangeSubHeroRequest {
     /**
-     * @generated from protobuf field: repeated int64 subHeroId = 1;
+     * @generated from protobuf field: int64 subHeroId = 1;
      */
-    subHeroId: bigint[];
+    subHeroId: bigint;
     /**
-     * @generated from protobuf field: repeated int64 changeHeroId = 2;
+     * @generated from protobuf field: int64 changeHeroId = 2;
      */
-    changeHeroId: bigint[];
+    changeHeroId: bigint;
 }
 /**
  * @generated from protobuf message EndRoundRequest
@@ -201,9 +201,9 @@ export interface TestFightIdReply {
  */
 export interface BeginRoundRequest {
     /**
-     * @generated from protobuf field: BeginRoundOper opers = 1;
+     * @generated from protobuf field: repeated BeginRoundOper opers = 1;
      */
-    opers?: BeginRoundOper;
+    opers: BeginRoundOper[];
     /**
      * @generated from protobuf field: optional bool autoOper = 2;
      */
@@ -285,9 +285,9 @@ export interface FightRoundRecordAll {
      */
     round?: FightRound;
     /**
-     * @generated from protobuf field: FightRoundRecord records = 3;
+     * @generated from protobuf field: repeated FightRoundRecord records = 3;
      */
-    records?: FightRoundRecord;
+    records: FightRoundRecord[];
     /**
      * @generated from protobuf field: optional FightRecord fightRecord = 4;
      */
@@ -313,13 +313,13 @@ export interface FightRoundRecordAll {
      */
     pushInfo?: CardInfoPush;
     /**
-     * @generated from protobuf field: Fight wavePushFight = 10;
+     * @generated from protobuf field: repeated Fight wavePushFight = 10;
      */
-    wavePushFight?: Fight;
+    wavePushFight: Fight[];
     /**
-     * @generated from protobuf field: RedealCardInfoPush redealInfos = 12;
+     * @generated from protobuf field: repeated RedealCardInfoPush redealInfos = 12;
      */
-    redealInfos?: RedealCardInfoPush;
+    redealInfos: RedealCardInfoPush[];
 }
 /**
  * @generated from protobuf message GetFightRecordGroupRequest
@@ -335,9 +335,9 @@ export interface GetFightRecordGroupRequest {
  */
 export interface CardInfoPush {
     /**
-     * @generated from protobuf field: CardInfo cardGroup = 1;
+     * @generated from protobuf field: repeated CardInfo cardGroup = 1;
      */
-    cardGroup?: CardInfo;
+    cardGroup: CardInfo[];
     /**
      * @generated from protobuf field: optional int32 actPoint = 2;
      */
@@ -347,13 +347,13 @@ export interface CardInfoPush {
      */
     moveNum?: number;
     /**
-     * @generated from protobuf field: CardInfo beforeCards = 4;
+     * @generated from protobuf field: repeated CardInfo beforeCards = 4;
      */
-    beforeCards?: CardInfo;
+    beforeCards: CardInfo[];
     /**
-     * @generated from protobuf field: CardInfo dealCardGroup = 5;
+     * @generated from protobuf field: repeated CardInfo dealCardGroup = 5;
      */
-    dealCardGroup?: CardInfo;
+    dealCardGroup: CardInfo[];
     /**
      * @generated from protobuf field: optional int32 extraMoveAct = 6;
      */
@@ -394,18 +394,18 @@ export interface UseClothSkillRequest {
  */
 export interface AutoRoundRequest {
     /**
-     * @generated from protobuf field: BeginRoundOper opers = 1;
+     * @generated from protobuf field: repeated BeginRoundOper opers = 1;
      */
-    opers?: BeginRoundOper;
+    opers: BeginRoundOper[];
 }
 /**
  * @generated from protobuf message GetFightOperReply
  */
 export interface GetFightOperReply {
     /**
-     * @generated from protobuf field: FightRoundOperRecord operRecords = 1;
+     * @generated from protobuf field: repeated FightRoundOperRecord operRecords = 1;
      */
-    operRecords?: FightRoundOperRecord;
+    operRecords: FightRoundOperRecord[];
 }
 /**
  * @generated from protobuf message ResetRoundReply
@@ -420,9 +420,9 @@ export interface ResetRoundReply {
      */
     round?: FightRound;
     /**
-     * @generated from protobuf field: CardInfo cards = 3;
+     * @generated from protobuf field: repeated CardInfo cards = 3;
      */
-    cards?: CardInfo;
+    cards: CardInfo[];
 }
 /**
  * @generated from protobuf message BeginFightReply
@@ -529,13 +529,13 @@ export const EndFightPush = new EndFightPush$Type();
 class TestFightRequest$Type extends MessageType<TestFightRequest> {
     constructor() {
         super("TestFightRequest", [
-            { no: 1, name: "groupIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "groupIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "fightGroup", kind: "message", T: () => FightGroup },
             { no: 3, name: "FightType", kind: "scalar", jsonName: "FightType", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<TestFightRequest>): TestFightRequest {
-        const message = { groupIds: 0 };
+        const message = { groupIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<TestFightRequest>(this, message, value);
@@ -546,8 +546,12 @@ class TestFightRequest$Type extends MessageType<TestFightRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 groupIds */ 1:
-                    message.groupIds = reader.int32();
+                case /* repeated int32 groupIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.groupIds.push(reader.int32());
+                    else
+                        message.groupIds.push(reader.int32());
                     break;
                 case /* optional FightGroup fightGroup */ 2:
                     message.fightGroup = FightGroup.internalBinaryRead(reader, reader.uint32(), options, message.fightGroup);
@@ -567,9 +571,9 @@ class TestFightRequest$Type extends MessageType<TestFightRequest> {
         return message;
     }
     internalBinaryWrite(message: TestFightRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 groupIds = 1; */
-        if (message.groupIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.groupIds);
+        /* repeated int32 groupIds = 1; */
+        for (let i = 0; i < message.groupIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.groupIds[i]);
         /* optional FightGroup fightGroup = 2; */
         if (message.fightGroup)
             FightGroup.internalBinaryWrite(message.fightGroup, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
@@ -731,12 +735,12 @@ export const EndRoundReply = new EndRoundReply$Type();
 class FightRoundOperRecord$Type extends MessageType<FightRoundOperRecord> {
     constructor() {
         super("FightRoundOperRecord", [
-            { no: 1, name: "clothSkillOpers", kind: "message", T: () => UseClothSkillOperRecord },
-            { no: 2, name: "opers", kind: "message", T: () => BeginRoundOper }
+            { no: 1, name: "clothSkillOpers", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => UseClothSkillOperRecord },
+            { no: 2, name: "opers", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BeginRoundOper }
         ]);
     }
     create(value?: PartialMessage<FightRoundOperRecord>): FightRoundOperRecord {
-        const message = {};
+        const message = { clothSkillOpers: [], opers: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<FightRoundOperRecord>(this, message, value);
@@ -747,11 +751,11 @@ class FightRoundOperRecord$Type extends MessageType<FightRoundOperRecord> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* UseClothSkillOperRecord clothSkillOpers */ 1:
-                    message.clothSkillOpers = UseClothSkillOperRecord.internalBinaryRead(reader, reader.uint32(), options, message.clothSkillOpers);
+                case /* repeated UseClothSkillOperRecord clothSkillOpers */ 1:
+                    message.clothSkillOpers.push(UseClothSkillOperRecord.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* BeginRoundOper opers */ 2:
-                    message.opers = BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options, message.opers);
+                case /* repeated BeginRoundOper opers */ 2:
+                    message.opers.push(BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -765,12 +769,12 @@ class FightRoundOperRecord$Type extends MessageType<FightRoundOperRecord> {
         return message;
     }
     internalBinaryWrite(message: FightRoundOperRecord, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* UseClothSkillOperRecord clothSkillOpers = 1; */
-        if (message.clothSkillOpers)
-            UseClothSkillOperRecord.internalBinaryWrite(message.clothSkillOpers, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* BeginRoundOper opers = 2; */
-        if (message.opers)
-            BeginRoundOper.internalBinaryWrite(message.opers, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated UseClothSkillOperRecord clothSkillOpers = 1; */
+        for (let i = 0; i < message.clothSkillOpers.length; i++)
+            UseClothSkillOperRecord.internalBinaryWrite(message.clothSkillOpers[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BeginRoundOper opers = 2; */
+        for (let i = 0; i < message.opers.length; i++)
+            BeginRoundOper.internalBinaryWrite(message.opers[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -811,11 +815,11 @@ export const ReconnectFightRequest = new ReconnectFightRequest$Type();
 class AutoRoundReply$Type extends MessageType<AutoRoundReply> {
     constructor() {
         super("AutoRoundReply", [
-            { no: 1, name: "opers", kind: "message", T: () => BeginRoundOper }
+            { no: 1, name: "opers", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BeginRoundOper }
         ]);
     }
     create(value?: PartialMessage<AutoRoundReply>): AutoRoundReply {
-        const message = {};
+        const message = { opers: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AutoRoundReply>(this, message, value);
@@ -826,8 +830,8 @@ class AutoRoundReply$Type extends MessageType<AutoRoundReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BeginRoundOper opers */ 1:
-                    message.opers = BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options, message.opers);
+                case /* repeated BeginRoundOper opers */ 1:
+                    message.opers.push(BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -841,9 +845,9 @@ class AutoRoundReply$Type extends MessageType<AutoRoundReply> {
         return message;
     }
     internalBinaryWrite(message: AutoRoundReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BeginRoundOper opers = 1; */
-        if (message.opers)
-            BeginRoundOper.internalBinaryWrite(message.opers, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BeginRoundOper opers = 1; */
+        for (let i = 0; i < message.opers.length; i++)
+            BeginRoundOper.internalBinaryWrite(message.opers[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -905,12 +909,12 @@ export const EndFightRequest = new EndFightRequest$Type();
 class RedealCardInfoPush$Type extends MessageType<RedealCardInfoPush> {
     constructor() {
         super("RedealCardInfoPush", [
-            { no: 1, name: "cardGroup", kind: "message", T: () => CardInfo },
-            { no: 2, name: "dealCardGroup", kind: "message", T: () => CardInfo }
+            { no: 1, name: "cardGroup", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => CardInfo },
+            { no: 2, name: "dealCardGroup", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => CardInfo }
         ]);
     }
     create(value?: PartialMessage<RedealCardInfoPush>): RedealCardInfoPush {
-        const message = {};
+        const message = { cardGroup: [], dealCardGroup: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<RedealCardInfoPush>(this, message, value);
@@ -921,11 +925,11 @@ class RedealCardInfoPush$Type extends MessageType<RedealCardInfoPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* CardInfo cardGroup */ 1:
-                    message.cardGroup = CardInfo.internalBinaryRead(reader, reader.uint32(), options, message.cardGroup);
+                case /* repeated CardInfo cardGroup */ 1:
+                    message.cardGroup.push(CardInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* CardInfo dealCardGroup */ 2:
-                    message.dealCardGroup = CardInfo.internalBinaryRead(reader, reader.uint32(), options, message.dealCardGroup);
+                case /* repeated CardInfo dealCardGroup */ 2:
+                    message.dealCardGroup.push(CardInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -939,12 +943,12 @@ class RedealCardInfoPush$Type extends MessageType<RedealCardInfoPush> {
         return message;
     }
     internalBinaryWrite(message: RedealCardInfoPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* CardInfo cardGroup = 1; */
-        if (message.cardGroup)
-            CardInfo.internalBinaryWrite(message.cardGroup, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* CardInfo dealCardGroup = 2; */
-        if (message.dealCardGroup)
-            CardInfo.internalBinaryWrite(message.dealCardGroup, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated CardInfo cardGroup = 1; */
+        for (let i = 0; i < message.cardGroup.length; i++)
+            CardInfo.internalBinaryWrite(message.cardGroup[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated CardInfo dealCardGroup = 2; */
+        for (let i = 0; i < message.dealCardGroup.length; i++)
+            CardInfo.internalBinaryWrite(message.dealCardGroup[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -959,12 +963,12 @@ export const RedealCardInfoPush = new RedealCardInfoPush$Type();
 class ChangeSubHeroRequest$Type extends MessageType<ChangeSubHeroRequest> {
     constructor() {
         super("ChangeSubHeroRequest", [
-            { no: 1, name: "subHeroId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "changeHeroId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "subHeroId", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "changeHeroId", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ChangeSubHeroRequest>): ChangeSubHeroRequest {
-        const message = { subHeroId: [], changeHeroId: [] };
+        const message = { subHeroId: 0n, changeHeroId: 0n };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ChangeSubHeroRequest>(this, message, value);
@@ -975,19 +979,11 @@ class ChangeSubHeroRequest$Type extends MessageType<ChangeSubHeroRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int64 subHeroId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.subHeroId.push(reader.int64().toBigInt());
-                    else
-                        message.subHeroId.push(reader.int64().toBigInt());
+                case /* int64 subHeroId */ 1:
+                    message.subHeroId = reader.int64().toBigInt();
                     break;
-                case /* repeated int64 changeHeroId */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.changeHeroId.push(reader.int64().toBigInt());
-                    else
-                        message.changeHeroId.push(reader.int64().toBigInt());
+                case /* int64 changeHeroId */ 2:
+                    message.changeHeroId = reader.int64().toBigInt();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1001,12 +997,12 @@ class ChangeSubHeroRequest$Type extends MessageType<ChangeSubHeroRequest> {
         return message;
     }
     internalBinaryWrite(message: ChangeSubHeroRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int64 subHeroId = 1; */
-        for (let i = 0; i < message.subHeroId.length; i++)
-            writer.tag(1, WireType.Varint).int64(message.subHeroId[i]);
-        /* repeated int64 changeHeroId = 2; */
-        for (let i = 0; i < message.changeHeroId.length; i++)
-            writer.tag(2, WireType.Varint).int64(message.changeHeroId[i]);
+        /* int64 subHeroId = 1; */
+        if (message.subHeroId !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.subHeroId);
+        /* int64 changeHeroId = 2; */
+        if (message.changeHeroId !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.changeHeroId);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1228,12 +1224,12 @@ export const TestFightIdReply = new TestFightIdReply$Type();
 class BeginRoundRequest$Type extends MessageType<BeginRoundRequest> {
     constructor() {
         super("BeginRoundRequest", [
-            { no: 1, name: "opers", kind: "message", T: () => BeginRoundOper },
+            { no: 1, name: "opers", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BeginRoundOper },
             { no: 2, name: "autoOper", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
     create(value?: PartialMessage<BeginRoundRequest>): BeginRoundRequest {
-        const message = {};
+        const message = { opers: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<BeginRoundRequest>(this, message, value);
@@ -1244,8 +1240,8 @@ class BeginRoundRequest$Type extends MessageType<BeginRoundRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BeginRoundOper opers */ 1:
-                    message.opers = BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options, message.opers);
+                case /* repeated BeginRoundOper opers */ 1:
+                    message.opers.push(BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool autoOper */ 2:
                     message.autoOper = reader.bool();
@@ -1262,9 +1258,9 @@ class BeginRoundRequest$Type extends MessageType<BeginRoundRequest> {
         return message;
     }
     internalBinaryWrite(message: BeginRoundRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BeginRoundOper opers = 1; */
-        if (message.opers)
-            BeginRoundOper.internalBinaryWrite(message.opers, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BeginRoundOper opers = 1; */
+        for (let i = 0; i < message.opers.length; i++)
+            BeginRoundOper.internalBinaryWrite(message.opers[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional bool autoOper = 2; */
         if (message.autoOper !== undefined)
             writer.tag(2, WireType.Varint).bool(message.autoOper);
@@ -1585,19 +1581,19 @@ class FightRoundRecordAll$Type extends MessageType<FightRoundRecordAll> {
         super("FightRoundRecordAll", [
             { no: 1, name: "fight", kind: "message", T: () => Fight },
             { no: 2, name: "round", kind: "message", T: () => FightRound },
-            { no: 3, name: "records", kind: "message", T: () => FightRoundRecord },
+            { no: 3, name: "records", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FightRoundRecord },
             { no: 4, name: "fightRecord", kind: "message", T: () => FightRecord },
             { no: 5, name: "result", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 6, name: "resultCause", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 7, name: "totalRound", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 8, name: "killTotal", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 9, name: "pushInfo", kind: "message", T: () => CardInfoPush },
-            { no: 10, name: "wavePushFight", kind: "message", T: () => Fight },
-            { no: 12, name: "redealInfos", kind: "message", T: () => RedealCardInfoPush }
+            { no: 10, name: "wavePushFight", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Fight },
+            { no: 12, name: "redealInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => RedealCardInfoPush }
         ]);
     }
     create(value?: PartialMessage<FightRoundRecordAll>): FightRoundRecordAll {
-        const message = {};
+        const message = { records: [], wavePushFight: [], redealInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<FightRoundRecordAll>(this, message, value);
@@ -1614,8 +1610,8 @@ class FightRoundRecordAll$Type extends MessageType<FightRoundRecordAll> {
                 case /* optional FightRound round */ 2:
                     message.round = FightRound.internalBinaryRead(reader, reader.uint32(), options, message.round);
                     break;
-                case /* FightRoundRecord records */ 3:
-                    message.records = FightRoundRecord.internalBinaryRead(reader, reader.uint32(), options, message.records);
+                case /* repeated FightRoundRecord records */ 3:
+                    message.records.push(FightRoundRecord.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional FightRecord fightRecord */ 4:
                     message.fightRecord = FightRecord.internalBinaryRead(reader, reader.uint32(), options, message.fightRecord);
@@ -1635,11 +1631,11 @@ class FightRoundRecordAll$Type extends MessageType<FightRoundRecordAll> {
                 case /* optional CardInfoPush pushInfo */ 9:
                     message.pushInfo = CardInfoPush.internalBinaryRead(reader, reader.uint32(), options, message.pushInfo);
                     break;
-                case /* Fight wavePushFight */ 10:
-                    message.wavePushFight = Fight.internalBinaryRead(reader, reader.uint32(), options, message.wavePushFight);
+                case /* repeated Fight wavePushFight */ 10:
+                    message.wavePushFight.push(Fight.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* RedealCardInfoPush redealInfos */ 12:
-                    message.redealInfos = RedealCardInfoPush.internalBinaryRead(reader, reader.uint32(), options, message.redealInfos);
+                case /* repeated RedealCardInfoPush redealInfos */ 12:
+                    message.redealInfos.push(RedealCardInfoPush.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1659,9 +1655,9 @@ class FightRoundRecordAll$Type extends MessageType<FightRoundRecordAll> {
         /* optional FightRound round = 2; */
         if (message.round)
             FightRound.internalBinaryWrite(message.round, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* FightRoundRecord records = 3; */
-        if (message.records)
-            FightRoundRecord.internalBinaryWrite(message.records, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FightRoundRecord records = 3; */
+        for (let i = 0; i < message.records.length; i++)
+            FightRoundRecord.internalBinaryWrite(message.records[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* optional FightRecord fightRecord = 4; */
         if (message.fightRecord)
             FightRecord.internalBinaryWrite(message.fightRecord, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
@@ -1680,12 +1676,12 @@ class FightRoundRecordAll$Type extends MessageType<FightRoundRecordAll> {
         /* optional CardInfoPush pushInfo = 9; */
         if (message.pushInfo)
             CardInfoPush.internalBinaryWrite(message.pushInfo, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
-        /* Fight wavePushFight = 10; */
-        if (message.wavePushFight)
-            Fight.internalBinaryWrite(message.wavePushFight, writer.tag(10, WireType.LengthDelimited).fork(), options).join();
-        /* RedealCardInfoPush redealInfos = 12; */
-        if (message.redealInfos)
-            RedealCardInfoPush.internalBinaryWrite(message.redealInfos, writer.tag(12, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Fight wavePushFight = 10; */
+        for (let i = 0; i < message.wavePushFight.length; i++)
+            Fight.internalBinaryWrite(message.wavePushFight[i], writer.tag(10, WireType.LengthDelimited).fork(), options).join();
+        /* repeated RedealCardInfoPush redealInfos = 12; */
+        for (let i = 0; i < message.redealInfos.length; i++)
+            RedealCardInfoPush.internalBinaryWrite(message.redealInfos[i], writer.tag(12, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1747,16 +1743,16 @@ export const GetFightRecordGroupRequest = new GetFightRecordGroupRequest$Type();
 class CardInfoPush$Type extends MessageType<CardInfoPush> {
     constructor() {
         super("CardInfoPush", [
-            { no: 1, name: "cardGroup", kind: "message", T: () => CardInfo },
+            { no: 1, name: "cardGroup", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => CardInfo },
             { no: 2, name: "actPoint", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "moveNum", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "beforeCards", kind: "message", T: () => CardInfo },
-            { no: 5, name: "dealCardGroup", kind: "message", T: () => CardInfo },
+            { no: 4, name: "beforeCards", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => CardInfo },
+            { no: 5, name: "dealCardGroup", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => CardInfo },
             { no: 6, name: "extraMoveAct", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<CardInfoPush>): CardInfoPush {
-        const message = {};
+        const message = { cardGroup: [], beforeCards: [], dealCardGroup: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<CardInfoPush>(this, message, value);
@@ -1767,8 +1763,8 @@ class CardInfoPush$Type extends MessageType<CardInfoPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* CardInfo cardGroup */ 1:
-                    message.cardGroup = CardInfo.internalBinaryRead(reader, reader.uint32(), options, message.cardGroup);
+                case /* repeated CardInfo cardGroup */ 1:
+                    message.cardGroup.push(CardInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 actPoint */ 2:
                     message.actPoint = reader.int32();
@@ -1776,11 +1772,11 @@ class CardInfoPush$Type extends MessageType<CardInfoPush> {
                 case /* optional int32 moveNum */ 3:
                     message.moveNum = reader.int32();
                     break;
-                case /* CardInfo beforeCards */ 4:
-                    message.beforeCards = CardInfo.internalBinaryRead(reader, reader.uint32(), options, message.beforeCards);
+                case /* repeated CardInfo beforeCards */ 4:
+                    message.beforeCards.push(CardInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* CardInfo dealCardGroup */ 5:
-                    message.dealCardGroup = CardInfo.internalBinaryRead(reader, reader.uint32(), options, message.dealCardGroup);
+                case /* repeated CardInfo dealCardGroup */ 5:
+                    message.dealCardGroup.push(CardInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 extraMoveAct */ 6:
                     message.extraMoveAct = reader.int32();
@@ -1797,21 +1793,21 @@ class CardInfoPush$Type extends MessageType<CardInfoPush> {
         return message;
     }
     internalBinaryWrite(message: CardInfoPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* CardInfo cardGroup = 1; */
-        if (message.cardGroup)
-            CardInfo.internalBinaryWrite(message.cardGroup, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated CardInfo cardGroup = 1; */
+        for (let i = 0; i < message.cardGroup.length; i++)
+            CardInfo.internalBinaryWrite(message.cardGroup[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 actPoint = 2; */
         if (message.actPoint !== undefined)
             writer.tag(2, WireType.Varint).int32(message.actPoint);
         /* optional int32 moveNum = 3; */
         if (message.moveNum !== undefined)
             writer.tag(3, WireType.Varint).int32(message.moveNum);
-        /* CardInfo beforeCards = 4; */
-        if (message.beforeCards)
-            CardInfo.internalBinaryWrite(message.beforeCards, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
-        /* CardInfo dealCardGroup = 5; */
-        if (message.dealCardGroup)
-            CardInfo.internalBinaryWrite(message.dealCardGroup, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated CardInfo beforeCards = 4; */
+        for (let i = 0; i < message.beforeCards.length; i++)
+            CardInfo.internalBinaryWrite(message.beforeCards[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated CardInfo dealCardGroup = 5; */
+        for (let i = 0; i < message.dealCardGroup.length; i++)
+            CardInfo.internalBinaryWrite(message.dealCardGroup[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 extraMoveAct = 6; */
         if (message.extraMoveAct !== undefined)
             writer.tag(6, WireType.Varint).int32(message.extraMoveAct);
@@ -1944,11 +1940,11 @@ export const UseClothSkillRequest = new UseClothSkillRequest$Type();
 class AutoRoundRequest$Type extends MessageType<AutoRoundRequest> {
     constructor() {
         super("AutoRoundRequest", [
-            { no: 1, name: "opers", kind: "message", T: () => BeginRoundOper }
+            { no: 1, name: "opers", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BeginRoundOper }
         ]);
     }
     create(value?: PartialMessage<AutoRoundRequest>): AutoRoundRequest {
-        const message = {};
+        const message = { opers: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AutoRoundRequest>(this, message, value);
@@ -1959,8 +1955,8 @@ class AutoRoundRequest$Type extends MessageType<AutoRoundRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* BeginRoundOper opers */ 1:
-                    message.opers = BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options, message.opers);
+                case /* repeated BeginRoundOper opers */ 1:
+                    message.opers.push(BeginRoundOper.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1974,9 +1970,9 @@ class AutoRoundRequest$Type extends MessageType<AutoRoundRequest> {
         return message;
     }
     internalBinaryWrite(message: AutoRoundRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* BeginRoundOper opers = 1; */
-        if (message.opers)
-            BeginRoundOper.internalBinaryWrite(message.opers, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated BeginRoundOper opers = 1; */
+        for (let i = 0; i < message.opers.length; i++)
+            BeginRoundOper.internalBinaryWrite(message.opers[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1991,11 +1987,11 @@ export const AutoRoundRequest = new AutoRoundRequest$Type();
 class GetFightOperReply$Type extends MessageType<GetFightOperReply> {
     constructor() {
         super("GetFightOperReply", [
-            { no: 1, name: "operRecords", kind: "message", T: () => FightRoundOperRecord }
+            { no: 1, name: "operRecords", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FightRoundOperRecord }
         ]);
     }
     create(value?: PartialMessage<GetFightOperReply>): GetFightOperReply {
-        const message = {};
+        const message = { operRecords: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetFightOperReply>(this, message, value);
@@ -2006,8 +2002,8 @@ class GetFightOperReply$Type extends MessageType<GetFightOperReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* FightRoundOperRecord operRecords */ 1:
-                    message.operRecords = FightRoundOperRecord.internalBinaryRead(reader, reader.uint32(), options, message.operRecords);
+                case /* repeated FightRoundOperRecord operRecords */ 1:
+                    message.operRecords.push(FightRoundOperRecord.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2021,9 +2017,9 @@ class GetFightOperReply$Type extends MessageType<GetFightOperReply> {
         return message;
     }
     internalBinaryWrite(message: GetFightOperReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* FightRoundOperRecord operRecords = 1; */
-        if (message.operRecords)
-            FightRoundOperRecord.internalBinaryWrite(message.operRecords, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FightRoundOperRecord operRecords = 1; */
+        for (let i = 0; i < message.operRecords.length; i++)
+            FightRoundOperRecord.internalBinaryWrite(message.operRecords[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2040,11 +2036,11 @@ class ResetRoundReply$Type extends MessageType<ResetRoundReply> {
         super("ResetRoundReply", [
             { no: 1, name: "fight", kind: "message", T: () => Fight },
             { no: 2, name: "round", kind: "message", T: () => FightRound },
-            { no: 3, name: "cards", kind: "message", T: () => CardInfo }
+            { no: 3, name: "cards", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => CardInfo }
         ]);
     }
     create(value?: PartialMessage<ResetRoundReply>): ResetRoundReply {
-        const message = {};
+        const message = { cards: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ResetRoundReply>(this, message, value);
@@ -2061,8 +2057,8 @@ class ResetRoundReply$Type extends MessageType<ResetRoundReply> {
                 case /* optional FightRound round */ 2:
                     message.round = FightRound.internalBinaryRead(reader, reader.uint32(), options, message.round);
                     break;
-                case /* CardInfo cards */ 3:
-                    message.cards = CardInfo.internalBinaryRead(reader, reader.uint32(), options, message.cards);
+                case /* repeated CardInfo cards */ 3:
+                    message.cards.push(CardInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2082,9 +2078,9 @@ class ResetRoundReply$Type extends MessageType<ResetRoundReply> {
         /* optional FightRound round = 2; */
         if (message.round)
             FightRound.internalBinaryWrite(message.round, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
-        /* CardInfo cards = 3; */
-        if (message.cards)
-            CardInfo.internalBinaryWrite(message.cards, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated CardInfo cards = 3; */
+        for (let i = 0; i < message.cards.length; i++)
+            CardInfo.internalBinaryWrite(message.cards[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

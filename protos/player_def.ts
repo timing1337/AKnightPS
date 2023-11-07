@@ -95,9 +95,9 @@ export interface PlayerInfo {
      */
     birthday?: string;
     /**
-     * @generated from protobuf field: HeroSimpleInfo showHeros = 8;
+     * @generated from protobuf field: repeated HeroSimpleInfo showHeros = 8;
      */
-    showHeros?: HeroSimpleInfo;
+    showHeros: HeroSimpleInfo[];
     /**
      * @generated from protobuf field: optional int64 registerTime = 9;
      */
@@ -135,18 +135,18 @@ export interface PlayerInfo {
      */
     lastLogoutTime?: bigint;
     /**
-     * @generated from protobuf field: int32 characterAge = 18;
+     * @generated from protobuf field: repeated int32 characterAge = 18;
      */
-    characterAge: number;
+    characterAge: number[];
 }
 /**
  * @generated from protobuf message PlayerClothInfo
  */
 export interface PlayerClothInfo {
     /**
-     * @generated from protobuf field: PlayerCloth clothes = 1;
+     * @generated from protobuf field: repeated PlayerCloth clothes = 1;
      */
-    clothes?: PlayerCloth;
+    clothes: PlayerCloth[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class SimplePlayerInfo$Type extends MessageType<SimplePlayerInfo> {
@@ -309,7 +309,7 @@ class PlayerInfo$Type extends MessageType<PlayerInfo> {
             { no: 5, name: "exp", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 6, name: "signature", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 7, name: "birthday", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
-            { no: 8, name: "showHeros", kind: "message", T: () => HeroSimpleInfo },
+            { no: 8, name: "showHeros", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroSimpleInfo },
             { no: 9, name: "registerTime", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 10, name: "heroRareNNCount", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 11, name: "heroRareNCount", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
@@ -319,11 +319,11 @@ class PlayerInfo$Type extends MessageType<PlayerInfo> {
             { no: 15, name: "lastEpisodeId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 16, name: "lastLoginTime", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 17, name: "lastLogoutTime", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 18, name: "characterAge", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 18, name: "characterAge", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<PlayerInfo>): PlayerInfo {
-        const message = { characterAge: 0 };
+        const message = { showHeros: [], characterAge: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<PlayerInfo>(this, message, value);
@@ -355,8 +355,8 @@ class PlayerInfo$Type extends MessageType<PlayerInfo> {
                 case /* optional string birthday */ 7:
                     message.birthday = reader.string();
                     break;
-                case /* HeroSimpleInfo showHeros */ 8:
-                    message.showHeros = HeroSimpleInfo.internalBinaryRead(reader, reader.uint32(), options, message.showHeros);
+                case /* repeated HeroSimpleInfo showHeros */ 8:
+                    message.showHeros.push(HeroSimpleInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int64 registerTime */ 9:
                     message.registerTime = reader.int64().toBigInt();
@@ -385,8 +385,12 @@ class PlayerInfo$Type extends MessageType<PlayerInfo> {
                 case /* optional int64 lastLogoutTime */ 17:
                     message.lastLogoutTime = reader.int64().toBigInt();
                     break;
-                case /* int32 characterAge */ 18:
-                    message.characterAge = reader.int32();
+                case /* repeated int32 characterAge */ 18:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.characterAge.push(reader.int32());
+                    else
+                        message.characterAge.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -421,9 +425,9 @@ class PlayerInfo$Type extends MessageType<PlayerInfo> {
         /* optional string birthday = 7; */
         if (message.birthday !== undefined)
             writer.tag(7, WireType.LengthDelimited).string(message.birthday);
-        /* HeroSimpleInfo showHeros = 8; */
-        if (message.showHeros)
-            HeroSimpleInfo.internalBinaryWrite(message.showHeros, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroSimpleInfo showHeros = 8; */
+        for (let i = 0; i < message.showHeros.length; i++)
+            HeroSimpleInfo.internalBinaryWrite(message.showHeros[i], writer.tag(8, WireType.LengthDelimited).fork(), options).join();
         /* optional int64 registerTime = 9; */
         if (message.registerTime !== undefined)
             writer.tag(9, WireType.Varint).int64(message.registerTime);
@@ -451,9 +455,9 @@ class PlayerInfo$Type extends MessageType<PlayerInfo> {
         /* optional int64 lastLogoutTime = 17; */
         if (message.lastLogoutTime !== undefined)
             writer.tag(17, WireType.Varint).int64(message.lastLogoutTime);
-        /* int32 characterAge = 18; */
-        if (message.characterAge !== 0)
-            writer.tag(18, WireType.Varint).int32(message.characterAge);
+        /* repeated int32 characterAge = 18; */
+        for (let i = 0; i < message.characterAge.length; i++)
+            writer.tag(18, WireType.Varint).int32(message.characterAge[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -468,11 +472,11 @@ export const PlayerInfo = new PlayerInfo$Type();
 class PlayerClothInfo$Type extends MessageType<PlayerClothInfo> {
     constructor() {
         super("PlayerClothInfo", [
-            { no: 1, name: "clothes", kind: "message", T: () => PlayerCloth }
+            { no: 1, name: "clothes", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => PlayerCloth }
         ]);
     }
     create(value?: PartialMessage<PlayerClothInfo>): PlayerClothInfo {
-        const message = {};
+        const message = { clothes: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<PlayerClothInfo>(this, message, value);
@@ -483,8 +487,8 @@ class PlayerClothInfo$Type extends MessageType<PlayerClothInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* PlayerCloth clothes */ 1:
-                    message.clothes = PlayerCloth.internalBinaryRead(reader, reader.uint32(), options, message.clothes);
+                case /* repeated PlayerCloth clothes */ 1:
+                    message.clothes.push(PlayerCloth.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -498,9 +502,9 @@ class PlayerClothInfo$Type extends MessageType<PlayerClothInfo> {
         return message;
     }
     internalBinaryWrite(message: PlayerClothInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* PlayerCloth clothes = 1; */
-        if (message.clothes)
-            PlayerCloth.internalBinaryWrite(message.clothes, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated PlayerCloth clothes = 1; */
+        for (let i = 0; i < message.clothes.length; i++)
+            PlayerCloth.internalBinaryWrite(message.clothes[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

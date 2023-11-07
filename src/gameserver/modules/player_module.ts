@@ -1,3 +1,6 @@
+import { OpenInfo } from '../../../protos/open_module';
+import { PlayerInfo } from '../../../protos/player_def';
+import { GetPlayerInfoReply, GetPlayerInfoRequest } from '../../../protos/player_module';
 import ByteWriting from '../../crypto/bytewriting';
 import Logger from '../../utils/logger';
 import Connection from '../connection';
@@ -19,6 +22,7 @@ export class PlayerModule {
         const response = Buffer.alloc(10); // 2 bytes (first info is reason but i havent sure what its for so we making it empty atm)
         response.writeBigUInt64BE(BigInt(userId), 2);
 
+        connection.initializePlayer(BigInt(userId));
         connection.sendRawBuffer(ProtocolId.Login, response);
     }
 
@@ -27,10 +31,17 @@ export class PlayerModule {
         connection.sendRawBuffer(ProtocolId.LostCmdResp, Buffer.from('01', 'hex'));
     }
 
-    /*
     @handles(ProtocolId.GetPlayerInfo)
     public static async onGetPlayerInfo(connection: Connection, packet: ClientPacket) {
-        console.log(packet.data.toString('hex'));
+        const request = GetPlayerInfoRequest.fromBinary(packet.data);
+        const response = GetPlayerInfoReply.create({
+            canRename: true,
+            extRename: 0,
+            mainThumbnail: false,
+            openinfos: connection.player?.openInfo,
+            playerInfo: connection.player?.playerInfo
+        })
+
+        connection.sendRawBuffer(ProtocolId.GetPlayerInfo, GetPlayerInfoReply.toBinary(response));
     }
-    */
 }

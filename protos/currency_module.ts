@@ -73,9 +73,9 @@ export interface GetBuyPowerInfoReply {
  */
 export interface CurrencyChangePush {
     /**
-     * @generated from protobuf field: Currency changeCurrency = 1;
+     * @generated from protobuf field: repeated Currency changeCurrency = 1;
      */
-    changeCurrency?: Currency;
+    changeCurrency: Currency[];
 }
 /**
  * @generated from protobuf message BuyPowerRequest
@@ -100,18 +100,18 @@ export interface ExchangeDiamondRequest {
  */
 export interface GetCurrencyListRequest {
     /**
-     * @generated from protobuf field: int32 currencyIds = 1;
+     * @generated from protobuf field: repeated int32 currencyIds = 1;
      */
-    currencyIds: number;
+    currencyIds: number[];
 }
 /**
  * @generated from protobuf message GetCurrencyListReply
  */
 export interface GetCurrencyListReply {
     /**
-     * @generated from protobuf field: Currency currencyList = 1;
+     * @generated from protobuf field: repeated Currency currencyList = 1;
      */
-    currencyList?: Currency;
+    currencyList: Currency[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class GetBuyPowerInfoRequest$Type extends MessageType<GetBuyPowerInfoRequest> {
@@ -359,11 +359,11 @@ export const GetBuyPowerInfoReply = new GetBuyPowerInfoReply$Type();
 class CurrencyChangePush$Type extends MessageType<CurrencyChangePush> {
     constructor() {
         super("CurrencyChangePush", [
-            { no: 1, name: "changeCurrency", kind: "message", T: () => Currency }
+            { no: 1, name: "changeCurrency", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Currency }
         ]);
     }
     create(value?: PartialMessage<CurrencyChangePush>): CurrencyChangePush {
-        const message = {};
+        const message = { changeCurrency: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<CurrencyChangePush>(this, message, value);
@@ -374,8 +374,8 @@ class CurrencyChangePush$Type extends MessageType<CurrencyChangePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Currency changeCurrency */ 1:
-                    message.changeCurrency = Currency.internalBinaryRead(reader, reader.uint32(), options, message.changeCurrency);
+                case /* repeated Currency changeCurrency */ 1:
+                    message.changeCurrency.push(Currency.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -389,9 +389,9 @@ class CurrencyChangePush$Type extends MessageType<CurrencyChangePush> {
         return message;
     }
     internalBinaryWrite(message: CurrencyChangePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Currency changeCurrency = 1; */
-        if (message.changeCurrency)
-            Currency.internalBinaryWrite(message.changeCurrency, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Currency changeCurrency = 1; */
+        for (let i = 0; i < message.changeCurrency.length; i++)
+            Currency.internalBinaryWrite(message.changeCurrency[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -486,11 +486,11 @@ export const ExchangeDiamondRequest = new ExchangeDiamondRequest$Type();
 class GetCurrencyListRequest$Type extends MessageType<GetCurrencyListRequest> {
     constructor() {
         super("GetCurrencyListRequest", [
-            { no: 1, name: "currencyIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "currencyIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetCurrencyListRequest>): GetCurrencyListRequest {
-        const message = { currencyIds: 0 };
+        const message = { currencyIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetCurrencyListRequest>(this, message, value);
@@ -501,8 +501,12 @@ class GetCurrencyListRequest$Type extends MessageType<GetCurrencyListRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 currencyIds */ 1:
-                    message.currencyIds = reader.int32();
+                case /* repeated int32 currencyIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.currencyIds.push(reader.int32());
+                    else
+                        message.currencyIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -516,9 +520,9 @@ class GetCurrencyListRequest$Type extends MessageType<GetCurrencyListRequest> {
         return message;
     }
     internalBinaryWrite(message: GetCurrencyListRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 currencyIds = 1; */
-        if (message.currencyIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.currencyIds);
+        /* repeated int32 currencyIds = 1; */
+        for (let i = 0; i < message.currencyIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.currencyIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -533,11 +537,11 @@ export const GetCurrencyListRequest = new GetCurrencyListRequest$Type();
 class GetCurrencyListReply$Type extends MessageType<GetCurrencyListReply> {
     constructor() {
         super("GetCurrencyListReply", [
-            { no: 1, name: "currencyList", kind: "message", T: () => Currency }
+            { no: 1, name: "currencyList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Currency }
         ]);
     }
     create(value?: PartialMessage<GetCurrencyListReply>): GetCurrencyListReply {
-        const message = {};
+        const message = { currencyList: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetCurrencyListReply>(this, message, value);
@@ -548,8 +552,8 @@ class GetCurrencyListReply$Type extends MessageType<GetCurrencyListReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Currency currencyList */ 1:
-                    message.currencyList = Currency.internalBinaryRead(reader, reader.uint32(), options, message.currencyList);
+                case /* repeated Currency currencyList */ 1:
+                    message.currencyList.push(Currency.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -563,9 +567,9 @@ class GetCurrencyListReply$Type extends MessageType<GetCurrencyListReply> {
         return message;
     }
     internalBinaryWrite(message: GetCurrencyListReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Currency currencyList = 1; */
-        if (message.currencyList)
-            Currency.internalBinaryWrite(message.currencyList, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Currency currencyList = 1; */
+        for (let i = 0; i < message.currencyList.length; i++)
+            Currency.internalBinaryWrite(message.currencyList[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

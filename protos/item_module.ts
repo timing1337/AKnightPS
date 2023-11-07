@@ -69,26 +69,26 @@ export interface UseItemReply {
  */
 export interface ItemChangePush {
     /**
-     * @generated from protobuf field: Item items = 1;
+     * @generated from protobuf field: repeated Item items = 1;
      */
-    items?: Item;
+    items: Item[];
     /**
-     * @generated from protobuf field: PowerItem powerItems = 2;
+     * @generated from protobuf field: repeated PowerItem powerItems = 2;
      */
-    powerItems?: PowerItem;
+    powerItems: PowerItem[];
 }
 /**
  * @generated from protobuf message GetItemListReply
  */
 export interface GetItemListReply {
     /**
-     * @generated from protobuf field: Item items = 1;
+     * @generated from protobuf field: repeated Item items = 1;
      */
-    items?: Item;
+    items: Item[];
     /**
-     * @generated from protobuf field: PowerItem powerItems = 2;
+     * @generated from protobuf field: repeated PowerItem powerItems = 2;
      */
-    powerItems?: PowerItem;
+    powerItems: PowerItem[];
 }
 /**
  * @generated from protobuf message UsePowerItemRequest
@@ -113,9 +113,9 @@ export interface UsePowerItemReply {
  */
 export interface UseItemRequest {
     /**
-     * @generated from protobuf field: M2QEntry entry = 1;
+     * @generated from protobuf field: repeated M2QEntry entry = 1;
      */
-    entry?: M2QEntry;
+    entry: M2QEntry[];
     /**
      * @generated from protobuf field: optional uint64 targetId = 2;
      */
@@ -313,12 +313,12 @@ export const UseItemReply = new UseItemReply$Type();
 class ItemChangePush$Type extends MessageType<ItemChangePush> {
     constructor() {
         super("ItemChangePush", [
-            { no: 1, name: "items", kind: "message", T: () => Item },
-            { no: 2, name: "powerItems", kind: "message", T: () => PowerItem }
+            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Item },
+            { no: 2, name: "powerItems", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => PowerItem }
         ]);
     }
     create(value?: PartialMessage<ItemChangePush>): ItemChangePush {
-        const message = {};
+        const message = { items: [], powerItems: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ItemChangePush>(this, message, value);
@@ -329,11 +329,11 @@ class ItemChangePush$Type extends MessageType<ItemChangePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Item items */ 1:
-                    message.items = Item.internalBinaryRead(reader, reader.uint32(), options, message.items);
+                case /* repeated Item items */ 1:
+                    message.items.push(Item.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* PowerItem powerItems */ 2:
-                    message.powerItems = PowerItem.internalBinaryRead(reader, reader.uint32(), options, message.powerItems);
+                case /* repeated PowerItem powerItems */ 2:
+                    message.powerItems.push(PowerItem.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -347,12 +347,12 @@ class ItemChangePush$Type extends MessageType<ItemChangePush> {
         return message;
     }
     internalBinaryWrite(message: ItemChangePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Item items = 1; */
-        if (message.items)
-            Item.internalBinaryWrite(message.items, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* PowerItem powerItems = 2; */
-        if (message.powerItems)
-            PowerItem.internalBinaryWrite(message.powerItems, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Item items = 1; */
+        for (let i = 0; i < message.items.length; i++)
+            Item.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated PowerItem powerItems = 2; */
+        for (let i = 0; i < message.powerItems.length; i++)
+            PowerItem.internalBinaryWrite(message.powerItems[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -367,12 +367,12 @@ export const ItemChangePush = new ItemChangePush$Type();
 class GetItemListReply$Type extends MessageType<GetItemListReply> {
     constructor() {
         super("GetItemListReply", [
-            { no: 1, name: "items", kind: "message", T: () => Item },
-            { no: 2, name: "powerItems", kind: "message", T: () => PowerItem }
+            { no: 1, name: "items", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Item },
+            { no: 2, name: "powerItems", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => PowerItem }
         ]);
     }
     create(value?: PartialMessage<GetItemListReply>): GetItemListReply {
-        const message = {};
+        const message = { items: [], powerItems: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetItemListReply>(this, message, value);
@@ -383,11 +383,11 @@ class GetItemListReply$Type extends MessageType<GetItemListReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Item items */ 1:
-                    message.items = Item.internalBinaryRead(reader, reader.uint32(), options, message.items);
+                case /* repeated Item items */ 1:
+                    message.items.push(Item.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* PowerItem powerItems */ 2:
-                    message.powerItems = PowerItem.internalBinaryRead(reader, reader.uint32(), options, message.powerItems);
+                case /* repeated PowerItem powerItems */ 2:
+                    message.powerItems.push(PowerItem.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -401,12 +401,12 @@ class GetItemListReply$Type extends MessageType<GetItemListReply> {
         return message;
     }
     internalBinaryWrite(message: GetItemListReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Item items = 1; */
-        if (message.items)
-            Item.internalBinaryWrite(message.items, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* PowerItem powerItems = 2; */
-        if (message.powerItems)
-            PowerItem.internalBinaryWrite(message.powerItems, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Item items = 1; */
+        for (let i = 0; i < message.items.length; i++)
+            Item.internalBinaryWrite(message.items[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated PowerItem powerItems = 2; */
+        for (let i = 0; i < message.powerItems.length; i++)
+            PowerItem.internalBinaryWrite(message.powerItems[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -515,12 +515,12 @@ export const UsePowerItemReply = new UsePowerItemReply$Type();
 class UseItemRequest$Type extends MessageType<UseItemRequest> {
     constructor() {
         super("UseItemRequest", [
-            { no: 1, name: "entry", kind: "message", T: () => M2QEntry },
+            { no: 1, name: "entry", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => M2QEntry },
             { no: 2, name: "targetId", kind: "scalar", opt: true, T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<UseItemRequest>): UseItemRequest {
-        const message = {};
+        const message = { entry: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UseItemRequest>(this, message, value);
@@ -531,8 +531,8 @@ class UseItemRequest$Type extends MessageType<UseItemRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* M2QEntry entry */ 1:
-                    message.entry = M2QEntry.internalBinaryRead(reader, reader.uint32(), options, message.entry);
+                case /* repeated M2QEntry entry */ 1:
+                    message.entry.push(M2QEntry.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional uint64 targetId */ 2:
                     message.targetId = reader.uint64().toBigInt();
@@ -549,9 +549,9 @@ class UseItemRequest$Type extends MessageType<UseItemRequest> {
         return message;
     }
     internalBinaryWrite(message: UseItemRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* M2QEntry entry = 1; */
-        if (message.entry)
-            M2QEntry.internalBinaryWrite(message.entry, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated M2QEntry entry = 1; */
+        for (let i = 0; i < message.entry.length; i++)
+            M2QEntry.internalBinaryWrite(message.entry[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         /* optional uint64 targetId = 2; */
         if (message.targetId !== undefined)
             writer.tag(2, WireType.Varint).uint64(message.targetId);

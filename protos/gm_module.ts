@@ -29,9 +29,9 @@ export interface GpuCpuLogRequest {
  */
 export interface GMRequest {
     /**
-     * @generated from protobuf field: repeated string commandText = 1;
+     * @generated from protobuf field: string commandText = 1;
      */
-    commandText: string[];
+    commandText: string;
 }
 /**
  * @generated from protobuf message GMReply
@@ -122,11 +122,11 @@ export const GpuCpuLogRequest = new GpuCpuLogRequest$Type();
 class GMRequest$Type extends MessageType<GMRequest> {
     constructor() {
         super("GMRequest", [
-            { no: 1, name: "commandText", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ }
+            { no: 1, name: "commandText", kind: "scalar", T: 9 /*ScalarType.STRING*/ }
         ]);
     }
     create(value?: PartialMessage<GMRequest>): GMRequest {
-        const message = { commandText: [] };
+        const message = { commandText: "" };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GMRequest>(this, message, value);
@@ -137,8 +137,8 @@ class GMRequest$Type extends MessageType<GMRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated string commandText */ 1:
-                    message.commandText.push(reader.string());
+                case /* string commandText */ 1:
+                    message.commandText = reader.string();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -152,9 +152,9 @@ class GMRequest$Type extends MessageType<GMRequest> {
         return message;
     }
     internalBinaryWrite(message: GMRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated string commandText = 1; */
-        for (let i = 0; i < message.commandText.length; i++)
-            writer.tag(1, WireType.LengthDelimited).string(message.commandText[i]);
+        /* string commandText = 1; */
+        if (message.commandText !== "")
+            writer.tag(1, WireType.LengthDelimited).string(message.commandText);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

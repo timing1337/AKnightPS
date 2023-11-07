@@ -61,9 +61,9 @@ export interface MarkMailJumpRequest {
  */
 export interface DeleteMailBatchReply {
     /**
-     * @generated from protobuf field: uint64 incrIds = 1;
+     * @generated from protobuf field: repeated uint64 incrIds = 1;
      */
-    incrIds: bigint;
+    incrIds: bigint[];
 }
 /**
  * @generated from protobuf message MarkMailJumpReply
@@ -88,9 +88,9 @@ export interface ReadMailRequest {
  */
 export interface GetAllMailsReply {
     /**
-     * @generated from protobuf field: Mail mails = 1;
+     * @generated from protobuf field: repeated Mail mails = 1;
      */
-    mails?: Mail;
+    mails: Mail[];
 }
 /**
  * @generated from protobuf message Mail
@@ -150,9 +150,9 @@ export interface Mail {
  */
 export interface DeleteMailsPush {
     /**
-     * @generated from protobuf field: uint64 incrIds = 1;
+     * @generated from protobuf field: repeated uint64 incrIds = 1;
      */
-    incrIds: bigint;
+    incrIds: bigint[];
 }
 /**
  * @generated from protobuf message GetAllMailsRequest
@@ -164,9 +164,9 @@ export interface GetAllMailsRequest {
  */
 export interface ReadMailBatchReply {
     /**
-     * @generated from protobuf field: uint64 incrIds = 1;
+     * @generated from protobuf field: repeated uint64 incrIds = 1;
      */
-    incrIds: bigint;
+    incrIds: bigint[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class NewMailPush$Type extends MessageType<NewMailPush> {
@@ -407,11 +407,11 @@ export const MarkMailJumpRequest = new MarkMailJumpRequest$Type();
 class DeleteMailBatchReply$Type extends MessageType<DeleteMailBatchReply> {
     constructor() {
         super("DeleteMailBatchReply", [
-            { no: 1, name: "incrIds", kind: "scalar", T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "incrIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<DeleteMailBatchReply>): DeleteMailBatchReply {
-        const message = { incrIds: 0n };
+        const message = { incrIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeleteMailBatchReply>(this, message, value);
@@ -422,8 +422,12 @@ class DeleteMailBatchReply$Type extends MessageType<DeleteMailBatchReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* uint64 incrIds */ 1:
-                    message.incrIds = reader.uint64().toBigInt();
+                case /* repeated uint64 incrIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.incrIds.push(reader.uint64().toBigInt());
+                    else
+                        message.incrIds.push(reader.uint64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -437,9 +441,9 @@ class DeleteMailBatchReply$Type extends MessageType<DeleteMailBatchReply> {
         return message;
     }
     internalBinaryWrite(message: DeleteMailBatchReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* uint64 incrIds = 1; */
-        if (message.incrIds !== 0n)
-            writer.tag(1, WireType.Varint).uint64(message.incrIds);
+        /* repeated uint64 incrIds = 1; */
+        for (let i = 0; i < message.incrIds.length; i++)
+            writer.tag(1, WireType.Varint).uint64(message.incrIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -548,11 +552,11 @@ export const ReadMailRequest = new ReadMailRequest$Type();
 class GetAllMailsReply$Type extends MessageType<GetAllMailsReply> {
     constructor() {
         super("GetAllMailsReply", [
-            { no: 1, name: "mails", kind: "message", T: () => Mail }
+            { no: 1, name: "mails", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Mail }
         ]);
     }
     create(value?: PartialMessage<GetAllMailsReply>): GetAllMailsReply {
-        const message = {};
+        const message = { mails: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetAllMailsReply>(this, message, value);
@@ -563,8 +567,8 @@ class GetAllMailsReply$Type extends MessageType<GetAllMailsReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Mail mails */ 1:
-                    message.mails = Mail.internalBinaryRead(reader, reader.uint32(), options, message.mails);
+                case /* repeated Mail mails */ 1:
+                    message.mails.push(Mail.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -578,9 +582,9 @@ class GetAllMailsReply$Type extends MessageType<GetAllMailsReply> {
         return message;
     }
     internalBinaryWrite(message: GetAllMailsReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Mail mails = 1; */
-        if (message.mails)
-            Mail.internalBinaryWrite(message.mails, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Mail mails = 1; */
+        for (let i = 0; i < message.mails.length; i++)
+            Mail.internalBinaryWrite(message.mails[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -719,11 +723,11 @@ export const Mail = new Mail$Type();
 class DeleteMailsPush$Type extends MessageType<DeleteMailsPush> {
     constructor() {
         super("DeleteMailsPush", [
-            { no: 1, name: "incrIds", kind: "scalar", T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "incrIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<DeleteMailsPush>): DeleteMailsPush {
-        const message = { incrIds: 0n };
+        const message = { incrIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<DeleteMailsPush>(this, message, value);
@@ -734,8 +738,12 @@ class DeleteMailsPush$Type extends MessageType<DeleteMailsPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* uint64 incrIds */ 1:
-                    message.incrIds = reader.uint64().toBigInt();
+                case /* repeated uint64 incrIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.incrIds.push(reader.uint64().toBigInt());
+                    else
+                        message.incrIds.push(reader.uint64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -749,9 +757,9 @@ class DeleteMailsPush$Type extends MessageType<DeleteMailsPush> {
         return message;
     }
     internalBinaryWrite(message: DeleteMailsPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* uint64 incrIds = 1; */
-        if (message.incrIds !== 0n)
-            writer.tag(1, WireType.Varint).uint64(message.incrIds);
+        /* repeated uint64 incrIds = 1; */
+        for (let i = 0; i < message.incrIds.length; i++)
+            writer.tag(1, WireType.Varint).uint64(message.incrIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -792,11 +800,11 @@ export const GetAllMailsRequest = new GetAllMailsRequest$Type();
 class ReadMailBatchReply$Type extends MessageType<ReadMailBatchReply> {
     constructor() {
         super("ReadMailBatchReply", [
-            { no: 1, name: "incrIds", kind: "scalar", T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "incrIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<ReadMailBatchReply>): ReadMailBatchReply {
-        const message = { incrIds: 0n };
+        const message = { incrIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<ReadMailBatchReply>(this, message, value);
@@ -807,8 +815,12 @@ class ReadMailBatchReply$Type extends MessageType<ReadMailBatchReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* uint64 incrIds */ 1:
-                    message.incrIds = reader.uint64().toBigInt();
+                case /* repeated uint64 incrIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.incrIds.push(reader.uint64().toBigInt());
+                    else
+                        message.incrIds.push(reader.uint64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -822,9 +834,9 @@ class ReadMailBatchReply$Type extends MessageType<ReadMailBatchReply> {
         return message;
     }
     internalBinaryWrite(message: ReadMailBatchReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* uint64 incrIds = 1; */
-        if (message.incrIds !== 0n)
-            writer.tag(1, WireType.Varint).uint64(message.incrIds);
+        /* repeated uint64 incrIds = 1; */
+        for (let i = 0; i < message.incrIds.length; i++)
+            writer.tag(1, WireType.Varint).uint64(message.incrIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

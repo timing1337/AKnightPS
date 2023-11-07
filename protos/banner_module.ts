@@ -25,9 +25,9 @@ export interface SetBannerNotShowReply {
  */
 export interface GetBannerInfoReply {
     /**
-     * @generated from protobuf field: int32 notShowIds = 1;
+     * @generated from protobuf field: repeated int32 notShowIds = 1;
      */
-    notShowIds: number;
+    notShowIds: number[];
 }
 /**
  * @generated from protobuf message GetBannerInfoRequest
@@ -94,11 +94,11 @@ export const SetBannerNotShowReply = new SetBannerNotShowReply$Type();
 class GetBannerInfoReply$Type extends MessageType<GetBannerInfoReply> {
     constructor() {
         super("GetBannerInfoReply", [
-            { no: 1, name: "notShowIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "notShowIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetBannerInfoReply>): GetBannerInfoReply {
-        const message = { notShowIds: 0 };
+        const message = { notShowIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetBannerInfoReply>(this, message, value);
@@ -109,8 +109,12 @@ class GetBannerInfoReply$Type extends MessageType<GetBannerInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 notShowIds */ 1:
-                    message.notShowIds = reader.int32();
+                case /* repeated int32 notShowIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.notShowIds.push(reader.int32());
+                    else
+                        message.notShowIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -124,9 +128,9 @@ class GetBannerInfoReply$Type extends MessageType<GetBannerInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetBannerInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 notShowIds = 1; */
-        if (message.notShowIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.notShowIds);
+        /* repeated int32 notShowIds = 1; */
+        for (let i = 0; i < message.notShowIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.notShowIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

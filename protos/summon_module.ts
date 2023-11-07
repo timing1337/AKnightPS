@@ -29,9 +29,9 @@ export interface GetSummonInfoReply {
      */
     newSummonCount?: number;
     /**
-     * @generated from protobuf field: SummonPoolInfo poolInfos = 4;
+     * @generated from protobuf field: repeated SummonPoolInfo poolInfos = 4;
      */
-    poolInfos?: SummonPoolInfo;
+    poolInfos: SummonPoolInfo[];
     /**
      * @generated from protobuf field: optional int32 totalSummonCount = 5;
      */
@@ -84,9 +84,9 @@ export interface SummonResult {
      */
     equipId?: number;
     /**
-     * @generated from protobuf field: MaterialData returnMaterials = 5;
+     * @generated from protobuf field: repeated MaterialData returnMaterials = 5;
      */
-    returnMaterials?: MaterialData;
+    returnMaterials: MaterialData[];
 }
 /**
  * @generated from protobuf message SummonRequest
@@ -119,9 +119,9 @@ export interface SummonQueryTokenRequest {
  */
 export interface SummonReply {
     /**
-     * @generated from protobuf field: SummonResult summonResult = 1;
+     * @generated from protobuf field: repeated SummonResult summonResult = 1;
      */
-    summonResult?: SummonResult;
+    summonResult: SummonResult[];
 }
 /**
  * @generated from protobuf message GetSummonInfoRequest
@@ -135,12 +135,12 @@ class GetSummonInfoReply$Type extends MessageType<GetSummonInfoReply> {
             { no: 1, name: "freeEquipSummon", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 2, name: "isShowNewSummon", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 3, name: "newSummonCount", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "poolInfos", kind: "message", T: () => SummonPoolInfo },
+            { no: 4, name: "poolInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => SummonPoolInfo },
             { no: 5, name: "totalSummonCount", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<GetSummonInfoReply>): GetSummonInfoReply {
-        const message = {};
+        const message = { poolInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetSummonInfoReply>(this, message, value);
@@ -160,8 +160,8 @@ class GetSummonInfoReply$Type extends MessageType<GetSummonInfoReply> {
                 case /* optional int32 newSummonCount */ 3:
                     message.newSummonCount = reader.int32();
                     break;
-                case /* SummonPoolInfo poolInfos */ 4:
-                    message.poolInfos = SummonPoolInfo.internalBinaryRead(reader, reader.uint32(), options, message.poolInfos);
+                case /* repeated SummonPoolInfo poolInfos */ 4:
+                    message.poolInfos.push(SummonPoolInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 totalSummonCount */ 5:
                     message.totalSummonCount = reader.int32();
@@ -187,9 +187,9 @@ class GetSummonInfoReply$Type extends MessageType<GetSummonInfoReply> {
         /* optional int32 newSummonCount = 3; */
         if (message.newSummonCount !== undefined)
             writer.tag(3, WireType.Varint).int32(message.newSummonCount);
-        /* SummonPoolInfo poolInfos = 4; */
-        if (message.poolInfos)
-            SummonPoolInfo.internalBinaryWrite(message.poolInfos, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated SummonPoolInfo poolInfos = 4; */
+        for (let i = 0; i < message.poolInfos.length; i++)
+            SummonPoolInfo.internalBinaryWrite(message.poolInfos[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 totalSummonCount = 5; */
         if (message.totalSummonCount !== undefined)
             writer.tag(5, WireType.Varint).int32(message.totalSummonCount);
@@ -319,11 +319,11 @@ class SummonResult$Type extends MessageType<SummonResult> {
             { no: 2, name: "isNew", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 3, name: "duplicateCount", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "equipId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "returnMaterials", kind: "message", T: () => MaterialData }
+            { no: 5, name: "returnMaterials", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData }
         ]);
     }
     create(value?: PartialMessage<SummonResult>): SummonResult {
-        const message = {};
+        const message = { returnMaterials: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SummonResult>(this, message, value);
@@ -346,8 +346,8 @@ class SummonResult$Type extends MessageType<SummonResult> {
                 case /* optional int32 equipId */ 4:
                     message.equipId = reader.int32();
                     break;
-                case /* MaterialData returnMaterials */ 5:
-                    message.returnMaterials = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.returnMaterials);
+                case /* repeated MaterialData returnMaterials */ 5:
+                    message.returnMaterials.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -373,9 +373,9 @@ class SummonResult$Type extends MessageType<SummonResult> {
         /* optional int32 equipId = 4; */
         if (message.equipId !== undefined)
             writer.tag(4, WireType.Varint).int32(message.equipId);
-        /* MaterialData returnMaterials = 5; */
-        if (message.returnMaterials)
-            MaterialData.internalBinaryWrite(message.returnMaterials, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData returnMaterials = 5; */
+        for (let i = 0; i < message.returnMaterials.length; i++)
+            MaterialData.internalBinaryWrite(message.returnMaterials[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -484,11 +484,11 @@ export const SummonQueryTokenRequest = new SummonQueryTokenRequest$Type();
 class SummonReply$Type extends MessageType<SummonReply> {
     constructor() {
         super("SummonReply", [
-            { no: 1, name: "summonResult", kind: "message", T: () => SummonResult }
+            { no: 1, name: "summonResult", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => SummonResult }
         ]);
     }
     create(value?: PartialMessage<SummonReply>): SummonReply {
-        const message = {};
+        const message = { summonResult: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SummonReply>(this, message, value);
@@ -499,8 +499,8 @@ class SummonReply$Type extends MessageType<SummonReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* SummonResult summonResult */ 1:
-                    message.summonResult = SummonResult.internalBinaryRead(reader, reader.uint32(), options, message.summonResult);
+                case /* repeated SummonResult summonResult */ 1:
+                    message.summonResult.push(SummonResult.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -514,9 +514,9 @@ class SummonReply$Type extends MessageType<SummonReply> {
         return message;
     }
     internalBinaryWrite(message: SummonReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* SummonResult summonResult = 1; */
-        if (message.summonResult)
-            SummonResult.internalBinaryWrite(message.summonResult, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated SummonResult summonResult = 1; */
+        for (let i = 0; i < message.summonResult.length; i++)
+            SummonResult.internalBinaryWrite(message.summonResult[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

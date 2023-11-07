@@ -30,9 +30,9 @@ export interface WeekwalkInfo {
      */
     endTime?: number;
     /**
-     * @generated from protobuf field: MapInfo mapInfo = 3;
+     * @generated from protobuf field: repeated MapInfo mapInfo = 3;
      */
-    mapInfo?: MapInfo;
+    mapInfo: MapInfo[];
     /**
      * @generated from protobuf field: optional int32 maxLayer = 4;
      */
@@ -97,9 +97,9 @@ export interface WeekwalkDialogHistoryReply {
      */
     elementId?: number;
     /**
-     * @generated from protobuf field: string historylist = 2;
+     * @generated from protobuf field: repeated string historylist = 2;
      */
-    historylist: string;
+    historylist: string[];
     /**
      * @generated from protobuf field: optional int32 layerId = 3;
      */
@@ -140,9 +140,9 @@ export interface BattleInfo {
      */
     maxStar?: number;
     /**
-     * @generated from protobuf field: int32 heroIds = 4;
+     * @generated from protobuf field: repeated int32 heroIds = 4;
      */
-    heroIds: number;
+    heroIds: number[];
 }
 /**
  * @generated from protobuf message GetWeekwalkInfoRequest
@@ -195,21 +195,21 @@ export interface MapInfo {
      */
     isShowSelectCd?: boolean;
     /**
-     * @generated from protobuf field: BattleInfo battleInfos = 9;
+     * @generated from protobuf field: repeated BattleInfo battleInfos = 9;
      */
-    battleInfos?: BattleInfo;
+    battleInfos: BattleInfo[];
     /**
-     * @generated from protobuf field: WeekwalkElementInfo elementInfos = 10;
+     * @generated from protobuf field: repeated WeekwalkElementInfo elementInfos = 10;
      */
-    elementInfos?: WeekwalkElementInfo;
+    elementInfos: WeekwalkElementInfo[];
     /**
-     * @generated from protobuf field: WeekwalkHeroInfo heroInfos = 11;
+     * @generated from protobuf field: repeated WeekwalkHeroInfo heroInfos = 11;
      */
-    heroInfos?: WeekwalkHeroInfo;
+    heroInfos: WeekwalkHeroInfo[];
     /**
-     * @generated from protobuf field: int32 storyIds = 12;
+     * @generated from protobuf field: repeated int32 storyIds = 12;
      */
-    storyIds: number;
+    storyIds: number[];
 }
 /**
  * @generated from protobuf message MarkShowBuffRequest
@@ -247,9 +247,9 @@ export interface SelectNotCdHeroReply {
      */
     layerId?: number;
     /**
-     * @generated from protobuf field: int32 heroId = 2;
+     * @generated from protobuf field: repeated int32 heroId = 2;
      */
-    heroId: number;
+    heroId: number[];
 }
 /**
  * @generated from protobuf message MarkPopDeepRuleRequest
@@ -361,9 +361,9 @@ export interface SelectNotCdHeroRequest {
      */
     layerId?: number;
     /**
-     * @generated from protobuf field: int32 heroId = 2;
+     * @generated from protobuf field: repeated int32 heroId = 2;
      */
-    heroId: number;
+    heroId: number[];
 }
 /**
  * @generated from protobuf message MarkPopDeepSettleRequest
@@ -375,9 +375,9 @@ export interface MarkPopDeepSettleRequest {
  */
 export interface WeekwalkHeroRecommendReply {
     /**
-     * @generated from protobuf field: EpisodeHeroRecommendInfo racommends = 1;
+     * @generated from protobuf field: repeated EpisodeHeroRecommendInfo racommends = 1;
      */
-    racommends?: EpisodeHeroRecommendInfo;
+    racommends: EpisodeHeroRecommendInfo[];
 }
 /**
  * @generated from protobuf message BeforeStartWeekwalkBattleReply
@@ -401,9 +401,9 @@ export interface WeekwalkDialogHistoryRequest {
      */
     elementId?: number;
     /**
-     * @generated from protobuf field: string historylist = 2;
+     * @generated from protobuf field: repeated string historylist = 2;
      */
-    historylist: string;
+    historylist: string[];
     /**
      * @generated from protobuf field: optional int32 layerId = 3;
      */
@@ -426,9 +426,9 @@ export interface WeekwalkElementInfo {
      */
     index?: number;
     /**
-     * @generated from protobuf field: string historylist = 4;
+     * @generated from protobuf field: repeated string historylist = 4;
      */
-    historylist: string;
+    historylist: string[];
     /**
      * @generated from protobuf field: optional bool visible = 5;
      */
@@ -484,7 +484,7 @@ class WeekwalkInfo$Type extends MessageType<WeekwalkInfo> {
         super("WeekwalkInfo", [
             { no: 1, name: "time", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "endTime", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "mapInfo", kind: "message", T: () => MapInfo },
+            { no: 3, name: "mapInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MapInfo },
             { no: 4, name: "maxLayer", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 5, name: "issueId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 6, name: "isPopDeepRule", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
@@ -495,7 +495,7 @@ class WeekwalkInfo$Type extends MessageType<WeekwalkInfo> {
         ]);
     }
     create(value?: PartialMessage<WeekwalkInfo>): WeekwalkInfo {
-        const message = {};
+        const message = { mapInfo: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<WeekwalkInfo>(this, message, value);
@@ -512,8 +512,8 @@ class WeekwalkInfo$Type extends MessageType<WeekwalkInfo> {
                 case /* optional int32 endTime */ 2:
                     message.endTime = reader.int32();
                     break;
-                case /* MapInfo mapInfo */ 3:
-                    message.mapInfo = MapInfo.internalBinaryRead(reader, reader.uint32(), options, message.mapInfo);
+                case /* repeated MapInfo mapInfo */ 3:
+                    message.mapInfo.push(MapInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 maxLayer */ 4:
                     message.maxLayer = reader.int32();
@@ -554,9 +554,9 @@ class WeekwalkInfo$Type extends MessageType<WeekwalkInfo> {
         /* optional int32 endTime = 2; */
         if (message.endTime !== undefined)
             writer.tag(2, WireType.Varint).int32(message.endTime);
-        /* MapInfo mapInfo = 3; */
-        if (message.mapInfo)
-            MapInfo.internalBinaryWrite(message.mapInfo, writer.tag(3, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MapInfo mapInfo = 3; */
+        for (let i = 0; i < message.mapInfo.length; i++)
+            MapInfo.internalBinaryWrite(message.mapInfo[i], writer.tag(3, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 maxLayer = 4; */
         if (message.maxLayer !== undefined)
             writer.tag(4, WireType.Varint).int32(message.maxLayer);
@@ -701,12 +701,12 @@ class WeekwalkDialogHistoryReply$Type extends MessageType<WeekwalkDialogHistoryR
     constructor() {
         super("WeekwalkDialogHistoryReply", [
             { no: 1, name: "elementId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "historylist", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "historylist", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "layerId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<WeekwalkDialogHistoryReply>): WeekwalkDialogHistoryReply {
-        const message = { historylist: "" };
+        const message = { historylist: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<WeekwalkDialogHistoryReply>(this, message, value);
@@ -720,8 +720,8 @@ class WeekwalkDialogHistoryReply$Type extends MessageType<WeekwalkDialogHistoryR
                 case /* optional int32 elementId */ 1:
                     message.elementId = reader.int32();
                     break;
-                case /* string historylist */ 2:
-                    message.historylist = reader.string();
+                case /* repeated string historylist */ 2:
+                    message.historylist.push(reader.string());
                     break;
                 case /* optional int32 layerId */ 3:
                     message.layerId = reader.int32();
@@ -741,9 +741,9 @@ class WeekwalkDialogHistoryReply$Type extends MessageType<WeekwalkDialogHistoryR
         /* optional int32 elementId = 1; */
         if (message.elementId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.elementId);
-        /* string historylist = 2; */
-        if (message.historylist !== "")
-            writer.tag(2, WireType.LengthDelimited).string(message.historylist);
+        /* repeated string historylist = 2; */
+        for (let i = 0; i < message.historylist.length; i++)
+            writer.tag(2, WireType.LengthDelimited).string(message.historylist[i]);
         /* optional int32 layerId = 3; */
         if (message.layerId !== undefined)
             writer.tag(3, WireType.Varint).int32(message.layerId);
@@ -844,11 +844,11 @@ class BattleInfo$Type extends MessageType<BattleInfo> {
             { no: 1, name: "battleId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "star", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "maxStar", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "heroIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 4, name: "heroIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<BattleInfo>): BattleInfo {
-        const message = { heroIds: 0 };
+        const message = { heroIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<BattleInfo>(this, message, value);
@@ -868,8 +868,12 @@ class BattleInfo$Type extends MessageType<BattleInfo> {
                 case /* optional int32 maxStar */ 3:
                     message.maxStar = reader.int32();
                     break;
-                case /* int32 heroIds */ 4:
-                    message.heroIds = reader.int32();
+                case /* repeated int32 heroIds */ 4:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.heroIds.push(reader.int32());
+                    else
+                        message.heroIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -892,9 +896,9 @@ class BattleInfo$Type extends MessageType<BattleInfo> {
         /* optional int32 maxStar = 3; */
         if (message.maxStar !== undefined)
             writer.tag(3, WireType.Varint).int32(message.maxStar);
-        /* int32 heroIds = 4; */
-        if (message.heroIds !== 0)
-            writer.tag(4, WireType.Varint).int32(message.heroIds);
+        /* repeated int32 heroIds = 4; */
+        for (let i = 0; i < message.heroIds.length; i++)
+            writer.tag(4, WireType.Varint).int32(message.heroIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -990,14 +994,14 @@ class MapInfo$Type extends MessageType<MapInfo> {
             { no: 6, name: "isShowBuff", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 7, name: "isShowFinished", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 8, name: "isShowSelectCd", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 9, name: "battleInfos", kind: "message", T: () => BattleInfo },
-            { no: 10, name: "elementInfos", kind: "message", T: () => WeekwalkElementInfo },
-            { no: 11, name: "heroInfos", kind: "message", T: () => WeekwalkHeroInfo },
-            { no: 12, name: "storyIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 9, name: "battleInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => BattleInfo },
+            { no: 10, name: "elementInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => WeekwalkElementInfo },
+            { no: 11, name: "heroInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => WeekwalkHeroInfo },
+            { no: 12, name: "storyIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<MapInfo>): MapInfo {
-        const message = { storyIds: 0 };
+        const message = { battleInfos: [], elementInfos: [], heroInfos: [], storyIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<MapInfo>(this, message, value);
@@ -1032,17 +1036,21 @@ class MapInfo$Type extends MessageType<MapInfo> {
                 case /* optional bool isShowSelectCd */ 8:
                     message.isShowSelectCd = reader.bool();
                     break;
-                case /* BattleInfo battleInfos */ 9:
-                    message.battleInfos = BattleInfo.internalBinaryRead(reader, reader.uint32(), options, message.battleInfos);
+                case /* repeated BattleInfo battleInfos */ 9:
+                    message.battleInfos.push(BattleInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* WeekwalkElementInfo elementInfos */ 10:
-                    message.elementInfos = WeekwalkElementInfo.internalBinaryRead(reader, reader.uint32(), options, message.elementInfos);
+                case /* repeated WeekwalkElementInfo elementInfos */ 10:
+                    message.elementInfos.push(WeekwalkElementInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* WeekwalkHeroInfo heroInfos */ 11:
-                    message.heroInfos = WeekwalkHeroInfo.internalBinaryRead(reader, reader.uint32(), options, message.heroInfos);
+                case /* repeated WeekwalkHeroInfo heroInfos */ 11:
+                    message.heroInfos.push(WeekwalkHeroInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* int32 storyIds */ 12:
-                    message.storyIds = reader.int32();
+                case /* repeated int32 storyIds */ 12:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.storyIds.push(reader.int32());
+                    else
+                        message.storyIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1080,18 +1088,18 @@ class MapInfo$Type extends MessageType<MapInfo> {
         /* optional bool isShowSelectCd = 8; */
         if (message.isShowSelectCd !== undefined)
             writer.tag(8, WireType.Varint).bool(message.isShowSelectCd);
-        /* BattleInfo battleInfos = 9; */
-        if (message.battleInfos)
-            BattleInfo.internalBinaryWrite(message.battleInfos, writer.tag(9, WireType.LengthDelimited).fork(), options).join();
-        /* WeekwalkElementInfo elementInfos = 10; */
-        if (message.elementInfos)
-            WeekwalkElementInfo.internalBinaryWrite(message.elementInfos, writer.tag(10, WireType.LengthDelimited).fork(), options).join();
-        /* WeekwalkHeroInfo heroInfos = 11; */
-        if (message.heroInfos)
-            WeekwalkHeroInfo.internalBinaryWrite(message.heroInfos, writer.tag(11, WireType.LengthDelimited).fork(), options).join();
-        /* int32 storyIds = 12; */
-        if (message.storyIds !== 0)
-            writer.tag(12, WireType.Varint).int32(message.storyIds);
+        /* repeated BattleInfo battleInfos = 9; */
+        for (let i = 0; i < message.battleInfos.length; i++)
+            BattleInfo.internalBinaryWrite(message.battleInfos[i], writer.tag(9, WireType.LengthDelimited).fork(), options).join();
+        /* repeated WeekwalkElementInfo elementInfos = 10; */
+        for (let i = 0; i < message.elementInfos.length; i++)
+            WeekwalkElementInfo.internalBinaryWrite(message.elementInfos[i], writer.tag(10, WireType.LengthDelimited).fork(), options).join();
+        /* repeated WeekwalkHeroInfo heroInfos = 11; */
+        for (let i = 0; i < message.heroInfos.length; i++)
+            WeekwalkHeroInfo.internalBinaryWrite(message.heroInfos[i], writer.tag(11, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 storyIds = 12; */
+        for (let i = 0; i < message.storyIds.length; i++)
+            writer.tag(12, WireType.Varint).int32(message.storyIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1234,11 +1242,11 @@ class SelectNotCdHeroReply$Type extends MessageType<SelectNotCdHeroReply> {
     constructor() {
         super("SelectNotCdHeroReply", [
             { no: 1, name: "layerId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "heroId", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "heroId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<SelectNotCdHeroReply>): SelectNotCdHeroReply {
-        const message = { heroId: 0 };
+        const message = { heroId: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SelectNotCdHeroReply>(this, message, value);
@@ -1252,8 +1260,12 @@ class SelectNotCdHeroReply$Type extends MessageType<SelectNotCdHeroReply> {
                 case /* optional int32 layerId */ 1:
                     message.layerId = reader.int32();
                     break;
-                case /* int32 heroId */ 2:
-                    message.heroId = reader.int32();
+                case /* repeated int32 heroId */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.heroId.push(reader.int32());
+                    else
+                        message.heroId.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1270,9 +1282,9 @@ class SelectNotCdHeroReply$Type extends MessageType<SelectNotCdHeroReply> {
         /* optional int32 layerId = 1; */
         if (message.layerId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.layerId);
-        /* int32 heroId = 2; */
-        if (message.heroId !== 0)
-            writer.tag(2, WireType.Varint).int32(message.heroId);
+        /* repeated int32 heroId = 2; */
+        for (let i = 0; i < message.heroId.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.heroId[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1718,11 +1730,11 @@ class SelectNotCdHeroRequest$Type extends MessageType<SelectNotCdHeroRequest> {
     constructor() {
         super("SelectNotCdHeroRequest", [
             { no: 1, name: "layerId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "heroId", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "heroId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<SelectNotCdHeroRequest>): SelectNotCdHeroRequest {
-        const message = { heroId: 0 };
+        const message = { heroId: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SelectNotCdHeroRequest>(this, message, value);
@@ -1736,8 +1748,12 @@ class SelectNotCdHeroRequest$Type extends MessageType<SelectNotCdHeroRequest> {
                 case /* optional int32 layerId */ 1:
                     message.layerId = reader.int32();
                     break;
-                case /* int32 heroId */ 2:
-                    message.heroId = reader.int32();
+                case /* repeated int32 heroId */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.heroId.push(reader.int32());
+                    else
+                        message.heroId.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1754,9 +1770,9 @@ class SelectNotCdHeroRequest$Type extends MessageType<SelectNotCdHeroRequest> {
         /* optional int32 layerId = 1; */
         if (message.layerId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.layerId);
-        /* int32 heroId = 2; */
-        if (message.heroId !== 0)
-            writer.tag(2, WireType.Varint).int32(message.heroId);
+        /* repeated int32 heroId = 2; */
+        for (let i = 0; i < message.heroId.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.heroId[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1797,11 +1813,11 @@ export const MarkPopDeepSettleRequest = new MarkPopDeepSettleRequest$Type();
 class WeekwalkHeroRecommendReply$Type extends MessageType<WeekwalkHeroRecommendReply> {
     constructor() {
         super("WeekwalkHeroRecommendReply", [
-            { no: 1, name: "racommends", kind: "message", T: () => EpisodeHeroRecommendInfo }
+            { no: 1, name: "racommends", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => EpisodeHeroRecommendInfo }
         ]);
     }
     create(value?: PartialMessage<WeekwalkHeroRecommendReply>): WeekwalkHeroRecommendReply {
-        const message = {};
+        const message = { racommends: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<WeekwalkHeroRecommendReply>(this, message, value);
@@ -1812,8 +1828,8 @@ class WeekwalkHeroRecommendReply$Type extends MessageType<WeekwalkHeroRecommendR
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* EpisodeHeroRecommendInfo racommends */ 1:
-                    message.racommends = EpisodeHeroRecommendInfo.internalBinaryRead(reader, reader.uint32(), options, message.racommends);
+                case /* repeated EpisodeHeroRecommendInfo racommends */ 1:
+                    message.racommends.push(EpisodeHeroRecommendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1827,9 +1843,9 @@ class WeekwalkHeroRecommendReply$Type extends MessageType<WeekwalkHeroRecommendR
         return message;
     }
     internalBinaryWrite(message: WeekwalkHeroRecommendReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* EpisodeHeroRecommendInfo racommends = 1; */
-        if (message.racommends)
-            EpisodeHeroRecommendInfo.internalBinaryWrite(message.racommends, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated EpisodeHeroRecommendInfo racommends = 1; */
+        for (let i = 0; i < message.racommends.length; i++)
+            EpisodeHeroRecommendInfo.internalBinaryWrite(message.racommends[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1899,12 +1915,12 @@ class WeekwalkDialogHistoryRequest$Type extends MessageType<WeekwalkDialogHistor
     constructor() {
         super("WeekwalkDialogHistoryRequest", [
             { no: 1, name: "elementId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "historylist", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 2, name: "historylist", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 3, name: "layerId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<WeekwalkDialogHistoryRequest>): WeekwalkDialogHistoryRequest {
-        const message = { historylist: "" };
+        const message = { historylist: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<WeekwalkDialogHistoryRequest>(this, message, value);
@@ -1918,8 +1934,8 @@ class WeekwalkDialogHistoryRequest$Type extends MessageType<WeekwalkDialogHistor
                 case /* optional int32 elementId */ 1:
                     message.elementId = reader.int32();
                     break;
-                case /* string historylist */ 2:
-                    message.historylist = reader.string();
+                case /* repeated string historylist */ 2:
+                    message.historylist.push(reader.string());
                     break;
                 case /* optional int32 layerId */ 3:
                     message.layerId = reader.int32();
@@ -1939,9 +1955,9 @@ class WeekwalkDialogHistoryRequest$Type extends MessageType<WeekwalkDialogHistor
         /* optional int32 elementId = 1; */
         if (message.elementId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.elementId);
-        /* string historylist = 2; */
-        if (message.historylist !== "")
-            writer.tag(2, WireType.LengthDelimited).string(message.historylist);
+        /* repeated string historylist = 2; */
+        for (let i = 0; i < message.historylist.length; i++)
+            writer.tag(2, WireType.LengthDelimited).string(message.historylist[i]);
         /* optional int32 layerId = 3; */
         if (message.layerId !== undefined)
             writer.tag(3, WireType.Varint).int32(message.layerId);
@@ -1962,12 +1978,12 @@ class WeekwalkElementInfo$Type extends MessageType<WeekwalkElementInfo> {
             { no: 1, name: "elementId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "isFinish", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
             { no: 3, name: "index", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "historylist", kind: "scalar", T: 9 /*ScalarType.STRING*/ },
+            { no: 4, name: "historylist", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 9 /*ScalarType.STRING*/ },
             { no: 5, name: "visible", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
     create(value?: PartialMessage<WeekwalkElementInfo>): WeekwalkElementInfo {
-        const message = { historylist: "" };
+        const message = { historylist: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<WeekwalkElementInfo>(this, message, value);
@@ -1987,8 +2003,8 @@ class WeekwalkElementInfo$Type extends MessageType<WeekwalkElementInfo> {
                 case /* optional int32 index */ 3:
                     message.index = reader.int32();
                     break;
-                case /* string historylist */ 4:
-                    message.historylist = reader.string();
+                case /* repeated string historylist */ 4:
+                    message.historylist.push(reader.string());
                     break;
                 case /* optional bool visible */ 5:
                     message.visible = reader.bool();
@@ -2014,9 +2030,9 @@ class WeekwalkElementInfo$Type extends MessageType<WeekwalkElementInfo> {
         /* optional int32 index = 3; */
         if (message.index !== undefined)
             writer.tag(3, WireType.Varint).int32(message.index);
-        /* string historylist = 4; */
-        if (message.historylist !== "")
-            writer.tag(4, WireType.LengthDelimited).string(message.historylist);
+        /* repeated string historylist = 4; */
+        for (let i = 0; i < message.historylist.length; i++)
+            writer.tag(4, WireType.LengthDelimited).string(message.historylist[i]);
         /* optional bool visible = 5; */
         if (message.visible !== undefined)
             writer.tag(5, WireType.Varint).bool(message.visible);

@@ -179,21 +179,21 @@ export interface AdventureInfo {
      */
     posy?: number;
     /**
-     * @generated from protobuf field: AdventureInteract interact = 5;
+     * @generated from protobuf field: repeated AdventureInteract interact = 5;
      */
-    interact?: AdventureInteract;
+    interact: AdventureInteract[];
     /**
-     * @generated from protobuf field: MaterialData mapBackpack = 6;
+     * @generated from protobuf field: repeated MaterialData mapBackpack = 6;
      */
-    mapBackpack?: MaterialData;
+    mapBackpack: MaterialData[];
     /**
-     * @generated from protobuf field: AdventureTask taskInfos = 7;
+     * @generated from protobuf field: repeated AdventureTask taskInfos = 7;
      */
-    taskInfos?: AdventureTask;
+    taskInfos: AdventureTask[];
     /**
-     * @generated from protobuf field: AdventureAreaSight areaSights = 8;
+     * @generated from protobuf field: repeated AdventureAreaSight areaSights = 8;
      */
-    areaSights?: AdventureAreaSight;
+    areaSights: AdventureAreaSight[];
     /**
      * @generated from protobuf field: optional int32 lastInteractType = 9;
      */
@@ -203,17 +203,17 @@ export interface AdventureInfo {
      */
     lastInteract?: number;
     /**
-     * @generated from protobuf field: AdventureBattleInfo battleInfos = 11;
+     * @generated from protobuf field: repeated AdventureBattleInfo battleInfos = 11;
      */
-    battleInfos?: AdventureBattleInfo;
+    battleInfos: AdventureBattleInfo[];
     /**
-     * @generated from protobuf field: AdventureHeroHp heroHps = 12;
+     * @generated from protobuf field: repeated AdventureHeroHp heroHps = 12;
      */
-    heroHps?: AdventureHeroHp;
+    heroHps: AdventureHeroHp[];
     /**
-     * @generated from protobuf field: int32 buffIds = 13;
+     * @generated from protobuf field: repeated int32 buffIds = 13;
      */
-    buffIds: number;
+    buffIds: number[];
     /**
      * @generated from protobuf field: optional HeroGroupInfo heroGroupSnapshot = 14;
      */
@@ -223,9 +223,9 @@ export interface AdventureInfo {
      */
     magicRandomSeed?: number;
     /**
-     * @generated from protobuf field: int32 unSelectBuffIds = 16;
+     * @generated from protobuf field: repeated int32 unSelectBuffIds = 16;
      */
-    unSelectBuffIds: number;
+    unSelectBuffIds: number[];
 }
 /**
  * @generated from protobuf message AdventureHeroHp
@@ -296,9 +296,9 @@ export interface AdventureBuffRandomPush {
      */
     chapterType?: number;
     /**
-     * @generated from protobuf field: int32 buffIds = 2;
+     * @generated from protobuf field: repeated int32 buffIds = 2;
      */
-    buffIds: number;
+    buffIds: number[];
 }
 /**
  * @generated from protobuf message AdventureInteract
@@ -326,9 +326,9 @@ export interface AdventureInteract {
  */
 export interface AdventureBattleMonsterHp {
     /**
-     * @generated from protobuf field: int32 hp = 1;
+     * @generated from protobuf field: repeated int32 hp = 1;
      */
-    hp: number;
+    hp: number[];
 }
 /**
  * @generated from protobuf message StartAdventurePush
@@ -348,18 +348,18 @@ export interface AdventureBattleInfo {
      */
     id?: number;
     /**
-     * @generated from protobuf field: AdventureBattleMonsterHp monsterHps = 2;
+     * @generated from protobuf field: repeated AdventureBattleMonsterHp monsterHps = 2;
      */
-    monsterHps?: AdventureBattleMonsterHp;
+    monsterHps: AdventureBattleMonsterHp[];
 }
 /**
  * @generated from protobuf message AdventureTaskUpdatePush
  */
 export interface AdventureTaskUpdatePush {
     /**
-     * @generated from protobuf field: AdventureTask taskInfos = 1;
+     * @generated from protobuf field: repeated AdventureTask taskInfos = 1;
      */
-    taskInfos?: AdventureTask;
+    taskInfos: AdventureTask[];
 }
 /**
  * @generated from protobuf message AdventureTask
@@ -425,9 +425,9 @@ export interface AdventureTaskSubmitRequest {
      */
     taskId?: number;
     /**
-     * @generated from protobuf field: MaterialData materialData = 2;
+     * @generated from protobuf field: repeated MaterialData materialData = 2;
      */
-    materialData?: MaterialData;
+    materialData: MaterialData[];
 }
 /**
  * @generated from protobuf message AdventureBuffReply
@@ -555,13 +555,13 @@ export interface AdventureGeneralReply {
  */
 export interface GetAdventureInfoReply {
     /**
-     * @generated from protobuf field: AdventureInfo adventureInfo = 1;
+     * @generated from protobuf field: repeated AdventureInfo adventureInfo = 1;
      */
-    adventureInfo?: AdventureInfo;
+    adventureInfo: AdventureInfo[];
     /**
-     * @generated from protobuf field: AdventureForeverInfo foreverInfos = 12;
+     * @generated from protobuf field: repeated AdventureForeverInfo foreverInfos = 12;
      */
-    foreverInfos?: AdventureForeverInfo;
+    foreverInfos: AdventureForeverInfo[];
 }
 /**
  * @generated from protobuf message AdventureRespawnReply
@@ -597,9 +597,9 @@ export interface AdventureMoveRequest {
      */
     posy?: number;
     /**
-     * @generated from protobuf field: AdventureSeat sightChange = 4;
+     * @generated from protobuf field: repeated AdventureSeat sightChange = 4;
      */
-    sightChange?: AdventureSeat;
+    sightChange: AdventureSeat[];
 }
 /**
  * @generated from protobuf message AdventureStoryReply
@@ -1199,22 +1199,22 @@ class AdventureInfo$Type extends MessageType<AdventureInfo> {
             { no: 2, name: "episodeId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "posx", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "posy", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "interact", kind: "message", T: () => AdventureInteract },
-            { no: 6, name: "mapBackpack", kind: "message", T: () => MaterialData },
-            { no: 7, name: "taskInfos", kind: "message", T: () => AdventureTask },
-            { no: 8, name: "areaSights", kind: "message", T: () => AdventureAreaSight },
+            { no: 5, name: "interact", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureInteract },
+            { no: 6, name: "mapBackpack", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData },
+            { no: 7, name: "taskInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureTask },
+            { no: 8, name: "areaSights", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureAreaSight },
             { no: 9, name: "lastInteractType", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 10, name: "lastInteract", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 11, name: "battleInfos", kind: "message", T: () => AdventureBattleInfo },
-            { no: 12, name: "heroHps", kind: "message", T: () => AdventureHeroHp },
-            { no: 13, name: "buffIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 11, name: "battleInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureBattleInfo },
+            { no: 12, name: "heroHps", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureHeroHp },
+            { no: 13, name: "buffIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 14, name: "heroGroupSnapshot", kind: "message", T: () => HeroGroupInfo },
             { no: 15, name: "magicRandomSeed", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 16, name: "unSelectBuffIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 16, name: "unSelectBuffIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<AdventureInfo>): AdventureInfo {
-        const message = { buffIds: 0, unSelectBuffIds: 0 };
+        const message = { interact: [], mapBackpack: [], taskInfos: [], areaSights: [], battleInfos: [], heroHps: [], buffIds: [], unSelectBuffIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AdventureInfo>(this, message, value);
@@ -1237,17 +1237,17 @@ class AdventureInfo$Type extends MessageType<AdventureInfo> {
                 case /* optional int32 posy */ 4:
                     message.posy = reader.int32();
                     break;
-                case /* AdventureInteract interact */ 5:
-                    message.interact = AdventureInteract.internalBinaryRead(reader, reader.uint32(), options, message.interact);
+                case /* repeated AdventureInteract interact */ 5:
+                    message.interact.push(AdventureInteract.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* MaterialData mapBackpack */ 6:
-                    message.mapBackpack = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.mapBackpack);
+                case /* repeated MaterialData mapBackpack */ 6:
+                    message.mapBackpack.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* AdventureTask taskInfos */ 7:
-                    message.taskInfos = AdventureTask.internalBinaryRead(reader, reader.uint32(), options, message.taskInfos);
+                case /* repeated AdventureTask taskInfos */ 7:
+                    message.taskInfos.push(AdventureTask.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* AdventureAreaSight areaSights */ 8:
-                    message.areaSights = AdventureAreaSight.internalBinaryRead(reader, reader.uint32(), options, message.areaSights);
+                case /* repeated AdventureAreaSight areaSights */ 8:
+                    message.areaSights.push(AdventureAreaSight.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int32 lastInteractType */ 9:
                     message.lastInteractType = reader.int32();
@@ -1255,14 +1255,18 @@ class AdventureInfo$Type extends MessageType<AdventureInfo> {
                 case /* optional int32 lastInteract */ 10:
                     message.lastInteract = reader.int32();
                     break;
-                case /* AdventureBattleInfo battleInfos */ 11:
-                    message.battleInfos = AdventureBattleInfo.internalBinaryRead(reader, reader.uint32(), options, message.battleInfos);
+                case /* repeated AdventureBattleInfo battleInfos */ 11:
+                    message.battleInfos.push(AdventureBattleInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* AdventureHeroHp heroHps */ 12:
-                    message.heroHps = AdventureHeroHp.internalBinaryRead(reader, reader.uint32(), options, message.heroHps);
+                case /* repeated AdventureHeroHp heroHps */ 12:
+                    message.heroHps.push(AdventureHeroHp.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* int32 buffIds */ 13:
-                    message.buffIds = reader.int32();
+                case /* repeated int32 buffIds */ 13:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.buffIds.push(reader.int32());
+                    else
+                        message.buffIds.push(reader.int32());
                     break;
                 case /* optional HeroGroupInfo heroGroupSnapshot */ 14:
                     message.heroGroupSnapshot = HeroGroupInfo.internalBinaryRead(reader, reader.uint32(), options, message.heroGroupSnapshot);
@@ -1270,8 +1274,12 @@ class AdventureInfo$Type extends MessageType<AdventureInfo> {
                 case /* optional int32 magicRandomSeed */ 15:
                     message.magicRandomSeed = reader.int32();
                     break;
-                case /* int32 unSelectBuffIds */ 16:
-                    message.unSelectBuffIds = reader.int32();
+                case /* repeated int32 unSelectBuffIds */ 16:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.unSelectBuffIds.push(reader.int32());
+                    else
+                        message.unSelectBuffIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1297,42 +1305,42 @@ class AdventureInfo$Type extends MessageType<AdventureInfo> {
         /* optional int32 posy = 4; */
         if (message.posy !== undefined)
             writer.tag(4, WireType.Varint).int32(message.posy);
-        /* AdventureInteract interact = 5; */
-        if (message.interact)
-            AdventureInteract.internalBinaryWrite(message.interact, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* MaterialData mapBackpack = 6; */
-        if (message.mapBackpack)
-            MaterialData.internalBinaryWrite(message.mapBackpack, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
-        /* AdventureTask taskInfos = 7; */
-        if (message.taskInfos)
-            AdventureTask.internalBinaryWrite(message.taskInfos, writer.tag(7, WireType.LengthDelimited).fork(), options).join();
-        /* AdventureAreaSight areaSights = 8; */
-        if (message.areaSights)
-            AdventureAreaSight.internalBinaryWrite(message.areaSights, writer.tag(8, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureInteract interact = 5; */
+        for (let i = 0; i < message.interact.length; i++)
+            AdventureInteract.internalBinaryWrite(message.interact[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData mapBackpack = 6; */
+        for (let i = 0; i < message.mapBackpack.length; i++)
+            MaterialData.internalBinaryWrite(message.mapBackpack[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureTask taskInfos = 7; */
+        for (let i = 0; i < message.taskInfos.length; i++)
+            AdventureTask.internalBinaryWrite(message.taskInfos[i], writer.tag(7, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureAreaSight areaSights = 8; */
+        for (let i = 0; i < message.areaSights.length; i++)
+            AdventureAreaSight.internalBinaryWrite(message.areaSights[i], writer.tag(8, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 lastInteractType = 9; */
         if (message.lastInteractType !== undefined)
             writer.tag(9, WireType.Varint).int32(message.lastInteractType);
         /* optional int32 lastInteract = 10; */
         if (message.lastInteract !== undefined)
             writer.tag(10, WireType.Varint).int32(message.lastInteract);
-        /* AdventureBattleInfo battleInfos = 11; */
-        if (message.battleInfos)
-            AdventureBattleInfo.internalBinaryWrite(message.battleInfos, writer.tag(11, WireType.LengthDelimited).fork(), options).join();
-        /* AdventureHeroHp heroHps = 12; */
-        if (message.heroHps)
-            AdventureHeroHp.internalBinaryWrite(message.heroHps, writer.tag(12, WireType.LengthDelimited).fork(), options).join();
-        /* int32 buffIds = 13; */
-        if (message.buffIds !== 0)
-            writer.tag(13, WireType.Varint).int32(message.buffIds);
+        /* repeated AdventureBattleInfo battleInfos = 11; */
+        for (let i = 0; i < message.battleInfos.length; i++)
+            AdventureBattleInfo.internalBinaryWrite(message.battleInfos[i], writer.tag(11, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureHeroHp heroHps = 12; */
+        for (let i = 0; i < message.heroHps.length; i++)
+            AdventureHeroHp.internalBinaryWrite(message.heroHps[i], writer.tag(12, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 buffIds = 13; */
+        for (let i = 0; i < message.buffIds.length; i++)
+            writer.tag(13, WireType.Varint).int32(message.buffIds[i]);
         /* optional HeroGroupInfo heroGroupSnapshot = 14; */
         if (message.heroGroupSnapshot)
             HeroGroupInfo.internalBinaryWrite(message.heroGroupSnapshot, writer.tag(14, WireType.LengthDelimited).fork(), options).join();
         /* optional int32 magicRandomSeed = 15; */
         if (message.magicRandomSeed !== undefined)
             writer.tag(15, WireType.Varint).int32(message.magicRandomSeed);
-        /* int32 unSelectBuffIds = 16; */
-        if (message.unSelectBuffIds !== 0)
-            writer.tag(16, WireType.Varint).int32(message.unSelectBuffIds);
+        /* repeated int32 unSelectBuffIds = 16; */
+        for (let i = 0; i < message.unSelectBuffIds.length; i++)
+            writer.tag(16, WireType.Varint).int32(message.unSelectBuffIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1578,11 +1586,11 @@ class AdventureBuffRandomPush$Type extends MessageType<AdventureBuffRandomPush> 
     constructor() {
         super("AdventureBuffRandomPush", [
             { no: 1, name: "chapterType", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "buffIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 2, name: "buffIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<AdventureBuffRandomPush>): AdventureBuffRandomPush {
-        const message = { buffIds: 0 };
+        const message = { buffIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AdventureBuffRandomPush>(this, message, value);
@@ -1596,8 +1604,12 @@ class AdventureBuffRandomPush$Type extends MessageType<AdventureBuffRandomPush> 
                 case /* optional int32 chapterType */ 1:
                     message.chapterType = reader.int32();
                     break;
-                case /* int32 buffIds */ 2:
-                    message.buffIds = reader.int32();
+                case /* repeated int32 buffIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.buffIds.push(reader.int32());
+                    else
+                        message.buffIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1614,9 +1626,9 @@ class AdventureBuffRandomPush$Type extends MessageType<AdventureBuffRandomPush> 
         /* optional int32 chapterType = 1; */
         if (message.chapterType !== undefined)
             writer.tag(1, WireType.Varint).int32(message.chapterType);
-        /* int32 buffIds = 2; */
-        if (message.buffIds !== 0)
-            writer.tag(2, WireType.Varint).int32(message.buffIds);
+        /* repeated int32 buffIds = 2; */
+        for (let i = 0; i < message.buffIds.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.buffIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1699,11 +1711,11 @@ export const AdventureInteract = new AdventureInteract$Type();
 class AdventureBattleMonsterHp$Type extends MessageType<AdventureBattleMonsterHp> {
     constructor() {
         super("AdventureBattleMonsterHp", [
-            { no: 1, name: "hp", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "hp", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<AdventureBattleMonsterHp>): AdventureBattleMonsterHp {
-        const message = { hp: 0 };
+        const message = { hp: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AdventureBattleMonsterHp>(this, message, value);
@@ -1714,8 +1726,12 @@ class AdventureBattleMonsterHp$Type extends MessageType<AdventureBattleMonsterHp
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 hp */ 1:
-                    message.hp = reader.int32();
+                case /* repeated int32 hp */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.hp.push(reader.int32());
+                    else
+                        message.hp.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1729,9 +1745,9 @@ class AdventureBattleMonsterHp$Type extends MessageType<AdventureBattleMonsterHp
         return message;
     }
     internalBinaryWrite(message: AdventureBattleMonsterHp, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 hp = 1; */
-        if (message.hp !== 0)
-            writer.tag(1, WireType.Varint).int32(message.hp);
+        /* repeated int32 hp = 1; */
+        for (let i = 0; i < message.hp.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.hp[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1794,11 +1810,11 @@ class AdventureBattleInfo$Type extends MessageType<AdventureBattleInfo> {
     constructor() {
         super("AdventureBattleInfo", [
             { no: 1, name: "id", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "monsterHps", kind: "message", T: () => AdventureBattleMonsterHp }
+            { no: 2, name: "monsterHps", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureBattleMonsterHp }
         ]);
     }
     create(value?: PartialMessage<AdventureBattleInfo>): AdventureBattleInfo {
-        const message = {};
+        const message = { monsterHps: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AdventureBattleInfo>(this, message, value);
@@ -1812,8 +1828,8 @@ class AdventureBattleInfo$Type extends MessageType<AdventureBattleInfo> {
                 case /* optional int32 id */ 1:
                     message.id = reader.int32();
                     break;
-                case /* AdventureBattleMonsterHp monsterHps */ 2:
-                    message.monsterHps = AdventureBattleMonsterHp.internalBinaryRead(reader, reader.uint32(), options, message.monsterHps);
+                case /* repeated AdventureBattleMonsterHp monsterHps */ 2:
+                    message.monsterHps.push(AdventureBattleMonsterHp.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1830,9 +1846,9 @@ class AdventureBattleInfo$Type extends MessageType<AdventureBattleInfo> {
         /* optional int32 id = 1; */
         if (message.id !== undefined)
             writer.tag(1, WireType.Varint).int32(message.id);
-        /* AdventureBattleMonsterHp monsterHps = 2; */
-        if (message.monsterHps)
-            AdventureBattleMonsterHp.internalBinaryWrite(message.monsterHps, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureBattleMonsterHp monsterHps = 2; */
+        for (let i = 0; i < message.monsterHps.length; i++)
+            AdventureBattleMonsterHp.internalBinaryWrite(message.monsterHps[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1847,11 +1863,11 @@ export const AdventureBattleInfo = new AdventureBattleInfo$Type();
 class AdventureTaskUpdatePush$Type extends MessageType<AdventureTaskUpdatePush> {
     constructor() {
         super("AdventureTaskUpdatePush", [
-            { no: 1, name: "taskInfos", kind: "message", T: () => AdventureTask }
+            { no: 1, name: "taskInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureTask }
         ]);
     }
     create(value?: PartialMessage<AdventureTaskUpdatePush>): AdventureTaskUpdatePush {
-        const message = {};
+        const message = { taskInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AdventureTaskUpdatePush>(this, message, value);
@@ -1862,8 +1878,8 @@ class AdventureTaskUpdatePush$Type extends MessageType<AdventureTaskUpdatePush> 
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* AdventureTask taskInfos */ 1:
-                    message.taskInfos = AdventureTask.internalBinaryRead(reader, reader.uint32(), options, message.taskInfos);
+                case /* repeated AdventureTask taskInfos */ 1:
+                    message.taskInfos.push(AdventureTask.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1877,9 +1893,9 @@ class AdventureTaskUpdatePush$Type extends MessageType<AdventureTaskUpdatePush> 
         return message;
     }
     internalBinaryWrite(message: AdventureTaskUpdatePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* AdventureTask taskInfos = 1; */
-        if (message.taskInfos)
-            AdventureTask.internalBinaryWrite(message.taskInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureTask taskInfos = 1; */
+        for (let i = 0; i < message.taskInfos.length; i++)
+            AdventureTask.internalBinaryWrite(message.taskInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2085,11 +2101,11 @@ class AdventureTaskSubmitRequest$Type extends MessageType<AdventureTaskSubmitReq
     constructor() {
         super("AdventureTaskSubmitRequest", [
             { no: 1, name: "taskId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "materialData", kind: "message", T: () => MaterialData }
+            { no: 2, name: "materialData", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => MaterialData }
         ]);
     }
     create(value?: PartialMessage<AdventureTaskSubmitRequest>): AdventureTaskSubmitRequest {
-        const message = {};
+        const message = { materialData: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AdventureTaskSubmitRequest>(this, message, value);
@@ -2103,8 +2119,8 @@ class AdventureTaskSubmitRequest$Type extends MessageType<AdventureTaskSubmitReq
                 case /* optional int32 taskId */ 1:
                     message.taskId = reader.int32();
                     break;
-                case /* MaterialData materialData */ 2:
-                    message.materialData = MaterialData.internalBinaryRead(reader, reader.uint32(), options, message.materialData);
+                case /* repeated MaterialData materialData */ 2:
+                    message.materialData.push(MaterialData.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2121,9 +2137,9 @@ class AdventureTaskSubmitRequest$Type extends MessageType<AdventureTaskSubmitReq
         /* optional int32 taskId = 1; */
         if (message.taskId !== undefined)
             writer.tag(1, WireType.Varint).int32(message.taskId);
-        /* MaterialData materialData = 2; */
-        if (message.materialData)
-            MaterialData.internalBinaryWrite(message.materialData, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated MaterialData materialData = 2; */
+        for (let i = 0; i < message.materialData.length; i++)
+            MaterialData.internalBinaryWrite(message.materialData[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2603,12 +2619,12 @@ export const AdventureGeneralReply = new AdventureGeneralReply$Type();
 class GetAdventureInfoReply$Type extends MessageType<GetAdventureInfoReply> {
     constructor() {
         super("GetAdventureInfoReply", [
-            { no: 1, name: "adventureInfo", kind: "message", T: () => AdventureInfo },
-            { no: 12, name: "foreverInfos", kind: "message", T: () => AdventureForeverInfo }
+            { no: 1, name: "adventureInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureInfo },
+            { no: 12, name: "foreverInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureForeverInfo }
         ]);
     }
     create(value?: PartialMessage<GetAdventureInfoReply>): GetAdventureInfoReply {
-        const message = {};
+        const message = { adventureInfo: [], foreverInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetAdventureInfoReply>(this, message, value);
@@ -2619,11 +2635,11 @@ class GetAdventureInfoReply$Type extends MessageType<GetAdventureInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* AdventureInfo adventureInfo */ 1:
-                    message.adventureInfo = AdventureInfo.internalBinaryRead(reader, reader.uint32(), options, message.adventureInfo);
+                case /* repeated AdventureInfo adventureInfo */ 1:
+                    message.adventureInfo.push(AdventureInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* AdventureForeverInfo foreverInfos */ 12:
-                    message.foreverInfos = AdventureForeverInfo.internalBinaryRead(reader, reader.uint32(), options, message.foreverInfos);
+                case /* repeated AdventureForeverInfo foreverInfos */ 12:
+                    message.foreverInfos.push(AdventureForeverInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2637,12 +2653,12 @@ class GetAdventureInfoReply$Type extends MessageType<GetAdventureInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetAdventureInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* AdventureInfo adventureInfo = 1; */
-        if (message.adventureInfo)
-            AdventureInfo.internalBinaryWrite(message.adventureInfo, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* AdventureForeverInfo foreverInfos = 12; */
-        if (message.foreverInfos)
-            AdventureForeverInfo.internalBinaryWrite(message.foreverInfos, writer.tag(12, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureInfo adventureInfo = 1; */
+        for (let i = 0; i < message.adventureInfo.length; i++)
+            AdventureInfo.internalBinaryWrite(message.adventureInfo[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureForeverInfo foreverInfos = 12; */
+        for (let i = 0; i < message.foreverInfos.length; i++)
+            AdventureForeverInfo.internalBinaryWrite(message.foreverInfos[i], writer.tag(12, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -2721,11 +2737,11 @@ class AdventureMoveRequest$Type extends MessageType<AdventureMoveRequest> {
             { no: 1, name: "chapterType", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "posx", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "posy", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "sightChange", kind: "message", T: () => AdventureSeat }
+            { no: 4, name: "sightChange", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => AdventureSeat }
         ]);
     }
     create(value?: PartialMessage<AdventureMoveRequest>): AdventureMoveRequest {
-        const message = {};
+        const message = { sightChange: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AdventureMoveRequest>(this, message, value);
@@ -2745,8 +2761,8 @@ class AdventureMoveRequest$Type extends MessageType<AdventureMoveRequest> {
                 case /* optional int32 posy */ 3:
                     message.posy = reader.int32();
                     break;
-                case /* AdventureSeat sightChange */ 4:
-                    message.sightChange = AdventureSeat.internalBinaryRead(reader, reader.uint32(), options, message.sightChange);
+                case /* repeated AdventureSeat sightChange */ 4:
+                    message.sightChange.push(AdventureSeat.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -2769,9 +2785,9 @@ class AdventureMoveRequest$Type extends MessageType<AdventureMoveRequest> {
         /* optional int32 posy = 3; */
         if (message.posy !== undefined)
             writer.tag(3, WireType.Varint).int32(message.posy);
-        /* AdventureSeat sightChange = 4; */
-        if (message.sightChange)
-            AdventureSeat.internalBinaryWrite(message.sightChange, writer.tag(4, WireType.LengthDelimited).fork(), options).join();
+        /* repeated AdventureSeat sightChange = 4; */
+        for (let i = 0; i < message.sightChange.length; i++)
+            AdventureSeat.internalBinaryWrite(message.sightChange[i], writer.tag(4, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

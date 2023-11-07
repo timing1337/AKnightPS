@@ -62,9 +62,9 @@ export interface SetHeroGroupSnapshotRequest {
  */
 export interface GetHeroGroupListReply {
     /**
-     * @generated from protobuf field: HeroGroupInfo groupInfoList = 1;
+     * @generated from protobuf field: repeated HeroGroupInfo groupInfoList = 1;
      */
-    groupInfoList?: HeroGroupInfo;
+    groupInfoList: HeroGroupInfo[];
 }
 /**
  * @generated from protobuf message UpdateHeroGroupReply
@@ -97,9 +97,9 @@ export interface SetHeroGroupSnapshotReply {
  */
 export interface UpdateHeroGroupRequest {
     /**
-     * @generated from protobuf field: repeated HeroGroupInfo groupInfo = 1;
+     * @generated from protobuf field: HeroGroupInfo groupInfo = 1;
      */
-    groupInfo: HeroGroupInfo[];
+    groupInfo?: HeroGroupInfo;
 }
 /**
  * @generated from protobuf message UpdateHeroGroupPush
@@ -288,11 +288,11 @@ export const SetHeroGroupSnapshotRequest = new SetHeroGroupSnapshotRequest$Type(
 class GetHeroGroupListReply$Type extends MessageType<GetHeroGroupListReply> {
     constructor() {
         super("GetHeroGroupListReply", [
-            { no: 1, name: "groupInfoList", kind: "message", T: () => HeroGroupInfo }
+            { no: 1, name: "groupInfoList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroGroupInfo }
         ]);
     }
     create(value?: PartialMessage<GetHeroGroupListReply>): GetHeroGroupListReply {
-        const message = {};
+        const message = { groupInfoList: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetHeroGroupListReply>(this, message, value);
@@ -303,8 +303,8 @@ class GetHeroGroupListReply$Type extends MessageType<GetHeroGroupListReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* HeroGroupInfo groupInfoList */ 1:
-                    message.groupInfoList = HeroGroupInfo.internalBinaryRead(reader, reader.uint32(), options, message.groupInfoList);
+                case /* repeated HeroGroupInfo groupInfoList */ 1:
+                    message.groupInfoList.push(HeroGroupInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -318,9 +318,9 @@ class GetHeroGroupListReply$Type extends MessageType<GetHeroGroupListReply> {
         return message;
     }
     internalBinaryWrite(message: GetHeroGroupListReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* HeroGroupInfo groupInfoList = 1; */
-        if (message.groupInfoList)
-            HeroGroupInfo.internalBinaryWrite(message.groupInfoList, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroGroupInfo groupInfoList = 1; */
+        for (let i = 0; i < message.groupInfoList.length; i++)
+            HeroGroupInfo.internalBinaryWrite(message.groupInfoList[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -443,11 +443,11 @@ export const SetHeroGroupSnapshotReply = new SetHeroGroupSnapshotReply$Type();
 class UpdateHeroGroupRequest$Type extends MessageType<UpdateHeroGroupRequest> {
     constructor() {
         super("UpdateHeroGroupRequest", [
-            { no: 1, name: "groupInfo", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroGroupInfo }
+            { no: 1, name: "groupInfo", kind: "message", T: () => HeroGroupInfo }
         ]);
     }
     create(value?: PartialMessage<UpdateHeroGroupRequest>): UpdateHeroGroupRequest {
-        const message = { groupInfo: [] };
+        const message = {};
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UpdateHeroGroupRequest>(this, message, value);
@@ -458,8 +458,8 @@ class UpdateHeroGroupRequest$Type extends MessageType<UpdateHeroGroupRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated HeroGroupInfo groupInfo */ 1:
-                    message.groupInfo.push(HeroGroupInfo.internalBinaryRead(reader, reader.uint32(), options));
+                case /* HeroGroupInfo groupInfo */ 1:
+                    message.groupInfo = HeroGroupInfo.internalBinaryRead(reader, reader.uint32(), options, message.groupInfo);
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -473,9 +473,9 @@ class UpdateHeroGroupRequest$Type extends MessageType<UpdateHeroGroupRequest> {
         return message;
     }
     internalBinaryWrite(message: UpdateHeroGroupRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated HeroGroupInfo groupInfo = 1; */
-        for (let i = 0; i < message.groupInfo.length; i++)
-            HeroGroupInfo.internalBinaryWrite(message.groupInfo[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* HeroGroupInfo groupInfo = 1; */
+        if (message.groupInfo)
+            HeroGroupInfo.internalBinaryWrite(message.groupInfo, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

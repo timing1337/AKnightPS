@@ -4,13 +4,19 @@ import HandlerFactory from './handlers';
 import ClientPacket from './packet/client_packet';
 import ServerPacket from './packet/server_packet';
 import { ProtocolId } from './protocol_id';
+import Player from './game/player';
 
 export default class Connection {
     public readonly logger: Logger;
+    public player?: Player;
 
     constructor(public readonly socket: net.Socket, public readonly address: net.AddressInfo) {
         this.logger = new Logger(`Connection<${address.address}:${address.port}>`);
         this.socket.on('data', this.onReceived.bind(this));
+    }
+
+    public initializePlayer(userId: bigint){
+        this.player = new Player(this, userId);
     }
 
     private async onReceived(msg: Buffer) {
@@ -31,8 +37,8 @@ export default class Connection {
         }
     }
 
-    public sendRawBuffer(cmd: ProtocolId, buffer: Buffer, resultCode: number = 0) {
-        const serverPacket = new ServerPacket(cmd, resultCode, 255, 255, buffer);
+    public sendRawBuffer(cmd: ProtocolId, buffer: Buffer | Uint8Array, resultCode: number = 0) {
+        const serverPacket = new ServerPacket(cmd, resultCode, 255, 255, buffer as Buffer);
         const encoded = serverPacket.encode();
         this.logger.debug(`SERVER < Sending ${encoded.toString('hex')}`);
         this.socket.write(encoded);

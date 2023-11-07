@@ -77,9 +77,9 @@ export interface EndActivityPush {
  */
 export interface GetActivityInfosReply {
     /**
-     * @generated from protobuf field: ActivityInfo activityInfos = 1;
+     * @generated from protobuf field: repeated ActivityInfo activityInfos = 1;
      */
-    activityInfos?: ActivityInfo;
+    activityInfos: ActivityInfo[];
 }
 /**
  * @generated from protobuf message UpdateActivityPush
@@ -347,11 +347,11 @@ export const EndActivityPush = new EndActivityPush$Type();
 class GetActivityInfosReply$Type extends MessageType<GetActivityInfosReply> {
     constructor() {
         super("GetActivityInfosReply", [
-            { no: 1, name: "activityInfos", kind: "message", T: () => ActivityInfo }
+            { no: 1, name: "activityInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => ActivityInfo }
         ]);
     }
     create(value?: PartialMessage<GetActivityInfosReply>): GetActivityInfosReply {
-        const message = {};
+        const message = { activityInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetActivityInfosReply>(this, message, value);
@@ -362,8 +362,8 @@ class GetActivityInfosReply$Type extends MessageType<GetActivityInfosReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* ActivityInfo activityInfos */ 1:
-                    message.activityInfos = ActivityInfo.internalBinaryRead(reader, reader.uint32(), options, message.activityInfos);
+                case /* repeated ActivityInfo activityInfos */ 1:
+                    message.activityInfos.push(ActivityInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -377,9 +377,9 @@ class GetActivityInfosReply$Type extends MessageType<GetActivityInfosReply> {
         return message;
     }
     internalBinaryWrite(message: GetActivityInfosReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* ActivityInfo activityInfos = 1; */
-        if (message.activityInfos)
-            ActivityInfo.internalBinaryWrite(message.activityInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated ActivityInfo activityInfos = 1; */
+        for (let i = 0; i < message.activityInfos.length; i++)
+            ActivityInfo.internalBinaryWrite(message.activityInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

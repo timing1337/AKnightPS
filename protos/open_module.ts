@@ -3,10 +3,10 @@
 // tslint:disable
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { IBinaryWriter } from "@protobuf-ts/runtime";
+import { WireType } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
 import type { IBinaryReader } from "@protobuf-ts/runtime";
 import { UnknownFieldHandler } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
@@ -16,33 +16,33 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface OpenInfo {
     /**
-     * @generated from protobuf field: repeated int32 id = 1;
+     * @generated from protobuf field: int32 id = 1;
      */
-    id: number[];
+    id: number;
     /**
-     * @generated from protobuf field: repeated bool isOpen = 2;
+     * @generated from protobuf field: bool isOpen = 2;
      */
-    isOpen: boolean[];
+    isOpen: boolean;
 }
 /**
  * @generated from protobuf message UpdateOpenPush
  */
 export interface UpdateOpenPush {
     /**
-     * @generated from protobuf field: OpenInfo openInfos = 1;
+     * @generated from protobuf field: repeated OpenInfo openInfos = 1;
      */
-    openInfos?: OpenInfo;
+    openInfos: OpenInfo[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class OpenInfo$Type extends MessageType<OpenInfo> {
     constructor() {
         super("OpenInfo", [
-            { no: 1, name: "id", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "isOpen", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 8 /*ScalarType.BOOL*/ }
+            { no: 1, name: "id", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "isOpen", kind: "scalar", T: 8 /*ScalarType.BOOL*/ }
         ]);
     }
     create(value?: PartialMessage<OpenInfo>): OpenInfo {
-        const message = { id: [], isOpen: [] };
+        const message = { id: 0, isOpen: false };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<OpenInfo>(this, message, value);
@@ -53,19 +53,11 @@ class OpenInfo$Type extends MessageType<OpenInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 id */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.id.push(reader.int32());
-                    else
-                        message.id.push(reader.int32());
+                case /* int32 id */ 1:
+                    message.id = reader.int32();
                     break;
-                case /* repeated bool isOpen */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.isOpen.push(reader.bool());
-                    else
-                        message.isOpen.push(reader.bool());
+                case /* bool isOpen */ 2:
+                    message.isOpen = reader.bool();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -79,12 +71,12 @@ class OpenInfo$Type extends MessageType<OpenInfo> {
         return message;
     }
     internalBinaryWrite(message: OpenInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 id = 1; */
-        for (let i = 0; i < message.id.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.id[i]);
-        /* repeated bool isOpen = 2; */
-        for (let i = 0; i < message.isOpen.length; i++)
-            writer.tag(2, WireType.Varint).bool(message.isOpen[i]);
+        /* int32 id = 1; */
+        if (message.id !== 0)
+            writer.tag(1, WireType.Varint).int32(message.id);
+        /* bool isOpen = 2; */
+        if (message.isOpen !== false)
+            writer.tag(2, WireType.Varint).bool(message.isOpen);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -99,11 +91,11 @@ export const OpenInfo = new OpenInfo$Type();
 class UpdateOpenPush$Type extends MessageType<UpdateOpenPush> {
     constructor() {
         super("UpdateOpenPush", [
-            { no: 1, name: "openInfos", kind: "message", T: () => OpenInfo }
+            { no: 1, name: "openInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => OpenInfo }
         ]);
     }
     create(value?: PartialMessage<UpdateOpenPush>): UpdateOpenPush {
-        const message = {};
+        const message = { openInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<UpdateOpenPush>(this, message, value);
@@ -114,8 +106,8 @@ class UpdateOpenPush$Type extends MessageType<UpdateOpenPush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* OpenInfo openInfos */ 1:
-                    message.openInfos = OpenInfo.internalBinaryRead(reader, reader.uint32(), options, message.openInfos);
+                case /* repeated OpenInfo openInfos */ 1:
+                    message.openInfos.push(OpenInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -129,9 +121,9 @@ class UpdateOpenPush$Type extends MessageType<UpdateOpenPush> {
         return message;
     }
     internalBinaryWrite(message: UpdateOpenPush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* OpenInfo openInfos = 1; */
-        if (message.openInfos)
-            OpenInfo.internalBinaryWrite(message.openInfos, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated OpenInfo openInfos = 1; */
+        for (let i = 0; i < message.openInfos.length; i++)
+            OpenInfo.internalBinaryWrite(message.openInfos[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

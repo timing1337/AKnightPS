@@ -3,10 +3,10 @@
 // tslint:disable
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
 import type { IBinaryReader } from "@protobuf-ts/runtime";
 import { UnknownFieldHandler } from "@protobuf-ts/runtime";
+import { WireType } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
@@ -16,9 +16,9 @@ import { MessageType } from "@protobuf-ts/runtime";
  */
 export interface EquipDeletePush {
     /**
-     * @generated from protobuf field: int64 uids = 1;
+     * @generated from protobuf field: repeated int64 uids = 1;
      */
-    uids: bigint;
+    uids: bigint[];
 }
 /**
  * @generated from protobuf message EquipLockRequest
@@ -42,18 +42,18 @@ export interface EquipRefineRequest {
      */
     targetUid?: bigint;
     /**
-     * @generated from protobuf field: int64 eatUids = 2;
+     * @generated from protobuf field: repeated int64 eatUids = 2;
      */
-    eatUids: bigint;
+    eatUids: bigint[];
 }
 /**
  * @generated from protobuf message EquipDecomposeReply
  */
 export interface EquipDecomposeReply {
     /**
-     * @generated from protobuf field: int64 equipUids = 1;
+     * @generated from protobuf field: repeated int64 equipUids = 1;
      */
-    equipUids: bigint;
+    equipUids: bigint[];
 }
 /**
  * @generated from protobuf message EquipBreakReply
@@ -69,27 +69,27 @@ export interface EquipStrengthenReply {
      */
     targetUid?: bigint;
     /**
-     * @generated from protobuf field: EatEquip eatEquips = 2;
+     * @generated from protobuf field: repeated EatEquip eatEquips = 2;
      */
-    eatEquips?: EatEquip;
+    eatEquips: EatEquip[];
 }
 /**
  * @generated from protobuf message EquipComposeRequest
  */
 export interface EquipComposeRequest {
     /**
-     * @generated from protobuf field: int32 equipIds = 1;
+     * @generated from protobuf field: repeated int32 equipIds = 1;
      */
-    equipIds: number;
+    equipIds: number[];
 }
 /**
  * @generated from protobuf message GetEquipInfoReply
  */
 export interface GetEquipInfoReply {
     /**
-     * @generated from protobuf field: Equip equips = 1;
+     * @generated from protobuf field: repeated Equip equips = 1;
      */
-    equips?: Equip;
+    equips: Equip[];
 }
 /**
  * @generated from protobuf message EquipLockReply
@@ -118,9 +118,9 @@ export interface EquipBreakRequest {
  */
 export interface EquipUpdatePush {
     /**
-     * @generated from protobuf field: Equip equips = 1;
+     * @generated from protobuf field: repeated Equip equips = 1;
      */
-    equips?: Equip;
+    equips: Equip[];
 }
 /**
  * @generated from protobuf message Equip
@@ -168,18 +168,18 @@ export interface EquipStrengthenRequest {
      */
     targetUid?: bigint;
     /**
-     * @generated from protobuf field: EatEquip eatEquips = 2;
+     * @generated from protobuf field: repeated EatEquip eatEquips = 2;
      */
-    eatEquips?: EatEquip;
+    eatEquips: EatEquip[];
 }
 /**
  * @generated from protobuf message EquipDecomposeRequest
  */
 export interface EquipDecomposeRequest {
     /**
-     * @generated from protobuf field: int64 equipUids = 1;
+     * @generated from protobuf field: repeated int64 equipUids = 1;
      */
-    equipUids: bigint;
+    equipUids: bigint[];
 }
 /**
  * @generated from protobuf message EatEquip
@@ -204,9 +204,9 @@ export interface GetEquipInfoRequest {
  */
 export interface EquipComposeReply {
     /**
-     * @generated from protobuf field: int32 equipIds = 1;
+     * @generated from protobuf field: repeated int32 equipIds = 1;
      */
-    equipIds: number;
+    equipIds: number[];
 }
 /**
  * @generated from protobuf message EquipRefineReply
@@ -217,19 +217,19 @@ export interface EquipRefineReply {
      */
     targetUid?: bigint;
     /**
-     * @generated from protobuf field: int64 eatUids = 2;
+     * @generated from protobuf field: repeated int64 eatUids = 2;
      */
-    eatUids: bigint;
+    eatUids: bigint[];
 }
 // @generated message type with reflection information, may provide speed optimized methods
 class EquipDeletePush$Type extends MessageType<EquipDeletePush> {
     constructor() {
         super("EquipDeletePush", [
-            { no: 1, name: "uids", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "uids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<EquipDeletePush>): EquipDeletePush {
-        const message = { uids: 0n };
+        const message = { uids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipDeletePush>(this, message, value);
@@ -240,8 +240,12 @@ class EquipDeletePush$Type extends MessageType<EquipDeletePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 uids */ 1:
-                    message.uids = reader.int64().toBigInt();
+                case /* repeated int64 uids */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.uids.push(reader.int64().toBigInt());
+                    else
+                        message.uids.push(reader.int64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -255,9 +259,9 @@ class EquipDeletePush$Type extends MessageType<EquipDeletePush> {
         return message;
     }
     internalBinaryWrite(message: EquipDeletePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 uids = 1; */
-        if (message.uids !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.uids);
+        /* repeated int64 uids = 1; */
+        for (let i = 0; i < message.uids.length; i++)
+            writer.tag(1, WireType.Varint).int64(message.uids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -327,11 +331,11 @@ class EquipRefineRequest$Type extends MessageType<EquipRefineRequest> {
     constructor() {
         super("EquipRefineRequest", [
             { no: 1, name: "targetUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "eatUids", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 2, name: "eatUids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<EquipRefineRequest>): EquipRefineRequest {
-        const message = { eatUids: 0n };
+        const message = { eatUids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipRefineRequest>(this, message, value);
@@ -345,8 +349,12 @@ class EquipRefineRequest$Type extends MessageType<EquipRefineRequest> {
                 case /* optional int64 targetUid */ 1:
                     message.targetUid = reader.int64().toBigInt();
                     break;
-                case /* int64 eatUids */ 2:
-                    message.eatUids = reader.int64().toBigInt();
+                case /* repeated int64 eatUids */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.eatUids.push(reader.int64().toBigInt());
+                    else
+                        message.eatUids.push(reader.int64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -363,9 +371,9 @@ class EquipRefineRequest$Type extends MessageType<EquipRefineRequest> {
         /* optional int64 targetUid = 1; */
         if (message.targetUid !== undefined)
             writer.tag(1, WireType.Varint).int64(message.targetUid);
-        /* int64 eatUids = 2; */
-        if (message.eatUids !== 0n)
-            writer.tag(2, WireType.Varint).int64(message.eatUids);
+        /* repeated int64 eatUids = 2; */
+        for (let i = 0; i < message.eatUids.length; i++)
+            writer.tag(2, WireType.Varint).int64(message.eatUids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -380,11 +388,11 @@ export const EquipRefineRequest = new EquipRefineRequest$Type();
 class EquipDecomposeReply$Type extends MessageType<EquipDecomposeReply> {
     constructor() {
         super("EquipDecomposeReply", [
-            { no: 1, name: "equipUids", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "equipUids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<EquipDecomposeReply>): EquipDecomposeReply {
-        const message = { equipUids: 0n };
+        const message = { equipUids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipDecomposeReply>(this, message, value);
@@ -395,8 +403,12 @@ class EquipDecomposeReply$Type extends MessageType<EquipDecomposeReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 equipUids */ 1:
-                    message.equipUids = reader.int64().toBigInt();
+                case /* repeated int64 equipUids */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.equipUids.push(reader.int64().toBigInt());
+                    else
+                        message.equipUids.push(reader.int64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -410,9 +422,9 @@ class EquipDecomposeReply$Type extends MessageType<EquipDecomposeReply> {
         return message;
     }
     internalBinaryWrite(message: EquipDecomposeReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 equipUids = 1; */
-        if (message.equipUids !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.equipUids);
+        /* repeated int64 equipUids = 1; */
+        for (let i = 0; i < message.equipUids.length; i++)
+            writer.tag(1, WireType.Varint).int64(message.equipUids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -454,11 +466,11 @@ class EquipStrengthenReply$Type extends MessageType<EquipStrengthenReply> {
     constructor() {
         super("EquipStrengthenReply", [
             { no: 1, name: "targetUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "eatEquips", kind: "message", T: () => EatEquip }
+            { no: 2, name: "eatEquips", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => EatEquip }
         ]);
     }
     create(value?: PartialMessage<EquipStrengthenReply>): EquipStrengthenReply {
-        const message = {};
+        const message = { eatEquips: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipStrengthenReply>(this, message, value);
@@ -472,8 +484,8 @@ class EquipStrengthenReply$Type extends MessageType<EquipStrengthenReply> {
                 case /* optional int64 targetUid */ 1:
                     message.targetUid = reader.int64().toBigInt();
                     break;
-                case /* EatEquip eatEquips */ 2:
-                    message.eatEquips = EatEquip.internalBinaryRead(reader, reader.uint32(), options, message.eatEquips);
+                case /* repeated EatEquip eatEquips */ 2:
+                    message.eatEquips.push(EatEquip.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -490,9 +502,9 @@ class EquipStrengthenReply$Type extends MessageType<EquipStrengthenReply> {
         /* optional int64 targetUid = 1; */
         if (message.targetUid !== undefined)
             writer.tag(1, WireType.Varint).int64(message.targetUid);
-        /* EatEquip eatEquips = 2; */
-        if (message.eatEquips)
-            EatEquip.internalBinaryWrite(message.eatEquips, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated EatEquip eatEquips = 2; */
+        for (let i = 0; i < message.eatEquips.length; i++)
+            EatEquip.internalBinaryWrite(message.eatEquips[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -507,11 +519,11 @@ export const EquipStrengthenReply = new EquipStrengthenReply$Type();
 class EquipComposeRequest$Type extends MessageType<EquipComposeRequest> {
     constructor() {
         super("EquipComposeRequest", [
-            { no: 1, name: "equipIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "equipIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<EquipComposeRequest>): EquipComposeRequest {
-        const message = { equipIds: 0 };
+        const message = { equipIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipComposeRequest>(this, message, value);
@@ -522,8 +534,12 @@ class EquipComposeRequest$Type extends MessageType<EquipComposeRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 equipIds */ 1:
-                    message.equipIds = reader.int32();
+                case /* repeated int32 equipIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.equipIds.push(reader.int32());
+                    else
+                        message.equipIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -537,9 +553,9 @@ class EquipComposeRequest$Type extends MessageType<EquipComposeRequest> {
         return message;
     }
     internalBinaryWrite(message: EquipComposeRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 equipIds = 1; */
-        if (message.equipIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.equipIds);
+        /* repeated int32 equipIds = 1; */
+        for (let i = 0; i < message.equipIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.equipIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -554,11 +570,11 @@ export const EquipComposeRequest = new EquipComposeRequest$Type();
 class GetEquipInfoReply$Type extends MessageType<GetEquipInfoReply> {
     constructor() {
         super("GetEquipInfoReply", [
-            { no: 1, name: "equips", kind: "message", T: () => Equip }
+            { no: 1, name: "equips", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Equip }
         ]);
     }
     create(value?: PartialMessage<GetEquipInfoReply>): GetEquipInfoReply {
-        const message = {};
+        const message = { equips: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetEquipInfoReply>(this, message, value);
@@ -569,8 +585,8 @@ class GetEquipInfoReply$Type extends MessageType<GetEquipInfoReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Equip equips */ 1:
-                    message.equips = Equip.internalBinaryRead(reader, reader.uint32(), options, message.equips);
+                case /* repeated Equip equips */ 1:
+                    message.equips.push(Equip.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -584,9 +600,9 @@ class GetEquipInfoReply$Type extends MessageType<GetEquipInfoReply> {
         return message;
     }
     internalBinaryWrite(message: GetEquipInfoReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Equip equips = 1; */
-        if (message.equips)
-            Equip.internalBinaryWrite(message.equips, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Equip equips = 1; */
+        for (let i = 0; i < message.equips.length; i++)
+            Equip.internalBinaryWrite(message.equips[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -702,11 +718,11 @@ export const EquipBreakRequest = new EquipBreakRequest$Type();
 class EquipUpdatePush$Type extends MessageType<EquipUpdatePush> {
     constructor() {
         super("EquipUpdatePush", [
-            { no: 1, name: "equips", kind: "message", T: () => Equip }
+            { no: 1, name: "equips", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => Equip }
         ]);
     }
     create(value?: PartialMessage<EquipUpdatePush>): EquipUpdatePush {
-        const message = {};
+        const message = { equips: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipUpdatePush>(this, message, value);
@@ -717,8 +733,8 @@ class EquipUpdatePush$Type extends MessageType<EquipUpdatePush> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* Equip equips */ 1:
-                    message.equips = Equip.internalBinaryRead(reader, reader.uint32(), options, message.equips);
+                case /* repeated Equip equips */ 1:
+                    message.equips.push(Equip.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -732,9 +748,9 @@ class EquipUpdatePush$Type extends MessageType<EquipUpdatePush> {
         return message;
     }
     internalBinaryWrite(message: EquipUpdatePush, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* Equip equips = 1; */
-        if (message.equips)
-            Equip.internalBinaryWrite(message.equips, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated Equip equips = 1; */
+        for (let i = 0; i < message.equips.length; i++)
+            Equip.internalBinaryWrite(message.equips[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -846,11 +862,11 @@ class EquipStrengthenRequest$Type extends MessageType<EquipStrengthenRequest> {
     constructor() {
         super("EquipStrengthenRequest", [
             { no: 1, name: "targetUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "eatEquips", kind: "message", T: () => EatEquip }
+            { no: 2, name: "eatEquips", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => EatEquip }
         ]);
     }
     create(value?: PartialMessage<EquipStrengthenRequest>): EquipStrengthenRequest {
-        const message = {};
+        const message = { eatEquips: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipStrengthenRequest>(this, message, value);
@@ -864,8 +880,8 @@ class EquipStrengthenRequest$Type extends MessageType<EquipStrengthenRequest> {
                 case /* optional int64 targetUid */ 1:
                     message.targetUid = reader.int64().toBigInt();
                     break;
-                case /* EatEquip eatEquips */ 2:
-                    message.eatEquips = EatEquip.internalBinaryRead(reader, reader.uint32(), options, message.eatEquips);
+                case /* repeated EatEquip eatEquips */ 2:
+                    message.eatEquips.push(EatEquip.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -882,9 +898,9 @@ class EquipStrengthenRequest$Type extends MessageType<EquipStrengthenRequest> {
         /* optional int64 targetUid = 1; */
         if (message.targetUid !== undefined)
             writer.tag(1, WireType.Varint).int64(message.targetUid);
-        /* EatEquip eatEquips = 2; */
-        if (message.eatEquips)
-            EatEquip.internalBinaryWrite(message.eatEquips, writer.tag(2, WireType.LengthDelimited).fork(), options).join();
+        /* repeated EatEquip eatEquips = 2; */
+        for (let i = 0; i < message.eatEquips.length; i++)
+            EatEquip.internalBinaryWrite(message.eatEquips[i], writer.tag(2, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -899,11 +915,11 @@ export const EquipStrengthenRequest = new EquipStrengthenRequest$Type();
 class EquipDecomposeRequest$Type extends MessageType<EquipDecomposeRequest> {
     constructor() {
         super("EquipDecomposeRequest", [
-            { no: 1, name: "equipUids", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "equipUids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<EquipDecomposeRequest>): EquipDecomposeRequest {
-        const message = { equipUids: 0n };
+        const message = { equipUids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipDecomposeRequest>(this, message, value);
@@ -914,8 +930,12 @@ class EquipDecomposeRequest$Type extends MessageType<EquipDecomposeRequest> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int64 equipUids */ 1:
-                    message.equipUids = reader.int64().toBigInt();
+                case /* repeated int64 equipUids */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.equipUids.push(reader.int64().toBigInt());
+                    else
+                        message.equipUids.push(reader.int64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -929,9 +949,9 @@ class EquipDecomposeRequest$Type extends MessageType<EquipDecomposeRequest> {
         return message;
     }
     internalBinaryWrite(message: EquipDecomposeRequest, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int64 equipUids = 1; */
-        if (message.equipUids !== 0n)
-            writer.tag(1, WireType.Varint).int64(message.equipUids);
+        /* repeated int64 equipUids = 1; */
+        for (let i = 0; i < message.equipUids.length; i++)
+            writer.tag(1, WireType.Varint).int64(message.equipUids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1026,11 +1046,11 @@ export const GetEquipInfoRequest = new GetEquipInfoRequest$Type();
 class EquipComposeReply$Type extends MessageType<EquipComposeReply> {
     constructor() {
         super("EquipComposeReply", [
-            { no: 1, name: "equipIds", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "equipIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<EquipComposeReply>): EquipComposeReply {
-        const message = { equipIds: 0 };
+        const message = { equipIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipComposeReply>(this, message, value);
@@ -1041,8 +1061,12 @@ class EquipComposeReply$Type extends MessageType<EquipComposeReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* int32 equipIds */ 1:
-                    message.equipIds = reader.int32();
+                case /* repeated int32 equipIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.equipIds.push(reader.int32());
+                    else
+                        message.equipIds.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1056,9 +1080,9 @@ class EquipComposeReply$Type extends MessageType<EquipComposeReply> {
         return message;
     }
     internalBinaryWrite(message: EquipComposeReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* int32 equipIds = 1; */
-        if (message.equipIds !== 0)
-            writer.tag(1, WireType.Varint).int32(message.equipIds);
+        /* repeated int32 equipIds = 1; */
+        for (let i = 0; i < message.equipIds.length; i++)
+            writer.tag(1, WireType.Varint).int32(message.equipIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1074,11 +1098,11 @@ class EquipRefineReply$Type extends MessageType<EquipRefineReply> {
     constructor() {
         super("EquipRefineReply", [
             { no: 1, name: "targetUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "eatUids", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 2, name: "eatUids", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<EquipRefineReply>): EquipRefineReply {
-        const message = { eatUids: 0n };
+        const message = { eatUids: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<EquipRefineReply>(this, message, value);
@@ -1092,8 +1116,12 @@ class EquipRefineReply$Type extends MessageType<EquipRefineReply> {
                 case /* optional int64 targetUid */ 1:
                     message.targetUid = reader.int64().toBigInt();
                     break;
-                case /* int64 eatUids */ 2:
-                    message.eatUids = reader.int64().toBigInt();
+                case /* repeated int64 eatUids */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.eatUids.push(reader.int64().toBigInt());
+                    else
+                        message.eatUids.push(reader.int64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1110,9 +1138,9 @@ class EquipRefineReply$Type extends MessageType<EquipRefineReply> {
         /* optional int64 targetUid = 1; */
         if (message.targetUid !== undefined)
             writer.tag(1, WireType.Varint).int64(message.targetUid);
-        /* int64 eatUids = 2; */
-        if (message.eatUids !== 0n)
-            writer.tag(2, WireType.Varint).int64(message.eatUids);
+        /* repeated int64 eatUids = 2; */
+        for (let i = 0; i < message.eatUids.length; i++)
+            writer.tag(2, WireType.Varint).int64(message.eatUids[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

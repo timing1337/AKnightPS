@@ -3,10 +3,10 @@
 // tslint:disable
 import type { BinaryWriteOptions } from "@protobuf-ts/runtime";
 import type { IBinaryWriter } from "@protobuf-ts/runtime";
-import { WireType } from "@protobuf-ts/runtime";
 import type { BinaryReadOptions } from "@protobuf-ts/runtime";
 import type { IBinaryReader } from "@protobuf-ts/runtime";
 import { UnknownFieldHandler } from "@protobuf-ts/runtime";
+import { WireType } from "@protobuf-ts/runtime";
 import type { PartialMessage } from "@protobuf-ts/runtime";
 import { reflectionMergePartial } from "@protobuf-ts/runtime";
 import { MESSAGE_TYPE } from "@protobuf-ts/runtime";
@@ -20,9 +20,9 @@ export interface HeroGroupEquip {
      */
     index?: number;
     /**
-     * @generated from protobuf field: int64 equipUid = 2;
+     * @generated from protobuf field: repeated int64 equipUid = 2;
      */
-    equipUid: bigint;
+    equipUid: bigint[];
 }
 /**
  * @generated from protobuf message SkillInfo
@@ -63,9 +63,9 @@ export interface HeroAllAttribute {
  */
 export interface HeroSimpleInfo {
     /**
-     * @generated from protobuf field: repeated int32 heroId = 1;
+     * @generated from protobuf field: int32 heroId = 1;
      */
-    heroId: number[];
+    heroId: number;
     /**
      * @generated from protobuf field: optional int32 level = 2;
      */
@@ -184,17 +184,17 @@ export interface TalentCubeInfo {
  */
 export interface HeroInfo {
     /**
-     * @generated from protobuf field: repeated int64 uid = 1;
+     * @generated from protobuf field: int64 uid = 1;
      */
-    uid: bigint[];
+    uid: bigint;
     /**
-     * @generated from protobuf field: repeated int64 userId = 2;
+     * @generated from protobuf field: int64 userId = 2;
      */
-    userId: bigint[];
+    userId: bigint;
     /**
-     * @generated from protobuf field: repeated int32 heroId = 3;
+     * @generated from protobuf field: int32 heroId = 3;
      */
-    heroId: number[];
+    heroId: number;
     /**
      * @generated from protobuf field: optional int64 createTime = 4;
      */
@@ -228,25 +228,25 @@ export interface HeroInfo {
      */
     activeSkillLevel?: number;
     /**
-     * @generated from protobuf field: int32 passiveSkillLevel = 12;
+     * @generated from protobuf field: repeated int32 passiveSkillLevel = 12;
      */
-    passiveSkillLevel: number;
+    passiveSkillLevel: number[];
     /**
      * @generated from protobuf field: optional int32 exSkillLevel = 13;
      */
     exSkillLevel?: number;
     /**
-     * @generated from protobuf field: int32 voice = 14;
+     * @generated from protobuf field: repeated int32 voice = 14;
      */
-    voice: number;
+    voice: number[];
     /**
-     * @generated from protobuf field: int32 voiceHeard = 15;
+     * @generated from protobuf field: repeated int32 voiceHeard = 15;
      */
-    voiceHeard: number;
+    voiceHeard: number[];
     /**
-     * @generated from protobuf field: SkinInfo skinInfoList = 16;
+     * @generated from protobuf field: repeated SkinInfo skinInfoList = 16;
      */
-    skinInfoList?: SkinInfo;
+    skinInfoList: SkinInfo[];
     /**
      * @generated from protobuf field: optional HeroAttribute baseAttr = 17;
      */
@@ -260,25 +260,25 @@ export interface HeroInfo {
      */
     spAttr?: HeroSpAttribute;
     /**
-     * @generated from protobuf field: HeroEquipAttribute equipAttrList = 20;
+     * @generated from protobuf field: repeated HeroEquipAttribute equipAttrList = 20;
      */
-    equipAttrList?: HeroEquipAttribute;
+    equipAttrList: HeroEquipAttribute[];
     /**
      * @generated from protobuf field: optional bool isNew = 21;
      */
     isNew?: boolean;
     /**
-     * @generated from protobuf field: int32 itemUnlock = 22;
+     * @generated from protobuf field: repeated int32 itemUnlock = 22;
      */
-    itemUnlock: number;
+    itemUnlock: number[];
     /**
      * @generated from protobuf field: optional int32 talent = 23;
      */
     talent?: number;
     /**
-     * @generated from protobuf field: TalentCubeInfo talentCubeInfos = 24;
+     * @generated from protobuf field: repeated TalentCubeInfo talentCubeInfos = 24;
      */
-    talentCubeInfos?: TalentCubeInfo;
+    talentCubeInfos: TalentCubeInfo[];
     /**
      * @generated from protobuf field: optional int64 defaultEquipUid = 25;
      */
@@ -289,38 +289,38 @@ export interface HeroInfo {
  */
 export interface HeroAttribute {
     /**
-     * @generated from protobuf field: repeated int32 hp = 1;
+     * @generated from protobuf field: int32 hp = 1;
      */
-    hp: number[];
+    hp: number;
     /**
-     * @generated from protobuf field: repeated int32 attack = 2;
+     * @generated from protobuf field: int32 attack = 2;
      */
-    attack: number[];
+    attack: number;
     /**
-     * @generated from protobuf field: repeated int32 defense = 3;
+     * @generated from protobuf field: int32 defense = 3;
      */
-    defense: number[];
+    defense: number;
     /**
-     * @generated from protobuf field: repeated int32 mdefense = 4;
+     * @generated from protobuf field: int32 mdefense = 4;
      */
-    mdefense: number[];
+    mdefense: number;
     /**
-     * @generated from protobuf field: repeated int32 technic = 5;
+     * @generated from protobuf field: int32 technic = 5;
      */
-    technic: number[];
+    technic: number;
 }
 /**
  * @generated from protobuf message HeroGroupInfo
  */
 export interface HeroGroupInfo {
     /**
-     * @generated from protobuf field: repeated int32 groupId = 1;
+     * @generated from protobuf field: int32 groupId = 1;
      */
-    groupId: number[];
+    groupId: number;
     /**
-     * @generated from protobuf field: int64 heroList = 2;
+     * @generated from protobuf field: repeated int64 heroList = 2;
      */
-    heroList: bigint;
+    heroList: bigint[];
     /**
      * @generated from protobuf field: optional string name = 3;
      */
@@ -330,13 +330,13 @@ export interface HeroGroupInfo {
      */
     clothId?: number;
     /**
-     * @generated from protobuf field: HeroGroupEquip equips = 5;
+     * @generated from protobuf field: repeated HeroGroupEquip equips = 5;
      */
-    equips?: HeroGroupEquip;
+    equips: HeroGroupEquip[];
     /**
-     * @generated from protobuf field: HeroGroupEquip activity104Equips = 6;
+     * @generated from protobuf field: repeated HeroGroupEquip activity104Equips = 6;
      */
-    activity104Equips?: HeroGroupEquip;
+    activity104Equips: HeroGroupEquip[];
 }
 /**
  * @generated from protobuf message HeroEquipAttribute
@@ -356,11 +356,11 @@ class HeroGroupEquip$Type extends MessageType<HeroGroupEquip> {
     constructor() {
         super("HeroGroupEquip", [
             { no: 1, name: "index", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "equipUid", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 2, name: "equipUid", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<HeroGroupEquip>): HeroGroupEquip {
-        const message = { equipUid: 0n };
+        const message = { equipUid: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroGroupEquip>(this, message, value);
@@ -374,8 +374,12 @@ class HeroGroupEquip$Type extends MessageType<HeroGroupEquip> {
                 case /* optional int32 index */ 1:
                     message.index = reader.int32();
                     break;
-                case /* int64 equipUid */ 2:
-                    message.equipUid = reader.int64().toBigInt();
+                case /* repeated int64 equipUid */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.equipUid.push(reader.int64().toBigInt());
+                    else
+                        message.equipUid.push(reader.int64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -392,9 +396,9 @@ class HeroGroupEquip$Type extends MessageType<HeroGroupEquip> {
         /* optional int32 index = 1; */
         if (message.index !== undefined)
             writer.tag(1, WireType.Varint).int32(message.index);
-        /* int64 equipUid = 2; */
-        if (message.equipUid !== 0n)
-            writer.tag(2, WireType.Varint).int64(message.equipUid);
+        /* repeated int64 equipUid = 2; */
+        for (let i = 0; i < message.equipUid.length; i++)
+            writer.tag(2, WireType.Varint).int64(message.equipUid[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -531,7 +535,7 @@ export const HeroAllAttribute = new HeroAllAttribute$Type();
 class HeroSimpleInfo$Type extends MessageType<HeroSimpleInfo> {
     constructor() {
         super("HeroSimpleInfo", [
-            { no: 1, name: "heroId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "heroId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 2, name: "level", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 3, name: "rank", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "exSkillLevel", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
@@ -539,7 +543,7 @@ class HeroSimpleInfo$Type extends MessageType<HeroSimpleInfo> {
         ]);
     }
     create(value?: PartialMessage<HeroSimpleInfo>): HeroSimpleInfo {
-        const message = { heroId: [] };
+        const message = { heroId: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroSimpleInfo>(this, message, value);
@@ -550,12 +554,8 @@ class HeroSimpleInfo$Type extends MessageType<HeroSimpleInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 heroId */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.heroId.push(reader.int32());
-                    else
-                        message.heroId.push(reader.int32());
+                case /* int32 heroId */ 1:
+                    message.heroId = reader.int32();
                     break;
                 case /* optional int32 level */ 2:
                     message.level = reader.int32();
@@ -581,9 +581,9 @@ class HeroSimpleInfo$Type extends MessageType<HeroSimpleInfo> {
         return message;
     }
     internalBinaryWrite(message: HeroSimpleInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 heroId = 1; */
-        for (let i = 0; i < message.heroId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.heroId[i]);
+        /* int32 heroId = 1; */
+        if (message.heroId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.heroId);
         /* optional int32 level = 2; */
         if (message.level !== undefined)
             writer.tag(2, WireType.Varint).int32(message.level);
@@ -903,9 +903,9 @@ export const TalentCubeInfo = new TalentCubeInfo$Type();
 class HeroInfo$Type extends MessageType<HeroInfo> {
     constructor() {
         super("HeroInfo", [
-            { no: 1, name: "uid", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "userId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 3, name: "heroId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 1, name: "uid", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "userId", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 3, name: "heroId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
             { no: 4, name: "createTime", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 5, name: "level", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 6, name: "exp", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
@@ -914,24 +914,24 @@ class HeroInfo$Type extends MessageType<HeroInfo> {
             { no: 9, name: "skin", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 10, name: "faith", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
             { no: 11, name: "activeSkillLevel", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 12, name: "passiveSkillLevel", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 12, name: "passiveSkillLevel", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 13, name: "exSkillLevel", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 14, name: "voice", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 15, name: "voiceHeard", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
-            { no: 16, name: "skinInfoList", kind: "message", T: () => SkinInfo },
+            { no: 14, name: "voice", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 15, name: "voiceHeard", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
+            { no: 16, name: "skinInfoList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => SkinInfo },
             { no: 17, name: "baseAttr", kind: "message", T: () => HeroAttribute },
             { no: 18, name: "exAttr", kind: "message", T: () => HeroExAttribute },
             { no: 19, name: "spAttr", kind: "message", T: () => HeroSpAttribute },
-            { no: 20, name: "equipAttrList", kind: "message", T: () => HeroEquipAttribute },
+            { no: 20, name: "equipAttrList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroEquipAttribute },
             { no: 21, name: "isNew", kind: "scalar", opt: true, T: 8 /*ScalarType.BOOL*/ },
-            { no: 22, name: "itemUnlock", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 22, name: "itemUnlock", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
             { no: 23, name: "talent", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 24, name: "talentCubeInfos", kind: "message", T: () => TalentCubeInfo },
+            { no: 24, name: "talentCubeInfos", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => TalentCubeInfo },
             { no: 25, name: "defaultEquipUid", kind: "scalar", opt: true, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<HeroInfo>): HeroInfo {
-        const message = { uid: [], userId: [], heroId: [], passiveSkillLevel: 0, voice: 0, voiceHeard: 0, itemUnlock: 0 };
+        const message = { uid: 0n, userId: 0n, heroId: 0, passiveSkillLevel: [], voice: [], voiceHeard: [], skinInfoList: [], equipAttrList: [], itemUnlock: [], talentCubeInfos: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroInfo>(this, message, value);
@@ -942,26 +942,14 @@ class HeroInfo$Type extends MessageType<HeroInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int64 uid */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.uid.push(reader.int64().toBigInt());
-                    else
-                        message.uid.push(reader.int64().toBigInt());
+                case /* int64 uid */ 1:
+                    message.uid = reader.int64().toBigInt();
                     break;
-                case /* repeated int64 userId */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.userId.push(reader.int64().toBigInt());
-                    else
-                        message.userId.push(reader.int64().toBigInt());
+                case /* int64 userId */ 2:
+                    message.userId = reader.int64().toBigInt();
                     break;
-                case /* repeated int32 heroId */ 3:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.heroId.push(reader.int32());
-                    else
-                        message.heroId.push(reader.int32());
+                case /* int32 heroId */ 3:
+                    message.heroId = reader.int32();
                     break;
                 case /* optional int64 createTime */ 4:
                     message.createTime = reader.int64().toBigInt();
@@ -987,20 +975,32 @@ class HeroInfo$Type extends MessageType<HeroInfo> {
                 case /* optional int32 activeSkillLevel */ 11:
                     message.activeSkillLevel = reader.int32();
                     break;
-                case /* int32 passiveSkillLevel */ 12:
-                    message.passiveSkillLevel = reader.int32();
+                case /* repeated int32 passiveSkillLevel */ 12:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.passiveSkillLevel.push(reader.int32());
+                    else
+                        message.passiveSkillLevel.push(reader.int32());
                     break;
                 case /* optional int32 exSkillLevel */ 13:
                     message.exSkillLevel = reader.int32();
                     break;
-                case /* int32 voice */ 14:
-                    message.voice = reader.int32();
+                case /* repeated int32 voice */ 14:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.voice.push(reader.int32());
+                    else
+                        message.voice.push(reader.int32());
                     break;
-                case /* int32 voiceHeard */ 15:
-                    message.voiceHeard = reader.int32();
+                case /* repeated int32 voiceHeard */ 15:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.voiceHeard.push(reader.int32());
+                    else
+                        message.voiceHeard.push(reader.int32());
                     break;
-                case /* SkinInfo skinInfoList */ 16:
-                    message.skinInfoList = SkinInfo.internalBinaryRead(reader, reader.uint32(), options, message.skinInfoList);
+                case /* repeated SkinInfo skinInfoList */ 16:
+                    message.skinInfoList.push(SkinInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional HeroAttribute baseAttr */ 17:
                     message.baseAttr = HeroAttribute.internalBinaryRead(reader, reader.uint32(), options, message.baseAttr);
@@ -1011,20 +1011,24 @@ class HeroInfo$Type extends MessageType<HeroInfo> {
                 case /* optional HeroSpAttribute spAttr */ 19:
                     message.spAttr = HeroSpAttribute.internalBinaryRead(reader, reader.uint32(), options, message.spAttr);
                     break;
-                case /* HeroEquipAttribute equipAttrList */ 20:
-                    message.equipAttrList = HeroEquipAttribute.internalBinaryRead(reader, reader.uint32(), options, message.equipAttrList);
+                case /* repeated HeroEquipAttribute equipAttrList */ 20:
+                    message.equipAttrList.push(HeroEquipAttribute.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional bool isNew */ 21:
                     message.isNew = reader.bool();
                     break;
-                case /* int32 itemUnlock */ 22:
-                    message.itemUnlock = reader.int32();
+                case /* repeated int32 itemUnlock */ 22:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.itemUnlock.push(reader.int32());
+                    else
+                        message.itemUnlock.push(reader.int32());
                     break;
                 case /* optional int32 talent */ 23:
                     message.talent = reader.int32();
                     break;
-                case /* TalentCubeInfo talentCubeInfos */ 24:
-                    message.talentCubeInfos = TalentCubeInfo.internalBinaryRead(reader, reader.uint32(), options, message.talentCubeInfos);
+                case /* repeated TalentCubeInfo talentCubeInfos */ 24:
+                    message.talentCubeInfos.push(TalentCubeInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 case /* optional int64 defaultEquipUid */ 25:
                     message.defaultEquipUid = reader.int64().toBigInt();
@@ -1041,15 +1045,15 @@ class HeroInfo$Type extends MessageType<HeroInfo> {
         return message;
     }
     internalBinaryWrite(message: HeroInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int64 uid = 1; */
-        for (let i = 0; i < message.uid.length; i++)
-            writer.tag(1, WireType.Varint).int64(message.uid[i]);
-        /* repeated int64 userId = 2; */
-        for (let i = 0; i < message.userId.length; i++)
-            writer.tag(2, WireType.Varint).int64(message.userId[i]);
-        /* repeated int32 heroId = 3; */
-        for (let i = 0; i < message.heroId.length; i++)
-            writer.tag(3, WireType.Varint).int32(message.heroId[i]);
+        /* int64 uid = 1; */
+        if (message.uid !== 0n)
+            writer.tag(1, WireType.Varint).int64(message.uid);
+        /* int64 userId = 2; */
+        if (message.userId !== 0n)
+            writer.tag(2, WireType.Varint).int64(message.userId);
+        /* int32 heroId = 3; */
+        if (message.heroId !== 0)
+            writer.tag(3, WireType.Varint).int32(message.heroId);
         /* optional int64 createTime = 4; */
         if (message.createTime !== undefined)
             writer.tag(4, WireType.Varint).int64(message.createTime);
@@ -1074,21 +1078,21 @@ class HeroInfo$Type extends MessageType<HeroInfo> {
         /* optional int32 activeSkillLevel = 11; */
         if (message.activeSkillLevel !== undefined)
             writer.tag(11, WireType.Varint).int32(message.activeSkillLevel);
-        /* int32 passiveSkillLevel = 12; */
-        if (message.passiveSkillLevel !== 0)
-            writer.tag(12, WireType.Varint).int32(message.passiveSkillLevel);
+        /* repeated int32 passiveSkillLevel = 12; */
+        for (let i = 0; i < message.passiveSkillLevel.length; i++)
+            writer.tag(12, WireType.Varint).int32(message.passiveSkillLevel[i]);
         /* optional int32 exSkillLevel = 13; */
         if (message.exSkillLevel !== undefined)
             writer.tag(13, WireType.Varint).int32(message.exSkillLevel);
-        /* int32 voice = 14; */
-        if (message.voice !== 0)
-            writer.tag(14, WireType.Varint).int32(message.voice);
-        /* int32 voiceHeard = 15; */
-        if (message.voiceHeard !== 0)
-            writer.tag(15, WireType.Varint).int32(message.voiceHeard);
-        /* SkinInfo skinInfoList = 16; */
-        if (message.skinInfoList)
-            SkinInfo.internalBinaryWrite(message.skinInfoList, writer.tag(16, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 voice = 14; */
+        for (let i = 0; i < message.voice.length; i++)
+            writer.tag(14, WireType.Varint).int32(message.voice[i]);
+        /* repeated int32 voiceHeard = 15; */
+        for (let i = 0; i < message.voiceHeard.length; i++)
+            writer.tag(15, WireType.Varint).int32(message.voiceHeard[i]);
+        /* repeated SkinInfo skinInfoList = 16; */
+        for (let i = 0; i < message.skinInfoList.length; i++)
+            SkinInfo.internalBinaryWrite(message.skinInfoList[i], writer.tag(16, WireType.LengthDelimited).fork(), options).join();
         /* optional HeroAttribute baseAttr = 17; */
         if (message.baseAttr)
             HeroAttribute.internalBinaryWrite(message.baseAttr, writer.tag(17, WireType.LengthDelimited).fork(), options).join();
@@ -1098,21 +1102,21 @@ class HeroInfo$Type extends MessageType<HeroInfo> {
         /* optional HeroSpAttribute spAttr = 19; */
         if (message.spAttr)
             HeroSpAttribute.internalBinaryWrite(message.spAttr, writer.tag(19, WireType.LengthDelimited).fork(), options).join();
-        /* HeroEquipAttribute equipAttrList = 20; */
-        if (message.equipAttrList)
-            HeroEquipAttribute.internalBinaryWrite(message.equipAttrList, writer.tag(20, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroEquipAttribute equipAttrList = 20; */
+        for (let i = 0; i < message.equipAttrList.length; i++)
+            HeroEquipAttribute.internalBinaryWrite(message.equipAttrList[i], writer.tag(20, WireType.LengthDelimited).fork(), options).join();
         /* optional bool isNew = 21; */
         if (message.isNew !== undefined)
             writer.tag(21, WireType.Varint).bool(message.isNew);
-        /* int32 itemUnlock = 22; */
-        if (message.itemUnlock !== 0)
-            writer.tag(22, WireType.Varint).int32(message.itemUnlock);
+        /* repeated int32 itemUnlock = 22; */
+        for (let i = 0; i < message.itemUnlock.length; i++)
+            writer.tag(22, WireType.Varint).int32(message.itemUnlock[i]);
         /* optional int32 talent = 23; */
         if (message.talent !== undefined)
             writer.tag(23, WireType.Varint).int32(message.talent);
-        /* TalentCubeInfo talentCubeInfos = 24; */
-        if (message.talentCubeInfos)
-            TalentCubeInfo.internalBinaryWrite(message.talentCubeInfos, writer.tag(24, WireType.LengthDelimited).fork(), options).join();
+        /* repeated TalentCubeInfo talentCubeInfos = 24; */
+        for (let i = 0; i < message.talentCubeInfos.length; i++)
+            TalentCubeInfo.internalBinaryWrite(message.talentCubeInfos[i], writer.tag(24, WireType.LengthDelimited).fork(), options).join();
         /* optional int64 defaultEquipUid = 25; */
         if (message.defaultEquipUid !== undefined)
             writer.tag(25, WireType.Varint).int64(message.defaultEquipUid);
@@ -1130,15 +1134,15 @@ export const HeroInfo = new HeroInfo$Type();
 class HeroAttribute$Type extends MessageType<HeroAttribute> {
     constructor() {
         super("HeroAttribute", [
-            { no: 1, name: "hp", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "attack", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 3, name: "defense", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 4, name: "mdefense", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "technic", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "hp", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "attack", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 3, name: "defense", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 4, name: "mdefense", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 5, name: "technic", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<HeroAttribute>): HeroAttribute {
-        const message = { hp: [], attack: [], defense: [], mdefense: [], technic: [] };
+        const message = { hp: 0, attack: 0, defense: 0, mdefense: 0, technic: 0 };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroAttribute>(this, message, value);
@@ -1149,40 +1153,20 @@ class HeroAttribute$Type extends MessageType<HeroAttribute> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 hp */ 1:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.hp.push(reader.int32());
-                    else
-                        message.hp.push(reader.int32());
+                case /* int32 hp */ 1:
+                    message.hp = reader.int32();
                     break;
-                case /* repeated int32 attack */ 2:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.attack.push(reader.int32());
-                    else
-                        message.attack.push(reader.int32());
+                case /* int32 attack */ 2:
+                    message.attack = reader.int32();
                     break;
-                case /* repeated int32 defense */ 3:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.defense.push(reader.int32());
-                    else
-                        message.defense.push(reader.int32());
+                case /* int32 defense */ 3:
+                    message.defense = reader.int32();
                     break;
-                case /* repeated int32 mdefense */ 4:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.mdefense.push(reader.int32());
-                    else
-                        message.mdefense.push(reader.int32());
+                case /* int32 mdefense */ 4:
+                    message.mdefense = reader.int32();
                     break;
-                case /* repeated int32 technic */ 5:
-                    if (wireType === WireType.LengthDelimited)
-                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.technic.push(reader.int32());
-                    else
-                        message.technic.push(reader.int32());
+                case /* int32 technic */ 5:
+                    message.technic = reader.int32();
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1196,21 +1180,21 @@ class HeroAttribute$Type extends MessageType<HeroAttribute> {
         return message;
     }
     internalBinaryWrite(message: HeroAttribute, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 hp = 1; */
-        for (let i = 0; i < message.hp.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.hp[i]);
-        /* repeated int32 attack = 2; */
-        for (let i = 0; i < message.attack.length; i++)
-            writer.tag(2, WireType.Varint).int32(message.attack[i]);
-        /* repeated int32 defense = 3; */
-        for (let i = 0; i < message.defense.length; i++)
-            writer.tag(3, WireType.Varint).int32(message.defense[i]);
-        /* repeated int32 mdefense = 4; */
-        for (let i = 0; i < message.mdefense.length; i++)
-            writer.tag(4, WireType.Varint).int32(message.mdefense[i]);
-        /* repeated int32 technic = 5; */
-        for (let i = 0; i < message.technic.length; i++)
-            writer.tag(5, WireType.Varint).int32(message.technic[i]);
+        /* int32 hp = 1; */
+        if (message.hp !== 0)
+            writer.tag(1, WireType.Varint).int32(message.hp);
+        /* int32 attack = 2; */
+        if (message.attack !== 0)
+            writer.tag(2, WireType.Varint).int32(message.attack);
+        /* int32 defense = 3; */
+        if (message.defense !== 0)
+            writer.tag(3, WireType.Varint).int32(message.defense);
+        /* int32 mdefense = 4; */
+        if (message.mdefense !== 0)
+            writer.tag(4, WireType.Varint).int32(message.mdefense);
+        /* int32 technic = 5; */
+        if (message.technic !== 0)
+            writer.tag(5, WireType.Varint).int32(message.technic);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1225,16 +1209,16 @@ export const HeroAttribute = new HeroAttribute$Type();
 class HeroGroupInfo$Type extends MessageType<HeroGroupInfo> {
     constructor() {
         super("HeroGroupInfo", [
-            { no: 1, name: "groupId", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ },
-            { no: 2, name: "heroList", kind: "scalar", T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 1, name: "groupId", kind: "scalar", T: 5 /*ScalarType.INT32*/ },
+            { no: 2, name: "heroList", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 3 /*ScalarType.INT64*/, L: 0 /*LongType.BIGINT*/ },
             { no: 3, name: "name", kind: "scalar", opt: true, T: 9 /*ScalarType.STRING*/ },
             { no: 4, name: "clothId", kind: "scalar", opt: true, T: 5 /*ScalarType.INT32*/ },
-            { no: 5, name: "equips", kind: "message", T: () => HeroGroupEquip },
-            { no: 6, name: "activity104Equips", kind: "message", T: () => HeroGroupEquip }
+            { no: 5, name: "equips", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroGroupEquip },
+            { no: 6, name: "activity104Equips", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => HeroGroupEquip }
         ]);
     }
     create(value?: PartialMessage<HeroGroupInfo>): HeroGroupInfo {
-        const message = { groupId: [], heroList: 0n };
+        const message = { groupId: 0, heroList: [], equips: [], activity104Equips: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<HeroGroupInfo>(this, message, value);
@@ -1245,15 +1229,15 @@ class HeroGroupInfo$Type extends MessageType<HeroGroupInfo> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* repeated int32 groupId */ 1:
+                case /* int32 groupId */ 1:
+                    message.groupId = reader.int32();
+                    break;
+                case /* repeated int64 heroList */ 2:
                     if (wireType === WireType.LengthDelimited)
                         for (let e = reader.int32() + reader.pos; reader.pos < e;)
-                            message.groupId.push(reader.int32());
+                            message.heroList.push(reader.int64().toBigInt());
                     else
-                        message.groupId.push(reader.int32());
-                    break;
-                case /* int64 heroList */ 2:
-                    message.heroList = reader.int64().toBigInt();
+                        message.heroList.push(reader.int64().toBigInt());
                     break;
                 case /* optional string name */ 3:
                     message.name = reader.string();
@@ -1261,11 +1245,11 @@ class HeroGroupInfo$Type extends MessageType<HeroGroupInfo> {
                 case /* optional int32 clothId */ 4:
                     message.clothId = reader.int32();
                     break;
-                case /* HeroGroupEquip equips */ 5:
-                    message.equips = HeroGroupEquip.internalBinaryRead(reader, reader.uint32(), options, message.equips);
+                case /* repeated HeroGroupEquip equips */ 5:
+                    message.equips.push(HeroGroupEquip.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* HeroGroupEquip activity104Equips */ 6:
-                    message.activity104Equips = HeroGroupEquip.internalBinaryRead(reader, reader.uint32(), options, message.activity104Equips);
+                case /* repeated HeroGroupEquip activity104Equips */ 6:
+                    message.activity104Equips.push(HeroGroupEquip.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1279,24 +1263,24 @@ class HeroGroupInfo$Type extends MessageType<HeroGroupInfo> {
         return message;
     }
     internalBinaryWrite(message: HeroGroupInfo, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* repeated int32 groupId = 1; */
-        for (let i = 0; i < message.groupId.length; i++)
-            writer.tag(1, WireType.Varint).int32(message.groupId[i]);
-        /* int64 heroList = 2; */
-        if (message.heroList !== 0n)
-            writer.tag(2, WireType.Varint).int64(message.heroList);
+        /* int32 groupId = 1; */
+        if (message.groupId !== 0)
+            writer.tag(1, WireType.Varint).int32(message.groupId);
+        /* repeated int64 heroList = 2; */
+        for (let i = 0; i < message.heroList.length; i++)
+            writer.tag(2, WireType.Varint).int64(message.heroList[i]);
         /* optional string name = 3; */
         if (message.name !== undefined)
             writer.tag(3, WireType.LengthDelimited).string(message.name);
         /* optional int32 clothId = 4; */
         if (message.clothId !== undefined)
             writer.tag(4, WireType.Varint).int32(message.clothId);
-        /* HeroGroupEquip equips = 5; */
-        if (message.equips)
-            HeroGroupEquip.internalBinaryWrite(message.equips, writer.tag(5, WireType.LengthDelimited).fork(), options).join();
-        /* HeroGroupEquip activity104Equips = 6; */
-        if (message.activity104Equips)
-            HeroGroupEquip.internalBinaryWrite(message.activity104Equips, writer.tag(6, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroGroupEquip equips = 5; */
+        for (let i = 0; i < message.equips.length; i++)
+            HeroGroupEquip.internalBinaryWrite(message.equips[i], writer.tag(5, WireType.LengthDelimited).fork(), options).join();
+        /* repeated HeroGroupEquip activity104Equips = 6; */
+        for (let i = 0; i < message.activity104Equips.length; i++)
+            HeroGroupEquip.internalBinaryWrite(message.activity104Equips[i], writer.tag(6, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);

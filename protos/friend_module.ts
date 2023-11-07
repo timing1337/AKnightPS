@@ -47,22 +47,22 @@ export interface RemoveBlacklistReply {
  */
 export interface SearchReply {
     /**
-     * @generated from protobuf field: FriendInfo info = 1;
+     * @generated from protobuf field: repeated FriendInfo info = 1;
      */
-    info?: FriendInfo;
+    info: FriendInfo[];
 }
 /**
  * @generated from protobuf message LoadFriendInfosReply
  */
 export interface LoadFriendInfosReply {
     /**
-     * @generated from protobuf field: uint64 friendIds = 1;
+     * @generated from protobuf field: repeated uint64 friendIds = 1;
      */
-    friendIds: bigint;
+    friendIds: bigint[];
     /**
-     * @generated from protobuf field: uint64 blackListIds = 2;
+     * @generated from protobuf field: repeated uint64 blackListIds = 2;
      */
-    blackListIds: bigint;
+    blackListIds: bigint[];
 }
 /**
  * @generated from protobuf message RejectAllReply
@@ -99,9 +99,9 @@ export interface FriendInfo {
  */
 export interface GetApplyListReply {
     /**
-     * @generated from protobuf field: FriendInfo info = 1;
+     * @generated from protobuf field: repeated FriendInfo info = 1;
      */
-    info?: FriendInfo;
+    info: FriendInfo[];
 }
 /**
  * @generated from protobuf message ApplyReply
@@ -121,9 +121,9 @@ export interface ApplyReply {
  */
 export interface GetFriendInfoListReply {
     /**
-     * @generated from protobuf field: FriendInfo info = 1;
+     * @generated from protobuf field: repeated FriendInfo info = 1;
      */
-    info?: FriendInfo;
+    info: FriendInfo[];
 }
 /**
  * @generated from protobuf message GetBlacklistRequest
@@ -170,9 +170,9 @@ export interface BlacklistChangePush {
  */
 export interface GetBlacklistReply {
     /**
-     * @generated from protobuf field: FriendInfo info = 1;
+     * @generated from protobuf field: repeated FriendInfo info = 1;
      */
-    info?: FriendInfo;
+    info: FriendInfo[];
 }
 /**
  * @generated from protobuf message AddBlacklistReply
@@ -188,13 +188,13 @@ export interface AddBlacklistReply {
  */
 export interface AgreeAllReply {
     /**
-     * @generated from protobuf field: FriendInfo applyList = 1;
+     * @generated from protobuf field: repeated FriendInfo applyList = 1;
      */
-    applyList?: FriendInfo;
+    applyList: FriendInfo[];
     /**
-     * @generated from protobuf field: int32 resultCode = 2;
+     * @generated from protobuf field: repeated int32 resultCode = 2;
      */
-    resultCode: number;
+    resultCode: number[];
 }
 /**
  * @generated from protobuf message AddBlacklistRequest
@@ -426,11 +426,11 @@ export const RemoveBlacklistReply = new RemoveBlacklistReply$Type();
 class SearchReply$Type extends MessageType<SearchReply> {
     constructor() {
         super("SearchReply", [
-            { no: 1, name: "info", kind: "message", T: () => FriendInfo }
+            { no: 1, name: "info", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FriendInfo }
         ]);
     }
     create(value?: PartialMessage<SearchReply>): SearchReply {
-        const message = {};
+        const message = { info: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<SearchReply>(this, message, value);
@@ -441,8 +441,8 @@ class SearchReply$Type extends MessageType<SearchReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* FriendInfo info */ 1:
-                    message.info = FriendInfo.internalBinaryRead(reader, reader.uint32(), options, message.info);
+                case /* repeated FriendInfo info */ 1:
+                    message.info.push(FriendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -456,9 +456,9 @@ class SearchReply$Type extends MessageType<SearchReply> {
         return message;
     }
     internalBinaryWrite(message: SearchReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* FriendInfo info = 1; */
-        if (message.info)
-            FriendInfo.internalBinaryWrite(message.info, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FriendInfo info = 1; */
+        for (let i = 0; i < message.info.length; i++)
+            FriendInfo.internalBinaryWrite(message.info[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -473,12 +473,12 @@ export const SearchReply = new SearchReply$Type();
 class LoadFriendInfosReply$Type extends MessageType<LoadFriendInfosReply> {
     constructor() {
         super("LoadFriendInfosReply", [
-            { no: 1, name: "friendIds", kind: "scalar", T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ },
-            { no: 2, name: "blackListIds", kind: "scalar", T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
+            { no: 1, name: "friendIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ },
+            { no: 2, name: "blackListIds", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 4 /*ScalarType.UINT64*/, L: 0 /*LongType.BIGINT*/ }
         ]);
     }
     create(value?: PartialMessage<LoadFriendInfosReply>): LoadFriendInfosReply {
-        const message = { friendIds: 0n, blackListIds: 0n };
+        const message = { friendIds: [], blackListIds: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<LoadFriendInfosReply>(this, message, value);
@@ -489,11 +489,19 @@ class LoadFriendInfosReply$Type extends MessageType<LoadFriendInfosReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* uint64 friendIds */ 1:
-                    message.friendIds = reader.uint64().toBigInt();
+                case /* repeated uint64 friendIds */ 1:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.friendIds.push(reader.uint64().toBigInt());
+                    else
+                        message.friendIds.push(reader.uint64().toBigInt());
                     break;
-                case /* uint64 blackListIds */ 2:
-                    message.blackListIds = reader.uint64().toBigInt();
+                case /* repeated uint64 blackListIds */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.blackListIds.push(reader.uint64().toBigInt());
+                    else
+                        message.blackListIds.push(reader.uint64().toBigInt());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -507,12 +515,12 @@ class LoadFriendInfosReply$Type extends MessageType<LoadFriendInfosReply> {
         return message;
     }
     internalBinaryWrite(message: LoadFriendInfosReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* uint64 friendIds = 1; */
-        if (message.friendIds !== 0n)
-            writer.tag(1, WireType.Varint).uint64(message.friendIds);
-        /* uint64 blackListIds = 2; */
-        if (message.blackListIds !== 0n)
-            writer.tag(2, WireType.Varint).uint64(message.blackListIds);
+        /* repeated uint64 friendIds = 1; */
+        for (let i = 0; i < message.friendIds.length; i++)
+            writer.tag(1, WireType.Varint).uint64(message.friendIds[i]);
+        /* repeated uint64 blackListIds = 2; */
+        for (let i = 0; i < message.blackListIds.length; i++)
+            writer.tag(2, WireType.Varint).uint64(message.blackListIds[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -628,11 +636,11 @@ export const FriendInfo = new FriendInfo$Type();
 class GetApplyListReply$Type extends MessageType<GetApplyListReply> {
     constructor() {
         super("GetApplyListReply", [
-            { no: 1, name: "info", kind: "message", T: () => FriendInfo }
+            { no: 1, name: "info", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FriendInfo }
         ]);
     }
     create(value?: PartialMessage<GetApplyListReply>): GetApplyListReply {
-        const message = {};
+        const message = { info: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetApplyListReply>(this, message, value);
@@ -643,8 +651,8 @@ class GetApplyListReply$Type extends MessageType<GetApplyListReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* FriendInfo info */ 1:
-                    message.info = FriendInfo.internalBinaryRead(reader, reader.uint32(), options, message.info);
+                case /* repeated FriendInfo info */ 1:
+                    message.info.push(FriendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -658,9 +666,9 @@ class GetApplyListReply$Type extends MessageType<GetApplyListReply> {
         return message;
     }
     internalBinaryWrite(message: GetApplyListReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* FriendInfo info = 1; */
-        if (message.info)
-            FriendInfo.internalBinaryWrite(message.info, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FriendInfo info = 1; */
+        for (let i = 0; i < message.info.length; i++)
+            FriendInfo.internalBinaryWrite(message.info[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -729,11 +737,11 @@ export const ApplyReply = new ApplyReply$Type();
 class GetFriendInfoListReply$Type extends MessageType<GetFriendInfoListReply> {
     constructor() {
         super("GetFriendInfoListReply", [
-            { no: 1, name: "info", kind: "message", T: () => FriendInfo }
+            { no: 1, name: "info", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FriendInfo }
         ]);
     }
     create(value?: PartialMessage<GetFriendInfoListReply>): GetFriendInfoListReply {
-        const message = {};
+        const message = { info: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetFriendInfoListReply>(this, message, value);
@@ -744,8 +752,8 @@ class GetFriendInfoListReply$Type extends MessageType<GetFriendInfoListReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* FriendInfo info */ 1:
-                    message.info = FriendInfo.internalBinaryRead(reader, reader.uint32(), options, message.info);
+                case /* repeated FriendInfo info */ 1:
+                    message.info.push(FriendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -759,9 +767,9 @@ class GetFriendInfoListReply$Type extends MessageType<GetFriendInfoListReply> {
         return message;
     }
     internalBinaryWrite(message: GetFriendInfoListReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* FriendInfo info = 1; */
-        if (message.info)
-            FriendInfo.internalBinaryWrite(message.info, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FriendInfo info = 1; */
+        for (let i = 0; i < message.info.length; i++)
+            FriendInfo.internalBinaryWrite(message.info[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -957,11 +965,11 @@ export const BlacklistChangePush = new BlacklistChangePush$Type();
 class GetBlacklistReply$Type extends MessageType<GetBlacklistReply> {
     constructor() {
         super("GetBlacklistReply", [
-            { no: 1, name: "info", kind: "message", T: () => FriendInfo }
+            { no: 1, name: "info", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FriendInfo }
         ]);
     }
     create(value?: PartialMessage<GetBlacklistReply>): GetBlacklistReply {
-        const message = {};
+        const message = { info: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<GetBlacklistReply>(this, message, value);
@@ -972,8 +980,8 @@ class GetBlacklistReply$Type extends MessageType<GetBlacklistReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* FriendInfo info */ 1:
-                    message.info = FriendInfo.internalBinaryRead(reader, reader.uint32(), options, message.info);
+                case /* repeated FriendInfo info */ 1:
+                    message.info.push(FriendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -987,9 +995,9 @@ class GetBlacklistReply$Type extends MessageType<GetBlacklistReply> {
         return message;
     }
     internalBinaryWrite(message: GetBlacklistReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* FriendInfo info = 1; */
-        if (message.info)
-            FriendInfo.internalBinaryWrite(message.info, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated FriendInfo info = 1; */
+        for (let i = 0; i < message.info.length; i++)
+            FriendInfo.internalBinaryWrite(message.info[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
@@ -1051,12 +1059,12 @@ export const AddBlacklistReply = new AddBlacklistReply$Type();
 class AgreeAllReply$Type extends MessageType<AgreeAllReply> {
     constructor() {
         super("AgreeAllReply", [
-            { no: 1, name: "applyList", kind: "message", T: () => FriendInfo },
-            { no: 2, name: "resultCode", kind: "scalar", T: 5 /*ScalarType.INT32*/ }
+            { no: 1, name: "applyList", kind: "message", repeat: 2 /*RepeatType.UNPACKED*/, T: () => FriendInfo },
+            { no: 2, name: "resultCode", kind: "scalar", repeat: 2 /*RepeatType.UNPACKED*/, T: 5 /*ScalarType.INT32*/ }
         ]);
     }
     create(value?: PartialMessage<AgreeAllReply>): AgreeAllReply {
-        const message = { resultCode: 0 };
+        const message = { applyList: [], resultCode: [] };
         globalThis.Object.defineProperty(message, MESSAGE_TYPE, { enumerable: false, value: this });
         if (value !== undefined)
             reflectionMergePartial<AgreeAllReply>(this, message, value);
@@ -1067,11 +1075,15 @@ class AgreeAllReply$Type extends MessageType<AgreeAllReply> {
         while (reader.pos < end) {
             let [fieldNo, wireType] = reader.tag();
             switch (fieldNo) {
-                case /* FriendInfo applyList */ 1:
-                    message.applyList = FriendInfo.internalBinaryRead(reader, reader.uint32(), options, message.applyList);
+                case /* repeated FriendInfo applyList */ 1:
+                    message.applyList.push(FriendInfo.internalBinaryRead(reader, reader.uint32(), options));
                     break;
-                case /* int32 resultCode */ 2:
-                    message.resultCode = reader.int32();
+                case /* repeated int32 resultCode */ 2:
+                    if (wireType === WireType.LengthDelimited)
+                        for (let e = reader.int32() + reader.pos; reader.pos < e;)
+                            message.resultCode.push(reader.int32());
+                    else
+                        message.resultCode.push(reader.int32());
                     break;
                 default:
                     let u = options.readUnknownField;
@@ -1085,12 +1097,12 @@ class AgreeAllReply$Type extends MessageType<AgreeAllReply> {
         return message;
     }
     internalBinaryWrite(message: AgreeAllReply, writer: IBinaryWriter, options: BinaryWriteOptions): IBinaryWriter {
-        /* FriendInfo applyList = 1; */
-        if (message.applyList)
-            FriendInfo.internalBinaryWrite(message.applyList, writer.tag(1, WireType.LengthDelimited).fork(), options).join();
-        /* int32 resultCode = 2; */
-        if (message.resultCode !== 0)
-            writer.tag(2, WireType.Varint).int32(message.resultCode);
+        /* repeated FriendInfo applyList = 1; */
+        for (let i = 0; i < message.applyList.length; i++)
+            FriendInfo.internalBinaryWrite(message.applyList[i], writer.tag(1, WireType.LengthDelimited).fork(), options).join();
+        /* repeated int32 resultCode = 2; */
+        for (let i = 0; i < message.resultCode.length; i++)
+            writer.tag(2, WireType.Varint).int32(message.resultCode[i]);
         let u = options.writeUnknownFields;
         if (u !== false)
             (u == true ? UnknownFieldHandler.onWrite : u)(this.typeName, message, writer);
