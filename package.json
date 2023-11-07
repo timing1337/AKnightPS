@@ -22,6 +22,7 @@
   "scripts": {
     "check": "tsc --noEmit",
     "start": "ts-node-dev src/index.ts",
-    "pretty": "prettier --write src/**/*.ts"
+    "pretty": "prettier --write src/**/*.ts",
+    "compile_protos": "npx protoc --ts_out protos --proto_path ./resources/protos ./resources/protos/*"
   }
 }
