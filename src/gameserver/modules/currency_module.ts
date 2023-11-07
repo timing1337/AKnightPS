@@ -1,8 +1,4 @@
-import { GetCurrencyListReply, GetCurrencyListRequest } from '../../../protos/currency_module';
-import { OpenInfo } from '../../../protos/open_module';
-import { PlayerInfo } from '../../../protos/player_def';
-import { GetPlayerInfoReply, GetPlayerInfoRequest } from '../../../protos/player_module';
-import ByteWriting from '../../crypto/bytewriting';
+import { Currency, GetCurrencyListReply, GetCurrencyListRequest } from '../../../protos/currency_module';
 import Logger from '../../utils/logger';
 import Connection from '../connection';
 import { handles } from '../gameserver';
@@ -11,12 +7,18 @@ import { ProtocolId } from '../protocol_id';
 
 const logger = new Logger('CurrencyModule');
 
-export class PlayerModule {
+export class CurrencyModule {
     @handles(ProtocolId.GetCurrencyList)
     public static async onGetCurrencyList(connection: Connection, packet: ClientPacket) {
         const request = GetCurrencyListRequest.fromBinary(packet.data);
         const response = GetCurrencyListReply.create({
-            currencyList: request.currencyIds
-        })
+            currencyList: request.currencyIds.map((id) => {
+                return Currency.create({
+                    currencyId: id,
+                    quantity: 13371337
+                });
+            })
+        });
+        connection.sendRawBuffer(ProtocolId.GetCurrencyList, GetCurrencyListReply.toBinary(response));
     }
 }

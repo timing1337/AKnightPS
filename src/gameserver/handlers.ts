@@ -17,6 +17,7 @@ export default class HandlerFactory {
     public static handle(connection: Connection, packet: ClientPacket) {
         if (!this.handlers.has(packet.cmdId)) {
             HandlerFactory.logger.warn(`${ProtocolId[packet.cmdId] ?? packet.cmdId} is not handled`);
+            connection.sendRawBuffer(packet.cmdId, Buffer.alloc(1));
             return;
         }
         this.handlers.get(packet.cmdId)!(connection, packet);

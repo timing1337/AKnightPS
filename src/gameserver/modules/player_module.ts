@@ -1,6 +1,4 @@
-import { OpenInfo } from '../../../protos/open_module';
-import { PlayerInfo } from '../../../protos/player_def';
-import { GetPlayerInfoReply, GetPlayerInfoRequest } from '../../../protos/player_module';
+import { GetClothInfoReply, GetClothInfoRequest, GetPlayerInfoReply, GetPlayerInfoRequest } from '../../../protos/player_module';
 import ByteWriting from '../../crypto/bytewriting';
 import Logger from '../../utils/logger';
 import Connection from '../connection';
@@ -40,8 +38,19 @@ export class PlayerModule {
             mainThumbnail: false,
             openinfos: connection.player?.openInfo,
             playerInfo: connection.player?.playerInfo
-        })
+        });
 
         connection.sendRawBuffer(ProtocolId.GetPlayerInfo, GetPlayerInfoReply.toBinary(response));
+    }
+
+    @handles(ProtocolId.GetClothInfo)
+    public static async onGetClothInfo(connection: Connection, packet: ClientPacket) {
+        const request = GetClothInfoRequest.fromBinary(packet.data);
+        const response = GetClothInfoReply.create({
+            clothInfos: {
+                clothes: []
+            }
+        });
+        connection.sendRawBuffer(ProtocolId.GetClothInfo, GetClothInfoReply.toBinary(response));
     }
 }

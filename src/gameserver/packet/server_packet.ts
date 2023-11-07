@@ -3,9 +3,9 @@ export default class ServerPacket {
 
     constructor(readonly cmdId: number, readonly resultCode: number, readonly upTag: number, readonly downTag: number, readonly data: Buffer) {}
 
-    static decode(buffer: Buffer): ServerPacket | undefined {
+    static decode(buffer: Buffer): ServerPacket {
         const packetSize = buffer.readUInt32BE(); // 4 bytes
-        const cmdId = buffer.readUInt16BE(4); // 2 bytes
+        const cmdId = buffer.readInt16BE(4); // 2 bytes
         const resultCode = buffer.readUInt16BE(6); // 2 bytes
         const upTag = buffer.readUInt8(8); // 1 bytes
         const downTag = buffer.readUInt8(9); // 1 bytes
@@ -16,7 +16,7 @@ export default class ServerPacket {
     public encode(): Buffer {
         const buffer = Buffer.allocUnsafe(ServerPacket.PACKET_HEADER + this.data.length);
         buffer.writeUInt32BE(ServerPacket.PACKET_HEADER + this.data.length - 4, 0);
-        buffer.writeUInt16BE(this.cmdId, 4);
+        buffer.writeInt16BE(this.cmdId, 4);
         buffer.writeUInt16BE(this.resultCode, 6);
         buffer.writeUInt8(this.upTag, 8);
         buffer.writeUInt8(this.downTag, 9);
