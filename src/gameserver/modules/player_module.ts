@@ -1,4 +1,4 @@
-import { GetClothInfoReply, GetClothInfoRequest, GetPlayerInfoReply, GetPlayerInfoRequest } from '../../../protos/player_module';
+import { GetClothInfoReply, GetClothInfoRequest, GetPlayerInfoReply, GetPlayerInfoRequest, GetSimplePropertyReply, GetSimplePropertyRequest } from '../../../protos/player_module';
 import ByteWriting from '../../crypto/bytewriting';
 import Logger from '../../utils/logger';
 import Connection from '../connection';
@@ -52,5 +52,14 @@ export class PlayerModule {
             }
         });
         connection.sendRawBuffer(ProtocolId.GetClothInfo, GetClothInfoReply.toBinary(response));
+    }
+
+    @handles(ProtocolId.GetSimpleProperty)
+    public static async onGetSimpleProperty(connection: Connection, packet: ClientPacket) {
+        const request = GetSimplePropertyRequest.fromBinary(packet.data);
+        const response = GetSimplePropertyReply.create({
+            simpleProperties: []
+        });
+        connection.sendRawBuffer(ProtocolId.GetClothInfo, GetSimplePropertyReply.toBinary(response));
     }
 }

@@ -1,4 +1,3 @@
-import { GetServerTimeReply, GetServerTimeRequest } from '../../../protos/common_module';
 import { GetHandbookInfoReply, GetHandbookInfoRequest } from '../../../protos/handbook_module';
 import Logger from '../../utils/logger';
 import Connection from '../connection';

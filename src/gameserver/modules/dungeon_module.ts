@@ -11,9 +11,7 @@ export class DungeonModule {
     @handles(ProtocolId.InstructionDungeonInfo)
     public static async onInstructionDungeonInfo(connection: Connection, packet: ClientPacket) {
         const request = InstructionDungeonInfoRequest.fromBinary(packet.data);
-        const response = InstructionDungeonInfoReply.create({
-            
-        });
+        const response = InstructionDungeonInfoReply.create({});
         connection.sendRawBuffer(ProtocolId.InstructionDungeonInfo, InstructionDungeonInfoReply.toBinary(response));
     }
 }
